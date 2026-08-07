@@ -1,4 +1,4 @@
-# `arcenciel` 0.8.1 published beta
+# `arcenciel` 0.8.2 published beta
 
 Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.8.0` contract. The package provides synchronous and asynchronous
 generated APIs behind a small stable facade. PyPI publishes it from the signed public source tag through OIDC Trusted Publishing with a
@@ -7,7 +7,7 @@ digital attestation.
 ## Install
 
 ```bash
-python3.11 -m pip install arcenciel==0.8.1
+python3.11 -m pip install arcenciel==0.8.2
 ```
 
 ## Search and inspect a model
@@ -157,7 +157,7 @@ The generated low-level APIs and Pydantic models remain available under `arcenci
 ## Contract and generation
 
 - Developer API: `1.8.0`, 246 operations
-- SDK: `0.8.1` published beta
+- SDK: `0.8.2` published beta
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`

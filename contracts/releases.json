@@ -11,21 +11,21 @@
       "openApiPath": "/developers/openapi/1.8.0.json",
       "referencePath": "/developers/reference/?version=1.8.0",
       "summary": "Stable feedback, illegal-content notice, evidence, review, and content-report workflows.",
-      "existingClients": "No action is required. v1.8.0 is additive; adopt SDK 0.8.1 only to use feedback and Trust & Safety workflows.",
+      "existingClients": "No action is required. v1.8.0 is additive; adopt SDK 0.8.2 only to use feedback and Trust & Safety workflows.",
       "sdk": {
         "typescript": {
           "package": "@arcenciel/sdk",
-          "version": "0.8.1",
+          "version": "0.8.2",
           "status": "published-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.1/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.2/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
-          "version": "0.8.1",
+          "version": "0.8.2",
           "status": "published-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.1/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.2/packages/sdk-python"
         }
       }
     },
