@@ -9,7 +9,7 @@ const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const manifest = JSON.parse(readFileSync(resolve(root, 'contracts/releases.json'), 'utf8'))
 const apiRelease = process.argv[2] || manifest.currentVersion
 const expectedSdkVersion = process.argv[3]
-const release = manifest.releases.find((entry) => entry.version === apiRelease)
+const release = manifest.releases.find(entry => entry.version === apiRelease)
 
 if (!release) throw new Error(`Unknown immutable Developer API release: ${apiRelease}`)
 
@@ -49,7 +49,7 @@ if (sha256 !== release.sha256) throw new Error(`Contract checksum mismatch: ${sh
 const document = JSON.parse(bytes)
 const methods = new Set(['get', 'put', 'post', 'delete', 'options', 'head', 'patch', 'trace'])
 const operationCount = Object.values(document.paths ?? {}).reduce(
-  (count, pathItem) => count + Object.keys(pathItem).filter((key) => methods.has(key)).length,
+  (count, pathItem) => count + Object.keys(pathItem).filter(key => methods.has(key)).length,
   0
 )
 if (operationCount !== release.operationCount) throw new Error(`Contract operation count mismatch: ${operationCount}`)

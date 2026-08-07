@@ -9,7 +9,7 @@ reserved in the release workflow but is not currently published.
 ```bash
 git clone --branch sdk-v0.8.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
 cd arcenciel-sdks/packages/sdk-typescript
-npm install --ignore-scripts
+npm ci --ignore-scripts
 npx tsc
 npx tsc -p tsconfig.esm.json
 node scripts/write-esm-package.mjs
