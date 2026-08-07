@@ -78,7 +78,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.CommentsApi(api_client)
     article_id = 1 # int | The ID of the article to comment on.
     create_article_comment_request = {"content":"Beautiful composition!"} # CreateArticleCommentRequest | Comment text and optional parent comment.
-    idempotency_key = 'comment-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
+    idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
 
     try:
         # Create a comment on an article
@@ -184,7 +184,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.CommentsApi(api_client)
     image_id = 1 # int | ID of the image to comment on.
     create_article_comment_request = {"content":"Beautiful composition!"} # CreateArticleCommentRequest | Comment text and optional parent comment.
-    idempotency_key = 'comment-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
+    idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
 
     try:
         # Create a comment on an image
@@ -290,7 +290,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.CommentsApi(api_client)
     model_id = 1 # int | The ID of the model.
     create_article_comment_request = {"content":"Beautiful composition!"} # CreateArticleCommentRequest | Comment text and optional parent comment.
-    idempotency_key = 'comment-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
+    idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
 
     try:
         # Create a comment on a model
@@ -396,7 +396,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.CommentsApi(api_client)
     video_id = 1 # int | The ID of the video to comment on.
     create_article_comment_request = {"content":"Beautiful composition!"} # CreateArticleCommentRequest | Comment text and optional parent comment.
-    idempotency_key = 'comment-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
+    idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
 
     try:
         # Create a comment on a video

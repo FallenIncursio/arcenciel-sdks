@@ -9,7 +9,11 @@ All URIs are relative to *https://arcenciel.io*
 | [**getCollabAnnouncement**](CollabsApi.md#getcollabannouncement) | **GET** /api/collabs/announcement | Get the active collaboration announcement |
 | [**getCollabShowcase**](CollabsApi.md#getcollabshowcase) | **GET** /api/collabs/{collabId}/showcase | Get collaboration showcase data |
 | [**getHistoricalCollabOverview**](CollabsApi.md#gethistoricalcollaboverview) | **GET** /api/collabs/history/overview | Get the public historical collaboration overview |
+| [**leaveCollab**](CollabsApi.md#leavecollab) | **DELETE** /api/collabs/{collabId}/participants/self | Remove the current user\&#39;s collaboration participant record |
 | [**listCollabs**](CollabsApi.md#listcollabs) | **GET** /api/collabs | List collaboration events |
+| [**requestCollabJoin**](CollabsApi.md#requestcollabjoin) | **POST** /api/collabs/{collabId}/requests | Request to join a collaboration |
+| [**updateMyCollabParticipant**](CollabsApi.md#updatemycollabparticipant) | **PATCH** /api/collabs/{collabId}/participants/self | Update the current user\&#39;s collaboration participant record |
+| [**uploadMyCollabParticipantPlaceholder**](CollabsApi.md#uploadmycollabparticipantplaceholder) | **POST** /api/collabs/{collabId}/participants/placeholder | Upload a participant placeholder image |
 
 
 
@@ -414,6 +418,87 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
+## leaveCollab
+
+> leaveCollab(collabId)
+
+Remove the current user\&#39;s collaboration participant record
+
+Cancel the caller’s pending request or invitation to an active collaboration without affecting accepted participants. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  CollabsApi,
+} from '@arcenciel/sdk';
+import type { LeaveCollabRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new CollabsApi(config);
+
+  const body = {
+    // string | Collab Id provided in the path.
+    collabId: example-collab-id,
+  } satisfies LeaveCollabRequest;
+
+  try {
+    const data = await api.leaveCollab(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **collabId** | `string` | Collab Id provided in the path. | [Defaults to `undefined`] |
+
+### Return type
+
+`void` (Empty response body)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Participant removed. |  * X-Request-ID -  <br>  |
+| **400** | Participant state does not allow self-removal. |  * X-Request-ID -  <br>  |
+| **401** | Authentication credentials are missing or invalid. |  * X-Request-ID -  <br>  |
+| **403** | API key is valid but does not include the required scope. |  * X-Request-ID -  <br>  |
+| **404** | Collaboration or participant not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
 ## listCollabs
 
 > CollabPage listCollabs(page, limit, search, scope, status, category, userId, mode, scale, year)
@@ -515,5 +600,262 @@ example().catch(console.error);
 | **403** | API key is valid but does not include the required scope. |  * X-Request-ID -  <br>  |
 | **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
 | **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## requestCollabJoin
+
+> DeveloperCollabParticipantResponse requestCollabJoin(collabId, body)
+
+Request to join a collaboration
+
+Request participation in an open live collaboration or return the caller’s existing request without creating a duplicate participant. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  CollabsApi,
+} from '@arcenciel/sdk';
+import type { RequestCollabJoinRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new CollabsApi(config);
+
+  const body = {
+    // string | Collab Id provided in the path.
+    collabId: example-collab-id,
+    // object | Request payload for this operation. (optional)
+    body: {},
+  } satisfies RequestCollabJoinRequest;
+
+  try {
+    const data = await api.requestCollabJoin(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **collabId** | `string` | Collab Id provided in the path. | [Defaults to `undefined`] |
+| **body** | `object` | Request payload for this operation. | [Optional] |
+
+### Return type
+
+[**DeveloperCollabParticipantResponse**](DeveloperCollabParticipantResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Existing join request or invitation updated. |  * X-Request-ID -  <br>  |
+| **201** | New join request recorded. |  * X-Request-ID -  <br>  |
+| **401** | Authentication required. |  * X-Request-ID -  <br>  |
+| **403** | The caller cannot request access to this collaboration. |  * X-Request-ID -  <br>  |
+| **404** | Collaboration not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## updateMyCollabParticipant
+
+> DeveloperCollabParticipantResponse updateMyCollabParticipant(collabId, body)
+
+Update the current user\&#39;s collaboration participant record
+
+Update the caller’s own character, source, notes, and placeholder-description fields in an active collaboration. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  CollabsApi,
+} from '@arcenciel/sdk';
+import type { UpdateMyCollabParticipantRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new CollabsApi(config);
+
+  const body = {
+    // string | Collab Id provided in the path.
+    collabId: example-collab-id,
+    // object | Request payload for this operation.
+    body: {},
+  } satisfies UpdateMyCollabParticipantRequest;
+
+  try {
+    const data = await api.updateMyCollabParticipant(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **collabId** | `string` | Collab Id provided in the path. | [Defaults to `undefined`] |
+| **body** | `object` | Request payload for this operation. | |
+
+### Return type
+
+[**DeveloperCollabParticipantResponse**](DeveloperCollabParticipantResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Participant updated. |  * X-Request-ID -  <br>  |
+| **400** | The request is malformed or fails operation-specific validation. |  * X-Request-ID -  <br>  |
+| **401** | Authentication credentials are missing or invalid. |  * X-Request-ID -  <br>  |
+| **403** | API key is valid but does not include the required scope. |  * X-Request-ID -  <br>  |
+| **404** | The requested resource does not exist or is not visible to the current principal. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## uploadMyCollabParticipantPlaceholder
+
+> DeveloperCollabPlaceholderUploadResponse uploadMyCollabParticipantPlaceholder(collabId, idempotencyKey, placeholderImage)
+
+Upload a participant placeholder image
+
+Upload and safety-check placeholder artwork for the caller’s participant record in an active collaboration. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  CollabsApi,
+} from '@arcenciel/sdk';
+import type { UploadMyCollabParticipantPlaceholderRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new CollabsApi(config);
+
+  const body = {
+    // string | Collab Id provided in the path.
+    collabId: example-collab-id,
+    // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
+    idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
+    // Blob | Placeholder Image accepted or returned by this contract. (optional)
+    placeholderImage: BINARY_DATA_HERE,
+  } satisfies UploadMyCollabParticipantPlaceholderRequest;
+
+  try {
+    const data = await api.uploadMyCollabParticipantPlaceholder(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **collabId** | `string` | Collab Id provided in the path. | [Defaults to `undefined`] |
+| **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
+| **placeholderImage** | `Blob` | Placeholder Image accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+
+### Return type
+
+[**DeveloperCollabPlaceholderUploadResponse**](DeveloperCollabPlaceholderUploadResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Placeholder image uploaded. |  * Idempotency-Replayed - True when the original successful response was replayed for this Idempotency-Key. <br>  * X-Request-ID -  <br>  |
+| **400** | The request is malformed or fails operation-specific validation. |  * X-Request-ID -  <br>  |
+| **401** | Authentication credentials are missing or invalid. |  * X-Request-ID -  <br>  |
+| **403** | API key is valid but does not include the required scope. |  * X-Request-ID -  <br>  |
+| **404** | The requested resource does not exist or is not visible to the current principal. |  * X-Request-ID -  <br>  |
+| **409** | The idempotency key conflicts with another payload or is still in progress. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
+| **503** | The operation is temporarily unavailable because a required service, dependency, or integration is unavailable. The idempotency service is temporarily unavailable; retry later with the same key. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)

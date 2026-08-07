@@ -1,13 +1,13 @@
-# `arcenciel` 0.4.0 source beta
+# `arcenciel` 0.5.0 source beta
 
-Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.4.0` contract. The package provides synchronous and asynchronous
+Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.5.0` contract. The package provides synchronous and asynchronous
 generated APIs behind a small stable facade. It remains a source beta until the public release manifest reports `published-beta`; it is
 not currently available from PyPI.
 
 ## Install the source beta
 
 ```bash
-git clone --branch sdk-v0.4.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
+git clone --branch sdk-v0.5.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
 cd arcenciel-sdks
 python3.11 -m pip install ./packages/sdk-python
 ```
@@ -15,7 +15,7 @@ python3.11 -m pip install ./packages/sdk-python
 After trusted publication, the release manifest and Developer Portal switch to:
 
 ```bash
-python3.11 -m pip install arcenciel==0.4.0
+python3.11 -m pip install arcenciel==0.5.0
 ```
 
 ## Search and inspect a model
@@ -117,31 +117,31 @@ Unknown future response enum values remain strings instead of failing deserializ
 
 | Namespace              | Stable operations                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------ |
-| `client.articles`      | Article search, detail, and article-image transfer                                   |
-| `client.collabs`       | Live and historical collaboration discovery, detail, showcases, and PNG transfer     |
-| `client.collections`   | Collection discovery, detail, and manager contribution-request reads                 |
+| `client.articles`      | Article discovery, drafts, media, scheduling, publication, updates, and deletion     |
+| `client.collabs`       | Collaboration discovery, showcases, requests, participant media, and membership      |
+| `client.collections`   | Collection discovery, creation, collaborators, contribution review, items, and media |
 | `client.comments`      | Typed article, image, model, and video comment reads and mutations                   |
 | `client.downloads`     | Model download metadata, binary transfers, training TOML, archives, and registration |
 | `client.emotes`        | Anonymous emote catalogue reads                                                      |
-| `client.images`        | Image search, metadata, related media, analysis, and binary transfers                |
-| `client.models`        | Model search, details, versions, gallery, classes, previews, and resource graphs     |
+| `client.images`        | Image discovery, uploads, metadata, crossposts, publishing, and bulk transfer        |
+| `client.models`        | Models, versions, resumable uploads, managed media, resources, and publishing        |
 | `client.notifications` | Cursor-paginated inbox, summary, and read-state updates                              |
 | `client.profile`       | Own profile, uploads, export, history, pinned templates, links, and profile media    |
 | `client.social`        | Favorites, follows, image/video reactions, and their explicit removal operations     |
 | `client.tags`          | Anonymous tag-usage discovery                                                        |
 | `client.users`         | Public profiles, creator statistics, search, and visible uploads                     |
-| `client.videos`        | Video search, metadata, related media, HLS, streaming, posters, and downloads        |
+| `client.videos`        | Video discovery, uploads, metadata, publishing, HLS, streaming, and downloads        |
 
 The generated low-level APIs and Pydantic models remain available under `arcenciel.generated`.
 
 ## Contract and generation
 
-- Developer API: `1.4.0`, 100 operations
-- SDK: `0.4.0` source beta
+- Developer API: `1.5.0`, 168 operations
+- SDK: `0.5.0` source beta
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.4.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.5.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

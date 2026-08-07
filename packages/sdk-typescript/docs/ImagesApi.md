@@ -5,8 +5,11 @@ All URIs are relative to *https://arcenciel.io*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**analyzeImagePrompt**](ImagesApi.md#analyzeimageprompt) | **GET** /api/images/{id}/prompt-analysis | Group an image prompt by semantic category |
+| [**createImageCrosspost**](ImagesApi.md#createimagecrosspostoperation) | **POST** /api/images/{id}/crosspost | Crosspost an image to one or more models |
+| [**deleteImage**](ImagesApi.md#deleteimage) | **DELETE** /api/images/{id} | Delete an image (only author or admin/mod) |
 | [**downloadImage**](ImagesApi.md#downloadimage) | **GET** /api/images/{id}/download | Download the original image file |
 | [**downloadImageLegacy**](ImagesApi.md#downloadimagelegacy) | **GET** /api/images/{id}/dl | Download the original image file (alias) |
+| [**downloadImagesBulk**](ImagesApi.md#downloadimagesbulkoperation) | **POST** /api/images/bulk-download | Download selected original image files as a ZIP archive |
 | [**getImage**](ImagesApi.md#getimage) | **GET** /api/images/{id}/info | Retrieve image metadata by ID |
 | [**getImageContent**](ImagesApi.md#getimagecontent) | **GET** /api/images/{id} | Retrieve an image file (webp if supported, original otherwise) |
 | [**getImageSpatialAttribution**](ImagesApi.md#getimagespatialattribution) | **GET** /api/images/{id}/spatial-attribution | Retrieve the asynchronous tag-location analysis status |
@@ -15,7 +18,16 @@ All URIs are relative to *https://arcenciel.io*
 | [**listImageExternalResources**](ImagesApi.md#listimageexternalresources) | **GET** /api/images/{id}/external-resources | Resolve resources associated with an image |
 | [**listImageStyleMatches**](ImagesApi.md#listimagestylematches) | **GET** /api/images/{id}/style-matches | Retrieve style-similar images for a given image. |
 | [**listRelatedImages**](ImagesApi.md#listrelatedimages) | **GET** /api/images/{id}/related | Retrieve images related to a given image |
+| [**publishImage**](ImagesApi.md#publishimage) | **POST** /api/images/{id}/publish | Publish an image immediately |
+| [**removeImageCrosspost**](ImagesApi.md#removeimagecrosspost) | **DELETE** /api/images/{id}/crosspost/{modelId} | Remove a crosspost from an image |
+| [**requestImageSpatialAttribution**](ImagesApi.md#requestimagespatialattribution) | **POST** /api/images/{id}/spatial-attribution | Request a background tag-location analysis |
+| [**scheduleImage**](ImagesApi.md#scheduleimageoperation) | **POST** /api/images/{id}/schedule | Schedule publishing of an image |
 | [**searchImages**](ImagesApi.md#searchimages) | **GET** /api/images/search | Search images with pagination and filtering |
+| [**searchImagesByStyleUpload**](ImagesApi.md#searchimagesbystyleupload) | **POST** /api/images/style-search/upload | Upload an image and retrieve style-similar matches. |
+| [**setImagePin**](ImagesApi.md#setimagepinoperation) | **PATCH** /api/images/{id}/pinned | Pin or unpin an image |
+| [**setImageShowcase**](ImagesApi.md#setimageshowcaseoperation) | **PATCH** /api/images/{id}/showcased | Showcase or remove showcase from an image |
+| [**updateImage**](ImagesApi.md#updateimageoperation) | **PATCH** /api/images/{id} | Edit an existing image |
+| [**uploadImages**](ImagesApi.md#uploadimages) | **POST** /api/images/upload | Upload one or multiple images |
 
 
 
@@ -92,6 +104,170 @@ example().catch(console.error);
 | **200** | Grouped positive-prompt analysis. |  * Cache-Control - Private, non-cacheable response because prompts may be owner-visible. <br>  * X-Request-ID -  <br>  |
 | **400** | Image ID must be a positive integer. |  * X-Request-ID -  <br>  |
 | **404** | Image not found or not visible to the current viewer. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## createImageCrosspost
+
+> DeveloperMessageResponse createImageCrosspost(id, createImageCrosspostRequest)
+
+Crosspost an image to one or more models
+
+Associate a caller-managed image with a bounded set of caller-managed models without creating duplicate relationships. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { CreateImageCrosspostOperationRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | ID of the image to crosspost.
+    id: 1,
+    // CreateImageCrosspostRequest | List of model IDs to crosspost to.
+    createImageCrosspostRequest: {"manual":true,"modelIds":[1]},
+  } satisfies CreateImageCrosspostOperationRequest;
+
+  try {
+    const data = await api.createImageCrosspost(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | ID of the image to crosspost. | [Defaults to `undefined`] |
+| **createImageCrosspostRequest** | [CreateImageCrosspostRequest](CreateImageCrosspostRequest.md) | List of model IDs to crosspost to. | |
+
+### Return type
+
+[**DeveloperMessageResponse**](DeveloperMessageResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Crosspost created. |  * X-Request-ID -  <br>  |
+| **400** | No modelIds provided or too many models. |  * X-Request-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Request-ID -  <br>  |
+| **403** | Not allowed to crosspost this image. |  * X-Request-ID -  <br>  |
+| **404** | Image not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## deleteImage
+
+> DeveloperMessageResponse deleteImage(id)
+
+Delete an image (only author or admin/mod)
+
+Delete a caller-managed image, its managed derivatives, and dependent associations after authorization checks. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { DeleteImageRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | Unique identifier of the image.
+    id: 1,
+  } satisfies DeleteImageRequest;
+
+  try {
+    const data = await api.deleteImage(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | Unique identifier of the image. | [Defaults to `undefined`] |
+
+### Return type
+
+[**DeveloperMessageResponse**](DeveloperMessageResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Image deleted successfully. |  * X-Request-ID -  <br>  |
+| **401** | Authentication credentials are missing or invalid. |  * X-Request-ID -  <br>  |
+| **403** | Forbidden (not the owner or admin/mod). |  * X-Request-ID -  <br>  |
+| **404** | Image not found. |  * X-Request-ID -  <br>  |
 | **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
 | **500** | Internal server error. |  * X-Request-ID -  <br>  |
 
@@ -248,6 +424,85 @@ example().catch(console.error);
 |-------------|-------------|------------------|
 | **200** | Binary file download of the image. |  * Content-Disposition - Attachment disposition containing the sanitized original filename. <br>  * X-Request-ID -  <br>  |
 | **404** | Image not found or file missing on disk. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## downloadImagesBulk
+
+> Blob downloadImagesBulk(downloadImagesBulkRequest)
+
+Download selected original image files as a ZIP archive
+
+Stream a ZIP archive containing the visible original bytes for a bounded set of image identifiers. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { DownloadImagesBulkOperationRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // DownloadImagesBulkRequest | Request payload for this operation.
+    downloadImagesBulkRequest: {"ids":[12,44,99]},
+  } satisfies DownloadImagesBulkOperationRequest;
+
+  try {
+    const data = await api.downloadImagesBulk(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **downloadImagesBulkRequest** | [DownloadImagesBulkRequest](DownloadImagesBulkRequest.md) | Request payload for this operation. | |
+
+### Return type
+
+**Blob**
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/zip`, `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | ZIP archive containing downloadable selected images. |  * Content-Disposition - Attachment filename generated for the streamed ZIP archive. <br>  * X-Request-ID -  <br>  |
+| **400** | Missing IDs or too many selected images. |  * X-Request-ID -  <br>  |
+| **404** | None of the requested images could be downloaded. |  * X-Request-ID -  <br>  |
 | **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
 | **500** | Internal server error. |  * X-Request-ID -  <br>  |
 
@@ -888,6 +1143,335 @@ example().catch(console.error);
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
+## publishImage
+
+> DeveloperMessageResponse publishImage(id)
+
+Publish an image immediately
+
+Publish a caller-managed image immediately and apply the normal visibility, notification, and audit workflow. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { PublishImageRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | ID of the image to publish.
+    id: 1,
+  } satisfies PublishImageRequest;
+
+  try {
+    const data = await api.publishImage(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | ID of the image to publish. | [Defaults to `undefined`] |
+
+### Return type
+
+[**DeveloperMessageResponse**](DeveloperMessageResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Image published. |  * X-Request-ID -  <br>  |
+| **401** | Authentication credentials are missing or invalid. |  * X-Request-ID -  <br>  |
+| **403** | Not allowed to publish this image. |  * X-Request-ID -  <br>  |
+| **404** | Image not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## removeImageCrosspost
+
+> DeveloperMessageResponse removeImageCrosspost(id, modelId)
+
+Remove a crosspost from an image
+
+Remove the association between a caller-managed image and model without deleting either resource. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { RemoveImageCrosspostRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | ID of the image.
+    id: 1,
+    // number | ID of the model to remove the crosspost from.
+    modelId: 1,
+  } satisfies RemoveImageCrosspostRequest;
+
+  try {
+    const data = await api.removeImageCrosspost(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | ID of the image. | [Defaults to `undefined`] |
+| **modelId** | `number` | ID of the model to remove the crosspost from. | [Defaults to `undefined`] |
+
+### Return type
+
+[**DeveloperMessageResponse**](DeveloperMessageResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Crosspost deleted. |  * X-Request-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Request-ID -  <br>  |
+| **403** | Not allowed to remove crosspost. |  * X-Request-ID -  <br>  |
+| **404** | Image not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## requestImageSpatialAttribution
+
+> ImageSpatialAttribution requestImageSpatialAttribution(id)
+
+Request a background tag-location analysis
+
+Return an existing spatial-attribution result or enqueue the bounded analysis job once when it is not ready. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { RequestImageSpatialAttributionRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | Unique identifier of the image.
+    id: 1,
+  } satisfies RequestImageSpatialAttributionRequest;
+
+  try {
+    const data = await api.requestImageSpatialAttribution(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | Unique identifier of the image. | [Defaults to `undefined`] |
+
+### Return type
+
+[**ImageSpatialAttribution**](ImageSpatialAttribution.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A current analysis is already ready. |  * X-Request-ID -  <br>  |
+| **202** | Analysis is queued or already processing. |  * X-Request-ID -  <br>  |
+| **401** | Authentication is required to start a new analysis. |  * X-Request-ID -  <br>  |
+| **403** | The standard account\&#39;s free analysis has already been used. |  * X-Request-ID -  <br>  |
+| **404** | Image not found or not visible to the current viewer. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+| **503** | Tag-location analysis is disabled. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## scheduleImage
+
+> DeveloperMessageResponse scheduleImage(id, scheduleImageRequest)
+
+Schedule publishing of an image
+
+Schedule a caller-managed image for a future publication time supplied as an ISO-8601 timestamp. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { ScheduleImageOperationRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | ID of the image to schedule.
+    id: 1,
+    // ScheduleImageRequest | Request payload for this operation.
+    scheduleImageRequest: {"publishAt":"2026-07-28T10:00:00.000Z"},
+  } satisfies ScheduleImageOperationRequest;
+
+  try {
+    const data = await api.scheduleImage(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | ID of the image to schedule. | [Defaults to `undefined`] |
+| **scheduleImageRequest** | [ScheduleImageRequest](ScheduleImageRequest.md) | Request payload for this operation. | |
+
+### Return type
+
+[**DeveloperMessageResponse**](DeveloperMessageResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Image scheduled. |  * X-Request-ID -  <br>  |
+| **400** | Invalid publish date. |  * X-Request-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Request-ID -  <br>  |
+| **403** | Not allowed to schedule this image. |  * X-Request-ID -  <br>  |
+| **404** | Image not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
 ## searchImages
 
 > SearchImages200Response searchImages(search, sort, page, limit, ratings, userId, selfReacted, selfFollowing, cursor)
@@ -985,5 +1569,439 @@ example().catch(console.error);
 | **200** | A paginated list of images. |  * X-Request-ID -  <br>  |
 | **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
 | **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## searchImagesByStyleUpload
+
+> DeveloperStyleSearchResponse searchImagesByStyleUpload(image, backend, limit)
+
+Upload an image and retrieve style-similar matches.
+
+Upload up to three in-memory query images and return paginated visible style matches plus matcher capability metadata. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { SearchImagesByStyleUploadRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // Blob | Image accepted or returned by this contract.
+    image: BINARY_DATA_HERE,
+    // string | Optional style matcher backend override. (optional)
+    backend: backend_example,
+    // number | Limit accepted or returned by this contract. (optional)
+    limit: 56,
+  } satisfies SearchImagesByStyleUploadRequest;
+
+  try {
+    const data = await api.searchImagesByStyleUpload(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **image** | `Blob` | Image accepted or returned by this contract. | [Defaults to `undefined`] |
+| **backend** | `string` | Optional style matcher backend override. | [Optional] [Defaults to `undefined`] |
+| **limit** | `number` | Limit accepted or returned by this contract. | [Optional] [Defaults to `8`] |
+
+### Return type
+
+[**DeveloperStyleSearchResponse**](DeveloperStyleSearchResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Style matches for the uploaded reference. |  * X-Request-ID -  <br>  |
+| **400** | Missing or invalid upload. |  * X-Request-ID -  <br>  |
+| **401** | Authentication required. |  * X-Request-ID -  <br>  |
+| **403** | Style search access is restricted. |  * X-Request-ID -  <br>  |
+| **429** | Style matcher is temporarily saturated. |  * X-Request-ID -  <br>  |
+| **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
+| **503** | Style matcher unavailable. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## setImagePin
+
+> DeveloperMessageResponse setImagePin(id, setImagePinRequest)
+
+Pin or unpin an image
+
+Set the explicit pin state of an image within a caller-managed model after validating both resource identifiers. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { SetImagePinOperationRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | ID of the image to pin or unpin.
+    id: 1,
+    // SetImagePinRequest | Request payload for this operation.
+    setImagePinRequest: {"modelId":1,"pin":true},
+  } satisfies SetImagePinOperationRequest;
+
+  try {
+    const data = await api.setImagePin(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | ID of the image to pin or unpin. | [Defaults to `undefined`] |
+| **setImagePinRequest** | [SetImagePinRequest](SetImagePinRequest.md) | Request payload for this operation. | |
+
+### Return type
+
+[**DeveloperMessageResponse**](DeveloperMessageResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Pin state updated. |  * X-Request-ID -  <br>  |
+| **400** | Missing/invalid modelId or pin payload, or no state change possible. |  * X-Request-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Request-ID -  <br>  |
+| **403** | Not allowed to pin/unpin for the target model. |  * X-Request-ID -  <br>  |
+| **404** | Image or model not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## setImageShowcase
+
+> DeveloperMessageResponse setImageShowcase(id, setImageShowcaseRequest)
+
+Showcase or remove showcase from an image
+
+Set the explicit showcased state for a caller-owned image while enforcing the per-profile showcase limit. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { SetImageShowcaseOperationRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | ID of the image to showcase.
+    id: 1,
+    // SetImageShowcaseRequest | Request payload for this operation.
+    setImageShowcaseRequest: {"showcased":"NONE"},
+  } satisfies SetImageShowcaseOperationRequest;
+
+  try {
+    const data = await api.setImageShowcase(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | ID of the image to showcase. | [Defaults to `undefined`] |
+| **setImageShowcaseRequest** | [SetImageShowcaseRequest](SetImageShowcaseRequest.md) | Request payload for this operation. | |
+
+### Return type
+
+[**DeveloperMessageResponse**](DeveloperMessageResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Showcase state updated. |  * X-Request-ID -  <br>  |
+| **400** | Invalid showcased value, limit exceeded, or missing payload. |  * X-Request-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Request-ID -  <br>  |
+| **403** | Not allowed to update showcase for this image. |  * X-Request-ID -  <br>  |
+| **404** | Image not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## updateImage
+
+> DeveloperImageMutationResponse updateImage(id, updateImageRequest)
+
+Edit an existing image
+
+Update supported metadata, prompt, generation parameters, tags, rating, and publication fields on a caller-managed image. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { UpdateImageOperationRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // number | Id provided in the path.
+    id: 1,
+    // UpdateImageRequest | Request payload for this operation.
+    updateImageRequest: {"cfg":1,"description":"value","negativePrompt":"value","prompt":"value","sampler":"value","seed":"value","steps":1,"title":"value"},
+  } satisfies UpdateImageOperationRequest;
+
+  try {
+    const data = await api.updateImage(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | Id provided in the path. | [Defaults to `undefined`] |
+| **updateImageRequest** | [UpdateImageRequest](UpdateImageRequest.md) | Request payload for this operation. | |
+
+### Return type
+
+[**DeveloperImageMutationResponse**](DeveloperImageMutationResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Image updated successfully. |  * X-Request-ID -  <br>  |
+| **400** | Invalid input. |  * X-Request-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Request-ID -  <br>  |
+| **403** | Forbidden (not allowed to edit). |  * X-Request-ID -  <br>  |
+| **404** | Image not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## uploadImages
+
+> DeveloperImageUploadResponse uploadImages(idempotencyKey, description, imageFiles, tags, title)
+
+Upload one or multiple images
+
+Upload up to twenty validated images with creator metadata and report accepted identifiers even when some files fail validation. The documented owner/staff checks, API-key scope, rate policy, and retry classification apply to every call.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ImagesApi,
+} from '@arcenciel/sdk';
+import type { UploadImagesRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ImagesApi(config);
+
+  const body = {
+    // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
+    idempotencyKey: 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8',
+    // string | Description accepted or returned by this contract. (optional)
+    description: 'description_example',
+    // Array<Blob> | Array of image files. (optional)
+    imageFiles: [new Blob(['example file content'], { type: 'application/octet-stream' })],
+    // string | Comma-separated list of tags. (optional)
+    tags: 'tags_example',
+    // string | Title accepted or returned by this contract. (optional)
+    title: 'title_example',
+  } satisfies UploadImagesRequest;
+
+  try {
+    const data = await api.uploadImages(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
+| **description** | `string` | Description accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **imageFiles** | `Array<Blob>` | Array of image files. | [Optional] |
+| **tags** | `string` | Comma-separated list of tags. | [Optional] [Defaults to `undefined`] |
+| **title** | `string` | Title accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+
+### Return type
+
+[**DeveloperImageUploadResponse**](DeveloperImageUploadResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Images uploaded successfully. |  * Idempotency-Replayed - True when the original successful response was replayed for this Idempotency-Key. <br>  * X-Request-ID -  <br>  |
+| **202** | Some images were rejected while the remaining images were stored. |  * Idempotency-Replayed - True when the original successful response was replayed for this Idempotency-Key. <br>  * X-Request-ID -  <br>  |
+| **400** | Bad request (e.g. no files uploaded or invalid file format). |  * X-Request-ID -  <br>  |
+| **401** | Unauthorized. |  * X-Request-ID -  <br>  |
+| **403** | API key is valid but does not include the required scope. |  * X-Request-ID -  <br>  |
+| **409** | The idempotency key conflicts with another payload or is still in progress. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+| **503** | The idempotency service is temporarily unavailable; retry later with the same key. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)

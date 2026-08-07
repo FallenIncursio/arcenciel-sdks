@@ -10,6 +10,7 @@ import pytest
 
 from arcenciel import ArcEnCielClient, ArcEnCielError, to_arcenciel_error
 from arcenciel.generated.exceptions import ApiException
+from arcenciel.generated.models.create_collection_request import CreateCollectionRequest
 from arcenciel.generated.models.version import Version
 
 
@@ -83,6 +84,28 @@ def test_sync_call_normalizes_errors() -> None:
 
     with pytest.raises(ArcEnCielError, match="Forbidden"):
         client.call_sync(request)
+
+
+def test_serializes_v15_publishing_create_with_auth_and_idempotency() -> None:
+    client = ArcEnCielClient(api_key="collections-key", base_url="https://example.test")
+
+    method, url, headers, body, form = client.collections._create_collection_serialize(
+        create_collection_request=CreateCollectionRequest(
+            name="SDK fixture", type="MODEL", visibility="PRIVATE"
+        ),
+        idempotency_key="publishing-fixture-1",
+        _request_auth=None,
+        _content_type=None,
+        _headers=None,
+        _host_index=0,
+    )
+
+    assert method == "POST"
+    assert url == "https://example.test/api/collections"
+    assert headers["x-api-key"] == "collections-key"
+    assert headers["Idempotency-Key"] == "publishing-fixture-1"
+    assert body == {"name": "SDK fixture", "type": "MODEL", "visibility": "PRIVATE"}
+    assert form == []
 
 
 @pytest.mark.asyncio

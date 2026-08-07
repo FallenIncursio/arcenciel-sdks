@@ -88,6 +88,28 @@ describe('ArcEnCielClient', () => {
     expect(new Headers(fetch.mock.calls[1][1]?.headers).get('idempotency-key')).toBe('comment-create-1')
   })
 
+  it('serializes a v1.5 publishing create with its scope credential and idempotency key', async () => {
+    const fetch = vi.fn(async () => Response.json({ id: 84, slug: 'sdk-fixture' }, { status: 201 }))
+    const client = new ArcEnCielClient({ apiKey: 'collections-key', baseUrl: 'https://example.test', fetch, retry: false })
+
+    const created = await client.collections.createCollection({
+      idempotencyKey: 'publishing-fixture-1',
+      createCollectionRequest: {
+        name: 'SDK fixture',
+        type: 'MODEL',
+        visibility: 'PRIVATE',
+      },
+    })
+
+    expect(created).toEqual({ id: 84, slug: 'sdk-fixture' })
+    const [url, init] = fetch.mock.calls[0]
+    expect(url).toBe('https://example.test/api/collections')
+    expect(init?.method).toBe('POST')
+    expect(new Headers(init?.headers).get('x-api-key')).toBe('collections-key')
+    expect(new Headers(init?.headers).get('idempotency-key')).toBe('publishing-fixture-1')
+    expect(JSON.parse(String(init?.body))).toMatchObject({ name: 'SDK fixture', type: 'MODEL', visibility: 'PRIVATE' })
+  })
+
   it('iterates all pages', async () => {
     const load = vi.fn(async (page: number) => ({ data: [page], totalPages: 2 }))
     const values: number[] = []

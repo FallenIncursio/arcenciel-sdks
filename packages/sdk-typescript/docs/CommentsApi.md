@@ -58,7 +58,7 @@ async function example() {
     // CreateArticleCommentRequest | Comment text and optional parent comment.
     createArticleCommentRequest: {"content":"Beautiful composition!"},
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    idempotencyKey: comment-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
+    idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
   } satisfies CreateArticleCommentOperationRequest;
 
   try {
@@ -146,7 +146,7 @@ async function example() {
     // CreateArticleCommentRequest | Comment text and optional parent comment.
     createArticleCommentRequest: {"content":"Beautiful composition!"},
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    idempotencyKey: comment-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
+    idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
   } satisfies CreateImageCommentRequest;
 
   try {
@@ -234,7 +234,7 @@ async function example() {
     // CreateArticleCommentRequest | Comment text and optional parent comment.
     createArticleCommentRequest: {"content":"Beautiful composition!"},
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    idempotencyKey: comment-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
+    idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
   } satisfies CreateModelCommentRequest;
 
   try {
@@ -322,7 +322,7 @@ async function example() {
     // CreateArticleCommentRequest | Comment text and optional parent comment.
     createArticleCommentRequest: {"content":"Beautiful composition!"},
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    idempotencyKey: comment-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
+    idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
   } satisfies CreateVideoCommentRequest;
 
   try {
