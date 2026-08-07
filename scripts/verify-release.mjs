@@ -16,10 +16,13 @@ if (!release) throw new Error(`Unknown immutable Developer API release: ${apiRel
 const typescriptPackage = JSON.parse(readFileSync(resolve(root, 'packages/sdk-typescript/package.json'), 'utf8'))
 const pythonProject = readFileSync(resolve(root, 'packages/sdk-python/pyproject.toml'), 'utf8')
 const pythonVersion = pythonProject.match(/^version = "([^"]+)"$/m)?.[1]
+const pythonPackage = readFileSync(resolve(root, 'packages/sdk-python/arcenciel/__init__.py'), 'utf8')
+const pythonRuntimeVersion = pythonPackage.match(/^__version__ = "([^"]+)"$/m)?.[1]
 const sdkVersion = expectedSdkVersion || typescriptPackage.version
 
 if (typescriptPackage.version !== sdkVersion) throw new Error('TypeScript SDK version mismatch')
 if (pythonVersion !== sdkVersion) throw new Error('Python SDK version mismatch')
+if (pythonRuntimeVersion !== sdkVersion) throw new Error('Python runtime version mismatch')
 if (release.sdk.typescript.version !== sdkVersion) throw new Error('TypeScript compatibility manifest mismatch')
 if (release.sdk.python.version !== sdkVersion) throw new Error('Python compatibility manifest mismatch')
 if (typescriptPackage.repository?.url !== 'https://github.com/FallenIncursio/arcenciel-sdks.git') {

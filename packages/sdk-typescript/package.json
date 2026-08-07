@@ -1,6 +1,6 @@
 {
   "name": "@arcenciel/sdk",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Official TypeScript SDK for the Arc en Ciel Developer API",
   "author": "Arc en Ciel",
   "license": "MIT",

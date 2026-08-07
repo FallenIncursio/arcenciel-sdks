@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+from importlib.metadata import version as package_version
 from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock
@@ -8,11 +9,15 @@ from unittest.mock import AsyncMock
 import httpx
 import pytest
 
-from arcenciel import ArcEnCielClient, ArcEnCielError, to_arcenciel_error
+from arcenciel import ArcEnCielClient, ArcEnCielError, __version__, to_arcenciel_error
 from arcenciel.generated.exceptions import ApiException
 from arcenciel.generated.models.create_collection_request import CreateCollectionRequest
 from arcenciel.generated.models.image import Image
 from arcenciel.generated.models.version import Version
+
+
+def test_reports_package_version() -> None:
+    assert __version__ == package_version("arcenciel")
 
 
 def test_configures_namespaces_and_api_key() -> None:

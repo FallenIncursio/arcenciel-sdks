@@ -1,4 +1,4 @@
-# `@arcenciel/sdk` 0.8.1 published beta
+# `@arcenciel/sdk` 0.8.2 published beta
 
 Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.8.0` contract. The package is tested for Node.js
 20.20+ and modern browsers. npm publishes it from the signed public source tag through OIDC Trusted Publishing with provenance.
@@ -6,7 +6,7 @@ Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer AP
 ## Install
 
 ```bash
-npm install @arcenciel/sdk@0.8.1
+npm install @arcenciel/sdk@0.8.2
 ```
 
 ## Search and inspect a model
@@ -150,7 +150,7 @@ The generated low-level APIs and models are also exported from the package root.
 ## Contract and generation
 
 - Developer API: `1.8.0`, 246 operations
-- SDK: `0.8.1` published beta
+- SDK: `0.8.2` published beta
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
 - Contract: <https://arcenciel.io/developers/openapi/1.8.0.json>

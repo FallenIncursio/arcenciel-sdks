@@ -572,7 +572,7 @@ conf = arcenciel.generated.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.8.0\n"\
-               "SDK Package Version: 0.8.1".\
+               "SDK Package Version: 0.8.2".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:

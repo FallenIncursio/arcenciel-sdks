@@ -30,6 +30,18 @@ npx --yes "${GENERATOR}" generate \
   -o packages/sdk-python \
   --additional-properties="packageName=arcenciel.generated,projectName=arcenciel,packageVersion=${SDK_VERSION},library=httpx,supportHttpxSync=true,disallowAdditionalPropertiesIfNotPresent=false,enumUnknownDefaultCase=true"
 
+SDK_VERSION="${SDK_VERSION}" node --input-type=module <<'NODE'
+import { readFileSync, writeFileSync } from 'node:fs'
+
+const path = 'packages/sdk-python/arcenciel/__init__.py'
+const source = readFileSync(path, 'utf8')
+const updated = source.replace(/^__version__ = "[^"]+"$/m, `__version__ = "${process.env.SDK_VERSION}"`)
+if (source === updated && !source.includes(`__version__ = "${process.env.SDK_VERSION}"`)) {
+  throw new Error(`Unable to synchronize ${path}`)
+}
+writeFileSync(path, updated)
+NODE
+
 node scripts/normalize-python-sdk-enums.mjs
 node scripts/normalize-python-sdk-response-scalars.mjs
 node scripts/normalize-generated-sdk-whitespace.mjs \
