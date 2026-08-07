@@ -2,6 +2,7 @@
 
 # import apis into api package
 from arcenciel.generated.api.articles_api import ArticlesApi
+from arcenciel.generated.api.chat_api import ChatApi
 from arcenciel.generated.api.collabs_api import CollabsApi
 from arcenciel.generated.api.collections_api import CollectionsApi
 from arcenciel.generated.api.comments_api import CommentsApi

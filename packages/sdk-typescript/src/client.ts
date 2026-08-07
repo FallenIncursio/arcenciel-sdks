@@ -1,4 +1,5 @@
 import { ArticlesApi } from './apis/ArticlesApi.js'
+import { ChatApi } from './apis/ChatApi.js'
 import { CollabsApi } from './apis/CollabsApi.js'
 import { CollectionsApi } from './apis/CollectionsApi.js'
 import { CommentsApi } from './apis/CommentsApi.js'
@@ -93,6 +94,7 @@ export function createArcEnCielFetch(sourceFetch: FetchAPI, timeoutMs: number, o
 
 export class ArcEnCielClient {
   readonly articles: ArticlesApi
+  readonly chat: ChatApi
   readonly collabs: CollabsApi
   readonly collections: CollectionsApi
   readonly comments: CommentsApi
@@ -126,6 +128,7 @@ export class ArcEnCielClient {
       fetchApi: this.fetchApi,
     })
     this.articles = new ArticlesApi(configuration)
+    this.chat = new ChatApi(configuration)
     this.collabs = new CollabsApi(configuration)
     this.collections = new CollectionsApi(configuration)
     this.comments = new CommentsApi(configuration)

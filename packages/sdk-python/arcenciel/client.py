@@ -16,6 +16,7 @@ import httpx
 
 from arcenciel.errors import ArcEnCielError, to_arcenciel_error
 from arcenciel.generated.api.articles_api import ArticlesApi
+from arcenciel.generated.api.chat_api import ChatApi
 from arcenciel.generated.api.collabs_api import CollabsApi
 from arcenciel.generated.api.collections_api import CollectionsApi
 from arcenciel.generated.api.comments_api import CommentsApi
@@ -61,6 +62,7 @@ class ArcEnCielClient:
         )
         self.api_client = ApiClient(configuration)
         self.articles = ArticlesApi(self.api_client)
+        self.chat = ChatApi(self.api_client)
         self.collabs = CollabsApi(self.api_client)
         self.collections = CollectionsApi(self.api_client)
         self.comments = CommentsApi(self.api_client)

@@ -1,13 +1,13 @@
-# `@arcenciel/sdk` 0.6.0 source beta
+# `@arcenciel/sdk` 0.7.0 source beta
 
-Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.6.0` contract. The package is tested for Node.js
+Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.7.0` contract. The package is tested for Node.js
 20.20+ and modern browsers. It remains a source beta until the public release manifest reports `published-beta`; the npm package name is
 reserved in the release workflow but is not currently published.
 
 ## Install the source beta
 
 ```bash
-git clone --branch sdk-v0.6.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
+git clone --branch sdk-v0.7.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
 cd arcenciel-sdks/packages/sdk-typescript
 npm install --ignore-scripts
 npx tsc
@@ -18,7 +18,7 @@ node scripts/write-esm-package.mjs
 After trusted publication, the release manifest and Developer Portal switch to:
 
 ```bash
-npm install @arcenciel/sdk@0.6.0
+npm install @arcenciel/sdk@0.7.0
 ```
 
 ## Search and inspect a model
@@ -114,11 +114,31 @@ console.log(created.comment.id)
 Keep one key for the complete logical action. Matching retries replay the original successful response for 24 hours; changing the body
 while reusing a key returns `409`.
 
+## Read conversations and send once
+
+```ts
+const inbox = await client.call(() => client.chat.listChatThreads({ folder: 'inbox', limit: 30 }))
+for (const thread of inbox.data) console.log(thread.id, thread.title, thread.hasUnread)
+
+const created = await client.call(() =>
+  client.chat.createChatMessage({
+    threadId: 81,
+    idempotencyKey: crypto.randomUUID(),
+    content: 'The release render is ready.',
+  })
+)
+console.log(created.id)
+```
+
+Grant `ChatRead` for thread, message, presence, unread, and preview reads. Add `ChatWrite` only for requests, groups, messages, reactions,
+read state, and group mutations. Keep one idempotency key across every retry of the same request, group, or message create.
+
 ## Stable namespaces
 
 | Namespace              | Stable operations                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | `client.articles`      | Article discovery, drafts, media, scheduling, publication, updates, and deletion     |
+| `client.chat`          | Private threads, requests, groups, messages, reactions, presence, and read state      |
 | `client.collabs`       | Collaboration discovery, showcases, requests, participant media, and membership      |
 | `client.collections`   | Collection discovery, creation, collaborators, contribution review, items, and media |
 | `client.comments`      | Typed article, image, model, and video comment reads and mutations                   |
@@ -139,11 +159,11 @@ The generated low-level APIs and models are also exported from the package root.
 
 ## Contract and generation
 
-- Developer API: `1.6.0`, 211 operations
-- SDK: `0.6.0` source beta
+- Developer API: `1.7.0`, 232 operations
+- SDK: `0.7.0` source beta
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.6.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.7.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

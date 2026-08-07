@@ -1,13 +1,13 @@
-# `arcenciel` 0.6.0 source beta
+# `arcenciel` 0.7.0 source beta
 
-Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.6.0` contract. The package provides synchronous and asynchronous
+Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.7.0` contract. The package provides synchronous and asynchronous
 generated APIs behind a small stable facade. It remains a source beta until the public release manifest reports `published-beta`; it is
 not currently available from PyPI.
 
 ## Install the source beta
 
 ```bash
-git clone --branch sdk-v0.6.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
+git clone --branch sdk-v0.7.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
 cd arcenciel-sdks
 python3.11 -m pip install ./packages/sdk-python
 ```
@@ -15,7 +15,7 @@ python3.11 -m pip install ./packages/sdk-python
 After trusted publication, the release manifest and Developer Portal switch to:
 
 ```bash
-python3.11 -m pip install arcenciel==0.6.0
+python3.11 -m pip install arcenciel==0.7.0
 ```
 
 ## Search and inspect a model
@@ -113,11 +113,36 @@ print(created.comment.id)
 
 Unknown future response enum values remain strings instead of failing deserialization.
 
+## Read conversations and send once
+
+```python
+from uuid import uuid4
+
+inbox = client.call_sync(
+    lambda: client.chat.list_chat_threads_sync(folder="inbox", limit=30)
+)
+for thread in inbox.data:
+    print(thread.id, thread.title, thread.has_unread)
+
+created = client.call_sync(
+    lambda: client.chat.create_chat_message_sync(
+        thread_id=81,
+        idempotency_key=str(uuid4()),
+        content="The release render is ready.",
+    )
+)
+print(created.id)
+```
+
+Grant `ChatRead` for thread, message, presence, unread, and preview reads. Add `ChatWrite` only for requests, groups, messages, reactions,
+read state, and group mutations. Reuse the same idempotency key when deliberately retrying a request, group, or message create.
+
 ## Stable namespaces
 
 | Namespace              | Stable operations                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | `client.articles`      | Article discovery, drafts, media, scheduling, publication, updates, and deletion     |
+| `client.chat`          | Private threads, requests, groups, messages, reactions, presence, and read state      |
 | `client.collabs`       | Collaboration discovery, showcases, requests, participant media, and membership      |
 | `client.collections`   | Collection discovery, creation, collaborators, contribution review, items, and media |
 | `client.comments`      | Typed article, image, model, and video comment reads and mutations                   |
@@ -137,12 +162,12 @@ The generated low-level APIs and Pydantic models remain available under `arcenci
 
 ## Contract and generation
 
-- Developer API: `1.6.0`, 211 operations
-- SDK: `0.6.0` source beta
+- Developer API: `1.7.0`, 232 operations
+- SDK: `0.7.0` source beta
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.6.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.7.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

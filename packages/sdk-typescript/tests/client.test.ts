@@ -11,6 +11,7 @@ describe('ArcEnCielClient', () => {
       Object.keys(client).filter(key =>
         [
           'articles',
+          'chat',
           'collabs',
           'collections',
           'comments',
@@ -27,7 +28,7 @@ describe('ArcEnCielClient', () => {
           'videos',
         ].includes(key)
       )
-    ).toHaveLength(15)
+    ).toHaveLength(16)
 
     await client.models.listModelClasses()
 
@@ -49,6 +50,18 @@ describe('ArcEnCielClient', () => {
     const [url, init] = fetch.mock.calls[0]
     expect(url).toBe('https://example.test/api/generator/state')
     expect(new Headers(init?.headers).get('x-api-key')).toBe('generator-key')
+  })
+
+  it('exposes the v1.7 chat namespace with scoped API-key authentication', async () => {
+    const fetch = vi.fn(async () => Response.json({ data: [], limit: 30 }))
+    const client = new ArcEnCielClient({ apiKey: 'chat-read-key', baseUrl: 'https://example.test', fetch, retry: false })
+
+    const threads = await client.chat.listChatThreads({ folder: 'inbox', limit: 30 })
+
+    expect(threads.data).toEqual([])
+    const [url, init] = fetch.mock.calls[0]
+    expect(url).toBe('https://example.test/api/chat/threads?folder=inbox&limit=30')
+    expect(new Headers(init?.headers).get('x-api-key')).toBe('chat-read-key')
   })
 
   it('normalizes generated response errors', async () => {

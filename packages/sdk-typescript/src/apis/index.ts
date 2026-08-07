@@ -1,6 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './ArticlesApi.js';
+export * from './ChatApi.js';
 export * from './CollabsApi.js';
 export * from './CollectionsApi.js';
 export * from './CommentsApi.js';

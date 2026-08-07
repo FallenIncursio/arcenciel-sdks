@@ -11,6 +11,7 @@ import pytest
 from arcenciel import ArcEnCielClient, ArcEnCielError, to_arcenciel_error
 from arcenciel.generated.exceptions import ApiException
 from arcenciel.generated.models.create_collection_request import CreateCollectionRequest
+from arcenciel.generated.models.image import Image
 from arcenciel.generated.models.version import Version
 
 
@@ -24,6 +25,7 @@ def test_configures_namespaces_and_api_key() -> None:
         namespace.api_client is client.models.api_client
         for namespace in (
             client.articles,
+            client.chat,
             client.collabs,
             client.collections,
             client.comments,
@@ -54,6 +56,23 @@ def test_exposes_v16_generator_namespace() -> None:
     assert method == "GET"
     assert url == "https://example.test/api/generator/state"
     assert headers["x-api-key"] == "generator-key"
+
+
+def test_exposes_v17_chat_namespace() -> None:
+    client = ArcEnCielClient(api_key="chat-read-key", base_url="https://example.test")
+
+    method, url, headers, _, _ = client.chat._list_chat_threads_serialize(
+        folder="inbox",
+        limit=30,
+        _request_auth=None,
+        _content_type=None,
+        _headers=None,
+        _host_index=0,
+    )
+
+    assert method == "GET"
+    assert url == "https://example.test/api/chat/threads?folder=inbox&limit=30"
+    assert headers["x-api-key"] == "chat-read-key"
 
 
 def test_normalizes_api_errors() -> None:
@@ -222,6 +241,13 @@ def test_unknown_response_enum_value_is_tolerated() -> None:
 
     assert version is not None
     assert version.file_scan_status == "FUTURE_SCAN_STATE"
+
+
+def test_numeric_string_image_seed_is_tolerated() -> None:
+    image = Image.from_dict({"seed": "4214574624"})
+
+    assert image is not None
+    assert image.seed == "4214574624"
 
 
 def test_error_parser_handles_existing_plain_and_http_date_errors() -> None:
