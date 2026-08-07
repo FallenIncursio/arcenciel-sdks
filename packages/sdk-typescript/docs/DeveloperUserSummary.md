@@ -1,16 +1,15 @@
 
 # DeveloperUserSummary
 
-Public user identity fields safe for attribution. New presentation fields may be added.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`badges` | Array&lt;{ [key: string]: any; }&gt;
+`badges` | Array&lt;object&gt;
 `id` | number
 `namecardPreference` | string
-`preferredBadge` | { [key: string]: any; }
+`preferredBadge` | object
 `preferredBadgeId` | number
 `profilePicture` | string
 `profilePictureRating` | string
@@ -24,13 +23,13 @@ import type { DeveloperUserSummary } from '@arcenciel/sdk'
 // TODO: Update the object below with actual values
 const example = {
   "badges": null,
-  "id": null,
+  "id": 42,
   "namecardPreference": null,
   "preferredBadge": null,
   "preferredBadgeId": null,
-  "profilePicture": null,
-  "profilePictureRating": null,
-  "username": null,
+  "profilePicture": users/42/avatar.webp,
+  "profilePictureRating": safe,
+  "username": rainbow-creator,
 } satisfies DeveloperUserSummary
 
 console.log(example)

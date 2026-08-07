@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **profile_banner** | **str** | Profile Banner accepted or returned by this contract. | [optional]
 **profile_picture** | **str** | Profile Picture accepted or returned by this contract. | [optional]
 **role** | **str** | Role accepted or returned by this contract. | [optional]
-**social_links** | [**List[UserProfileSocialLinksInner]**](UserProfileSocialLinksInner.md) | Social Links accepted or returned by this contract. | [optional]
+**social_links** | [**List[SelfProfileSocialLinksInner]**](SelfProfileSocialLinksInner.md) | Social Links accepted or returned by this contract. | [optional]
 **username** | **str** | Username accepted or returned by this contract. | [optional]
 **video_count** | **int** | Video Count accepted or returned by this contract. | [optional]
 

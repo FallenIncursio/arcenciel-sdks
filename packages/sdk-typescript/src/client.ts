@@ -1,10 +1,14 @@
 import { ArticlesApi } from './apis/ArticlesApi.js'
 import { CollabsApi } from './apis/CollabsApi.js'
 import { CollectionsApi } from './apis/CollectionsApi.js'
+import { CommentsApi } from './apis/CommentsApi.js'
 import { DownloadsApi } from './apis/DownloadsApi.js'
 import { EmotesApi } from './apis/EmotesApi.js'
 import { ImagesApi } from './apis/ImagesApi.js'
 import { ModelsApi } from './apis/ModelsApi.js'
+import { NotificationsApi } from './apis/NotificationsApi.js'
+import { ProfileApi } from './apis/ProfileApi.js'
+import { SocialApi } from './apis/SocialApi.js'
 import { TagsApi } from './apis/TagsApi.js'
 import { UsersApi } from './apis/UsersApi.js'
 import { VideosApi } from './apis/VideosApi.js'
@@ -35,6 +39,13 @@ export interface ModelVersionDownloadOptions {
 const RETRYABLE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS'])
 const RETRYABLE_STATUSES = new Set([429, 502, 503, 504])
 
+function isRetrySafeRequest(method: string, headers?: HeadersInit): boolean {
+  if (RETRYABLE_METHODS.has(method)) return true
+  if (method !== 'POST' || !headers) return false
+  const idempotencyKey = new Headers(headers).get('idempotency-key')
+  return Boolean(idempotencyKey?.trim())
+}
+
 function parseRetryAfter(response: Response): number | undefined {
   const value = response.headers.get('retry-after')
   if (!value) return undefined
@@ -57,20 +68,21 @@ export function createArcEnCielFetch(sourceFetch: FetchAPI, timeoutMs: number, o
 
   return async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
     const method = (init?.method ?? 'GET').toUpperCase()
+    const retrySafe = isRetrySafeRequest(method, init?.headers)
     for (let attempt = 0; ; attempt += 1) {
       try {
         const response = await sourceFetch(input, {
           ...init,
           signal: combineSignals(init?.signal, timeoutMs),
         })
-        if (attempt >= maxRetries || !RETRYABLE_METHODS.has(method) || !RETRYABLE_STATUSES.has(response.status)) {
+        if (attempt >= maxRetries || !retrySafe || !RETRYABLE_STATUSES.has(response.status)) {
           return response
         }
         const cap = Math.min(maxDelayMs, baseDelayMs * 2 ** attempt)
         const delay = parseRetryAfter(response) ?? Math.random() * cap
         await new Promise(resolve => setTimeout(resolve, delay))
       } catch (error) {
-        if (attempt >= maxRetries || !RETRYABLE_METHODS.has(method)) throw error
+        if (attempt >= maxRetries || !retrySafe) throw error
         const cap = Math.min(maxDelayMs, baseDelayMs * 2 ** attempt)
         await new Promise(resolve => setTimeout(resolve, Math.random() * cap))
       }
@@ -82,10 +94,14 @@ export class ArcEnCielClient {
   readonly articles: ArticlesApi
   readonly collabs: CollabsApi
   readonly collections: CollectionsApi
+  readonly comments: CommentsApi
   readonly models: ModelsApi
   readonly downloads: DownloadsApi
   readonly emotes: EmotesApi
   readonly images: ImagesApi
+  readonly notifications: NotificationsApi
+  readonly profile: ProfileApi
+  readonly social: SocialApi
   readonly tags: TagsApi
   readonly users: UsersApi
   readonly videos: VideosApi
@@ -110,10 +126,14 @@ export class ArcEnCielClient {
     this.articles = new ArticlesApi(configuration)
     this.collabs = new CollabsApi(configuration)
     this.collections = new CollectionsApi(configuration)
+    this.comments = new CommentsApi(configuration)
     this.downloads = new DownloadsApi(configuration)
     this.emotes = new EmotesApi(configuration)
     this.images = new ImagesApi(configuration)
     this.models = new ModelsApi(configuration)
+    this.notifications = new NotificationsApi(configuration)
+    this.profile = new ProfileApi(configuration)
+    this.social = new SocialApi(configuration)
     this.tags = new TagsApi(configuration)
     this.users = new UsersApi(configuration)
     this.videos = new VideosApi(configuration)

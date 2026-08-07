@@ -9,9 +9,24 @@ describe('ArcEnCielClient', () => {
 
     expect(
       Object.keys(client).filter(key =>
-        ['articles', 'collabs', 'collections', 'downloads', 'emotes', 'images', 'models', 'tags', 'users', 'videos'].includes(key)
+        [
+          'articles',
+          'collabs',
+          'collections',
+          'comments',
+          'downloads',
+          'emotes',
+          'images',
+          'models',
+          'notifications',
+          'profile',
+          'social',
+          'tags',
+          'users',
+          'videos',
+        ].includes(key)
       )
-    ).toHaveLength(10)
+    ).toHaveLength(14)
 
     await client.models.listModelClasses()
 
@@ -40,7 +55,7 @@ describe('ArcEnCielClient', () => {
     })
   })
 
-  it('retries safe reads but not writes', async () => {
+  it('retries safe reads and idempotency-protected posts but not unsafe writes', async () => {
     const fetch = vi
       .fn()
       .mockResolvedValueOnce(new Response(null, { status: 503 }))
@@ -56,6 +71,21 @@ describe('ArcEnCielClient', () => {
     fetch.mockClear().mockResolvedValue(new Response(null, { status: 503 }))
     expect((await retryingFetch('https://example.test', { method: 'POST' })).status).toBe(503)
     expect(fetch).toHaveBeenCalledOnce()
+
+    fetch
+      .mockClear()
+      .mockResolvedValueOnce(new Response(null, { status: 503 }))
+      .mockResolvedValueOnce(Response.json({ ok: true }))
+    expect(
+      (
+        await retryingFetch('https://example.test', {
+          method: 'POST',
+          headers: { 'Idempotency-Key': 'comment-create-1' },
+        })
+      ).status
+    ).toBe(200)
+    expect(fetch).toHaveBeenCalledTimes(2)
+    expect(new Headers(fetch.mock.calls[1][1]?.headers).get('idempotency-key')).toBe('comment-create-1')
   })
 
   it('iterates all pages', async () => {

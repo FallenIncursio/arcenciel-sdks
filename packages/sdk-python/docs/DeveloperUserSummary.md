@@ -1,19 +1,18 @@
 # DeveloperUserSummary
 
-Public user identity fields safe for attribution. New presentation fields may be added.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**badges** | **List[Dict[str, object]]** | Badges accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. |
-**namecard_preference** | **str** | Namecard Preference accepted or returned by this contract. | [optional]
-**preferred_badge** | **Dict[str, object]** | Preferred Badge accepted or returned by this contract. | [optional]
-**preferred_badge_id** | **int** | Preferred Badge Id accepted or returned by this contract. | [optional]
-**profile_picture** | **str** | Profile Picture accepted or returned by this contract. | [optional]
-**profile_picture_rating** | **str** | Profile Picture Rating accepted or returned by this contract. | [optional]
-**username** | **str** | Username accepted or returned by this contract. |
+**badges** | **List[object]** |  | [optional]
+**id** | **int** |  |
+**namecard_preference** | **str** |  | [optional]
+**preferred_badge** | **object** |  | [optional]
+**preferred_badge_id** | **int** |  | [optional]
+**profile_picture** | **str** |  | [optional]
+**profile_picture_rating** | **str** |  | [optional]
+**username** | **str** |  |
 
 ## Example
 

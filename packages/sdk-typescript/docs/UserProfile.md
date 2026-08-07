@@ -18,7 +18,7 @@ Name | Type
 `profileBanner` | string
 `profilePicture` | string
 `role` | string
-`socialLinks` | [Array&lt;UserProfileSocialLinksInner&gt;](UserProfileSocialLinksInner.md)
+`socialLinks` | [Array&lt;SelfProfileSocialLinksInner&gt;](SelfProfileSocialLinksInner.md)
 `username` | string
 `videoCount` | number
 

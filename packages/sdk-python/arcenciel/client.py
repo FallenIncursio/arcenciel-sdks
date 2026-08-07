@@ -18,10 +18,14 @@ from arcenciel.errors import ArcEnCielError, to_arcenciel_error
 from arcenciel.generated.api.articles_api import ArticlesApi
 from arcenciel.generated.api.collabs_api import CollabsApi
 from arcenciel.generated.api.collections_api import CollectionsApi
+from arcenciel.generated.api.comments_api import CommentsApi
 from arcenciel.generated.api.downloads_api import DownloadsApi
 from arcenciel.generated.api.emotes_api import EmotesApi
 from arcenciel.generated.api.images_api import ImagesApi
 from arcenciel.generated.api.models_api import ModelsApi
+from arcenciel.generated.api.notifications_api import NotificationsApi
+from arcenciel.generated.api.profile_api import ProfileApi
+from arcenciel.generated.api.social_api import SocialApi
 from arcenciel.generated.api.tags_api import TagsApi
 from arcenciel.generated.api.users_api import UsersApi
 from arcenciel.generated.api.videos_api import VideosApi
@@ -58,10 +62,14 @@ class ArcEnCielClient:
         self.articles = ArticlesApi(self.api_client)
         self.collabs = CollabsApi(self.api_client)
         self.collections = CollectionsApi(self.api_client)
+        self.comments = CommentsApi(self.api_client)
         self.downloads = DownloadsApi(self.api_client)
         self.emotes = EmotesApi(self.api_client)
         self.images = ImagesApi(self.api_client)
         self.models = ModelsApi(self.api_client)
+        self.notifications = NotificationsApi(self.api_client)
+        self.profile = ProfileApi(self.api_client)
+        self.social = SocialApi(self.api_client)
         self.tags = TagsApi(self.api_client)
         self.users = UsersApi(self.api_client)
         self.videos = VideosApi(self.api_client)
@@ -81,7 +89,11 @@ class ArcEnCielClient:
         *,
         retry_safe: bool = False,
     ) -> T:
-        """Run an async SDK call with normalized errors and optional full-jitter retries."""
+        """Run a call with normalized errors and explicitly enabled full-jitter retries.
+
+        Set ``retry_safe`` only for reads or writes that carry the same idempotency key on
+        every attempt. The facade never enables retries for writes implicitly.
+        """
 
         for attempt in range(self.max_retries + 1):
             try:

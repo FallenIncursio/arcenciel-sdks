@@ -1,8 +1,34 @@
 {
   "schemaVersion": 1,
-  "currentVersion": "1.3.0",
-  "nextVersion": "1.4.0",
+  "currentVersion": "1.4.0",
+  "nextVersion": "1.5.0",
   "releases": [
+    {
+      "version": "1.4.0",
+      "releasedAt": "2026-08-07",
+      "sha256": "325333a325b7ddfe7e408bbea117b5b7f017388dea4f4fe7afa378eed636017a",
+      "operationCount": 100,
+      "openApiPath": "/developers/openapi/1.4.0.json",
+      "referencePath": "/developers/reference/?version=1.4.0",
+      "summary": "Stable personal profile, notification inbox, favorites, follows, reactions, and resource-comment workflows.",
+      "existingClients": "No action is required. The release is additive and preserves every v1.3 operation and runtime URL.",
+      "sdk": {
+        "typescript": {
+          "package": "@arcenciel/sdk",
+          "version": "0.4.0",
+          "status": "source-beta",
+          "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
+          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+        },
+        "python": {
+          "package": "arcenciel",
+          "version": "0.4.0",
+          "status": "source-beta",
+          "registryUrl": "https://pypi.org/project/arcenciel/",
+          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+        }
+      }
+    },
     {
       "version": "1.3.0",
       "releasedAt": "2026-08-07",

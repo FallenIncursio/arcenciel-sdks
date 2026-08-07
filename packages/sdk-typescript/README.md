@@ -1,13 +1,13 @@
-# `@arcenciel/sdk` 0.3.0 source beta
+# `@arcenciel/sdk` 0.4.0 source beta
 
-Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.3.0` contract. The package is tested for Node.js
+Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.4.0` contract. The package is tested for Node.js
 20.20+ and modern browsers. It remains a source beta until the public release manifest reports `published-beta`; the npm package name is
 reserved in the release workflow but is not currently published.
 
 ## Install the source beta
 
 ```bash
-git clone --branch sdk-v0.3.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
+git clone --branch sdk-v0.4.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
 cd arcenciel-sdks/packages/sdk-typescript
 npm install --ignore-scripts
 npx tsc
@@ -18,7 +18,7 @@ node scripts/write-esm-package.mjs
 After trusted publication, the release manifest and Developer Portal switch to:
 
 ```bash
-npm install @arcenciel/sdk@0.3.0
+npm install @arcenciel/sdk@0.4.0
 ```
 
 ## Search and inspect a model
@@ -93,34 +93,56 @@ Generated methods throw their native transport error unless invoked through `cli
 - response `headers`;
 - `retryAfterMs` for rate-limit and transient-failure handling.
 
-GET, HEAD, and OPTIONS requests retry `429`, `502`, `503`, and `504` with bounded full jitter. Writes are never retried automatically.
+GET, HEAD, and OPTIONS requests retry `429`, `502`, `503`, and `504` with bounded full jitter. A POST is retried only when the final
+generated request contains an `Idempotency-Key`; the same request and key are reused. Other writes are never retried automatically.
 Configure `{ retry: false }` to disable retries or provide `maxRetries`, `baseDelayMs`, and `maxDelayMs`.
+
+## Create a comment with safe retries
+
+```ts
+const idempotencyKey = crypto.randomUUID()
+const created = await client.call(() =>
+  client.comments.createModelComment({
+    modelId: 42,
+    idempotencyKey,
+    createArticleCommentRequest: { content: 'Useful training notes—thank you!' },
+  })
+)
+console.log(created.comment.id)
+```
+
+Keep one key for the complete logical action. Matching retries replay the original successful response for 24 hours; changing the body
+while reusing a key returns `409`.
 
 ## Stable namespaces
 
-| Namespace | Stable operations |
-| --- | --- |
-| `client.articles` | Article search, detail, and article-image transfer |
-| `client.collabs` | Live and historical collaboration discovery, detail, showcases, and PNG transfer |
-| `client.collections` | Collection discovery, detail, and manager contribution-request reads |
-| `client.downloads` | Model download metadata, binary transfers, training TOML, archives, and registration |
-| `client.emotes` | Anonymous emote catalogue reads |
-| `client.images` | Image search, metadata, related media, analysis, and binary transfers |
-| `client.models` | Model search, details, versions, gallery, classes, previews, and resource graphs |
-| `client.tags` | Anonymous tag-usage discovery |
-| `client.users` | Public profiles, creator statistics, search, and visible uploads |
-| `client.videos` | Video search, metadata, related media, HLS, streaming, posters, and downloads |
+| Namespace              | Stable operations                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| `client.articles`      | Article search, detail, and article-image transfer                                   |
+| `client.collabs`       | Live and historical collaboration discovery, detail, showcases, and PNG transfer     |
+| `client.collections`   | Collection discovery, detail, and manager contribution-request reads                 |
+| `client.comments`      | Typed article, image, model, and video comment reads and mutations                   |
+| `client.downloads`     | Model download metadata, binary transfers, training TOML, archives, and registration |
+| `client.emotes`        | Anonymous emote catalogue reads                                                      |
+| `client.images`        | Image search, metadata, related media, analysis, and binary transfers                |
+| `client.models`        | Model search, details, versions, gallery, classes, previews, and resource graphs     |
+| `client.notifications` | Cursor-paginated inbox, summary, and read-state updates                              |
+| `client.profile`       | Own profile, uploads, export, history, pinned templates, links, and profile media    |
+| `client.social`        | Favorites, follows, image/video reactions, and their explicit removal operations     |
+| `client.tags`          | Anonymous tag-usage discovery                                                        |
+| `client.users`         | Public profiles, creator statistics, search, and visible uploads                     |
+| `client.videos`        | Video search, metadata, related media, HLS, streaming, posters, and downloads        |
 
 The generated low-level APIs and models are also exported from the package root. Their method names come from the stable OpenAPI
 `operationId` values.
 
 ## Contract and generation
 
-- Developer API: `1.3.0`, 55 operations
-- SDK: `0.3.0` source beta
+- Developer API: `1.4.0`, 100 operations
+- SDK: `0.4.0` source beta
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.3.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.4.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 
