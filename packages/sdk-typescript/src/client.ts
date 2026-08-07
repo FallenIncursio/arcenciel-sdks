@@ -1,5 +1,11 @@
+import { ArticlesApi } from './apis/ArticlesApi.js'
 import { DownloadsApi } from './apis/DownloadsApi.js'
+import { EmotesApi } from './apis/EmotesApi.js'
+import { ImagesApi } from './apis/ImagesApi.js'
 import { ModelsApi } from './apis/ModelsApi.js'
+import { TagsApi } from './apis/TagsApi.js'
+import { UsersApi } from './apis/UsersApi.js'
+import { VideosApi } from './apis/VideosApi.js'
 import { ArcEnCielError, toArcEnCielError } from './errors.js'
 import { Configuration, type FetchAPI, ResponseError } from './runtime.js'
 
@@ -71,8 +77,14 @@ export function createArcEnCielFetch(sourceFetch: FetchAPI, timeoutMs: number, o
 }
 
 export class ArcEnCielClient {
+  readonly articles: ArticlesApi
   readonly models: ModelsApi
   readonly downloads: DownloadsApi
+  readonly emotes: EmotesApi
+  readonly images: ImagesApi
+  readonly tags: TagsApi
+  readonly users: UsersApi
+  readonly videos: VideosApi
   private readonly apiKey?: string
   private readonly accessToken?: string
   private readonly baseUrl: string
@@ -91,8 +103,14 @@ export class ArcEnCielClient {
       accessToken: options.accessToken,
       fetchApi: this.fetchApi,
     })
-    this.models = new ModelsApi(configuration)
+    this.articles = new ArticlesApi(configuration)
     this.downloads = new DownloadsApi(configuration)
+    this.emotes = new EmotesApi(configuration)
+    this.images = new ImagesApi(configuration)
+    this.models = new ModelsApi(configuration)
+    this.tags = new TagsApi(configuration)
+    this.users = new UsersApi(configuration)
+    this.videos = new VideosApi(configuration)
   }
 
   async call<T>(request: () => Promise<T>): Promise<T> {

@@ -6,8 +6,8 @@ One mixed-media gallery entry. Use kind as the discriminator before reading data
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ModelGalleryMediaEntryData**](ModelGalleryMediaEntryData.md) |  | 
-**kind** | **str** | Media type contained in data. | 
+**data** | [**ModelGalleryMediaEntryData**](ModelGalleryMediaEntryData.md) |  |
+**kind** | **str** | Media type contained in data. |
 
 ## Example
 
@@ -27,5 +27,3 @@ model_gallery_media_entry_dict = model_gallery_media_entry_instance.to_dict()
 model_gallery_media_entry_from_dict = ModelGalleryMediaEntry.from_dict(model_gallery_media_entry_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

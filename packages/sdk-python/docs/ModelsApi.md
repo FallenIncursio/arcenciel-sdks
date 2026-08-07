@@ -5,9 +5,13 @@ All URIs are relative to *https://arcenciel.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_model**](ModelsApi.md#get_model) | **GET** /api/models/{id} | Retrieve model details by ID
+[**get_model_description_image**](ModelsApi.md#get_model_description_image) | **GET** /api/models/{id}/description-images/{imageId} | Retrieve a model description image
 [**get_model_version**](ModelsApi.md#get_model_version) | **GET** /api/models/{modelId}/versions/{versionId} | Retrieve details of a specific model version
+[**get_model_version_resources**](ModelsApi.md#get_model_version_resources) | **GET** /api/models/{modelId}/versions/{versionId}/resources | Retrieve detected and manually curated version resource dependencies
+[**get_model_version_training_metadata**](ModelsApi.md#get_model_version_training_metadata) | **GET** /api/models/{modelId}/versions/{versionId}/training-metadata-raw | Retrieve raw safetensors __metadata__ for a specific model version
 [**list_model_classes**](ModelsApi.md#list_model_classes) | **GET** /api/models/classes | List available model classes
 [**list_model_gallery_images**](ModelsApi.md#list_model_gallery_images) | **GET** /api/models/{id}/gallery | Retrieve gallery images associated with a model
+[**list_model_version_media_previews**](ModelsApi.md#list_model_version_media_previews) | **GET** /api/models/{modelId}/versions/media-preview | Retrieve lightweight carousel media previews for specific model versions
 [**list_model_versions**](ModelsApi.md#list_model_versions) | **GET** /api/models/{modelId}/versions | List all versions of a model
 [**search_models**](ModelsApi.md#search_models) | **GET** /api/models/search | Search models with filtering and pagination
 
@@ -83,7 +87,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Unique identifier of the model. | 
+ **id** | **int**| Unique identifier of the model. |
 
 ### Return type
 
@@ -102,11 +106,111 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Model details retrieved successfully. |  -  |
-**400** | The request is malformed or fails operation-specific validation. |  -  |
-**404** | Model not found. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | Model details retrieved successfully. |  * X-Request-ID -  <br>  |
+**400** | The request is malformed or fails operation-specific validation. |  * X-Request-ID -  <br>  |
+**404** | Model not found. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_model_description_image**
+> bytes get_model_description_image(id, image_id)
+
+**Synchronous variant:** `get_model_description_image_sync(...)` — same parameters and return type, but blocks until completion instead of requiring `await`.
+
+Retrieve a model description image
+
+Transfer one description image belonging to a visible model after applying model and image visibility rules. Clients must use the returned Content-Type instead of assuming a file format.
+
+### Example
+
+* Api Key Authentication (sessionCookieAuth):
+* Api Key Authentication (apiKeyAuth):
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import arcenciel.generated
+from arcenciel.generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://arcenciel.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = arcenciel.generated.Configuration(
+    host = "https://arcenciel.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: sessionCookieAuth
+configuration.api_key['sessionCookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sessionCookieAuth'] = 'Bearer'
+
+# Configure API key authorization: apiKeyAuth
+configuration.api_key['apiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKeyAuth'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = arcenciel.generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with arcenciel.generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = arcenciel.generated.ModelsApi(api_client)
+    id = 1 # int | Id provided in the path.
+    image_id = 1 # int | Image Id provided in the path.
+
+    try:
+        # Retrieve a model description image
+        api_response = await api_instance.get_model_description_image(id, image_id)
+        print("The response of ModelsApi->get_model_description_image:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ModelsApi->get_model_description_image: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Id provided in the path. |
+ **image_id** | **int**| Image Id provided in the path. |
+
+### Return type
+
+**bytes**
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: image/jpeg, image/png, image/webp, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model description image file. |  * X-Request-ID -  <br>  |
+**400** | Invalid model or image id. |  * X-Request-ID -  <br>  |
+**403** | API key is valid but does not include the required scope. |  * X-Request-ID -  <br>  |
+**404** | Image not found or not visible to the viewer. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Unexpected server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -182,8 +286,8 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **int**| Model Id provided in the path. | 
- **version_id** | **int**| Version Id provided in the path. | 
+ **model_id** | **int**| Model Id provided in the path. |
+ **version_id** | **int**| Version Id provided in the path. |
 
 ### Return type
 
@@ -202,11 +306,210 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Version details retrieved successfully. |  -  |
-**400** | The request is malformed or fails operation-specific validation. |  -  |
-**404** | Version not found. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | Version details retrieved successfully. |  * X-Request-ID -  <br>  |
+**400** | The request is malformed or fails operation-specific validation. |  * X-Request-ID -  <br>  |
+**404** | Version not found. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_model_version_resources**
+> ModelVersionResourceGraphResponse get_model_version_resources(model_id, version_id)
+
+**Synchronous variant:** `get_model_version_resources_sync(...)` — same parameters and return type, but blocks until completion instead of requiring `await`.
+
+Retrieve detected and manually curated version resource dependencies
+
+Return detected and curated local or external dependencies for one visible model version. Hidden edges and management metadata are included only for authorized owners and staff.
+
+### Example
+
+* Api Key Authentication (sessionCookieAuth):
+* Api Key Authentication (apiKeyAuth):
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import arcenciel.generated
+from arcenciel.generated.models.model_version_resource_graph_response import ModelVersionResourceGraphResponse
+from arcenciel.generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://arcenciel.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = arcenciel.generated.Configuration(
+    host = "https://arcenciel.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: sessionCookieAuth
+configuration.api_key['sessionCookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sessionCookieAuth'] = 'Bearer'
+
+# Configure API key authorization: apiKeyAuth
+configuration.api_key['apiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKeyAuth'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = arcenciel.generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with arcenciel.generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = arcenciel.generated.ModelsApi(api_client)
+    model_id = 1 # int | Model Id provided in the path.
+    version_id = 1 # int | Version Id provided in the path.
+
+    try:
+        # Retrieve detected and manually curated version resource dependencies
+        api_response = await api_instance.get_model_version_resources(model_id, version_id)
+        print("The response of ModelsApi->get_model_version_resources:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ModelsApi->get_model_version_resources: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_id** | **int**| Model Id provided in the path. |
+ **version_id** | **int**| Version Id provided in the path. |
+
+### Return type
+
+[**ModelVersionResourceGraphResponse**](ModelVersionResourceGraphResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource graph grouped by dependency kind. |  * X-Request-ID -  <br>  |
+**404** | Version not found. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Unexpected server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_model_version_training_metadata**
+> GetModelVersionTrainingMetadata200Response get_model_version_training_metadata(model_id, version_id)
+
+**Synchronous variant:** `get_model_version_training_metadata_sync(...)` — same parameters and return type, but blocks until completion instead of requiring `await`.
+
+Retrieve raw safetensors __metadata__ for a specific model version
+
+Return the public raw safetensors metadata extracted for one visible model version. File paths, secrets, and other protected training values remain redacted by the runtime policy.
+
+### Example
+
+* Api Key Authentication (sessionCookieAuth):
+* Api Key Authentication (apiKeyAuth):
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import arcenciel.generated
+from arcenciel.generated.models.get_model_version_training_metadata200_response import GetModelVersionTrainingMetadata200Response
+from arcenciel.generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://arcenciel.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = arcenciel.generated.Configuration(
+    host = "https://arcenciel.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: sessionCookieAuth
+configuration.api_key['sessionCookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sessionCookieAuth'] = 'Bearer'
+
+# Configure API key authorization: apiKeyAuth
+configuration.api_key['apiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKeyAuth'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = arcenciel.generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with arcenciel.generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = arcenciel.generated.ModelsApi(api_client)
+    model_id = 1 # int | Model Id provided in the path.
+    version_id = 1 # int | Version Id provided in the path.
+
+    try:
+        # Retrieve raw safetensors __metadata__ for a specific model version
+        api_response = await api_instance.get_model_version_training_metadata(model_id, version_id)
+        print("The response of ModelsApi->get_model_version_training_metadata:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ModelsApi->get_model_version_training_metadata: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_id** | **int**| Model Id provided in the path. |
+ **version_id** | **int**| Version Id provided in the path. |
+
+### Return type
+
+[**GetModelVersionTrainingMetadata200Response**](GetModelVersionTrainingMetadata200Response.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Raw training metadata payload. |  * X-Request-ID -  <br>  |
+**400** | Invalid model/version id or relationship mismatch. |  * X-Request-ID -  <br>  |
+**404** | Version not found or inaccessible. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -296,9 +599,9 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Model classes |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Unexpected server error. |  -  |
+**200** | Model classes |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Unexpected server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -376,8 +679,8 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Unique identifier of the model. | 
- **version_id** | **int**| Optionally filter gallery images to a specific model version. | [optional] 
+ **id** | **int**| Unique identifier of the model. |
+ **version_id** | **int**| Optionally filter gallery images to a specific model version. | [optional]
  **page** | **int**| One-based result page. Pinned images are returned only on the first page. | [optional] [default to 1]
  **limit** | **int**| Maximum number of mixed image and video entries per page. | [optional] [default to 20]
 
@@ -398,11 +701,113 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A paginated list of image and video entries associated with the model. |  -  |
-**400** | The request is malformed or fails operation-specific validation. |  -  |
-**404** | Model not found. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | A paginated list of image and video entries associated with the model. |  * X-Request-ID -  <br>  |
+**400** | The request is malformed or fails operation-specific validation. |  * X-Request-ID -  <br>  |
+**404** | Model not found. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_model_version_media_previews**
+> ModelVersionMediaPreviewResponse list_model_version_media_previews(model_id, version_ids=version_ids, limit=limit)
+
+**Synchronous variant:** `list_model_version_media_previews_sync(...)` — same parameters and return type, but blocks until completion instead of requiring `await`.
+
+Retrieve lightweight carousel media previews for specific model versions
+
+List lightweight visible image and video previews grouped by selected model versions. Scheduled content is sanitized for non-owners and inaccessible media is excluded from the response.
+
+### Example
+
+* Api Key Authentication (sessionCookieAuth):
+* Api Key Authentication (apiKeyAuth):
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import arcenciel.generated
+from arcenciel.generated.models.model_version_media_preview_response import ModelVersionMediaPreviewResponse
+from arcenciel.generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://arcenciel.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = arcenciel.generated.Configuration(
+    host = "https://arcenciel.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: sessionCookieAuth
+configuration.api_key['sessionCookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sessionCookieAuth'] = 'Bearer'
+
+# Configure API key authorization: apiKeyAuth
+configuration.api_key['apiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKeyAuth'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = arcenciel.generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with arcenciel.generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = arcenciel.generated.ModelsApi(api_client)
+    model_id = 1 # int | Unique identifier of the model.
+    version_ids = 'example-version-ids' # str | Comma-separated list of version IDs to fetch previews for. Defaults to all visible versions. (optional)
+    limit = 6 # int | Maximum number of preview entries per version. (optional) (default to 6)
+
+    try:
+        # Retrieve lightweight carousel media previews for specific model versions
+        api_response = await api_instance.list_model_version_media_previews(model_id, version_ids=version_ids, limit=limit)
+        print("The response of ModelsApi->list_model_version_media_previews:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ModelsApi->list_model_version_media_previews: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_id** | **int**| Unique identifier of the model. |
+ **version_ids** | **str**| Comma-separated list of version IDs to fetch previews for. Defaults to all visible versions. | [optional]
+ **limit** | **int**| Maximum number of preview entries per version. | [optional] [default to 6]
+
+### Return type
+
+[**ModelVersionMediaPreviewResponse**](ModelVersionMediaPreviewResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Preview entries grouped by version. |  * X-Request-ID -  <br>  |
+**400** | Invalid model id or parameters. |  * X-Request-ID -  <br>  |
+**404** | Model not found or inaccessible. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -477,7 +882,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **int**| ID of the model. | 
+ **model_id** | **int**| ID of the model. |
 
 ### Return type
 
@@ -496,10 +901,10 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Visible version objects wrapped in the stable versions property. |  -  |
-**404** | Model not found. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | Visible version objects wrapped in the stable versions property. |  * X-Request-ID -  <br>  |
+**404** | Model not found. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -591,24 +996,24 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| Search query applied to model title, description, and tags (supports | [optional] 
- **sort** | **str**| Sort order for models (hot &#x3D; recent models sorted by downloads). | [optional] 
+ **search** | **str**| Search query applied to model title, description, and tags (supports | [optional]
+ **sort** | **str**| Sort order for models (hot &#x3D; recent models sorted by downloads). | [optional]
  **page** | **int**| Page number. | [optional] [default to 1]
  **limit** | **int**| Number of models per page (max 1000). | [optional] [default to 20]
  **hash_only** | **bool**| If present, the search will be treated as a partial model hash. | [optional] [default to False]
- **base_model** | **str**| Filter models by base model. | [optional] 
- **model_type** | **str**| Filter models by model type (e.g. LORA, CHECKPOINT, etc.). | [optional] 
- **user_id** | **int**| Filter models by uploader id. | [optional] 
- **status** | **str**| Filter by publication status (published &#x3D; available). | [optional] 
+ **base_model** | **str**| Filter models by base model. | [optional]
+ **model_type** | **str**| Filter models by model type (e.g. LORA, CHECKPOINT, etc.). | [optional]
+ **user_id** | **int**| Filter models by uploader id. | [optional]
+ **status** | **str**| Filter by publication status (published &#x3D; available). | [optional]
  **compact** | **bool**| Return a lightweight response for template pickers/autocomplete UIs (still respects visibility rules). Compact responses omit download metadata such as hashes, file names, and external download URLs; fetch model or version details before downloading. | [optional] [default to False]
  **version_limit** | **int**| Compact only. Max versions returned per model (1-50). | [optional] [default to 1]
  **include_description** | **bool**| Compact only. Include model.description in results. | [optional] [default to False]
  **include_tags** | **bool**| Compact only. Include model.tags in results. | [optional] [default to False]
  **include_author_wishes** | **bool**| Compact only. Include model.authorWishes in results. | [optional] [default to False]
- **self_favorited** | **bool**| Auth only. Return models favorited by the current user. | [optional] 
- **self_following** | **bool**| Auth only. Return models uploaded by users the current user follows. | [optional] 
- **self_downloaded** | **bool**| Auth only. Return models downloaded by the current user. | [optional] 
- **self_not_downloaded** | **bool**| Auth only. Return models not yet downloaded by the current user. | [optional] 
+ **self_favorited** | **bool**| Auth only. Return models favorited by the current user. | [optional]
+ **self_following** | **bool**| Auth only. Return models uploaded by users the current user follows. | [optional]
+ **self_downloaded** | **bool**| Auth only. Return models downloaded by the current user. | [optional]
+ **self_not_downloaded** | **bool**| Auth only. Return models not yet downloaded by the current user. | [optional]
 
 ### Return type
 
@@ -627,9 +1032,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A paginated list of models. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | A paginated list of models. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

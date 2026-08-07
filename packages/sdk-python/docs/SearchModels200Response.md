@@ -6,12 +6,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[Model]**](Model.md) | Data accepted or returned by this contract. | [optional] 
-**limit** | **int** | Limit accepted or returned by this contract. | [optional] 
-**page** | **int** | Page accepted or returned by this contract. | [optional] 
-**showcased** | [**List[Model]**](Model.md) | Showcased accepted or returned by this contract. | [optional] 
-**total_count** | **int** | Total Count accepted or returned by this contract. | [optional] 
-**total_pages** | **int** | Total Pages accepted or returned by this contract. | [optional] 
+**data** | [**List[Model]**](Model.md) | Data accepted or returned by this contract. | [optional]
+**limit** | **int** | Limit accepted or returned by this contract. | [optional]
+**page** | **int** | Page accepted or returned by this contract. | [optional]
+**showcased** | [**List[Model]**](Model.md) | Showcased accepted or returned by this contract. | [optional]
+**total_count** | **int** | Total Count accepted or returned by this contract. | [optional]
+**total_pages** | **int** | Total Pages accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -31,5 +31,3 @@ search_models200_response_dict = search_models200_response_instance.to_dict()
 search_models200_response_from_dict = SearchModels200Response.from_dict(search_models200_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

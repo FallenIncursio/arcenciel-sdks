@@ -19,6 +19,18 @@ def test_configures_namespaces_and_api_key() -> None:
     assert client.base_url == "https://example.test"
     assert client.models.api_client.configuration.api_key["apiKeyAuth"] == "secret"
     assert client.downloads.api_client is client.models.api_client
+    assert all(
+        namespace.api_client is client.models.api_client
+        for namespace in (
+            client.articles,
+            client.downloads,
+            client.emotes,
+            client.images,
+            client.tags,
+            client.users,
+            client.videos,
+        )
+    )
 
 
 def test_normalizes_api_errors() -> None:

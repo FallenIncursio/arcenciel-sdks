@@ -1,6 +1,6 @@
 [project]
 name = "arcenciel"
-version = "0.1.0"
+version = "0.2.0"
 description = "Official Python SDK for the Arc en Ciel Developer API"
 authors = [{name = "Arc en Ciel"}]
 readme = "README.md"
@@ -25,7 +25,7 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.1.0/packages/sdk-python"
+Repository = "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.2.0/packages/sdk-python"
 Documentation = "https://arcenciel.io/developers"
 
 [build-system]

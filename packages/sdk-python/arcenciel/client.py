@@ -15,8 +15,14 @@ from typing import Self, TypeVar
 import httpx
 
 from arcenciel.errors import ArcEnCielError, to_arcenciel_error
+from arcenciel.generated.api.articles_api import ArticlesApi
 from arcenciel.generated.api.downloads_api import DownloadsApi
+from arcenciel.generated.api.emotes_api import EmotesApi
+from arcenciel.generated.api.images_api import ImagesApi
 from arcenciel.generated.api.models_api import ModelsApi
+from arcenciel.generated.api.tags_api import TagsApi
+from arcenciel.generated.api.users_api import UsersApi
+from arcenciel.generated.api.videos_api import VideosApi
 from arcenciel.generated.api_client import ApiClient
 from arcenciel.generated.configuration import Configuration
 
@@ -47,8 +53,14 @@ class ArcEnCielClient:
             access_token=access_token,
         )
         self.api_client = ApiClient(configuration)
-        self.models = ModelsApi(self.api_client)
+        self.articles = ArticlesApi(self.api_client)
         self.downloads = DownloadsApi(self.api_client)
+        self.emotes = EmotesApi(self.api_client)
+        self.images = ImagesApi(self.api_client)
+        self.models = ModelsApi(self.api_client)
+        self.tags = TagsApi(self.api_client)
+        self.users = UsersApi(self.api_client)
+        self.videos = VideosApi(self.api_client)
 
     async def close(self) -> None:
         await self.api_client.close()

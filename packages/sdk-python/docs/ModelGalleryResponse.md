@@ -6,12 +6,12 @@ Stable paginated response envelope for a model's visible image and video gallery
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[ModelGalleryMediaEntry]**](ModelGalleryMediaEntry.md) | Mixed image and video entries for the current page. | 
-**limit** | **int** | Requested page size after server clamping. | 
-**page** | **int** | Current one-based page. | 
-**pinned** | [**List[Image]**](Image.md) | Creator-pinned visible images. Present only on the first page when pins exist. | [optional] 
-**total_count** | **int** | Total number of matching image and video entries. | 
-**total_pages** | **int** | Total number of pages at the current limit. | 
+**data** | [**List[ModelGalleryMediaEntry]**](ModelGalleryMediaEntry.md) | Mixed image and video entries for the current page. |
+**limit** | **int** | Requested page size after server clamping. |
+**page** | **int** | Current one-based page. |
+**pinned** | [**List[Image]**](Image.md) | Creator-pinned visible images. Present only on the first page when pins exist. | [optional]
+**total_count** | **int** | Total number of matching image and video entries. |
+**total_pages** | **int** | Total number of pages at the current limit. |
 
 ## Example
 
@@ -31,5 +31,3 @@ model_gallery_response_dict = model_gallery_response_instance.to_dict()
 model_gallery_response_from_dict = ModelGalleryResponse.from_dict(model_gallery_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

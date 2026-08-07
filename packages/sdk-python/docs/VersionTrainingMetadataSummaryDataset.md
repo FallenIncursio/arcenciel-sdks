@@ -6,8 +6,8 @@ Dataset accepted or returned by this contract.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dirs** | [**List[VersionTrainingMetadataSummaryDatasetDirsInner]**](VersionTrainingMetadataSummaryDatasetDirsInner.md) | Dirs accepted or returned by this contract. | [optional] 
-**total_images** | **int** | Total Images accepted or returned by this contract. | [optional] 
+**dirs** | [**List[VersionTrainingMetadataSummaryDatasetDirsInner]**](VersionTrainingMetadataSummaryDatasetDirsInner.md) | Dirs accepted or returned by this contract. | [optional]
+**total_images** | **int** | Total Images accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -27,5 +27,3 @@ version_training_metadata_summary_dataset_dict = version_training_metadata_summa
 version_training_metadata_summary_dataset_from_dict = VersionTrainingMetadataSummaryDataset.from_dict(version_training_metadata_summary_dataset_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

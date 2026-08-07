@@ -6,8 +6,8 @@ Tags Top item used by the Arc en Ciel API contract.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **int** | Count accepted or returned by this contract. | [optional] 
-**tag** | **str** | Tag accepted or returned by this contract. | [optional] 
+**count** | **int** | Count accepted or returned by this contract. | [optional]
+**tag** | **str** | Tag accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -27,5 +27,3 @@ version_training_metadata_summary_tags_top_inner_dict = version_training_metadat
 version_training_metadata_summary_tags_top_inner_from_dict = VersionTrainingMetadataSummaryTagsTopInner.from_dict(version_training_metadata_summary_tags_top_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

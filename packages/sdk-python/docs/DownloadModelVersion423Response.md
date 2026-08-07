@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | **str** | Error accepted or returned by this contract. | [optional] 
+**error** | **str** | Error accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -26,5 +26,3 @@ download_model_version423_response_dict = download_model_version423_response_ins
 download_model_version423_response_from_dict = DownloadModelVersion423Response.from_dict(download_model_version423_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

@@ -4,11 +4,109 @@ All URIs are relative to *https://arcenciel.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**download_all_model_versions**](DownloadsApi.md#download_all_model_versions) | **GET** /api/models/{modelId}/versions/download-all | Download all downloadable version files of a model as a ZIP archive
 [**download_model_version**](DownloadsApi.md#download_model_version) | **GET** /api/models/{modelId}/versions/{versionId}/download | Download the model version file
+[**download_model_version_training_metadata_toml**](DownloadsApi.md#download_model_version_training_metadata_toml) | **GET** /api/models/{modelId}/versions/{versionId}/training-metadata.toml | Download a redacted LoRA training TOML for a specific model version
 [**download_model_version_with_filename**](DownloadsApi.md#download_model_version_with_filename) | **GET** /api/models/{modelId}/versions/{versionId}/download/{downloadName} | Download the model version file with a stable filename
 [**get_model_version_download_info**](DownloadsApi.md#get_model_version_download_info) | **GET** /api/models/{modelId}/versions/{versionId}/download-info | Inspect model version download metadata
 [**register_model_version_download**](DownloadsApi.md#register_model_version_download) | **POST** /api/models/{modelId}/versions/{versionId}/download/register | Register a model version download without streaming the file
 
+
+# **download_all_model_versions**
+> bytes download_all_model_versions(model_id)
+
+**Synchronous variant:** `download_all_model_versions_sync(...)` — same parameters and return type, but blocks until completion instead of requiring `await`.
+
+Download all downloadable version files of a model as a ZIP archive
+
+Stream a ZIP archive containing all downloadable files of a visible model. Unavailable or unsafe versions are omitted and described in an archive README when partial output is possible.
+
+### Example
+
+* Api Key Authentication (sessionCookieAuth):
+* Api Key Authentication (apiKeyAuth):
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import arcenciel.generated
+from arcenciel.generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://arcenciel.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = arcenciel.generated.Configuration(
+    host = "https://arcenciel.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: sessionCookieAuth
+configuration.api_key['sessionCookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sessionCookieAuth'] = 'Bearer'
+
+# Configure API key authorization: apiKeyAuth
+configuration.api_key['apiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKeyAuth'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = arcenciel.generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with arcenciel.generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = arcenciel.generated.DownloadsApi(api_client)
+    model_id = 1 # int | Model identifier.
+
+    try:
+        # Download all downloadable version files of a model as a ZIP archive
+        api_response = await api_instance.download_all_model_versions(model_id)
+        print("The response of DownloadsApi->download_all_model_versions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DownloadsApi->download_all_model_versions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_id** | **int**| Model identifier. |
+
+### Return type
+
+**bytes**
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/zip, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | ZIP archive stream. |  * Content-Disposition - Attachment disposition containing the generated model archive filename. <br>  * X-Request-ID -  <br>  |
+**404** | Model not found or no downloadable files available. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Failed to build archive. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_model_version**
 > DownloadModelVersion200Response download_model_version(model_id, version_id)
@@ -82,8 +180,8 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **int**| Model Id provided in the path. | 
- **version_id** | **int**| Version Id provided in the path. | 
+ **model_id** | **int**| Model Id provided in the path. |
+ **version_id** | **int**| Version Id provided in the path. |
 
 ### Return type
 
@@ -102,17 +200,116 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Binary file download for hosted files, or JSON registration response for external-only versions. |  * Accept-Ranges -  <br>  * Content-Disposition -  <br>  * X-File-Scan-Reason - Present when a scan reason is available. <br>  * X-File-Scan-Status -  <br>  |
-**206** | Partial content for a valid byte range request. |  * Content-Length -  <br>  * Content-Range -  <br>  * X-File-Scan-Status -  <br>  |
-**302** | Production redirect to the dedicated transfer host for Arc-hosted files. |  * Location - Redirect target on https://uploads.arcenciel.io. <br>  |
-**304** | Cached file is still fresh. |  -  |
-**400** | Invalid model/version id, relationship mismatch, or no hosted file path is available. |  -  |
-**403** | Version is not public and the caller has no applicable early-access entitlement. |  -  |
-**404** | Version not found or file not available. |  -  |
-**416** | Requested byte range is not satisfiable. |  -  |
-**423** | File blocked due to malware, unsafe, or scan-error status. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | Binary file download for hosted files, or JSON registration response for external-only versions. |  * Accept-Ranges - Present for directly streamed MP4 and WebM assets. <br>  * Content-Disposition -  <br>  * X-File-Scan-Reason - Present when a scan reason is available. <br>  * X-File-Scan-Status -  <br>  * X-Request-ID -  <br>  |
+**206** | Partial content for a valid byte range request. |  * Content-Length -  <br>  * Content-Range -  <br>  * X-File-Scan-Status -  <br>  * X-Request-ID -  <br>  |
+**302** | Production redirect to the dedicated transfer host for Arc-hosted files. |  * Location - Redirect target on https://uploads.arcenciel.io. <br>  * X-Request-ID -  <br>  |
+**304** | Cached file is still fresh. |  * X-Request-ID -  <br>  |
+**400** | Invalid model/version id, relationship mismatch, or no hosted file path is available. |  * X-Request-ID -  <br>  |
+**403** | Version is not public and the caller has no applicable early-access entitlement. |  * X-Request-ID -  <br>  |
+**404** | Version not found or file not available. |  * X-Request-ID -  <br>  |
+**416** | Requested byte range is not satisfiable. |  * X-Request-ID -  <br>  |
+**423** | File blocked due to malware, unsafe, or scan-error status. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **download_model_version_training_metadata_toml**
+> str download_model_version_training_metadata_toml(model_id, version_id)
+
+**Synchronous variant:** `download_model_version_training_metadata_toml_sync(...)` — same parameters and return type, but blocks until completion instead of requiring `await`.
+
+Download a redacted LoRA training TOML for a specific model version
+
+Download a redacted LoRA training configuration as TOML for one visible model version. Callers should preserve the returned filename and treat omitted sensitive values as intentional.
+
+### Example
+
+* Api Key Authentication (sessionCookieAuth):
+* Api Key Authentication (apiKeyAuth):
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import arcenciel.generated
+from arcenciel.generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://arcenciel.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = arcenciel.generated.Configuration(
+    host = "https://arcenciel.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: sessionCookieAuth
+configuration.api_key['sessionCookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sessionCookieAuth'] = 'Bearer'
+
+# Configure API key authorization: apiKeyAuth
+configuration.api_key['apiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKeyAuth'] = 'Bearer'
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = arcenciel.generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+async with arcenciel.generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = arcenciel.generated.DownloadsApi(api_client)
+    model_id = 1 # int | Model Id provided in the path.
+    version_id = 1 # int | Version Id provided in the path.
+
+    try:
+        # Download a redacted LoRA training TOML for a specific model version
+        api_response = await api_instance.download_model_version_training_metadata_toml(model_id, version_id)
+        print("The response of DownloadsApi->download_model_version_training_metadata_toml:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DownloadsApi->download_model_version_training_metadata_toml: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_id** | **int**| Model Id provided in the path. |
+ **version_id** | **int**| Version Id provided in the path. |
+
+### Return type
+
+**str**
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/toml, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Redacted TOML training configuration. |  * Content-Disposition - Attachment disposition containing the generated TOML filename. <br>  * X-Request-ID -  <br>  |
+**400** | Invalid model/version id or relationship mismatch. |  * X-Request-ID -  <br>  |
+**404** | Version not found, inaccessible, not a LoRA model, or no training metadata available. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -189,9 +386,9 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **int**| Model Id provided in the path. | 
- **version_id** | **int**| Version Id provided in the path. | 
- **download_name** | **str**| Filename slug used by clients and CDNs; the version id selects the actual file. | 
+ **model_id** | **int**| Model Id provided in the path. |
+ **version_id** | **int**| Version Id provided in the path. |
+ **download_name** | **str**| Filename slug used by clients and CDNs; the version id selects the actual file. |
 
 ### Return type
 
@@ -210,16 +407,16 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Binary file download for hosted files, or JSON registration response for external-only versions. |  * Accept-Ranges -  <br>  * Content-Disposition -  <br>  * X-File-Scan-Reason - Present when a scan reason is available. <br>  * X-File-Scan-Status -  <br>  |
-**206** | Partial content for a valid byte range request. |  * Content-Length -  <br>  * Content-Range -  <br>  * X-File-Scan-Status -  <br>  |
-**302** | Production redirect to the dedicated transfer host for Arc-hosted files. |  * Location - Redirect target on https://uploads.arcenciel.io. <br>  |
-**304** | Cached file is still fresh. |  -  |
-**400** | Invalid model/version id, relationship mismatch, or no hosted file path is available. |  -  |
-**404** | Version not found or file not available. |  -  |
-**416** | Requested byte range is not satisfiable. |  -  |
-**423** | File blocked due to malware, unsafe, or scan-error status. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | Binary file download for hosted files, or JSON registration response for external-only versions. |  * Accept-Ranges - Present for directly streamed MP4 and WebM assets. <br>  * Content-Disposition -  <br>  * X-File-Scan-Reason - Present when a scan reason is available. <br>  * X-File-Scan-Status -  <br>  * X-Request-ID -  <br>  |
+**206** | Partial content for a valid byte range request. |  * Content-Length -  <br>  * Content-Range -  <br>  * X-File-Scan-Status -  <br>  * X-Request-ID -  <br>  |
+**302** | Production redirect to the dedicated transfer host for Arc-hosted files. |  * Location - Redirect target on https://uploads.arcenciel.io. <br>  * X-Request-ID -  <br>  |
+**304** | Cached file is still fresh. |  * X-Request-ID -  <br>  |
+**400** | Invalid model/version id, relationship mismatch, or no hosted file path is available. |  * X-Request-ID -  <br>  |
+**404** | Version not found or file not available. |  * X-Request-ID -  <br>  |
+**416** | Requested byte range is not satisfiable. |  * X-Request-ID -  <br>  |
+**423** | File blocked due to malware, unsafe, or scan-error status. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -295,8 +492,8 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **int**| Model Id provided in the path. | 
- **version_id** | **int**| Version Id provided in the path. | 
+ **model_id** | **int**| Model Id provided in the path. |
+ **version_id** | **int**| Version Id provided in the path. |
 
 ### Return type
 
@@ -315,13 +512,13 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Download metadata for the version. |  -  |
-**400** | Invalid model/version id or relationship mismatch. |  -  |
-**403** | Version is not published or is scheduled for the future. |  -  |
-**404** | Version not found. |  -  |
-**423** | A scheduled hosted file is not safety-cleared for supporter early access. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | Download metadata for the version. |  * X-Request-ID -  <br>  |
+**400** | Invalid model/version id or relationship mismatch. |  * X-Request-ID -  <br>  |
+**403** | Version is not published or is scheduled for the future. |  * X-Request-ID -  <br>  |
+**404** | Version not found. |  * X-Request-ID -  <br>  |
+**423** | A scheduled hosted file is not safety-cleared for supporter early access. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -397,8 +594,8 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **int**| Model Id provided in the path. | 
- **version_id** | **int**| Version Id provided in the path. | 
+ **model_id** | **int**| Model Id provided in the path. |
+ **version_id** | **int**| Version Id provided in the path. |
 
 ### Return type
 
@@ -417,13 +614,12 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Download registration completed. |  -  |
-**400** | Invalid model/version id, relationship mismatch, or no file available. |  -  |
-**403** | Version is not publicly available and the caller has no applicable early-access entitlement. |  -  |
-**404** | Version not found or inaccessible. |  -  |
-**423** | File blocked due to malware, unsafe, or scan-error status. |  -  |
-**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-**500** | Internal server error. |  -  |
+**200** | Download registration completed. |  * X-Request-ID -  <br>  |
+**400** | Invalid model/version id, relationship mismatch, or no file available. |  * X-Request-ID -  <br>  |
+**403** | Version is not publicly available and the caller has no applicable early-access entitlement. |  * X-Request-ID -  <br>  |
+**404** | Version not found or inaccessible. |  * X-Request-ID -  <br>  |
+**423** | File blocked due to malware, unsafe, or scan-error status. |  * X-Request-ID -  <br>  |
+**429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+**500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

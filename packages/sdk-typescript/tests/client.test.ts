@@ -7,6 +7,10 @@ describe('ArcEnCielClient', () => {
     const fetch = vi.fn(async () => Response.json({ classes: [] }, { headers: { 'x-request-id': 'request-1' } }))
     const client = new ArcEnCielClient({ apiKey: 'secret', baseUrl: 'https://example.test/', fetch })
 
+    expect(
+      Object.keys(client).filter(key => ['articles', 'downloads', 'emotes', 'images', 'models', 'tags', 'users', 'videos'].includes(key))
+    ).toHaveLength(8)
+
     await client.models.listModelClasses()
 
     expect(fetch).toHaveBeenCalledOnce()

@@ -1,13 +1,13 @@
-# `arcenciel` 0.1.0 source beta
+# `arcenciel` 0.2.0 source beta
 
-Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.1.0` contract. The package provides synchronous and asynchronous
+Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.2.0` contract. The package provides synchronous and asynchronous
 generated APIs behind a small stable facade. It remains a source beta until the public release manifest reports `published-beta`; it is
 not currently available from PyPI.
 
 ## Install the source beta
 
 ```bash
-git clone --branch sdk-v0.1.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
+git clone --branch sdk-v0.2.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
 cd arcenciel-sdks
 python3.11 -m pip install ./packages/sdk-python
 ```
@@ -15,7 +15,7 @@ python3.11 -m pip install ./packages/sdk-python
 After trusted publication, the release manifest and Developer Portal switch to:
 
 ```bash
-python3.11 -m pip install arcenciel==0.1.0
+python3.11 -m pip install arcenciel==0.2.0
 ```
 
 ## Search and inspect a model
@@ -94,19 +94,25 @@ Unknown future response enum values remain strings instead of failing deserializ
 
 | Namespace | Stable operations |
 | --- | --- |
-| `client.models` | Search, model detail, model versions, gallery, and model classes |
-| `client.downloads` | Download metadata, binary download, filename download, and download registration |
+| `client.articles` | Article search, detail, and article-image transfer |
+| `client.downloads` | Model download metadata, binary transfers, training TOML, archives, and registration |
+| `client.emotes` | Anonymous emote catalogue reads |
+| `client.images` | Image search, metadata, related media, analysis, and binary transfers |
+| `client.models` | Model search, details, versions, gallery, classes, previews, and resource graphs |
+| `client.tags` | Anonymous tag-usage discovery |
+| `client.users` | Public profiles, creator statistics, search, and visible uploads |
+| `client.videos` | Video search, metadata, related media, HLS, streaming, posters, and downloads |
 
 The generated low-level APIs and Pydantic models remain available under `arcenciel.generated`.
 
 ## Contract and generation
 
-- Developer API: `1.1.0`, 10 operations
-- SDK: `0.1.0` source beta
+- Developer API: `1.2.0`, 46 operations
+- SDK: `0.2.0` source beta
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.1.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.2.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

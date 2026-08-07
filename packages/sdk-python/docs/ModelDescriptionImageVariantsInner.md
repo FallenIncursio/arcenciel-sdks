@@ -6,12 +6,12 @@ Variants item used by the Arc en Ciel API contract.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bytes** | **int** | Bytes accepted or returned by this contract. | [optional] 
-**format** | **str** | Format accepted or returned by this contract. | [optional] 
-**height** | **int** | Height accepted or returned by this contract. | [optional] 
-**label** | **str** | Label accepted or returned by this contract. | [optional] 
-**path** | **str** | Path accepted or returned by this contract. | [optional] 
-**width** | **int** | Width accepted or returned by this contract. | [optional] 
+**bytes** | **int** | Bytes accepted or returned by this contract. | [optional]
+**format** | **str** | Format accepted or returned by this contract. | [optional]
+**height** | **int** | Height accepted or returned by this contract. | [optional]
+**label** | **str** | Label accepted or returned by this contract. | [optional]
+**path** | **str** | Path accepted or returned by this contract. | [optional]
+**width** | **int** | Width accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -31,5 +31,3 @@ model_description_image_variants_inner_dict = model_description_image_variants_i
 model_description_image_variants_inner_from_dict = ModelDescriptionImageVariantsInner.from_dict(model_description_image_variants_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

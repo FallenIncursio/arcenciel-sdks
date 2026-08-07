@@ -6,7 +6,7 @@ Stable response envelope for versions visible to the current caller.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**versions** | [**List[Version]**](Version.md) | Versions visible to the current caller in the model&#39;s configured order. | 
+**versions** | [**List[Version]**](Version.md) | Versions visible to the current caller in the model&#39;s configured order. |
 
 ## Example
 
@@ -26,5 +26,3 @@ model_version_list_response_dict = model_version_list_response_instance.to_dict(
 model_version_list_response_from_dict = ModelVersionListResponse.from_dict(model_version_list_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

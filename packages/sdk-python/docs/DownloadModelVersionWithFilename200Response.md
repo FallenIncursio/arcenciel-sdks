@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **str** | Message accepted or returned by this contract. | [optional] 
+**message** | **str** | Message accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -26,5 +26,3 @@ download_model_version_with_filename200_response_dict = download_model_version_w
 download_model_version_with_filename200_response_from_dict = DownloadModelVersionWithFilename200Response.from_dict(download_model_version_with_filename200_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

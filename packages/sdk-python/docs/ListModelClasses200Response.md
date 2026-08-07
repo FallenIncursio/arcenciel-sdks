@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**classes** | [**List[ListModelClasses200ResponseClassesInner]**](ListModelClasses200ResponseClassesInner.md) | Classes accepted or returned by this contract. | [optional] 
+**classes** | [**List[ListModelClasses200ResponseClassesInner]**](ListModelClasses200ResponseClassesInner.md) | Classes accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -26,5 +26,3 @@ list_model_classes200_response_dict = list_model_classes200_response_instance.to
 list_model_classes200_response_from_dict = ListModelClasses200Response.from_dict(list_model_classes200_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

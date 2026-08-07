@@ -5,9 +5,13 @@ All URIs are relative to *https://arcenciel.io*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getModel**](ModelsApi.md#getmodel) | **GET** /api/models/{id} | Retrieve model details by ID |
+| [**getModelDescriptionImage**](ModelsApi.md#getmodeldescriptionimage) | **GET** /api/models/{id}/description-images/{imageId} | Retrieve a model description image |
 | [**getModelVersion**](ModelsApi.md#getmodelversion) | **GET** /api/models/{modelId}/versions/{versionId} | Retrieve details of a specific model version |
+| [**getModelVersionResources**](ModelsApi.md#getmodelversionresources) | **GET** /api/models/{modelId}/versions/{versionId}/resources | Retrieve detected and manually curated version resource dependencies |
+| [**getModelVersionTrainingMetadata**](ModelsApi.md#getmodelversiontrainingmetadata) | **GET** /api/models/{modelId}/versions/{versionId}/training-metadata-raw | Retrieve raw safetensors __metadata__ for a specific model version |
 | [**listModelClasses**](ModelsApi.md#listmodelclasses) | **GET** /api/models/classes | List available model classes |
 | [**listModelGalleryImages**](ModelsApi.md#listmodelgalleryimages) | **GET** /api/models/{id}/gallery | Retrieve gallery images associated with a model |
+| [**listModelVersionMediaPreviews**](ModelsApi.md#listmodelversionmediapreviews) | **GET** /api/models/{modelId}/versions/media-preview | Retrieve lightweight carousel media previews for specific model versions |
 | [**listModelVersions**](ModelsApi.md#listmodelversions) | **GET** /api/models/{modelId}/versions | List all versions of a model |
 | [**searchModels**](ModelsApi.md#searchmodels) | **GET** /api/models/search | Search models with filtering and pagination |
 
@@ -32,7 +36,7 @@ import type { GetModelRequest } from '@arcenciel/sdk';
 
 async function example() {
   console.log("🚀 Testing @arcenciel/sdk SDK...");
-  const config = new Configuration({ 
+  const config = new Configuration({
     // To configure API key authorization: sessionCookieAuth
     apiKey: "YOUR API KEY",
     // To configure API key authorization: apiKeyAuth
@@ -83,11 +87,94 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Model details retrieved successfully. |  -  |
-| **400** | The request is malformed or fails operation-specific validation. |  -  |
-| **404** | Model not found. |  -  |
-| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-| **500** | Internal server error. |  -  |
+| **200** | Model details retrieved successfully. |  * X-Request-ID -  <br>  |
+| **400** | The request is malformed or fails operation-specific validation. |  * X-Request-ID -  <br>  |
+| **404** | Model not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getModelDescriptionImage
+
+> Blob getModelDescriptionImage(id, imageId)
+
+Retrieve a model description image
+
+Transfer one description image belonging to a visible model after applying model and image visibility rules. Clients must use the returned Content-Type instead of assuming a file format.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ModelsApi,
+} from '@arcenciel/sdk';
+import type { GetModelDescriptionImageRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ModelsApi(config);
+
+  const body = {
+    // number | Id provided in the path.
+    id: 1,
+    // number | Image Id provided in the path.
+    imageId: 1,
+  } satisfies GetModelDescriptionImageRequest;
+
+  try {
+    const data = await api.getModelDescriptionImage(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | `number` | Id provided in the path. | [Defaults to `undefined`] |
+| **imageId** | `number` | Image Id provided in the path. | [Defaults to `undefined`] |
+
+### Return type
+
+**Blob**
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `image/jpeg`, `image/png`, `image/webp`, `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Model description image file. |  * X-Request-ID -  <br>  |
+| **400** | Invalid model or image id. |  * X-Request-ID -  <br>  |
+| **403** | API key is valid but does not include the required scope. |  * X-Request-ID -  <br>  |
+| **404** | Image not found or not visible to the viewer. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -111,7 +198,7 @@ import type { GetModelVersionRequest } from '@arcenciel/sdk';
 
 async function example() {
   console.log("🚀 Testing @arcenciel/sdk SDK...");
-  const config = new Configuration({ 
+  const config = new Configuration({
     // To configure API key authorization: sessionCookieAuth
     apiKey: "YOUR API KEY",
     // To configure API key authorization: apiKeyAuth
@@ -165,11 +252,174 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Version details retrieved successfully. |  -  |
-| **400** | The request is malformed or fails operation-specific validation. |  -  |
-| **404** | Version not found. |  -  |
-| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-| **500** | Internal server error. |  -  |
+| **200** | Version details retrieved successfully. |  * X-Request-ID -  <br>  |
+| **400** | The request is malformed or fails operation-specific validation. |  * X-Request-ID -  <br>  |
+| **404** | Version not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getModelVersionResources
+
+> ModelVersionResourceGraphResponse getModelVersionResources(modelId, versionId)
+
+Retrieve detected and manually curated version resource dependencies
+
+Return detected and curated local or external dependencies for one visible model version. Hidden edges and management metadata are included only for authorized owners and staff.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ModelsApi,
+} from '@arcenciel/sdk';
+import type { GetModelVersionResourcesRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ModelsApi(config);
+
+  const body = {
+    // number | Model Id provided in the path.
+    modelId: 1,
+    // number | Version Id provided in the path.
+    versionId: 1,
+  } satisfies GetModelVersionResourcesRequest;
+
+  try {
+    const data = await api.getModelVersionResources(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **modelId** | `number` | Model Id provided in the path. | [Defaults to `undefined`] |
+| **versionId** | `number` | Version Id provided in the path. | [Defaults to `undefined`] |
+
+### Return type
+
+[**ModelVersionResourceGraphResponse**](ModelVersionResourceGraphResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Resource graph grouped by dependency kind. |  * X-Request-ID -  <br>  |
+| **404** | Version not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getModelVersionTrainingMetadata
+
+> GetModelVersionTrainingMetadata200Response getModelVersionTrainingMetadata(modelId, versionId)
+
+Retrieve raw safetensors __metadata__ for a specific model version
+
+Return the public raw safetensors metadata extracted for one visible model version. File paths, secrets, and other protected training values remain redacted by the runtime policy.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ModelsApi,
+} from '@arcenciel/sdk';
+import type { GetModelVersionTrainingMetadataRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ModelsApi(config);
+
+  const body = {
+    // number | Model Id provided in the path.
+    modelId: 1,
+    // number | Version Id provided in the path.
+    versionId: 1,
+  } satisfies GetModelVersionTrainingMetadataRequest;
+
+  try {
+    const data = await api.getModelVersionTrainingMetadata(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **modelId** | `number` | Model Id provided in the path. | [Defaults to `undefined`] |
+| **versionId** | `number` | Version Id provided in the path. | [Defaults to `undefined`] |
+
+### Return type
+
+[**GetModelVersionTrainingMetadata200Response**](GetModelVersionTrainingMetadata200Response.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Raw training metadata payload. |  * X-Request-ID -  <br>  |
+| **400** | Invalid model/version id or relationship mismatch. |  * X-Request-ID -  <br>  |
+| **404** | Version not found or inaccessible. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -193,7 +443,7 @@ import type { ListModelClassesRequest } from '@arcenciel/sdk';
 
 async function example() {
   console.log("🚀 Testing @arcenciel/sdk SDK...");
-  const config = new Configuration({ 
+  const config = new Configuration({
     // To configure API key authorization: sessionCookieAuth
     apiKey: "YOUR API KEY",
     // To configure API key authorization: apiKeyAuth
@@ -236,9 +486,9 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Model classes |  -  |
-| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-| **500** | Unexpected server error. |  -  |
+| **200** | Model classes |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Unexpected server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -262,7 +512,7 @@ import type { ListModelGalleryImagesRequest } from '@arcenciel/sdk';
 
 async function example() {
   console.log("🚀 Testing @arcenciel/sdk SDK...");
-  const config = new Configuration({ 
+  const config = new Configuration({
     // To configure API key authorization: sessionCookieAuth
     apiKey: "YOUR API KEY",
     // To configure API key authorization: apiKeyAuth
@@ -322,11 +572,96 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A paginated list of image and video entries associated with the model. |  -  |
-| **400** | The request is malformed or fails operation-specific validation. |  -  |
-| **404** | Model not found. |  -  |
-| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-| **500** | Internal server error. |  -  |
+| **200** | A paginated list of image and video entries associated with the model. |  * X-Request-ID -  <br>  |
+| **400** | The request is malformed or fails operation-specific validation. |  * X-Request-ID -  <br>  |
+| **404** | Model not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## listModelVersionMediaPreviews
+
+> ModelVersionMediaPreviewResponse listModelVersionMediaPreviews(modelId, versionIds, limit)
+
+Retrieve lightweight carousel media previews for specific model versions
+
+List lightweight visible image and video previews grouped by selected model versions. Scheduled content is sanitized for non-owners and inaccessible media is excluded from the response.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ModelsApi,
+} from '@arcenciel/sdk';
+import type { ListModelVersionMediaPreviewsRequest } from '@arcenciel/sdk';
+
+async function example() {
+  console.log("🚀 Testing @arcenciel/sdk SDK...");
+  const config = new Configuration({
+    // To configure API key authorization: sessionCookieAuth
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: apiKeyAuth
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: bearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ModelsApi(config);
+
+  const body = {
+    // number | Unique identifier of the model.
+    modelId: 1,
+    // string | Comma-separated list of version IDs to fetch previews for. Defaults to all visible versions. (optional)
+    versionIds: example-version-ids,
+    // number | Maximum number of preview entries per version. (optional)
+    limit: 6,
+  } satisfies ListModelVersionMediaPreviewsRequest;
+
+  try {
+    const data = await api.listModelVersionMediaPreviews(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **modelId** | `number` | Unique identifier of the model. | [Defaults to `undefined`] |
+| **versionIds** | `string` | Comma-separated list of version IDs to fetch previews for. Defaults to all visible versions. | [Optional] [Defaults to `undefined`] |
+| **limit** | `number` | Maximum number of preview entries per version. | [Optional] [Defaults to `6`] |
+
+### Return type
+
+[**ModelVersionMediaPreviewResponse**](ModelVersionMediaPreviewResponse.md)
+
+### Authorization
+
+[sessionCookieAuth](../README.md#sessionCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Preview entries grouped by version. |  * X-Request-ID -  <br>  |
+| **400** | Invalid model id or parameters. |  * X-Request-ID -  <br>  |
+| **404** | Model not found or inaccessible. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -350,7 +685,7 @@ import type { ListModelVersionsRequest } from '@arcenciel/sdk';
 
 async function example() {
   console.log("🚀 Testing @arcenciel/sdk SDK...");
-  const config = new Configuration({ 
+  const config = new Configuration({
     // To configure API key authorization: sessionCookieAuth
     apiKey: "YOUR API KEY",
     // To configure API key authorization: apiKeyAuth
@@ -401,10 +736,10 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Visible version objects wrapped in the stable versions property. |  -  |
-| **404** | Model not found. |  -  |
-| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-| **500** | Internal server error. |  -  |
+| **200** | Visible version objects wrapped in the stable versions property. |  * X-Request-ID -  <br>  |
+| **404** | Model not found. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -428,7 +763,7 @@ import type { SearchModelsRequest } from '@arcenciel/sdk';
 
 async function example() {
   console.log("🚀 Testing @arcenciel/sdk SDK...");
-  const config = new Configuration({ 
+  const config = new Configuration({
     // To configure API key authorization: sessionCookieAuth
     apiKey: "YOUR API KEY",
     // To configure API key authorization: apiKeyAuth
@@ -530,9 +865,8 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A paginated list of models. |  -  |
-| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  |
-| **500** | Internal server error. |  -  |
+| **200** | A paginated list of models. |  * X-Request-ID -  <br>  |
+| **429** | The request exceeded an application or edge rate limit. |  * RateLimit-Limit -  <br>  * RateLimit-Policy -  <br>  * RateLimit-Remaining -  <br>  * RateLimit-Reset -  <br>  * Retry-After -  <br>  * X-Request-ID -  <br>  |
+| **500** | Internal server error. |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
-

@@ -6,8 +6,8 @@ Classes item used by the Arc en Ciel API contract.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Id accepted or returned by this contract. | [optional] 
-**name** | **str** | Name accepted or returned by this contract. | [optional] 
+**id** | **int** | Id accepted or returned by this contract. | [optional]
+**name** | **str** | Name accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -27,5 +27,3 @@ list_model_classes200_response_classes_inner_dict = list_model_classes200_respon
 list_model_classes200_response_classes_inner_from_dict = ListModelClasses200ResponseClassesInner.from_dict(list_model_classes200_response_classes_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

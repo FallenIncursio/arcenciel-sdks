@@ -6,8 +6,8 @@ Dirs item used by the Arc en Ciel API contract.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_count** | **int** | Image Count accepted or returned by this contract. | [optional] 
-**name** | **str** | Name accepted or returned by this contract. | [optional] 
+**image_count** | **int** | Image Count accepted or returned by this contract. | [optional]
+**name** | **str** | Name accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -27,5 +27,3 @@ version_training_metadata_summary_dataset_dirs_inner_dict = version_training_met
 version_training_metadata_summary_dataset_dirs_inner_from_dict = VersionTrainingMetadataSummaryDatasetDirsInner.from_dict(version_training_metadata_summary_dataset_dirs_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

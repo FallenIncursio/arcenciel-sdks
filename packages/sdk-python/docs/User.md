@@ -6,11 +6,11 @@ Uploader accepted or returned by this contract.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** | Email accepted or returned by this contract. | [optional] 
-**id** | **int** | Id accepted or returned by this contract. | [optional] 
-**profile_picture** | **str** | Profile Picture accepted or returned by this contract. | [optional] 
-**role** | **str** | Role accepted or returned by this contract. | [optional] 
-**username** | **str** | Username accepted or returned by this contract. | [optional] 
+**email** | **str** | Email accepted or returned by this contract. | [optional]
+**id** | **int** | Id accepted or returned by this contract. | [optional]
+**profile_picture** | **str** | Profile Picture accepted or returned by this contract. | [optional]
+**role** | **str** | Role accepted or returned by this contract. | [optional]
+**username** | **str** | Username accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -30,5 +30,3 @@ user_dict = user_instance.to_dict()
 user_from_dict = User.from_dict(user_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

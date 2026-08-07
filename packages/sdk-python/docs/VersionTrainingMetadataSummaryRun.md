@@ -6,16 +6,16 @@ Run accepted or returned by this contract.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**batch_size** | **int** | Batch Size accepted or returned by this contract. | [optional] 
-**epoch** | **int** | Epoch accepted or returned by this contract. | [optional] 
-**learning_rate** | **float** | Learning Rate accepted or returned by this contract. | [optional] 
-**optimizer** | **str** | Optimizer accepted or returned by this contract. | [optional] 
-**resolution** | **str** | Resolution accepted or returned by this contract. | [optional] 
-**scheduler** | **str** | Scheduler accepted or returned by this contract. | [optional] 
-**steps** | **int** | Steps accepted or returned by this contract. | [optional] 
-**text_encoder_learning_rate** | **float** | Text Encoder Learning Rate accepted or returned by this contract. | [optional] 
-**total_epochs** | **int** | Total Epochs accepted or returned by this contract. | [optional] 
-**unet_learning_rate** | **float** | Unet Learning Rate accepted or returned by this contract. | [optional] 
+**batch_size** | **int** | Batch Size accepted or returned by this contract. | [optional]
+**epoch** | **int** | Epoch accepted or returned by this contract. | [optional]
+**learning_rate** | **float** | Learning Rate accepted or returned by this contract. | [optional]
+**optimizer** | **str** | Optimizer accepted or returned by this contract. | [optional]
+**resolution** | **str** | Resolution accepted or returned by this contract. | [optional]
+**scheduler** | **str** | Scheduler accepted or returned by this contract. | [optional]
+**steps** | **int** | Steps accepted or returned by this contract. | [optional]
+**text_encoder_learning_rate** | **float** | Text Encoder Learning Rate accepted or returned by this contract. | [optional]
+**total_epochs** | **int** | Total Epochs accepted or returned by this contract. | [optional]
+**unet_learning_rate** | **float** | Unet Learning Rate accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -35,5 +35,3 @@ version_training_metadata_summary_run_dict = version_training_metadata_summary_r
 version_training_metadata_summary_run_from_dict = VersionTrainingMetadataSummaryRun.from_dict(version_training_metadata_summary_run_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

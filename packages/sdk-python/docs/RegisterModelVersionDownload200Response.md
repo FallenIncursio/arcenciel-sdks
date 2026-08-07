@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**delivery** | **str** | Delivery accepted or returned by this contract. | [optional] 
-**message** | **str** | Message accepted or returned by this contract. | [optional] 
+**delivery** | **str** | Delivery accepted or returned by this contract. | [optional]
+**message** | **str** | Message accepted or returned by this contract. | [optional]
 
 ## Example
 
@@ -27,5 +27,3 @@ register_model_version_download200_response_dict = register_model_version_downlo
 register_model_version_download200_response_from_dict = RegisterModelVersionDownload200Response.from_dict(register_model_version_download200_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-

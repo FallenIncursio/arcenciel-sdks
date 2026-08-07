@@ -6,11 +6,11 @@ Standard Arc en Ciel error response.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**details** | **Dict[str, object]** | Optional structured error details. | [optional] 
-**error** | **str** | Human-readable error message. | [optional] 
-**error_code** | **str** | Stable machine-readable error code. | [optional] 
-**message** | **str** | Additional human-readable context. | [optional] 
-**retryable** | **bool** | Whether retrying the request may succeed. | [optional] 
+**details** | **Dict[str, object]** | Optional structured error details. | [optional]
+**error** | **str** | Human-readable error message. | [optional]
+**error_code** | **str** | Stable machine-readable error code. | [optional]
+**message** | **str** | Additional human-readable context. | [optional]
+**retryable** | **bool** | Whether retrying the request may succeed. | [optional]
 
 ## Example
 
@@ -30,5 +30,3 @@ api_error_dict = api_error_instance.to_dict()
 api_error_from_dict = ApiError.from_dict(api_error_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-
