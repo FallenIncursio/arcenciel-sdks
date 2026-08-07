@@ -2,6 +2,8 @@
 
 # import apis into api package
 from arcenciel.generated.api.articles_api import ArticlesApi
+from arcenciel.generated.api.collabs_api import CollabsApi
+from arcenciel.generated.api.collections_api import CollectionsApi
 from arcenciel.generated.api.downloads_api import DownloadsApi
 from arcenciel.generated.api.emotes_api import EmotesApi
 from arcenciel.generated.api.images_api import ImagesApi

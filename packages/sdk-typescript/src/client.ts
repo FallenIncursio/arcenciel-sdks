@@ -1,4 +1,6 @@
 import { ArticlesApi } from './apis/ArticlesApi.js'
+import { CollabsApi } from './apis/CollabsApi.js'
+import { CollectionsApi } from './apis/CollectionsApi.js'
 import { DownloadsApi } from './apis/DownloadsApi.js'
 import { EmotesApi } from './apis/EmotesApi.js'
 import { ImagesApi } from './apis/ImagesApi.js'
@@ -78,6 +80,8 @@ export function createArcEnCielFetch(sourceFetch: FetchAPI, timeoutMs: number, o
 
 export class ArcEnCielClient {
   readonly articles: ArticlesApi
+  readonly collabs: CollabsApi
+  readonly collections: CollectionsApi
   readonly models: ModelsApi
   readonly downloads: DownloadsApi
   readonly emotes: EmotesApi
@@ -104,6 +108,8 @@ export class ArcEnCielClient {
       fetchApi: this.fetchApi,
     })
     this.articles = new ArticlesApi(configuration)
+    this.collabs = new CollabsApi(configuration)
+    this.collections = new CollectionsApi(configuration)
     this.downloads = new DownloadsApi(configuration)
     this.emotes = new EmotesApi(configuration)
     this.images = new ImagesApi(configuration)

@@ -23,6 +23,8 @@ def test_configures_namespaces_and_api_key() -> None:
         namespace.api_client is client.models.api_client
         for namespace in (
             client.articles,
+            client.collabs,
+            client.collections,
             client.downloads,
             client.emotes,
             client.images,

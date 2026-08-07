@@ -16,6 +16,8 @@ import httpx
 
 from arcenciel.errors import ArcEnCielError, to_arcenciel_error
 from arcenciel.generated.api.articles_api import ArticlesApi
+from arcenciel.generated.api.collabs_api import CollabsApi
+from arcenciel.generated.api.collections_api import CollectionsApi
 from arcenciel.generated.api.downloads_api import DownloadsApi
 from arcenciel.generated.api.emotes_api import EmotesApi
 from arcenciel.generated.api.images_api import ImagesApi
@@ -54,6 +56,8 @@ class ArcEnCielClient:
         )
         self.api_client = ApiClient(configuration)
         self.articles = ArticlesApi(self.api_client)
+        self.collabs = CollabsApi(self.api_client)
+        self.collections = CollectionsApi(self.api_client)
         self.downloads = DownloadsApi(self.api_client)
         self.emotes = EmotesApi(self.api_client)
         self.images = ImagesApi(self.api_client)

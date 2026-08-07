@@ -1,8 +1,34 @@
 {
   "schemaVersion": 1,
-  "currentVersion": "1.2.0",
-  "nextVersion": "1.3.0",
+  "currentVersion": "1.3.0",
+  "nextVersion": "1.4.0",
   "releases": [
+    {
+      "version": "1.3.0",
+      "releasedAt": "2026-08-07",
+      "sha256": "4f51ff829ea72af5d52cb37982639c625bd8454335e7408049f9e604b95ba9c7",
+      "operationCount": 55,
+      "openApiPath": "/developers/openapi/1.3.0.json",
+      "referencePath": "/developers/reference/?version=1.3.0",
+      "summary": "Stable collection discovery, contribution-review and live/historical collaboration showcase workflows.",
+      "existingClients": "No action is required. The release is additive and preserves every v1.2 operation and runtime URL.",
+      "sdk": {
+        "typescript": {
+          "package": "@arcenciel/sdk",
+          "version": "0.3.0",
+          "status": "source-beta",
+          "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
+          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+        },
+        "python": {
+          "package": "arcenciel",
+          "version": "0.3.0",
+          "status": "source-beta",
+          "registryUrl": "https://pypi.org/project/arcenciel/",
+          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+        }
+      }
+    },
     {
       "version": "1.2.0",
       "releasedAt": "2026-08-07",

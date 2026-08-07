@@ -8,8 +8,10 @@ describe('ArcEnCielClient', () => {
     const client = new ArcEnCielClient({ apiKey: 'secret', baseUrl: 'https://example.test/', fetch })
 
     expect(
-      Object.keys(client).filter(key => ['articles', 'downloads', 'emotes', 'images', 'models', 'tags', 'users', 'videos'].includes(key))
-    ).toHaveLength(8)
+      Object.keys(client).filter(key =>
+        ['articles', 'collabs', 'collections', 'downloads', 'emotes', 'images', 'models', 'tags', 'users', 'videos'].includes(key)
+      )
+    ).toHaveLength(10)
 
     await client.models.listModelClasses()
 
