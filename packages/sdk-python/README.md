@@ -1,21 +1,13 @@
-# `arcenciel` 0.8.0 source beta
+# `arcenciel` 0.8.1 published beta
 
 Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.8.0` contract. The package provides synchronous and asynchronous
-generated APIs behind a small stable facade. It remains a source beta until the public release manifest reports `published-beta`; it is
-not currently available from PyPI.
+generated APIs behind a small stable facade. PyPI publishes it from the signed public source tag through OIDC Trusted Publishing with a
+digital attestation.
 
-## Install the source beta
-
-```bash
-git clone --branch sdk-v0.8.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
-cd arcenciel-sdks
-python3.11 -m pip install ./packages/sdk-python
-```
-
-After trusted publication, the release manifest and Developer Portal switch to:
+## Install
 
 ```bash
-python3.11 -m pip install arcenciel==0.8.0
+python3.11 -m pip install arcenciel==0.8.1
 ```
 
 ## Search and inspect a model
@@ -142,13 +134,13 @@ read state, and group mutations. Reuse the same idempotency key when deliberatel
 | Namespace              | Stable operations                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | `client.articles`      | Article discovery, drafts, media, scheduling, publication, updates, and deletion     |
-| `client.chat`          | Private threads, requests, groups, messages, reactions, presence, and read state      |
+| `client.chat`          | Private threads, requests, groups, messages, reactions, presence, and read state     |
 | `client.collabs`       | Collaboration discovery, showcases, requests, participant media, and membership      |
 | `client.collections`   | Collection discovery, creation, collaborators, contribution review, items, and media |
 | `client.comments`      | Typed article, image, model, and video comment reads and mutations                   |
 | `client.downloads`     | Model download metadata, binary transfers, training TOML, archives, and registration |
 | `client.emotes`        | Anonymous emote catalogue reads                                                      |
-| `client.feedback`      | Caller-owned product feedback, attachments, and deletion                            |
+| `client.feedback`      | Caller-owned product feedback, attachments, and deletion                             |
 | `client.generator`     | Image/video generation options, presets, uploads, jobs, events, outputs, and publish |
 | `client.images`        | Image discovery, uploads, metadata, crossposts, publishing, and bulk transfer        |
 | `client.models`        | Models, versions, resumable uploads, managed media, resources, and publishing        |
@@ -165,7 +157,7 @@ The generated low-level APIs and Pydantic models remain available under `arcenci
 ## Contract and generation
 
 - Developer API: `1.8.0`, 246 operations
-- SDK: `0.8.0` source beta
+- SDK: `0.8.1` published beta
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`

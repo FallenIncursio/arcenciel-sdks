@@ -1,24 +1,12 @@
-# `@arcenciel/sdk` 0.8.0 source beta
+# `@arcenciel/sdk` 0.8.1 published beta
 
 Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.8.0` contract. The package is tested for Node.js
-20.20+ and modern browsers. It remains a source beta until the public release manifest reports `published-beta`; the npm package name is
-reserved in the release workflow but is not currently published.
+20.20+ and modern browsers. npm publishes it from the signed public source tag through OIDC Trusted Publishing with provenance.
 
-## Install the source beta
-
-```bash
-git clone --branch sdk-v0.8.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
-cd arcenciel-sdks/packages/sdk-typescript
-npm ci --ignore-scripts
-npx tsc
-npx tsc -p tsconfig.esm.json
-node scripts/write-esm-package.mjs
-```
-
-After trusted publication, the release manifest and Developer Portal switch to:
+## Install
 
 ```bash
-npm install @arcenciel/sdk@0.8.0
+npm install @arcenciel/sdk@0.8.1
 ```
 
 ## Search and inspect a model
@@ -162,7 +150,7 @@ The generated low-level APIs and models are also exported from the package root.
 ## Contract and generation
 
 - Developer API: `1.8.0`, 246 operations
-- SDK: `0.8.0` source beta
+- SDK: `0.8.1` published beta
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
 - Contract: <https://arcenciel.io/developers/openapi/1.8.0.json>

@@ -7,27 +7,20 @@ Official, typed TypeScript and Python clients for the stable Arc en Ciel Develop
 
 ## Current release
 
-| Package                                     | Version | Runtime                            | Source                                                                                                   |
-| ------------------------------------------- | ------: | ---------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [`@arcenciel/sdk`](packages/sdk-typescript) | `0.8.0` | Node.js 20.20+ and modern browsers | [`sdk-v0.8.0`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.0/packages/sdk-typescript) |
-| [`arcenciel`](packages/sdk-python)          | `0.8.0` | Python 3.11+; sync and async       | [`sdk-v0.8.0`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.0/packages/sdk-python)     |
+| Package                                     | Version | Runtime                            | Registry / source                                                                                                                                              |
+| ------------------------------------------- | ------: | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@arcenciel/sdk`](packages/sdk-typescript) | `0.8.1` | Node.js 20.20+ and modern browsers | [npm](https://www.npmjs.com/package/@arcenciel/sdk) / [`sdk-v0.8.1`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.1/packages/sdk-typescript) |
+| [`arcenciel`](packages/sdk-python)          | `0.8.1` | Python 3.11+; sync and async       | [PyPI](https://pypi.org/project/arcenciel/) / [`sdk-v0.8.1`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.1/packages/sdk-python)             |
 
-Version `0.8.0` is a source beta for Developer API `1.8.0` (246 operations). Until the
-[release manifest](https://arcenciel.io/developers/openapi/releases.json) reports `published-beta`, use the signed source tag instead of
-assuming that npm or PyPI contains the package.
+Version `0.8.1` is the published beta for Developer API `1.8.0` (246 operations). Both packages are built from the same signed source
+tag, published through OIDC Trusted Publishing, and verified with clean registry installations against production before release.
 
 ```bash
-git clone --branch sdk-v0.8.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
-cd arcenciel-sdks/packages/sdk-typescript
-npm ci --ignore-scripts
-npx tsc
-npx tsc -p tsconfig.esm.json
-node scripts/write-esm-package.mjs
+npm install @arcenciel/sdk@0.8.1
 ```
 
 ```bash
-python3.11 -m pip install \
-  "arcenciel @ git+https://github.com/FallenIncursio/arcenciel-sdks.git@sdk-v0.8.0#subdirectory=packages/sdk-python"
+python3.11 -m pip install arcenciel==0.8.1
 ```
 
 Public catalogue reads work without credentials. Account-specific operations use an API key with the least-privilege scope documented in
@@ -50,7 +43,7 @@ The generator wrapper pins OpenAPI Generator CLI `2.40.1` and OpenAPI Generator 
 rebuilding the low-level clients from the selected immutable contract.
 
 ```bash
-SDK_VERSION=0.8.0 ./scripts/generate-developer-sdks.sh contracts/1.8.0.openapi.json
+SDK_VERSION=0.8.1 ./scripts/generate-developer-sdks.sh contracts/1.8.0.openapi.json
 git diff --exit-code -- packages/sdk-typescript packages/sdk-python
 ```
 
