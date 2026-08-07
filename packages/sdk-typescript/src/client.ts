@@ -5,6 +5,7 @@ import { CollectionsApi } from './apis/CollectionsApi.js'
 import { CommentsApi } from './apis/CommentsApi.js'
 import { DownloadsApi } from './apis/DownloadsApi.js'
 import { EmotesApi } from './apis/EmotesApi.js'
+import { FeedbackApi } from './apis/FeedbackApi.js'
 import { GeneratorApi } from './apis/GeneratorApi.js'
 import { ImagesApi } from './apis/ImagesApi.js'
 import { ModelsApi } from './apis/ModelsApi.js'
@@ -12,6 +13,7 @@ import { NotificationsApi } from './apis/NotificationsApi.js'
 import { ProfileApi } from './apis/ProfileApi.js'
 import { SocialApi } from './apis/SocialApi.js'
 import { TagsApi } from './apis/TagsApi.js'
+import { TrustSafetyApi } from './apis/TrustSafetyApi.js'
 import { UsersApi } from './apis/UsersApi.js'
 import { VideosApi } from './apis/VideosApi.js'
 import { ArcEnCielError, toArcEnCielError } from './errors.js'
@@ -101,12 +103,14 @@ export class ArcEnCielClient {
   readonly models: ModelsApi
   readonly downloads: DownloadsApi
   readonly emotes: EmotesApi
+  readonly feedback: FeedbackApi
   readonly generator: GeneratorApi
   readonly images: ImagesApi
   readonly notifications: NotificationsApi
   readonly profile: ProfileApi
   readonly social: SocialApi
   readonly tags: TagsApi
+  readonly trustSafety: TrustSafetyApi
   readonly users: UsersApi
   readonly videos: VideosApi
   private readonly apiKey?: string
@@ -134,6 +138,7 @@ export class ArcEnCielClient {
     this.comments = new CommentsApi(configuration)
     this.downloads = new DownloadsApi(configuration)
     this.emotes = new EmotesApi(configuration)
+    this.feedback = new FeedbackApi(configuration)
     this.generator = new GeneratorApi(configuration)
     this.images = new ImagesApi(configuration)
     this.models = new ModelsApi(configuration)
@@ -141,6 +146,7 @@ export class ArcEnCielClient {
     this.profile = new ProfileApi(configuration)
     this.social = new SocialApi(configuration)
     this.tags = new TagsApi(configuration)
+    this.trustSafety = new TrustSafetyApi(configuration)
     this.users = new UsersApi(configuration)
     this.videos = new VideosApi(configuration)
   }

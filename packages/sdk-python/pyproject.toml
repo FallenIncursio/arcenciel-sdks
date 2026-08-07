@@ -1,9 +1,10 @@
 [project]
 name = "arcenciel"
-version = "0.7.0"
+version = "0.8.0"
 description = "Official Python SDK for the Arc en Ciel Developer API"
 authors = [{name = "Arc en Ciel"}]
 readme = "README.md"
+license = "MIT"
 keywords = ["Arc en Ciel", "OpenAPI", "SDK"]
 requires-python = ">=3.11"
 dependencies = [
@@ -25,7 +26,7 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.7.0/packages/sdk-python"
+Repository = "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.0/packages/sdk-python"
 Documentation = "https://arcenciel.io/developers"
 
 [build-system]
@@ -48,7 +49,7 @@ ignore_errors = true
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-extend-exclude = ["arcenciel/generated", "test"]
+extend-exclude = ["arcenciel/generated", "test", "docs", "README.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

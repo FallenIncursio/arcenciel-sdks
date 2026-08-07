@@ -1,0 +1,8 @@
+title = "Arc en Ciel SDK secret scanning"
+
+[allowlist]
+description = "Known non-secret idempotency fixture shared by both SDK test suites"
+regexTarget = "secret"
+regexes = [
+  '''^publishing-fixture-1$''',
+]

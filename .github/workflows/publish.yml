@@ -1,0 +1,236 @@
+name: Publish SDKs
+
+on:
+  workflow_dispatch:
+    inputs:
+      api_release:
+        description: Immutable Developer API release used to generate the SDKs
+        required: true
+        type: string
+      sdk_version:
+        description: Shared TypeScript and Python package version
+        required: true
+        type: string
+      release_tag:
+        description: Signed public SDK tag, for example sdk-v0.8.0
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish-sdks-${{ inputs.sdk_version }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify signed source release
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    outputs:
+      archive: ${{ steps.release.outputs.archive }}
+      npm_published: ${{ steps.registry.outputs.npm_published }}
+      pypi_published: ${{ steps.registry.outputs.pypi_published }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.release_tag }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Import pinned SDK release signing key
+        env:
+          EXPECTED_FINGERPRINT: 6FA2ECBC241FA87FD8259E7AF4BFE014B368D3E0
+        run: |
+          gpg --batch --import keys/sdk-release.asc
+          actual_fingerprint="$({ gpg --batch --with-colons --fingerprint "${EXPECTED_FINGERPRINT}" 2>/dev/null || true; } | awk -F: '$1 == "fpr" { print $10; exit }')"
+          test "${actual_fingerprint}" = "${EXPECTED_FINGERPRINT}"
+      - name: Verify signed tag and checked-out commit
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          SDK_VERSION: ${{ inputs.sdk_version }}
+        run: |
+          test "${RELEASE_TAG}" = "sdk-v${SDK_VERSION}"
+          git show-ref --verify --quiet "refs/tags/${RELEASE_TAG}"
+          test "$(git cat-file -t "refs/tags/${RELEASE_TAG}")" = tag
+          git tag --verify "${RELEASE_TAG}"
+          head_commit="$(git rev-parse 'HEAD^{commit}')"
+          tag_commit="$(git rev-parse "refs/tags/${RELEASE_TAG}^{commit}")"
+          test "${head_commit}" = "${tag_commit}"
+      - id: release
+        env:
+          API_RELEASE: ${{ inputs.api_release }}
+          SDK_VERSION: ${{ inputs.sdk_version }}
+        run: node scripts/verify-release.mjs "${API_RELEASE}" "${SDK_VERSION}"
+      - name: Regenerate both SDKs from the immutable contract
+        env:
+          SDK_VERSION: ${{ inputs.sdk_version }}
+        run: scripts/generate-developer-sdks.sh "${{ steps.release.outputs.archive }}"
+      - run: git diff --exit-code -- packages/sdk-typescript packages/sdk-python
+      - id: registry
+        name: Detect immutable versions already in registries
+        env:
+          SDK_VERSION: ${{ inputs.sdk_version }}
+        run: |
+          if npm view "@arcenciel/sdk@${SDK_VERSION}" version --json >/dev/null 2>&1; then
+            echo "npm_published=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "npm_published=false" >> "${GITHUB_OUTPUT}"
+          fi
+          if curl --fail --silent "https://pypi.org/pypi/arcenciel/${SDK_VERSION}/json" >/dev/null; then
+            echo "pypi_published=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "pypi_published=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+  publish-npm:
+    name: Publish npm with provenance
+    needs: verify
+    if: needs.verify.outputs.npm_published != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: sdk-production
+    defaults:
+      run:
+        working-directory: packages/sdk-typescript
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_tag }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: npm install --global npm@11.5.1
+      - run: npm ci --ignore-scripts
+      - run: npm run lint && npm run typecheck && npm test
+      - run: npx tsc && npx tsc -p tsconfig.esm.json && node scripts/write-esm-package.mjs
+      - run: npm publish --ignore-scripts --access public --provenance
+
+  publish-pypi:
+    name: Publish PyPI with trusted publishing
+    needs: verify
+    if: needs.verify.outputs.pypi_published != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: sdk-production
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_tag }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip build
+      - run: python -m build packages/sdk-python
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: packages/sdk-python/dist
+
+  verify-publication:
+    name: Verify clean registry installations
+    needs: [verify, publish-npm, publish-pypi]
+    if: >-
+      always() && needs.verify.result == 'success' &&
+      (needs.publish-npm.result == 'success' || needs.publish-npm.result == 'skipped') &&
+      (needs.publish-pypi.result == 'success' || needs.publish-pypi.result == 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - name: Wait for both immutable versions
+        env:
+          SDK_VERSION: ${{ inputs.sdk_version }}
+        run: |
+          for attempt in {1..12}; do
+            echo "Registry visibility check ${attempt}/12"
+            npm_version="$(npm view "@arcenciel/sdk@${SDK_VERSION}" version 2>/dev/null || true)"
+            pypi_status="$(curl --silent --output /dev/null --write-out '%{http_code}' "https://pypi.org/pypi/arcenciel/${SDK_VERSION}/json")"
+            if test "${npm_version}" = "${SDK_VERSION}" && test "${pypi_status}" = 200; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "The immutable SDK versions did not become visible in both registries." >&2
+          exit 1
+      - name: Install TypeScript SDK and run production read
+        env:
+          SDK_VERSION: ${{ inputs.sdk_version }}
+        run: |
+          mkdir npm-smoke
+          cd npm-smoke
+          npm init --yes
+          npm install --ignore-scripts "@arcenciel/sdk@${SDK_VERSION}"
+          node --input-type=module <<'NODE'
+          import { ArcEnCielClient } from '@arcenciel/sdk'
+          const client = new ArcEnCielClient({ baseUrl: 'https://arcenciel.io' })
+          const page = await client.call(() => client.models.searchModels({ limit: 1, page: 1 }))
+          if (!Array.isArray(page.data)) throw new Error('Expected a model result array from production.')
+          console.log(`TypeScript production smoke returned ${page.data.length} model(s).`)
+          NODE
+      - name: Install Python SDK and run production read
+        env:
+          SDK_VERSION: ${{ inputs.sdk_version }}
+        run: |
+          python -m venv python-smoke
+          python-smoke/bin/pip install "arcenciel==${SDK_VERSION}"
+          python-smoke/bin/python <<'PY'
+          from arcenciel import ArcEnCielClient
+
+          client = ArcEnCielClient(base_url="https://arcenciel.io")
+          page = client.call_sync(lambda: client.models.search_models_sync(limit=1, page=1))
+          if not isinstance(page.data, list):
+              raise RuntimeError("Expected a model result list from production.")
+          print(f"Python production smoke returned {len(page.data)} model(s).")
+          PY
+
+  github-release:
+    name: Create GitHub release
+    needs: verify-publication
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_tag }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - run: npm ci --ignore-scripts
+        working-directory: packages/sdk-typescript
+      - run: npx tsc && npx tsc -p tsconfig.esm.json && node scripts/write-esm-package.mjs && npm pack --ignore-scripts
+        working-directory: packages/sdk-typescript
+      - run: python -m pip install --upgrade build && python -m build packages/sdk-python
+      - name: Publish immutable release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          API_RELEASE: ${{ inputs.api_release }}
+          SDK_VERSION: ${{ inputs.sdk_version }}
+        run: |
+          gh release view "${RELEASE_TAG}" >/dev/null 2>&1 && exit 0
+          gh release create "${RELEASE_TAG}" \
+            packages/sdk-typescript/*.tgz \
+            packages/sdk-python/dist/* \
+            "contracts/${API_RELEASE}.openapi.json" \
+            --verify-tag \
+            --generate-notes \
+            --title "Arc en Ciel SDK ${SDK_VERSION}"

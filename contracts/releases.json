@@ -1,8 +1,34 @@
 {
   "schemaVersion": 1,
-  "currentVersion": "1.7.0",
-  "nextVersion": "1.8.0",
+  "currentVersion": "1.8.0",
+  "nextVersion": "1.9.0",
   "releases": [
+    {
+      "version": "1.8.0",
+      "releasedAt": "2026-08-07",
+      "sha256": "b29d1072a127e7e3a910385f5a688f36783880593160576f4101adb4e5ae33bd",
+      "operationCount": 246,
+      "openApiPath": "/developers/openapi/1.8.0.json",
+      "referencePath": "/developers/reference/?version=1.8.0",
+      "summary": "Stable feedback, illegal-content notice, evidence, review, and content-report workflows.",
+      "existingClients": "No action is required. v1.8.0 is additive; adopt SDK 0.8.0 only to use feedback and Trust & Safety workflows.",
+      "sdk": {
+        "typescript": {
+          "package": "@arcenciel/sdk",
+          "version": "0.8.0",
+          "status": "source-beta",
+          "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.0/packages/sdk-typescript"
+        },
+        "python": {
+          "package": "arcenciel",
+          "version": "0.8.0",
+          "status": "source-beta",
+          "registryUrl": "https://pypi.org/project/arcenciel/",
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.0/packages/sdk-python"
+        }
+      }
+    },
     {
       "version": "1.7.0",
       "releasedAt": "2026-08-07",
@@ -18,14 +44,14 @@
           "version": "0.7.0",
           "status": "source-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.7.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
           "version": "0.7.0",
           "status": "source-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.7.0/packages/sdk-python"
         }
       }
     },
@@ -44,14 +70,14 @@
           "version": "0.6.0",
           "status": "source-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.6.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
           "version": "0.6.0",
           "status": "source-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.6.0/packages/sdk-python"
         }
       }
     },
@@ -70,14 +96,14 @@
           "version": "0.5.0",
           "status": "source-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.5.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
           "version": "0.5.0",
           "status": "source-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.5.0/packages/sdk-python"
         }
       }
     },
@@ -96,14 +122,14 @@
           "version": "0.4.0",
           "status": "source-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.4.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
           "version": "0.4.0",
           "status": "source-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.4.0/packages/sdk-python"
         }
       }
     },
@@ -122,14 +148,14 @@
           "version": "0.3.0",
           "status": "source-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.3.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
           "version": "0.3.0",
           "status": "source-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.3.0/packages/sdk-python"
         }
       }
     },
@@ -148,14 +174,14 @@
           "version": "0.2.0",
           "status": "source-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.2.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
           "version": "0.2.0",
           "status": "source-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.2.0/packages/sdk-python"
         }
       }
     },
@@ -174,14 +200,14 @@
           "version": "0.1.0",
           "status": "source-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.1.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
           "version": "0.1.0",
           "status": "source-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/ProjectArcEnCiel/tree/master/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.1.0/packages/sdk-python"
         }
       }
     }

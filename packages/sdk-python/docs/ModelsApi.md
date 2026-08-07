@@ -3523,7 +3523,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.ModelsApi(api_client)
     upload_id = UUID('2f1cdb84-c3a7-4e6c-a289-34bb21e7bd71') # UUID | Upload-session identifier returned by the create operation.
     index = 0 # int | Zero-based chunk index; must be less than the session's `totalChunks`.
-    body = [B@67dba613 # bytes | Request payload for this operation.
+    body = b'...' # bytes | Request payload for this operation.
 
     try:
         # Upload one model version file chunk

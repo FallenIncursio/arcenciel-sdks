@@ -17,6 +17,7 @@ describe('ArcEnCielClient', () => {
           'comments',
           'downloads',
           'emotes',
+          'feedback',
           'generator',
           'images',
           'models',
@@ -24,11 +25,12 @@ describe('ArcEnCielClient', () => {
           'profile',
           'social',
           'tags',
+          'trustSafety',
           'users',
           'videos',
         ].includes(key)
       )
-    ).toHaveLength(16)
+    ).toHaveLength(18)
 
     await client.models.listModelClasses()
 
@@ -62,6 +64,19 @@ describe('ArcEnCielClient', () => {
     const [url, init] = fetch.mock.calls[0]
     expect(url).toBe('https://example.test/api/chat/threads?folder=inbox&limit=30')
     expect(new Headers(init?.headers).get('x-api-key')).toBe('chat-read-key')
+  })
+
+  it('exposes v1.8 feedback and trust namespaces with scoped API-key authentication', async () => {
+    const fetch = vi.fn(async () => Response.json([]))
+    const client = new ArcEnCielClient({ apiKey: 'feedback-read-key', baseUrl: 'https://example.test', fetch, retry: false })
+
+    expect(await client.feedback.listMyFeedback()).toEqual([])
+    expect(await client.trustSafety.listMyIllegalContentNotices()).toEqual([])
+
+    expect(fetch).toHaveBeenCalledTimes(2)
+    expect(fetch.mock.calls[0][0]).toBe('https://example.test/api/feedback/me')
+    expect(fetch.mock.calls[1][0]).toBe('https://example.test/api/illegal-content-notices/me')
+    for (const [, init] of fetch.mock.calls) expect(new Headers(init?.headers).get('x-api-key')).toBe('feedback-read-key')
   })
 
   it('normalizes generated response errors', async () => {

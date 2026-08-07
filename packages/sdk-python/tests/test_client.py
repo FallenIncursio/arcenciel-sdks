@@ -31,12 +31,14 @@ def test_configures_namespaces_and_api_key() -> None:
             client.comments,
             client.downloads,
             client.emotes,
+            client.feedback,
             client.generator,
             client.images,
             client.notifications,
             client.profile,
             client.social,
             client.tags,
+            client.trust_safety,
             client.users,
             client.videos,
         )
@@ -73,6 +75,32 @@ def test_exposes_v17_chat_namespace() -> None:
     assert method == "GET"
     assert url == "https://example.test/api/chat/threads?folder=inbox&limit=30"
     assert headers["x-api-key"] == "chat-read-key"
+
+
+def test_exposes_v18_feedback_and_trust_namespaces() -> None:
+    client = ArcEnCielClient(api_key="feedback-read-key", base_url="https://example.test")
+
+    feedback_method, feedback_url, feedback_headers, _, _ = (
+        client.feedback._list_my_feedback_serialize(
+            _request_auth=None,
+            _content_type=None,
+            _headers=None,
+            _host_index=0,
+        )
+    )
+    trust_method, trust_url, trust_headers, _, _ = (
+        client.trust_safety._list_my_illegal_content_notices_serialize(
+            _request_auth=None,
+            _content_type=None,
+            _headers=None,
+            _host_index=0,
+        )
+    )
+
+    assert feedback_method == trust_method == "GET"
+    assert feedback_url == "https://example.test/api/feedback/me"
+    assert trust_url == "https://example.test/api/illegal-content-notices/me"
+    assert feedback_headers["x-api-key"] == trust_headers["x-api-key"] == "feedback-read-key"
 
 
 def test_normalizes_api_errors() -> None:

@@ -2,12 +2,73 @@
 
 Official, typed TypeScript and Python clients for the stable Arc en Ciel Developer API.
 
-This repository contains only public SDK sources and immutable public API contracts. The Arc en Ciel application monorepo remains
-private. See the package READMEs for installation, API namespaces, examples, retry behaviour, and supported runtimes.
+[![CI](https://github.com/FallenIncursio/arcenciel-sdks/actions/workflows/ci.yml/badge.svg)](https://github.com/FallenIncursio/arcenciel-sdks/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/FallenIncursio/arcenciel-sdks/actions/workflows/codeql.yml/badge.svg)](https://github.com/FallenIncursio/arcenciel-sdks/actions/workflows/codeql.yml)
 
-- [TypeScript SDK](packages/sdk-typescript)
-- [Python SDK](packages/sdk-python)
-- [Developer Portal](https://arcenciel.io/developers)
-- [Versioned API reference](https://arcenciel.io/developers/reference/)
+## Current release
 
-SDK releases are generated from byte-stable contracts, committed for review, and marked by signed `sdk-v*` tags.
+| Package                                     | Version | Runtime                            | Source                                                                                                   |
+| ------------------------------------------- | ------: | ---------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [`@arcenciel/sdk`](packages/sdk-typescript) | `0.8.0` | Node.js 20.20+ and modern browsers | [`sdk-v0.8.0`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.0/packages/sdk-typescript) |
+| [`arcenciel`](packages/sdk-python)          | `0.8.0` | Python 3.11+; sync and async       | [`sdk-v0.8.0`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.8.0/packages/sdk-python)     |
+
+Version `0.8.0` is a source beta for Developer API `1.8.0` (246 operations). Until the
+[release manifest](https://arcenciel.io/developers/openapi/releases.json) reports `published-beta`, use the signed source tag instead of
+assuming that npm or PyPI contains the package.
+
+```bash
+git clone --branch sdk-v0.8.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
+cd arcenciel-sdks/packages/sdk-typescript
+npm ci --ignore-scripts
+npx tsc
+npx tsc -p tsconfig.esm.json
+node scripts/write-esm-package.mjs
+```
+
+```bash
+python3.11 -m pip install \
+  "arcenciel @ git+https://github.com/FallenIncursio/arcenciel-sdks.git@sdk-v0.8.0#subdirectory=packages/sdk-python"
+```
+
+Public catalogue reads work without credentials. Account-specific operations use an API key with the least-privilege scope documented in
+the [Developer Portal](https://arcenciel.io/developers).
+
+## What is public here
+
+This repository contains only:
+
+- reviewed TypeScript and Python SDK source, generated APIs, models, tests, and examples;
+- immutable Developer API contracts `1.1.0` through `1.8.0`;
+- deterministic generation and release automation; and
+- the public release-signing key.
+
+The Arc en Ciel application, deployment configuration, credentials, and private monorepo history are not included.
+
+## Reproducible generation
+
+The generator wrapper pins OpenAPI Generator CLI `2.40.1` and OpenAPI Generator `7.24.0`. It preserves the hand-written facades while
+rebuilding the low-level clients from the selected immutable contract.
+
+```bash
+SDK_VERSION=0.8.0 ./scripts/generate-developer-sdks.sh contracts/1.8.0.openapi.json
+git diff --exit-code -- packages/sdk-typescript packages/sdk-python
+```
+
+CI checks the archive checksum and operation count, regenerates both packages, rejects a dirty generation result, runs both test suites,
+builds both distributions, and validates their package contents.
+
+## Release integrity
+
+Every `sdk-v*` source release is an annotated GPG-signed tag. The release workflow imports the pinned
+[public key](keys/sdk-release.asc), verifies fingerprint `6FA2 ECBC 241F A87F D825 9E7A F4BF E014 B368 D3E0`, checks the immutable API
+checksum, and publishes through npm/PyPI OIDC Trusted Publishing. No long-lived registry token is used.
+
+See [RELEASING.md](RELEASING.md) for the maintainer procedure and [CONTRIBUTING.md](CONTRIBUTING.md) for development checks.
+
+## Support and security
+
+- Developer documentation and support policy: <https://arcenciel.io/developers>
+- Service status: <https://status.arcenciel.io>
+- Security reports: [SECURITY.md](SECURITY.md)
+
+Licensed under the [MIT License](LICENSE).

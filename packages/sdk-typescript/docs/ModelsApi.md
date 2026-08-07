@@ -2934,7 +2934,7 @@ async function example() {
     // number | Zero-based chunk index; must be less than the session\'s `totalChunks`.
     index: 0,
     // Blob | Request payload for this operation.
-    body: [B@66c83fc8,
+    body: new Blob(),
   } satisfies UploadModelVersionChunkRequest;
 
   try {

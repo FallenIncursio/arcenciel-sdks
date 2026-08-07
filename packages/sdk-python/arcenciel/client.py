@@ -22,6 +22,7 @@ from arcenciel.generated.api.collections_api import CollectionsApi
 from arcenciel.generated.api.comments_api import CommentsApi
 from arcenciel.generated.api.downloads_api import DownloadsApi
 from arcenciel.generated.api.emotes_api import EmotesApi
+from arcenciel.generated.api.feedback_api import FeedbackApi
 from arcenciel.generated.api.generator_api import GeneratorApi
 from arcenciel.generated.api.images_api import ImagesApi
 from arcenciel.generated.api.models_api import ModelsApi
@@ -29,6 +30,7 @@ from arcenciel.generated.api.notifications_api import NotificationsApi
 from arcenciel.generated.api.profile_api import ProfileApi
 from arcenciel.generated.api.social_api import SocialApi
 from arcenciel.generated.api.tags_api import TagsApi
+from arcenciel.generated.api.trust_safety_api import TrustSafetyApi
 from arcenciel.generated.api.users_api import UsersApi
 from arcenciel.generated.api.videos_api import VideosApi
 from arcenciel.generated.api_client import ApiClient
@@ -68,6 +70,7 @@ class ArcEnCielClient:
         self.comments = CommentsApi(self.api_client)
         self.downloads = DownloadsApi(self.api_client)
         self.emotes = EmotesApi(self.api_client)
+        self.feedback = FeedbackApi(self.api_client)
         self.generator = GeneratorApi(self.api_client)
         self.images = ImagesApi(self.api_client)
         self.models = ModelsApi(self.api_client)
@@ -75,6 +78,7 @@ class ArcEnCielClient:
         self.profile = ProfileApi(self.api_client)
         self.social = SocialApi(self.api_client)
         self.tags = TagsApi(self.api_client)
+        self.trust_safety = TrustSafetyApi(self.api_client)
         self.users = UsersApi(self.api_client)
         self.videos = VideosApi(self.api_client)
 
