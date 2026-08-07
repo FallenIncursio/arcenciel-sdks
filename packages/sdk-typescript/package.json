@@ -1,0 +1,45 @@
+{
+  "name": "@arcenciel/sdk",
+  "version": "0.1.0",
+  "description": "Official TypeScript SDK for the Arc en Ciel Developer API",
+  "author": "Arc en Ciel",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FallenIncursio/arcenciel-sdks.git",
+    "directory": "packages/sdk-typescript"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=20.20.0"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.esm.json && node scripts/write-esm-package.mjs",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.esm.json",
+    "test": "vitest run",
+    "lint": "eslint src/client.ts src/errors.ts tests",
+    "pack:check": "npm pack --dry-run --ignore-scripts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0",
+    "vitest": "^3.2.4"
+  }
+}

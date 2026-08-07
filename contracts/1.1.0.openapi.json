@@ -1,0 +1,2919 @@
+{
+  "components": {
+    "headers": {
+      "Deprecation": {
+        "description": "RFC 9745 deprecation date. Present only after a stable operation is formally deprecated.",
+        "schema": {
+          "example": "@1798761600",
+          "type": "string"
+        }
+      },
+      "RateLimitLimit": {
+        "description": "Maximum requests allowed in the current rate-limit window.",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "RateLimitPolicy": {
+        "description": "Rate-limit policy and window emitted by express-rate-limit.",
+        "schema": {
+          "example": "1200;w=60",
+          "type": "string"
+        }
+      },
+      "RateLimitRemaining": {
+        "description": "Requests remaining in the current rate-limit window.",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "RateLimitReset": {
+        "description": "Seconds until the current rate-limit window resets.",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "RetryAfter": {
+        "description": "Seconds to wait before retrying.",
+        "schema": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "Sunset": {
+        "description": "RFC 8594 sunset date. Present only when removal has a published deadline.",
+        "schema": {
+          "example": "2028-01-01T00:00:00Z",
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "content": {
+          "application/json": {
+            "example": {
+              "error": "The request is invalid.",
+              "errorCode": "BAD_REQUEST",
+              "retryable": false
+            },
+            "schema": {
+              "$ref": "#/components/schemas/ApiError"
+            }
+          }
+        },
+        "description": "The request is malformed or fails operation-specific validation."
+      },
+      "InternalServerError": {
+        "content": {
+          "application/json": {
+            "example": {
+              "error": "Something went wrong on the server.",
+              "errorCode": "INTERNAL_ERROR",
+              "retryable": false
+            },
+            "schema": {
+              "$ref": "#/components/schemas/ApiError"
+            }
+          }
+        },
+        "description": "Unexpected server error."
+      },
+      "TooManyRequests": {
+        "content": {
+          "application/json": {
+            "example": {
+              "error": "Too many requests, please retry later.",
+              "errorCode": "RATE_LIMITED",
+              "retryable": false
+            },
+            "schema": {
+              "$ref": "#/components/schemas/ApiError"
+            }
+          }
+        },
+        "description": "The request exceeded an application or edge rate limit.",
+        "headers": {
+          "RateLimit-Limit": {
+            "$ref": "#/components/headers/RateLimitLimit"
+          },
+          "RateLimit-Policy": {
+            "$ref": "#/components/headers/RateLimitPolicy"
+          },
+          "RateLimit-Remaining": {
+            "$ref": "#/components/headers/RateLimitRemaining"
+          },
+          "RateLimit-Reset": {
+            "$ref": "#/components/headers/RateLimitReset"
+          },
+          "Retry-After": {
+            "$ref": "#/components/headers/RetryAfter"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ApiError": {
+        "additionalProperties": true,
+        "description": "Standard Arc en Ciel error response.",
+        "properties": {
+          "details": {
+            "additionalProperties": true,
+            "description": "Optional structured error details.",
+            "type": "object"
+          },
+          "error": {
+            "description": "Human-readable error message.",
+            "example": "Request could not be completed.",
+            "type": "string"
+          },
+          "errorCode": {
+            "description": "Stable machine-readable error code.",
+            "example": "REQUEST_FAILED",
+            "type": "string"
+          },
+          "message": {
+            "description": "Additional human-readable context.",
+            "example": "Request could not be completed.",
+            "type": "string"
+          },
+          "retryable": {
+            "description": "Whether retrying the request may succeed.",
+            "example": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Image": {
+        "description": "Images item used by the Arc en Ciel API contract.",
+        "example": {
+          "cfg": 7,
+          "createdAt": "2025-01-01T12:00:00Z",
+          "description": "A sample image description.",
+          "dislikeCount": 2,
+          "fileName": "sample.jpg",
+          "filePath": "uploads/images/sample.jpg",
+          "heartCount": 5,
+          "id": 1,
+          "likeCount": 10,
+          "metadata": "EXIF data...",
+          "negativePrompt": "low quality",
+          "prompt": "A beautiful landscape",
+          "rating": "safe",
+          "sampler": "Euler",
+          "seed": 123456789,
+          "steps": 50,
+          "title": "Sample Image",
+          "updatedAt": "2025-01-01T12:00:00Z"
+        },
+        "properties": {
+          "cfg": {
+            "description": "Cfg accepted or returned by this contract.",
+            "type": "number"
+          },
+          "createdAt": {
+            "description": "Created At accepted or returned by this contract.",
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "description": "Description accepted or returned by this contract.",
+            "type": "string"
+          },
+          "dislikeCount": {
+            "description": "Dislike Count accepted or returned by this contract.",
+            "type": "number"
+          },
+          "fileName": {
+            "description": "File Name accepted or returned by this contract.",
+            "type": "string"
+          },
+          "filePath": {
+            "description": "File Path accepted or returned by this contract.",
+            "type": "string"
+          },
+          "heartCount": {
+            "description": "Heart Count accepted or returned by this contract.",
+            "type": "number"
+          },
+          "id": {
+            "description": "Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "likeCount": {
+            "description": "Like Count accepted or returned by this contract.",
+            "type": "number"
+          },
+          "metadata": {
+            "description": "Metadata accepted or returned by this contract.",
+            "type": "string"
+          },
+          "negativePrompt": {
+            "description": "Negative Prompt accepted or returned by this contract.",
+            "type": "string"
+          },
+          "prompt": {
+            "description": "Prompt accepted or returned by this contract.",
+            "type": "string"
+          },
+          "rating": {
+            "description": "Rating accepted or returned by this contract.",
+            "type": "string"
+          },
+          "sampler": {
+            "description": "Sampler accepted or returned by this contract.",
+            "type": "string"
+          },
+          "seed": {
+            "description": "Seed accepted or returned by this contract.",
+            "type": "number"
+          },
+          "steps": {
+            "description": "Steps accepted or returned by this contract.",
+            "type": "number"
+          },
+          "title": {
+            "description": "Title accepted or returned by this contract.",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated At accepted or returned by this contract.",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Model": {
+        "description": "Model used by the Arc en Ciel API contract.",
+        "example": {
+          "description": "<h2>Overview</h2><p>This is an example model.</p>",
+          "descriptionImages": [],
+          "id": 1,
+          "tags": [
+            {
+              "id": 1,
+              "name": "example"
+            }
+          ],
+          "title": "Example Model",
+          "type": "LORA",
+          "uploader": {
+            "email": "user@example.com",
+            "id": 2,
+            "username": "exampleUser"
+          },
+          "uploaderId": 2,
+          "versions": []
+        },
+        "properties": {
+          "description": {
+            "description": "Sanitized rich HTML model description. Existing legacy Markdown remains render-compatible during migration.",
+            "type": "string"
+          },
+          "descriptionImages": {
+            "description": "Description Images accepted or returned by this contract.",
+            "items": {
+              "$ref": "#/components/schemas/ModelDescriptionImage"
+            },
+            "type": "array"
+          },
+          "id": {
+            "description": "Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "tags": {
+            "description": "Tags accepted or returned by this contract.",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            },
+            "type": "array"
+          },
+          "title": {
+            "description": "Title accepted or returned by this contract.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type accepted or returned by this contract.",
+            "type": "string"
+          },
+          "uploader": {
+            "$ref": "#/components/schemas/User"
+          },
+          "uploaderId": {
+            "description": "Uploader Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "versions": {
+            "description": "Versions accepted or returned by this contract.",
+            "items": {
+              "$ref": "#/components/schemas/Version"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ModelDescriptionImage": {
+        "description": "Description Images item used by the Arc en Ciel API contract.",
+        "properties": {
+          "createdAt": {
+            "description": "Created At accepted or returned by this contract.",
+            "format": "date-time",
+            "type": "string"
+          },
+          "fileName": {
+            "description": "File Name accepted or returned by this contract.",
+            "type": "string"
+          },
+          "filePath": {
+            "description": "File Path accepted or returned by this contract.",
+            "type": "string"
+          },
+          "height": {
+            "description": "Height accepted or returned by this contract.",
+            "nullable": true,
+            "type": "integer"
+          },
+          "id": {
+            "description": "Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "modelId": {
+            "description": "Model Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "rating": {
+            "description": "Rating accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "variants": {
+            "description": "Variants accepted or returned by this contract.",
+            "items": {
+              "description": "Variants item used by the Arc en Ciel API contract.",
+              "properties": {
+                "bytes": {
+                  "description": "Bytes accepted or returned by this contract.",
+                  "nullable": true,
+                  "type": "integer"
+                },
+                "format": {
+                  "description": "Format accepted or returned by this contract.",
+                  "type": "string"
+                },
+                "height": {
+                  "description": "Height accepted or returned by this contract.",
+                  "nullable": true,
+                  "type": "integer"
+                },
+                "label": {
+                  "description": "Label accepted or returned by this contract.",
+                  "type": "string"
+                },
+                "path": {
+                  "description": "Path accepted or returned by this contract.",
+                  "type": "string"
+                },
+                "width": {
+                  "description": "Width accepted or returned by this contract.",
+                  "nullable": true,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "width": {
+            "description": "Width accepted or returned by this contract.",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "ModelGalleryMediaEntry": {
+        "description": "One mixed-media gallery entry. Use kind as the discriminator before reading data.",
+        "properties": {
+          "data": {
+            "description": "Image or video metadata for this gallery entry.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Image"
+              },
+              {
+                "$ref": "#/components/schemas/Video"
+              }
+            ]
+          },
+          "kind": {
+            "description": "Media type contained in data.",
+            "enum": [
+              "image",
+              "video"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "data"
+        ],
+        "type": "object"
+      },
+      "ModelGalleryResponse": {
+        "description": "Stable paginated response envelope for a model's visible image and video gallery.",
+        "properties": {
+          "data": {
+            "description": "Mixed image and video entries for the current page.",
+            "items": {
+              "$ref": "#/components/schemas/ModelGalleryMediaEntry"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "description": "Requested page size after server clamping.",
+            "maximum": 30,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "page": {
+            "description": "Current one-based page.",
+            "minimum": 1,
+            "type": "integer"
+          },
+          "pinned": {
+            "description": "Creator-pinned visible images. Present only on the first page when pins exist.",
+            "items": {
+              "$ref": "#/components/schemas/Image"
+            },
+            "type": "array"
+          },
+          "totalCount": {
+            "description": "Total number of matching image and video entries.",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "totalPages": {
+            "description": "Total number of pages at the current limit.",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "page",
+          "limit",
+          "totalCount",
+          "totalPages",
+          "data"
+        ],
+        "type": "object"
+      },
+      "ModelVersionListResponse": {
+        "description": "Stable response envelope for versions visible to the current caller.",
+        "properties": {
+          "versions": {
+            "description": "Versions visible to the current caller in the model's configured order.",
+            "items": {
+              "$ref": "#/components/schemas/Version"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "versions"
+        ],
+        "type": "object"
+      },
+      "Tag": {
+        "description": "Tags item used by the Arc en Ciel API contract.",
+        "example": {
+          "id": 1,
+          "name": "example"
+        },
+        "properties": {
+          "id": {
+            "description": "Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "name": {
+            "description": "Name accepted or returned by this contract.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "User": {
+        "description": "Uploader accepted or returned by this contract.",
+        "example": {
+          "email": "user@example.com",
+          "id": 2,
+          "profilePicture": "profile/john_doe.png",
+          "role": "USER",
+          "username": "exampleUser"
+        },
+        "properties": {
+          "email": {
+            "description": "Email accepted or returned by this contract.",
+            "type": "string"
+          },
+          "id": {
+            "description": "Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "profilePicture": {
+            "description": "Profile Picture accepted or returned by this contract.",
+            "type": "string"
+          },
+          "role": {
+            "description": "Role accepted or returned by this contract.",
+            "type": "string"
+          },
+          "username": {
+            "description": "Username accepted or returned by this contract.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Version": {
+        "description": "Versions item used by the Arc en Ciel API contract.",
+        "example": {
+          "aboutThisVersion": "Initial release.",
+          "activationTags": [
+            "tag1",
+            "tag2"
+          ],
+          "baseModel": "SD 1.5",
+          "downloadCount": 10,
+          "externalDownloadUrl": null,
+          "fileName": "model_v1.safetensors",
+          "filePath": "uploads/models/example/model_v1.safetensors",
+          "fileScanEngineVersion": "clamscan --no-summary",
+          "fileScanMeta": {
+            "scanner": "clamav"
+          },
+          "fileScanReason": null,
+          "fileScanSource": "local_upload",
+          "fileScanStatus": "CLEAN",
+          "fileScannedAt": "2026-03-19T10:00:00.000Z",
+          "fileSizeKb": 131072,
+          "id": 1,
+          "imageOrder": [
+            3,
+            1,
+            2
+          ],
+          "images": [],
+          "originalName": "model_v1.safetensors",
+          "publishAt": null,
+          "sha256": "abcdef123456...",
+          "sha256webui": "1234abcd",
+          "status": "PUBLISHED",
+          "supporterEarlyAccessEnabled": true,
+          "trainingMetadataSummary": {
+            "dataset": {
+              "dirs": [
+                {
+                  "imageCount": 128,
+                  "name": "cats"
+                }
+              ],
+              "totalImages": 256
+            },
+            "extractedAt": "2026-02-19T10:00:00.000Z",
+            "run": {
+              "epoch": 3,
+              "learningRate": 0.0001,
+              "optimizer": "AdamW8bit",
+              "resolution": "1024x1024",
+              "totalEpochs": 10
+            },
+            "schemaVersion": 1,
+            "source": "upload_local",
+            "tagsTop": [
+              {
+                "count": 42,
+                "tag": "cat"
+              }
+            ]
+          },
+          "versionName": "v1"
+        },
+        "properties": {
+          "aboutThisVersion": {
+            "description": "About This Version accepted or returned by this contract.",
+            "type": "string"
+          },
+          "activationTags": {
+            "description": "Activation Tags accepted or returned by this contract.",
+            "items": {
+              "description": "Activation Tags item used by the Arc en Ciel API contract.",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "baseModel": {
+            "description": "Base Model accepted or returned by this contract.",
+            "type": "string"
+          },
+          "downloadCount": {
+            "description": "Download Count accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "earlyAccess": {
+            "$ref": "#/components/schemas/VersionEarlyAccess"
+          },
+          "externalDownloadUrl": {
+            "description": "Direct external source URL for versions not hosted by Arc en Ciel. It is null for future scheduled versions unless the viewer owns the model or is staff.",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileName": {
+            "description": "File Name accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "filePath": {
+            "description": "File Path accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileScanEngineVersion": {
+            "description": "File Scan Engine Version accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileScanMeta": {
+            "description": "File Scan Meta accepted or returned by this contract.",
+            "nullable": true,
+            "type": "object"
+          },
+          "fileScanReason": {
+            "description": "File Scan Reason accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileScanSource": {
+            "description": "File Scan Source accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileScanStatus": {
+            "description": "File Scan Status accepted or returned by this contract.",
+            "enum": [
+              "UNSCANNED",
+              "PENDING",
+              "CLEAN",
+              "POTENTIALLY_RISKY",
+              "INFECTED",
+              "SCAN_ERROR",
+              "UNVERIFIED_EXTERNAL"
+            ],
+            "type": "string"
+          },
+          "fileScannedAt": {
+            "description": "File Scanned At accepted or returned by this contract.",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileSizeKb": {
+            "description": "File Size Kb accepted or returned by this contract.",
+            "nullable": true,
+            "type": "integer"
+          },
+          "id": {
+            "description": "Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "imageOrder": {
+            "description": "Image Order accepted or returned by this contract.",
+            "items": {
+              "description": "Image Order item used by the Arc en Ciel API contract.",
+              "type": "integer"
+            },
+            "type": "array"
+          },
+          "images": {
+            "description": "Images accepted or returned by this contract.",
+            "items": {
+              "$ref": "#/components/schemas/Image"
+            },
+            "type": "array"
+          },
+          "originalName": {
+            "description": "Original Name accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishAt": {
+            "description": "Publish At accepted or returned by this contract.",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "sha256": {
+            "description": "Full SHA-256 hash for byte verification.",
+            "nullable": true,
+            "type": "string"
+          },
+          "sha256webui": {
+            "description": "Stable Diffusion WebUI compatibility hash; do not use as a substitute for full SHA-256 verification.",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "description": "Status accepted or returned by this contract.",
+            "type": "string"
+          },
+          "supporterEarlyAccessEnabled": {
+            "default": true,
+            "description": "Creator-controlled opt-out. External versions remain ineligible regardless of this value.",
+            "type": "boolean"
+          },
+          "trainingMetadataSummary": {
+            "description": "Training Metadata Summary accepted or returned by this contract.",
+            "nullable": true,
+            "properties": {
+              "dataset": {
+                "description": "Dataset accepted or returned by this contract.",
+                "properties": {
+                  "dirs": {
+                    "description": "Dirs accepted or returned by this contract.",
+                    "items": {
+                      "description": "Dirs item used by the Arc en Ciel API contract.",
+                      "properties": {
+                        "imageCount": {
+                          "description": "Image Count accepted or returned by this contract.",
+                          "type": "integer"
+                        },
+                        "name": {
+                          "description": "Name accepted or returned by this contract.",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "totalImages": {
+                    "description": "Total Images accepted or returned by this contract.",
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              },
+              "extractedAt": {
+                "description": "Extracted At accepted or returned by this contract.",
+                "format": "date-time",
+                "type": "string"
+              },
+              "run": {
+                "description": "Run accepted or returned by this contract.",
+                "properties": {
+                  "batchSize": {
+                    "description": "Batch Size accepted or returned by this contract.",
+                    "type": "integer"
+                  },
+                  "epoch": {
+                    "description": "Epoch accepted or returned by this contract.",
+                    "type": "integer"
+                  },
+                  "learningRate": {
+                    "description": "Learning Rate accepted or returned by this contract.",
+                    "type": "number"
+                  },
+                  "optimizer": {
+                    "description": "Optimizer accepted or returned by this contract.",
+                    "type": "string"
+                  },
+                  "resolution": {
+                    "description": "Resolution accepted or returned by this contract.",
+                    "type": "string"
+                  },
+                  "scheduler": {
+                    "description": "Scheduler accepted or returned by this contract.",
+                    "type": "string"
+                  },
+                  "steps": {
+                    "description": "Steps accepted or returned by this contract.",
+                    "type": "integer"
+                  },
+                  "textEncoderLearningRate": {
+                    "description": "Text Encoder Learning Rate accepted or returned by this contract.",
+                    "type": "number"
+                  },
+                  "totalEpochs": {
+                    "description": "Total Epochs accepted or returned by this contract.",
+                    "type": "integer"
+                  },
+                  "unetLearningRate": {
+                    "description": "Unet Learning Rate accepted or returned by this contract.",
+                    "type": "number"
+                  }
+                },
+                "type": "object"
+              },
+              "schemaVersion": {
+                "description": "Schema Version accepted or returned by this contract.",
+                "enum": [
+                  1
+                ],
+                "type": "integer"
+              },
+              "source": {
+                "description": "Source accepted or returned by this contract.",
+                "enum": [
+                  "upload_local",
+                  "upload_hf",
+                  "admin_backfill"
+                ],
+                "type": "string"
+              },
+              "tagsTop": {
+                "description": "Tags Top accepted or returned by this contract.",
+                "items": {
+                  "description": "Tags Top item used by the Arc en Ciel API contract.",
+                  "properties": {
+                    "count": {
+                      "description": "Count accepted or returned by this contract.",
+                      "type": "integer"
+                    },
+                    "tag": {
+                      "description": "Tag accepted or returned by this contract.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "versionName": {
+            "description": "Version Name accepted or returned by this contract.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "VersionDownloadInfo": {
+        "description": "Stable JSON contract for third-party model download clients.",
+        "example": {
+          "allowedRedirectHosts": [
+            "uploads.arcenciel.io"
+          ],
+          "available": true,
+          "blocked": false,
+          "downloadUrl": "/api/models/1/versions/2/download/model_v1.safetensors",
+          "earlyAccess": {
+            "canDownload": false,
+            "canDownloadViaLink": false,
+            "enabled": false,
+            "reason": "PUBLIC",
+            "startsAt": null,
+            "state": "PUBLIC",
+            "windowHours": 72
+          },
+          "externalDownloadUrl": null,
+          "fileName": "model_v1.safetensors",
+          "fileScanReason": null,
+          "fileScanStatus": "CLEAN",
+          "fileSizeKb": 131072,
+          "modelId": 1,
+          "originalName": "model_v1.safetensors",
+          "registerUrl": "/api/models/1/versions/2/download/register",
+          "sha256": "abcdef123456...",
+          "sha256webui": "1234abcd",
+          "source": "hosted",
+          "status": "PUBLISHED",
+          "versionId": 2
+        },
+        "properties": {
+          "allowedRedirectHosts": {
+            "description": "Additional HTTPS hosts a client should allow when following the canonical Arc download URL.",
+            "items": {
+              "description": "Allowed Redirect Hosts item used by the Arc en Ciel API contract.",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "available": {
+            "description": "True when the version has a usable download source and is not scan-blocked.",
+            "type": "boolean"
+          },
+          "blocked": {
+            "description": "True when file safety status prevents direct download delivery.",
+            "type": "boolean"
+          },
+          "downloadUrl": {
+            "description": "Canonical Arc download URL for hosted files. Start here and allow documented redirects.",
+            "nullable": true,
+            "type": "string"
+          },
+          "earlyAccess": {
+            "$ref": "#/components/schemas/VersionEarlyAccess"
+          },
+          "externalDownloadUrl": {
+            "description": "External source URL for external-only versions. Null for hosted files and scan-blocked entries.",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileName": {
+            "description": "Safe filename clients can use for local storage.",
+            "type": "string"
+          },
+          "fileScanReason": {
+            "description": "File Scan Reason accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "fileScanStatus": {
+            "description": "File Scan Status accepted or returned by this contract.",
+            "enum": [
+              "UNSCANNED",
+              "PENDING",
+              "CLEAN",
+              "POTENTIALLY_RISKY",
+              "INFECTED",
+              "SCAN_ERROR",
+              "UNVERIFIED_EXTERNAL"
+            ],
+            "type": "string"
+          },
+          "fileSizeKb": {
+            "description": "File Size Kb accepted or returned by this contract.",
+            "nullable": true,
+            "type": "integer"
+          },
+          "modelId": {
+            "description": "Model Id accepted or returned by this contract.",
+            "type": "integer"
+          },
+          "originalName": {
+            "description": "Original Name accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "registerUrl": {
+            "description": "Endpoint to record a completed direct or external download without streaming through Arc.",
+            "nullable": true,
+            "type": "string"
+          },
+          "sha256": {
+            "description": "Full SHA-256 hash for byte verification.",
+            "nullable": true,
+            "type": "string"
+          },
+          "sha256webui": {
+            "description": "Stable Diffusion WebUI compatibility hash.",
+            "nullable": true,
+            "type": "string"
+          },
+          "source": {
+            "description": "Hosted files are served by Arc en Ciel; external files must be fetched from externalDownloadUrl by clients that support them.",
+            "enum": [
+              "hosted",
+              "external"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "description": "Status accepted or returned by this contract.",
+            "type": "string"
+          },
+          "versionId": {
+            "description": "Version Id accepted or returned by this contract.",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "VersionEarlyAccess": {
+        "description": "Early Access accepted or returned by this contract.",
+        "properties": {
+          "canDownload": {
+            "description": "Can Download accepted or returned by this contract.",
+            "type": "boolean"
+          },
+          "canDownloadViaLink": {
+            "description": "Can Download Via Link accepted or returned by this contract.",
+            "type": "boolean"
+          },
+          "enabled": {
+            "description": "True when the version is configured and eligible for the supporter early-access flow.",
+            "type": "boolean"
+          },
+          "reason": {
+            "description": "Stable machine-readable reason for the current state.",
+            "type": "string"
+          },
+          "startsAt": {
+            "description": "Starts At accepted or returned by this contract.",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "state": {
+            "description": "State accepted or returned by this contract.",
+            "enum": [
+              "PUBLIC",
+              "AVAILABLE",
+              "UPCOMING",
+              "LOCKED",
+              "DISABLED",
+              "UNAVAILABLE"
+            ],
+            "type": "string"
+          },
+          "windowHours": {
+            "description": "Window Hours accepted or returned by this contract.",
+            "example": 72,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "enabled",
+          "windowHours",
+          "startsAt",
+          "state",
+          "canDownload",
+          "canDownloadViaLink",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "Video": {
+        "description": "Video used by the Arc en Ciel API contract.",
+        "example": {
+          "createdAt": "2025-01-01T12:00:00Z",
+          "description": "A sample video description.",
+          "dislike": 2,
+          "filePath": "videos/sample.mp4",
+          "heart": 5,
+          "id": "abc123",
+          "like": 10,
+          "streamManifestPath": "videos/sample_hls/index.m3u8",
+          "tags": [
+            "demo",
+            "sample"
+          ],
+          "title": "Sample Video",
+          "updatedAt": "2025-01-02T09:00:00Z",
+          "uploader": {
+            "id": 1,
+            "username": "john_doe"
+          }
+        },
+        "properties": {
+          "createdAt": {
+            "description": "Created At accepted or returned by this contract.",
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "description": "Description accepted or returned by this contract.",
+            "type": "string"
+          },
+          "dislike": {
+            "description": "Dislike accepted or returned by this contract.",
+            "type": "number"
+          },
+          "filePath": {
+            "description": "File Path accepted or returned by this contract.",
+            "type": "string"
+          },
+          "heart": {
+            "description": "Heart accepted or returned by this contract.",
+            "type": "number"
+          },
+          "id": {
+            "description": "Id accepted or returned by this contract.",
+            "type": "string"
+          },
+          "like": {
+            "description": "Like accepted or returned by this contract.",
+            "type": "number"
+          },
+          "streamManifestPath": {
+            "description": "Stream Manifest Path accepted or returned by this contract.",
+            "nullable": true,
+            "type": "string"
+          },
+          "tags": {
+            "description": "Tags accepted or returned by this contract.",
+            "items": {
+              "description": "Tags item used by the Arc en Ciel API contract.",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": {
+            "description": "Title accepted or returned by this contract.",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated At accepted or returned by this contract.",
+            "format": "date-time",
+            "type": "string"
+          },
+          "uploader": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "in": "header",
+        "name": "x-api-key",
+        "type": "apiKey"
+      },
+      "bearerAuth": {
+        "bearerFormat": "JWT",
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "sessionCookieAuth": {
+        "description": "Browser session cookie issued by Arc en Ciel authentication endpoints.",
+        "in": "cookie",
+        "name": "token",
+        "type": "apiKey"
+      }
+    },
+    "x-api-key-scopes": [
+      {
+        "description": "Read models, versions, files, downloads, and model metadata.",
+        "name": "ModelsRead",
+        "value": 4
+      }
+    ]
+  },
+  "externalDocs": {
+    "description": "Developer portal, quickstarts, lifecycle policy, SDK status, and support paths.",
+    "url": "https://arcenciel.io/developers"
+  },
+  "info": {
+    "contact": {
+      "name": "Arc en Ciel Developer Support",
+      "url": "https://arcenciel.io/developers#support"
+    },
+    "description": "Stable, SDK-oriented Arc en Ciel API v1 contract for public model discovery and safe model downloads. The complete public API reference contains additional evolving operations outside this compatibility profile.",
+    "termsOfService": "https://arcenciel.io/terms-of-service",
+    "title": "Arc en Ciel Developer API",
+    "version": "1.1.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/models/classes": {
+      "get": {
+        "description": "List the model classes currently available for catalogue filtering and model metadata so integrations can discover supported values instead of hard-coding them.",
+        "operationId": "listModelClasses",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "classes": [
+                    {
+                      "id": 1,
+                      "name": "value"
+                    }
+                  ]
+                },
+                "schema": {
+                  "description": "200 response for api models classes used by the Arc en Ciel API contract.",
+                  "properties": {
+                    "classes": {
+                      "description": "Classes accepted or returned by this contract.",
+                      "items": {
+                        "description": "Classes item used by the Arc en Ciel API contract.",
+                        "properties": {
+                          "id": {
+                            "description": "Id accepted or returned by this contract.",
+                            "type": "integer"
+                          },
+                          "name": {
+                            "description": "Name accepted or returned by this contract.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Model classes"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "List available model classes",
+        "tags": [
+          "Models"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 1200,
+          "policyId": "standard-read",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 2400,
+          "windowSeconds": 60
+        }
+      }
+    },
+    "/api/models/search": {
+      "get": {
+        "description": "Search the public model catalogue with pagination and optional filters. Authentication is optional; account-specific self filters require a valid user session or API key.",
+        "operationId": "searchModels",
+        "parameters": [
+          {
+            "description": "Search query applied to model title, description, and tags (supports",
+            "example": "landscape",
+            "in": "query",
+            "name": "search",
+            "schema": {
+              "description": "Search used by the Arc en Ciel API contract.",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Sort order for models (hot = recent models sorted by downloads).",
+            "example": "newest",
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "description": "Sort used by the Arc en Ciel API contract.",
+              "enum": [
+                "newest",
+                "oldest",
+                "downloads",
+                "favorites",
+                "hot"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Page number.",
+            "example": 1,
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "description": "Page used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of models per page (max 1000).",
+            "example": 20,
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 20,
+              "description": "Limit used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "If present, the search will be treated as a partial model hash.",
+            "example": false,
+            "in": "query",
+            "name": "hashOnly",
+            "schema": {
+              "default": false,
+              "description": "Hash Only used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Filter models by base model.",
+            "example": "example-base-model",
+            "in": "query",
+            "name": "baseModel",
+            "schema": {
+              "description": "Base Model used by the Arc en Ciel API contract.",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter models by model type (e.g. LORA, CHECKPOINT, etc.).",
+            "example": "example-model-type",
+            "in": "query",
+            "name": "modelType",
+            "schema": {
+              "description": "Model Type used by the Arc en Ciel API contract.",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter models by uploader id.",
+            "example": 1,
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "description": "User Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter by publication status (published = available).",
+            "example": "all",
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "description": "Status used by the Arc en Ciel API contract.",
+              "enum": [
+                "all",
+                "available",
+                "upcoming"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Return a lightweight response for template pickers/autocomplete UIs (still respects visibility rules). Compact responses omit download metadata such as hashes, file names, and external download URLs; fetch model or version details before downloading.",
+            "example": false,
+            "in": "query",
+            "name": "compact",
+            "schema": {
+              "default": false,
+              "description": "Compact used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Compact only. Max versions returned per model (1-50).",
+            "example": 1,
+            "in": "query",
+            "name": "versionLimit",
+            "schema": {
+              "default": 1,
+              "description": "Version Limit used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Compact only. Include model.description in results.",
+            "example": false,
+            "in": "query",
+            "name": "includeDescription",
+            "schema": {
+              "default": false,
+              "description": "Include Description used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Compact only. Include model.tags in results.",
+            "example": false,
+            "in": "query",
+            "name": "includeTags",
+            "schema": {
+              "default": false,
+              "description": "Include Tags used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Compact only. Include model.authorWishes in results.",
+            "example": false,
+            "in": "query",
+            "name": "includeAuthorWishes",
+            "schema": {
+              "default": false,
+              "description": "Include Author Wishes used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Auth only. Return models favorited by the current user.",
+            "example": true,
+            "in": "query",
+            "name": "selfFavorited",
+            "schema": {
+              "description": "Self Favorited used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Auth only. Return models uploaded by users the current user follows.",
+            "example": true,
+            "in": "query",
+            "name": "selfFollowing",
+            "schema": {
+              "description": "Self Following used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Auth only. Return models downloaded by the current user.",
+            "example": true,
+            "in": "query",
+            "name": "selfDownloaded",
+            "schema": {
+              "description": "Self Downloaded used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Auth only. Return models not yet downloaded by the current user.",
+            "example": true,
+            "in": "query",
+            "name": "selfNotDownloaded",
+            "schema": {
+              "description": "Self Not Downloaded used by the Arc en Ciel API contract.",
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "description": "<h2>Overview</h2><p>This is an example model.</p>",
+                      "descriptionImages": [],
+                      "id": 1,
+                      "tags": [
+                        {
+                          "id": 1,
+                          "name": "example"
+                        }
+                      ],
+                      "title": "Example Model",
+                      "type": "LORA",
+                      "uploader": {
+                        "email": "user@example.com",
+                        "id": 2,
+                        "username": "exampleUser"
+                      },
+                      "uploaderId": 2,
+                      "versions": []
+                    }
+                  ],
+                  "limit": 1,
+                  "page": 1,
+                  "showcased": [
+                    {
+                      "description": "<h2>Overview</h2><p>This is an example model.</p>",
+                      "descriptionImages": [],
+                      "id": 1,
+                      "tags": [
+                        {
+                          "id": 1,
+                          "name": "example"
+                        }
+                      ],
+                      "title": "Example Model",
+                      "type": "LORA",
+                      "uploader": {
+                        "email": "user@example.com",
+                        "id": 2,
+                        "username": "exampleUser"
+                      },
+                      "uploaderId": 2,
+                      "versions": []
+                    }
+                  ],
+                  "totalCount": 1,
+                  "totalPages": 1
+                },
+                "schema": {
+                  "description": "200 response for api models search used by the Arc en Ciel API contract.",
+                  "properties": {
+                    "data": {
+                      "description": "Data accepted or returned by this contract.",
+                      "items": {
+                        "$ref": "#/components/schemas/Model"
+                      },
+                      "type": "array"
+                    },
+                    "limit": {
+                      "description": "Limit accepted or returned by this contract.",
+                      "type": "integer"
+                    },
+                    "page": {
+                      "description": "Page accepted or returned by this contract.",
+                      "type": "integer"
+                    },
+                    "showcased": {
+                      "description": "Showcased accepted or returned by this contract.",
+                      "items": {
+                        "$ref": "#/components/schemas/Model"
+                      },
+                      "type": "array"
+                    },
+                    "totalCount": {
+                      "description": "Total Count accepted or returned by this contract.",
+                      "type": "integer"
+                    },
+                    "totalPages": {
+                      "description": "Total Pages accepted or returned by this contract.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A paginated list of models."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "Search models with filtering and pagination",
+        "tags": [
+          "Models"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 300,
+          "policyId": "model-search",
+          "scope": "user, trusted API key, or client IP",
+          "windowSeconds": 60
+        }
+      }
+    },
+    "/api/models/{id}": {
+      "get": {
+        "description": "Return one visible model and its accessible version metadata. Anonymous callers receive only public content; owners and staff may receive additional private fields.",
+        "operationId": "getModel",
+        "parameters": [
+          {
+            "description": "Unique identifier of the model.",
+            "example": 1,
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "description": "<h2>Overview</h2><p>This is an example model.</p>",
+                  "descriptionImages": [],
+                  "id": 1,
+                  "tags": [
+                    {
+                      "id": 1,
+                      "name": "example"
+                    }
+                  ],
+                  "title": "Example Model",
+                  "type": "LORA",
+                  "uploader": {
+                    "email": "user@example.com",
+                    "id": 2,
+                    "username": "exampleUser"
+                  },
+                  "uploaderId": 2,
+                  "versions": []
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Model"
+                }
+              }
+            },
+            "description": "Model details retrieved successfully."
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "description": "Model not found."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "Retrieve model details by ID",
+        "tags": [
+          "Models"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 1200,
+          "policyId": "standard-read",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 2400,
+          "windowSeconds": 60
+        }
+      }
+    },
+    "/api/models/{id}/gallery": {
+      "get": {
+        "description": "List gallery images associated with one visible model, optionally filtered to a specific model version. Anonymous callers receive only content they may access.",
+        "operationId": "listModelGalleryImages",
+        "parameters": [
+          {
+            "description": "Unique identifier of the model.",
+            "example": 1,
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Optionally filter gallery images to a specific model version.",
+            "example": 1,
+            "in": "query",
+            "name": "versionId",
+            "required": false,
+            "schema": {
+              "description": "Version Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "One-based result page. Pinned images are returned only on the first page.",
+            "example": 1,
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "description": "Page used by the Arc en Ciel API contract.",
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Maximum number of mixed image and video entries per page.",
+            "example": 20,
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "default": 20,
+              "description": "Limit used by the Arc en Ciel API contract.",
+              "maximum": 30,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "data": {
+                        "cfg": 7,
+                        "createdAt": "2025-01-01T12:00:00Z",
+                        "description": "A sample image description.",
+                        "dislikeCount": 2,
+                        "fileName": "sample.jpg",
+                        "filePath": "uploads/images/sample.jpg",
+                        "heartCount": 5,
+                        "id": 1,
+                        "likeCount": 10,
+                        "metadata": "EXIF data...",
+                        "negativePrompt": "low quality",
+                        "prompt": "A beautiful landscape",
+                        "rating": "safe",
+                        "sampler": "Euler",
+                        "seed": 123456789,
+                        "steps": 50,
+                        "title": "Sample Image",
+                        "updatedAt": "2025-01-01T12:00:00Z"
+                      },
+                      "kind": "image"
+                    }
+                  ],
+                  "limit": 1,
+                  "page": 1,
+                  "pinned": [
+                    {
+                      "cfg": 7,
+                      "createdAt": "2025-01-01T12:00:00Z",
+                      "description": "A sample image description.",
+                      "dislikeCount": 2,
+                      "fileName": "sample.jpg",
+                      "filePath": "uploads/images/sample.jpg",
+                      "heartCount": 5,
+                      "id": 1,
+                      "likeCount": 10,
+                      "metadata": "EXIF data...",
+                      "negativePrompt": "low quality",
+                      "prompt": "A beautiful landscape",
+                      "rating": "safe",
+                      "sampler": "Euler",
+                      "seed": 123456789,
+                      "steps": 50,
+                      "title": "Sample Image",
+                      "updatedAt": "2025-01-01T12:00:00Z"
+                    }
+                  ],
+                  "totalCount": 1,
+                  "totalPages": 1
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ModelGalleryResponse"
+                }
+              }
+            },
+            "description": "A paginated list of image and video entries associated with the model."
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "description": "Model not found."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "Retrieve gallery images associated with a model",
+        "tags": [
+          "Models"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 1200,
+          "policyId": "standard-read",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 2400,
+          "windowSeconds": 60
+        }
+      }
+    },
+    "/api/models/{modelId}/versions": {
+      "get": {
+        "description": "List the versions visible to the caller for one model, including release metadata, file-safety state, hashes, activation tags, and public training metadata when available.",
+        "operationId": "listModelVersions",
+        "parameters": [
+          {
+            "description": "ID of the model.",
+            "example": 1,
+            "in": "path",
+            "name": "modelId",
+            "required": true,
+            "schema": {
+              "description": "Model Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "versions": [
+                    {
+                      "aboutThisVersion": "Initial release.",
+                      "activationTags": [
+                        "tag1",
+                        "tag2"
+                      ],
+                      "baseModel": "SD 1.5",
+                      "downloadCount": 10,
+                      "externalDownloadUrl": null,
+                      "fileName": "model_v1.safetensors",
+                      "filePath": "uploads/models/example/model_v1.safetensors",
+                      "fileScanEngineVersion": "clamscan --no-summary",
+                      "fileScanMeta": {
+                        "scanner": "clamav"
+                      },
+                      "fileScanReason": null,
+                      "fileScanSource": "local_upload",
+                      "fileScanStatus": "CLEAN",
+                      "fileScannedAt": "2026-03-19T10:00:00.000Z",
+                      "fileSizeKb": 131072,
+                      "id": 1,
+                      "imageOrder": [
+                        3,
+                        1,
+                        2
+                      ],
+                      "images": [],
+                      "originalName": "model_v1.safetensors",
+                      "publishAt": null,
+                      "sha256": "abcdef123456...",
+                      "sha256webui": "1234abcd",
+                      "status": "PUBLISHED",
+                      "supporterEarlyAccessEnabled": true,
+                      "trainingMetadataSummary": {
+                        "dataset": {
+                          "dirs": [
+                            {
+                              "imageCount": 128,
+                              "name": "cats"
+                            }
+                          ],
+                          "totalImages": 256
+                        },
+                        "extractedAt": "2026-02-19T10:00:00.000Z",
+                        "run": {
+                          "epoch": 3,
+                          "learningRate": 0.0001,
+                          "optimizer": "AdamW8bit",
+                          "resolution": "1024x1024",
+                          "totalEpochs": 10
+                        },
+                        "schemaVersion": 1,
+                        "source": "upload_local",
+                        "tagsTop": [
+                          {
+                            "count": 42,
+                            "tag": "cat"
+                          }
+                        ]
+                      },
+                      "versionName": "v1"
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ModelVersionListResponse"
+                }
+              }
+            },
+            "description": "Visible version objects wrapped in the stable versions property."
+          },
+          "404": {
+            "description": "Model not found."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "List all versions of a model",
+        "tags": [
+          "Models"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 1200,
+          "policyId": "standard-read",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 2400,
+          "windowSeconds": 60
+        }
+      }
+    },
+    "/api/models/{modelId}/versions/{versionId}": {
+      "get": {
+        "description": "Return one accessible model version, including hashes, file-safety state, activation tags, and public training metadata when those values are available.",
+        "operationId": "getModelVersion",
+        "parameters": [
+          {
+            "description": "Model Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "modelId",
+            "required": true,
+            "schema": {
+              "description": "Model Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Version Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "versionId",
+            "required": true,
+            "schema": {
+              "description": "Version Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "aboutThisVersion": "Initial release.",
+                  "activationTags": [
+                    "tag1",
+                    "tag2"
+                  ],
+                  "baseModel": "SD 1.5",
+                  "downloadCount": 10,
+                  "externalDownloadUrl": null,
+                  "fileName": "model_v1.safetensors",
+                  "filePath": "uploads/models/example/model_v1.safetensors",
+                  "fileScanEngineVersion": "clamscan --no-summary",
+                  "fileScanMeta": {
+                    "scanner": "clamav"
+                  },
+                  "fileScanReason": null,
+                  "fileScanSource": "local_upload",
+                  "fileScanStatus": "CLEAN",
+                  "fileScannedAt": "2026-03-19T10:00:00.000Z",
+                  "fileSizeKb": 131072,
+                  "id": 1,
+                  "imageOrder": [
+                    3,
+                    1,
+                    2
+                  ],
+                  "images": [],
+                  "originalName": "model_v1.safetensors",
+                  "publishAt": null,
+                  "sha256": "abcdef123456...",
+                  "sha256webui": "1234abcd",
+                  "status": "PUBLISHED",
+                  "supporterEarlyAccessEnabled": true,
+                  "trainingMetadataSummary": {
+                    "dataset": {
+                      "dirs": [
+                        {
+                          "imageCount": 128,
+                          "name": "cats"
+                        }
+                      ],
+                      "totalImages": 256
+                    },
+                    "extractedAt": "2026-02-19T10:00:00.000Z",
+                    "run": {
+                      "epoch": 3,
+                      "learningRate": 0.0001,
+                      "optimizer": "AdamW8bit",
+                      "resolution": "1024x1024",
+                      "totalEpochs": 10
+                    },
+                    "schemaVersion": 1,
+                    "source": "upload_local",
+                    "tagsTop": [
+                      {
+                        "count": 42,
+                        "tag": "cat"
+                      }
+                    ]
+                  },
+                  "versionName": "v1"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Version"
+                }
+              }
+            },
+            "description": "Version details retrieved successfully."
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "description": "Version not found."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "Retrieve details of a specific model version",
+        "tags": [
+          "Models"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 1200,
+          "policyId": "standard-read",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 2400,
+          "windowSeconds": 60
+        }
+      }
+    },
+    "/api/models/{modelId}/versions/{versionId}/download": {
+      "get": {
+        "description": "Download a hosted model file or register an external-only download. Clients must allow documented HTTPS redirects, preserve Range headers, and verify the full SHA-256 hash when provided.",
+        "operationId": "downloadModelVersion",
+        "parameters": [
+          {
+            "description": "Model Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "modelId",
+            "required": true,
+            "schema": {
+              "description": "Model Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Version Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "versionId",
+            "required": true,
+            "schema": {
+              "description": "Version Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Download registered (external URL)"
+                },
+                "schema": {
+                  "description": "200 response for api models model Id versions version Id download used by the Arc en Ciel API contract.",
+                  "properties": {
+                    "message": {
+                      "description": "Message accepted or returned by this contract.",
+                      "example": "Download registered (external URL)",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "application/octet-stream": {
+                "schema": {
+                  "description": "200 response for api models model Id versions version Id download used by the Arc en Ciel API contract.",
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Binary file download for hosted files, or JSON registration response for external-only versions.",
+            "headers": {
+              "Accept-Ranges": {
+                "schema": {
+                  "example": "bytes",
+                  "type": "string"
+                }
+              },
+              "Content-Disposition": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-File-Scan-Reason": {
+                "description": "Present when a scan reason is available.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-File-Scan-Status": {
+                "schema": {
+                  "enum": [
+                    "UNSCANNED",
+                    "PENDING",
+                    "CLEAN",
+                    "POTENTIALLY_RISKY",
+                    "INFECTED",
+                    "SCAN_ERROR",
+                    "UNVERIFIED_EXTERNAL"
+                  ],
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "206": {
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "description": "206 response for api models model Id versions version Id download used by the Arc en Ciel API contract.",
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Partial content for a valid byte range request.",
+            "headers": {
+              "Content-Length": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "Content-Range": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-File-Scan-Status": {
+                "schema": {
+                  "enum": [
+                    "UNSCANNED",
+                    "PENDING",
+                    "CLEAN",
+                    "POTENTIALLY_RISKY",
+                    "INFECTED",
+                    "SCAN_ERROR",
+                    "UNVERIFIED_EXTERNAL"
+                  ],
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "302": {
+            "description": "Production redirect to the dedicated transfer host for Arc-hosted files.",
+            "headers": {
+              "Location": {
+                "description": "Redirect target on https://uploads.arcenciel.io.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Cached file is still fresh."
+          },
+          "400": {
+            "description": "Invalid model/version id, relationship mismatch, or no hosted file path is available."
+          },
+          "403": {
+            "description": "Version is not public and the caller has no applicable early-access entitlement."
+          },
+          "404": {
+            "description": "Version not found or file not available."
+          },
+          "416": {
+            "description": "Requested byte range is not satisfiable."
+          },
+          "423": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "value"
+                },
+                "schema": {
+                  "description": "423 response for api models model Id versions version Id download used by the Arc en Ciel API contract.",
+                  "properties": {
+                    "error": {
+                      "description": "Error accepted or returned by this contract.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "File blocked due to malware, unsafe, or scan-error status."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "Download the model version file",
+        "tags": [
+          "Downloads"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 60,
+          "policyId": "model-download",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 120,
+          "windowSeconds": 300
+        }
+      }
+    },
+    "/api/models/{modelId}/versions/{versionId}/download-info": {
+      "get": {
+        "description": "Inspect the supported download source, filename, hashes, redirect allowlist, file-safety state, and early-access decision before transferring a model file.",
+        "operationId": "getModelVersionDownloadInfo",
+        "parameters": [
+          {
+            "description": "Model Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "modelId",
+            "required": true,
+            "schema": {
+              "description": "Model Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Version Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "versionId",
+            "required": true,
+            "schema": {
+              "description": "Version Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "allowedRedirectHosts": [
+                    "uploads.arcenciel.io"
+                  ],
+                  "available": true,
+                  "blocked": false,
+                  "downloadUrl": "/api/models/1/versions/2/download/model_v1.safetensors",
+                  "earlyAccess": {
+                    "canDownload": false,
+                    "canDownloadViaLink": false,
+                    "enabled": false,
+                    "reason": "PUBLIC",
+                    "startsAt": null,
+                    "state": "PUBLIC",
+                    "windowHours": 72
+                  },
+                  "externalDownloadUrl": null,
+                  "fileName": "model_v1.safetensors",
+                  "fileScanReason": null,
+                  "fileScanStatus": "CLEAN",
+                  "fileSizeKb": 131072,
+                  "modelId": 1,
+                  "originalName": "model_v1.safetensors",
+                  "registerUrl": "/api/models/1/versions/2/download/register",
+                  "sha256": "abcdef123456...",
+                  "sha256webui": "1234abcd",
+                  "source": "hosted",
+                  "status": "PUBLISHED",
+                  "versionId": 2
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/VersionDownloadInfo"
+                }
+              }
+            },
+            "description": "Download metadata for the version."
+          },
+          "400": {
+            "description": "Invalid model/version id or relationship mismatch."
+          },
+          "403": {
+            "description": "Version is not published or is scheduled for the future."
+          },
+          "404": {
+            "description": "Version not found."
+          },
+          "423": {
+            "description": "A scheduled hosted file is not safety-cleared for supporter early access."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "Inspect model version download metadata",
+        "tags": [
+          "Downloads"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 60,
+          "policyId": "model-download",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 120,
+          "windowSeconds": 300
+        }
+      }
+    },
+    "/api/models/{modelId}/versions/{versionId}/download/register": {
+      "post": {
+        "description": "Record a completed direct or external download without streaming the file through Arc en Ciel. Authentication is optional and associates the event with the caller when available.",
+        "operationId": "registerModelVersionDownload",
+        "parameters": [
+          {
+            "description": "Model Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "modelId",
+            "required": true,
+            "schema": {
+              "description": "Model Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Version Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "versionId",
+            "required": true,
+            "schema": {
+              "description": "Version Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "delivery": "external",
+                  "message": "value"
+                },
+                "schema": {
+                  "description": "200 response for api models model Id versions version Id download register used by the Arc en Ciel API contract.",
+                  "properties": {
+                    "delivery": {
+                      "description": "Delivery accepted or returned by this contract.",
+                      "enum": [
+                        "external",
+                        "local"
+                      ],
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Message accepted or returned by this contract.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Download registration completed."
+          },
+          "400": {
+            "description": "Invalid model/version id, relationship mismatch, or no file available."
+          },
+          "403": {
+            "description": "Version is not publicly available and the caller has no applicable early-access entitlement."
+          },
+          "404": {
+            "description": "Version not found or inaccessible."
+          },
+          "423": {
+            "description": "File blocked due to malware, unsafe, or scan-error status."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "Register a model version download without streaming the file",
+        "tags": [
+          "Downloads"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 60,
+          "policyId": "model-download",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 120,
+          "windowSeconds": 300
+        }
+      }
+    },
+    "/api/models/{modelId}/versions/{versionId}/download/{downloadName}": {
+      "get": {
+        "description": "Download the selected model version using a client-friendly filename hint. The version identifier selects the file; clients must not treat downloadName as a trusted source of identity.",
+        "operationId": "downloadModelVersionWithFilename",
+        "parameters": [
+          {
+            "description": "Model Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "modelId",
+            "required": true,
+            "schema": {
+              "description": "Model Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Version Id provided in the path.",
+            "example": 1,
+            "in": "path",
+            "name": "versionId",
+            "required": true,
+            "schema": {
+              "description": "Version Id used by the Arc en Ciel API contract.",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filename slug used by clients and CDNs; the version id selects the actual file.",
+            "example": "example-download-name",
+            "in": "path",
+            "name": "downloadName",
+            "required": true,
+            "schema": {
+              "description": "Download Name used by the Arc en Ciel API contract.",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Download registered (external URL)"
+                },
+                "schema": {
+                  "description": "200 response for api models model Id versions version Id download download Name used by the Arc en Ciel API contract.",
+                  "properties": {
+                    "message": {
+                      "description": "Message accepted or returned by this contract.",
+                      "example": "Download registered (external URL)",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "application/octet-stream": {
+                "schema": {
+                  "description": "200 response for api models model Id versions version Id download download Name used by the Arc en Ciel API contract.",
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Binary file download for hosted files, or JSON registration response for external-only versions.",
+            "headers": {
+              "Accept-Ranges": {
+                "schema": {
+                  "example": "bytes",
+                  "type": "string"
+                }
+              },
+              "Content-Disposition": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-File-Scan-Reason": {
+                "description": "Present when a scan reason is available.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-File-Scan-Status": {
+                "schema": {
+                  "enum": [
+                    "UNSCANNED",
+                    "PENDING",
+                    "CLEAN",
+                    "POTENTIALLY_RISKY",
+                    "INFECTED",
+                    "SCAN_ERROR",
+                    "UNVERIFIED_EXTERNAL"
+                  ],
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "206": {
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "description": "206 response for api models model Id versions version Id download download Name used by the Arc en Ciel API contract.",
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Partial content for a valid byte range request.",
+            "headers": {
+              "Content-Length": {
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "Content-Range": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-File-Scan-Status": {
+                "schema": {
+                  "enum": [
+                    "UNSCANNED",
+                    "PENDING",
+                    "CLEAN",
+                    "POTENTIALLY_RISKY",
+                    "INFECTED",
+                    "SCAN_ERROR",
+                    "UNVERIFIED_EXTERNAL"
+                  ],
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "302": {
+            "description": "Production redirect to the dedicated transfer host for Arc-hosted files.",
+            "headers": {
+              "Location": {
+                "description": "Redirect target on https://uploads.arcenciel.io.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Cached file is still fresh."
+          },
+          "400": {
+            "description": "Invalid model/version id, relationship mismatch, or no hosted file path is available."
+          },
+          "404": {
+            "description": "Version not found or file not available."
+          },
+          "416": {
+            "description": "Requested byte range is not satisfiable."
+          },
+          "423": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "value"
+                },
+                "schema": {
+                  "description": "423 response for api models model Id versions version Id download download Name used by the Arc en Ciel API contract.",
+                  "properties": {
+                    "error": {
+                      "description": "Error accepted or returned by this contract.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "File blocked due to malware, unsafe, or scan-error status."
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          },
+          {
+            "sessionCookieAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "summary": "Download the model version file with a stable filename",
+        "tags": [
+          "Downloads"
+        ],
+        "x-api-key-required-scope": "ModelsRead",
+        "x-api-key-required-scope-mask": 4,
+        "x-arcenciel-audience": "public",
+        "x-arcenciel-auth": {
+          "mode": "optional",
+          "schemes": [
+            "apiKeyAuth",
+            "bearerAuth",
+            "sessionCookieAuth"
+          ]
+        },
+        "x-arcenciel-contract-version": 1,
+        "x-arcenciel-stability": "stable",
+        "x-arcenciel-surfaces": [
+          "backend"
+        ],
+        "x-rate-limit-policy": {
+          "limit": 60,
+          "policyId": "model-download",
+          "scope": "user, trusted API key, or client IP",
+          "trustedApiKeyLimit": 120,
+          "windowSeconds": 300
+        }
+      }
+    }
+  },
+  "security": [],
+  "servers": [
+    {
+      "url": "https://arcenciel.io"
+    }
+  ],
+  "tags": [
+    {
+      "description": "Stable public model discovery and metadata operations.",
+      "name": "Models"
+    },
+    {
+      "description": "Stable file inspection, transfer, and download-registration operations.",
+      "name": "Downloads"
+    }
+  ],
+  "x-arcenciel-audience": "public",
+  "x-arcenciel-lifecycle": {
+    "deprecationNoticeDays": 180,
+    "policyUrl": "https://arcenciel.io/developers#lifecycle",
+    "previousMajorSupportDays": 365,
+    "stability": "stable"
+  },
+  "x-arcenciel-profile": "developer-v1",
+  "x-arcenciel-surfaces": [
+    "backend"
+  ]
+}

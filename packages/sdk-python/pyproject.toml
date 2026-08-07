@@ -1,0 +1,55 @@
+[project]
+name = "arcenciel"
+version = "0.1.0"
+description = "Official Python SDK for the Arc en Ciel Developer API"
+authors = [{name = "Arc en Ciel"}]
+readme = "README.md"
+keywords = ["Arc en Ciel", "OpenAPI", "SDK"]
+requires-python = ">=3.11"
+dependencies = [
+  "python-dateutil>=2.8.2",
+  "httpx>=0.28.1",
+  "pydantic>=2.11",
+  "typing-extensions>=4.7.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2.2",
+  "mypy>=1.17.0",
+  "pytest>=8.4.1",
+  "pytest-asyncio>=1.1.0",
+  "pytest-cov>=6.2.1",
+  "ruff>=0.12.7",
+  "types-python-dateutil>=2.9.0.20250708",
+]
+
+[project.urls]
+Repository = "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.1.0/packages/sdk-python"
+Documentation = "https://arcenciel.io/developers"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["arcenciel*"]
+
+[tool.mypy]
+files = ["arcenciel/client.py", "arcenciel/errors.py", "tests"]
+strict = true
+exclude = ["arcenciel/generated/"]
+
+[[tool.mypy.overrides]]
+module = ["arcenciel.generated.*"]
+follow_imports = "skip"
+ignore_errors = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = ["arcenciel/generated", "test"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=arcenciel.client --cov=arcenciel.errors --cov-report=term-missing --cov-fail-under=90"
