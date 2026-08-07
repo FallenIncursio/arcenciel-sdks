@@ -16,6 +16,7 @@ describe('ArcEnCielClient', () => {
           'comments',
           'downloads',
           'emotes',
+          'generator',
           'images',
           'models',
           'notifications',
@@ -26,7 +27,7 @@ describe('ArcEnCielClient', () => {
           'videos',
         ].includes(key)
       )
-    ).toHaveLength(14)
+    ).toHaveLength(15)
 
     await client.models.listModelClasses()
 
@@ -34,6 +35,20 @@ describe('ArcEnCielClient', () => {
     const [url, init] = fetch.mock.calls[0]
     expect(url).toBe('https://example.test/api/models/classes')
     expect(new Headers(init?.headers).get('x-api-key')).toBe('secret')
+  })
+
+  it('exposes the v1.6 generator namespace with API-key authentication', async () => {
+    const fetch = vi.fn(async () =>
+      Response.json({ enabled: true, message: null, allowModeratorsWhenDisabled: false, regionalPromptsAdminsOnly: false })
+    )
+    const client = new ArcEnCielClient({ apiKey: 'generator-key', baseUrl: 'https://example.test', fetch, retry: false })
+
+    const state = await client.generator.getGeneratorState()
+
+    expect(state.enabled).toBe(true)
+    const [url, init] = fetch.mock.calls[0]
+    expect(url).toBe('https://example.test/api/generator/state')
+    expect(new Headers(init?.headers).get('x-api-key')).toBe('generator-key')
   })
 
   it('normalizes generated response errors', async () => {

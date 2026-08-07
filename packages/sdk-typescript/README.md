@@ -1,13 +1,13 @@
-# `@arcenciel/sdk` 0.5.0 source beta
+# `@arcenciel/sdk` 0.6.0 source beta
 
-Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.5.0` contract. The package is tested for Node.js
+Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.6.0` contract. The package is tested for Node.js
 20.20+ and modern browsers. It remains a source beta until the public release manifest reports `published-beta`; the npm package name is
 reserved in the release workflow but is not currently published.
 
 ## Install the source beta
 
 ```bash
-git clone --branch sdk-v0.5.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
+git clone --branch sdk-v0.6.0 --depth 1 https://github.com/FallenIncursio/arcenciel-sdks.git
 cd arcenciel-sdks/packages/sdk-typescript
 npm install --ignore-scripts
 npx tsc
@@ -18,7 +18,7 @@ node scripts/write-esm-package.mjs
 After trusted publication, the release manifest and Developer Portal switch to:
 
 ```bash
-npm install @arcenciel/sdk@0.5.0
+npm install @arcenciel/sdk@0.6.0
 ```
 
 ## Search and inspect a model
@@ -124,6 +124,7 @@ while reusing a key returns `409`.
 | `client.comments`      | Typed article, image, model, and video comment reads and mutations                   |
 | `client.downloads`     | Model download metadata, binary transfers, training TOML, archives, and registration |
 | `client.emotes`        | Anonymous emote catalogue reads                                                      |
+| `client.generator`     | Image/video generation options, presets, uploads, jobs, events, outputs, and publish |
 | `client.images`        | Image discovery, uploads, metadata, crossposts, publishing, and bulk transfer        |
 | `client.models`        | Models, versions, resumable uploads, managed media, resources, and publishing        |
 | `client.notifications` | Cursor-paginated inbox, summary, and read-state updates                              |
@@ -138,11 +139,11 @@ The generated low-level APIs and models are also exported from the package root.
 
 ## Contract and generation
 
-- Developer API: `1.5.0`, 168 operations
-- SDK: `0.5.0` source beta
+- Developer API: `1.6.0`, 211 operations
+- SDK: `0.6.0` source beta
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.5.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.6.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

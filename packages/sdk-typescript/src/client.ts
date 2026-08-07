@@ -4,6 +4,7 @@ import { CollectionsApi } from './apis/CollectionsApi.js'
 import { CommentsApi } from './apis/CommentsApi.js'
 import { DownloadsApi } from './apis/DownloadsApi.js'
 import { EmotesApi } from './apis/EmotesApi.js'
+import { GeneratorApi } from './apis/GeneratorApi.js'
 import { ImagesApi } from './apis/ImagesApi.js'
 import { ModelsApi } from './apis/ModelsApi.js'
 import { NotificationsApi } from './apis/NotificationsApi.js'
@@ -98,6 +99,7 @@ export class ArcEnCielClient {
   readonly models: ModelsApi
   readonly downloads: DownloadsApi
   readonly emotes: EmotesApi
+  readonly generator: GeneratorApi
   readonly images: ImagesApi
   readonly notifications: NotificationsApi
   readonly profile: ProfileApi
@@ -129,6 +131,7 @@ export class ArcEnCielClient {
     this.comments = new CommentsApi(configuration)
     this.downloads = new DownloadsApi(configuration)
     this.emotes = new EmotesApi(configuration)
+    this.generator = new GeneratorApi(configuration)
     this.images = new ImagesApi(configuration)
     this.models = new ModelsApi(configuration)
     this.notifications = new NotificationsApi(configuration)

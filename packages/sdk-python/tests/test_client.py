@@ -29,6 +29,7 @@ def test_configures_namespaces_and_api_key() -> None:
             client.comments,
             client.downloads,
             client.emotes,
+            client.generator,
             client.images,
             client.notifications,
             client.profile,
@@ -38,6 +39,21 @@ def test_configures_namespaces_and_api_key() -> None:
             client.videos,
         )
     )
+
+
+def test_exposes_v16_generator_namespace() -> None:
+    client = ArcEnCielClient(api_key="generator-key", base_url="https://example.test")
+
+    method, url, headers, _, _ = client.generator._get_generator_state_serialize(
+        _request_auth=None,
+        _content_type=None,
+        _headers=None,
+        _host_index=0,
+    )
+
+    assert method == "GET"
+    assert url == "https://example.test/api/generator/state"
+    assert headers["x-api-key"] == "generator-key"
 
 
 def test_normalizes_api_errors() -> None:

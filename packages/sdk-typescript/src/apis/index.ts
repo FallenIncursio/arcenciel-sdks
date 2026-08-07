@@ -6,6 +6,7 @@ export * from './CollectionsApi.js';
 export * from './CommentsApi.js';
 export * from './DownloadsApi.js';
 export * from './EmotesApi.js';
+export * from './GeneratorApi.js';
 export * from './ImagesApi.js';
 export * from './ModelsApi.js';
 export * from './NotificationsApi.js';
