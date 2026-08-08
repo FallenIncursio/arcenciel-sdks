@@ -1,12 +1,13 @@
-# `arcenciel` 0.9.0 registry beta
+# `arcenciel` 1.0.0 stable
 
 Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.9.0` contract. The package provides synchronous and asynchronous
-generated APIs behind a small stable facade. It is published from the signed public source tag through PyPI Trusted Publishing.
+generated APIs behind a small stable facade. PyPI publishes it from the signed public source tag through OIDC Trusted Publishing with a
+digital attestation.
 
 ## Install
 
 ```bash
-python3.11 -m pip install arcenciel==0.9.0
+python3.11 -m pip install arcenciel==1.0.0
 ```
 
 ## Search and inspect a model
@@ -191,7 +192,7 @@ The generated low-level APIs and Pydantic models remain available under `arcenci
 ## Contract and generation
 
 - Developer API: `1.9.0`, 258 operations
-- SDK: `0.9.0` published beta
+- SDK: `1.0.0` stable
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
