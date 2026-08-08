@@ -319,14 +319,26 @@ def verify_webhook_signature(
 
     fields = [part.strip().partition("=") for part in signature_header.split(",")]
     timestamp_values = [value for name, separator, value in fields if separator and name == "t"]
-    signatures = [value.lower() for name, separator, value in fields if separator and name == "v1"]
-    if not timestamp_values or not signatures or not timestamp_values[0].isdigit():
+    timestamp_value = timestamp_values[0] if timestamp_values else ""
+    signatures = [
+        value.lower()
+        for name, separator, value in fields
+        if separator
+        and name == "v1"
+        and len(value) == 64
+        and all(character in "0123456789abcdefABCDEF" for character in value)
+    ]
+    if (
+        not signatures
+        or not 1 <= len(timestamp_value) <= 16
+        or any(character not in "0123456789" for character in timestamp_value)
+    ):
         return False
-    timestamp = int(timestamp_values[0])
+    timestamp = int(timestamp_value)
     current = int(time.time() if now is None else now)
     if tolerance_seconds < 0 or abs(current - timestamp) > tolerance_seconds:
         return False
     body = raw_body.encode("utf-8") if isinstance(raw_body, str) else raw_body
-    signed = timestamp_values[0].encode("ascii") + b"." + body
+    signed = timestamp_value.encode("ascii") + b"." + body
     expected = hmac.new(signing_secret.encode("utf-8"), signed, hashlib.sha256).hexdigest()
     return any(hmac.compare_digest(signature, expected) for signature in signatures)

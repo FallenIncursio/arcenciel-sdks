@@ -407,3 +407,6 @@ def test_verifies_webhook_signatures_rotation_and_timestamp_tolerance() -> None:
         now=float(timestamp + 301),
     )
     assert not verify_webhook_signature(body, "invalid", secret)
+    assert not verify_webhook_signature(body, f"t=\u0661,v1={signature}", secret)
+    assert not verify_webhook_signature(body, f"t={timestamp},v1={chr(0x0661) * 64}", secret)
+    assert not verify_webhook_signature(body, f"t={'1' * 17},v1={signature}", secret)
