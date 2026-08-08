@@ -18,6 +18,7 @@ arcenciel/generated/api/tags_api.py
 arcenciel/generated/api/trust_safety_api.py
 arcenciel/generated/api/users_api.py
 arcenciel/generated/api/videos_api.py
+arcenciel/generated/api/webhooks_api.py
 arcenciel/generated/api_client.py
 arcenciel/generated/api_response.py
 arcenciel/generated/configuration.py
@@ -82,6 +83,8 @@ arcenciel/generated/models/create_generator_preset_request.py
 arcenciel/generated/models/create_illegal_content_notice_request.py
 arcenciel/generated/models/create_image_crosspost_request.py
 arcenciel/generated/models/create_model_version_chunk_upload_request.py
+arcenciel/generated/models/create_webhook_endpoint201_response.py
+arcenciel/generated/models/create_webhook_endpoint_request.py
 arcenciel/generated/models/creator_stats_applied_range.py
 arcenciel/generated/models/creator_stats_range_bounds.py
 arcenciel/generated/models/creator_stats_response.py
@@ -165,6 +168,11 @@ arcenciel/generated/models/developer_version_mutation_response.py
 arcenciel/generated/models/developer_video_mutation_response.py
 arcenciel/generated/models/developer_video_reaction_response.py
 arcenciel/generated/models/developer_video_upload_response.py
+arcenciel/generated/models/developer_webhook_delivery.py
+arcenciel/generated/models/developer_webhook_delivery_response.py
+arcenciel/generated/models/developer_webhook_endpoint.py
+arcenciel/generated/models/developer_webhook_endpoint_response.py
+arcenciel/generated/models/developer_webhook_event_type.py
 arcenciel/generated/models/download_generator_jobs_bulk_request.py
 arcenciel/generated/models/download_generator_video_job403_response.py
 arcenciel/generated/models/download_images_bulk_request.py
@@ -289,6 +297,9 @@ arcenciel/generated/models/list_model_classes200_response.py
 arcenciel/generated/models/list_model_classes200_response_classes_inner.py
 arcenciel/generated/models/list_tag_usage200_response_inner.py
 arcenciel/generated/models/list_users200_response.py
+arcenciel/generated/models/list_webhook_deliveries200_response.py
+arcenciel/generated/models/list_webhook_endpoints200_response.py
+arcenciel/generated/models/list_webhook_event_types200_response.py
 arcenciel/generated/models/mark_all_notifications_read_request.py
 arcenciel/generated/models/mark_chat_thread_read_request.py
 arcenciel/generated/models/mark_notifications_read_request.py
@@ -331,6 +342,7 @@ arcenciel/generated/models/request_illegal_content_notice_review_request.py
 arcenciel/generated/models/resequence_collection_items_request.py
 arcenciel/generated/models/resolve_users_request.py
 arcenciel/generated/models/respond_collection_contribution_request_request.py
+arcenciel/generated/models/rotate_webhook_secret200_response.py
 arcenciel/generated/models/schedule_image_request.py
 arcenciel/generated/models/schedule_model_version_request.py
 arcenciel/generated/models/schedule_video_request.py
@@ -353,6 +365,8 @@ arcenciel/generated/models/set_model_version_community_media_request.py
 arcenciel/generated/models/set_video_reaction_request.py
 arcenciel/generated/models/stream_generator_video_output403_response.py
 arcenciel/generated/models/tag.py
+arcenciel/generated/models/test_webhook_endpoint202_response.py
+arcenciel/generated/models/test_webhook_endpoint202_response_data.py
 arcenciel/generated/models/toggle_chat_message_reaction_request.py
 arcenciel/generated/models/toggle_pinned_template_request.py
 arcenciel/generated/models/touch_generator_uploads404_response.py
@@ -370,6 +384,7 @@ arcenciel/generated/models/update_my_profile_request.py
 arcenciel/generated/models/update_my_social_links_request.py
 arcenciel/generated/models/update_my_social_links_request_links_inner.py
 arcenciel/generated/models/update_video_request.py
+arcenciel/generated/models/update_webhook_endpoint_request.py
 arcenciel/generated/models/uploads.py
 arcenciel/generated/models/user.py
 arcenciel/generated/models/user_profile.py
@@ -449,6 +464,8 @@ docs/CreateGeneratorPresetRequest.md
 docs/CreateIllegalContentNoticeRequest.md
 docs/CreateImageCrosspostRequest.md
 docs/CreateModelVersionChunkUploadRequest.md
+docs/CreateWebhookEndpoint201Response.md
+docs/CreateWebhookEndpointRequest.md
 docs/CreatorStatsAppliedRange.md
 docs/CreatorStatsRangeBounds.md
 docs/CreatorStatsResponse.md
@@ -532,6 +549,11 @@ docs/DeveloperVersionMutationResponse.md
 docs/DeveloperVideoMutationResponse.md
 docs/DeveloperVideoReactionResponse.md
 docs/DeveloperVideoUploadResponse.md
+docs/DeveloperWebhookDelivery.md
+docs/DeveloperWebhookDeliveryResponse.md
+docs/DeveloperWebhookEndpoint.md
+docs/DeveloperWebhookEndpointResponse.md
+docs/DeveloperWebhookEventType.md
 docs/DownloadGeneratorJobsBulkRequest.md
 docs/DownloadGeneratorVideoJob403Response.md
 docs/DownloadImagesBulkRequest.md
@@ -661,6 +683,9 @@ docs/ListModelClasses200Response.md
 docs/ListModelClasses200ResponseClassesInner.md
 docs/ListTagUsage200ResponseInner.md
 docs/ListUsers200Response.md
+docs/ListWebhookDeliveries200Response.md
+docs/ListWebhookEndpoints200Response.md
+docs/ListWebhookEventTypes200Response.md
 docs/MarkAllNotificationsReadRequest.md
 docs/MarkChatThreadReadRequest.md
 docs/MarkNotificationsReadRequest.md
@@ -706,6 +731,7 @@ docs/RequestIllegalContentNoticeReviewRequest.md
 docs/ResequenceCollectionItemsRequest.md
 docs/ResolveUsersRequest.md
 docs/RespondCollectionContributionRequestRequest.md
+docs/RotateWebhookSecret200Response.md
 docs/ScheduleImageRequest.md
 docs/ScheduleModelVersionRequest.md
 docs/ScheduleVideoRequest.md
@@ -730,6 +756,8 @@ docs/SocialApi.md
 docs/StreamGeneratorVideoOutput403Response.md
 docs/Tag.md
 docs/TagsApi.md
+docs/TestWebhookEndpoint202Response.md
+docs/TestWebhookEndpoint202ResponseData.md
 docs/ToggleChatMessageReactionRequest.md
 docs/TogglePinnedTemplateRequest.md
 docs/TouchGeneratorUploads404Response.md
@@ -748,6 +776,7 @@ docs/UpdateMyProfileRequest.md
 docs/UpdateMySocialLinksRequest.md
 docs/UpdateMySocialLinksRequestLinksInner.md
 docs/UpdateVideoRequest.md
+docs/UpdateWebhookEndpointRequest.md
 docs/Uploads.md
 docs/User.md
 docs/UserProfile.md
@@ -762,3 +791,4 @@ docs/VersionTrainingMetadataSummaryRun.md
 docs/VersionTrainingMetadataSummaryTagsTopInner.md
 docs/Video.md
 docs/VideosApi.md
+docs/WebhooksApi.md

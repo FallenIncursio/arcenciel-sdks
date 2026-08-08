@@ -16,6 +16,7 @@ import { TagsApi } from './apis/TagsApi.js'
 import { TrustSafetyApi } from './apis/TrustSafetyApi.js'
 import { UsersApi } from './apis/UsersApi.js'
 import { VideosApi } from './apis/VideosApi.js'
+import { WebhooksApi } from './apis/WebhooksApi.js'
 import { ArcEnCielError, toArcEnCielError } from './errors.js'
 import { Configuration, type FetchAPI, ResponseError } from './runtime.js'
 
@@ -38,6 +39,11 @@ export interface ModelVersionDownloadOptions {
   filename?: string
   range?: string
   signal?: AbortSignal
+}
+
+export interface VerifyWebhookSignatureOptions {
+  toleranceSeconds?: number
+  now?: Date
 }
 
 const RETRYABLE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS'])
@@ -113,6 +119,7 @@ export class ArcEnCielClient {
   readonly trustSafety: TrustSafetyApi
   readonly users: UsersApi
   readonly videos: VideosApi
+  readonly webhooks: WebhooksApi
   private readonly apiKey?: string
   private readonly accessToken?: string
   private readonly baseUrl: string
@@ -123,7 +130,9 @@ export class ArcEnCielClient {
     if (!sourceFetch) throw new ArcEnCielError('A Fetch API implementation is required')
     this.apiKey = options.apiKey
     this.accessToken = options.accessToken
-    this.baseUrl = (options.baseUrl ?? 'https://arcenciel.io').replace(/\/+$/, '')
+    let baseUrl = options.baseUrl ?? 'https://arcenciel.io'
+    while (baseUrl.endsWith('/')) baseUrl = baseUrl.slice(0, -1)
+    this.baseUrl = baseUrl
     this.fetchApi = createArcEnCielFetch(sourceFetch.bind(globalThis) as FetchAPI, options.timeoutMs ?? 30_000, options.retry ?? {})
     const configuration = new Configuration({
       basePath: this.baseUrl,
@@ -149,6 +158,7 @@ export class ArcEnCielClient {
     this.trustSafety = new TrustSafetyApi(configuration)
     this.users = new UsersApi(configuration)
     this.videos = new VideosApi(configuration)
+    this.webhooks = new WebhooksApi(configuration)
   }
 
   async call<T>(request: () => Promise<T>): Promise<T> {
@@ -206,6 +216,54 @@ export async function readAndVerifySha256(response: Response, expectedSha256: st
     })
   }
   return bytes
+}
+
+function webhookBodyBytes(rawBody: string | ArrayBuffer | Uint8Array): Uint8Array {
+  if (typeof rawBody === 'string') return new TextEncoder().encode(rawBody)
+  return rawBody instanceof Uint8Array ? Uint8Array.from(rawBody) : new Uint8Array(rawBody.slice(0))
+}
+
+function constantTimeHexEqual(left: string, right: string): boolean {
+  if (left.length !== right.length || !/^[a-f0-9]+$/i.test(left) || !/^[a-f0-9]+$/i.test(right)) return false
+  let difference = 0
+  for (let index = 0; index < left.length; index += 1) difference |= left.charCodeAt(index) ^ right.charCodeAt(index)
+  return difference === 0
+}
+
+export async function verifyWebhookSignature(
+  rawBody: string | ArrayBuffer | Uint8Array,
+  signatureHeader: string,
+  signingSecret: string,
+  options: VerifyWebhookSignatureOptions = {}
+): Promise<boolean> {
+  if (!globalThis.crypto?.subtle) {
+    throw new ArcEnCielError('Web Crypto HMAC-SHA256 support is required', { code: 'CRYPTO_UNAVAILABLE' })
+  }
+  const fields = signatureHeader.split(',').map(field => field.trim().split('=', 2))
+  const timestampValue = fields.find(([name]) => name === 't')?.[1]
+  const signatures = fields.filter(([name, value]) => name === 'v1' && value).map(([, value]) => value.toLowerCase())
+  if (!timestampValue || signatures.length === 0 || !/^\d+$/.test(timestampValue)) return false
+  const timestamp = Number(timestampValue)
+  const nowSeconds = Math.floor((options.now ?? new Date()).getTime() / 1000)
+  const toleranceSeconds = options.toleranceSeconds ?? 300
+  if (!Number.isSafeInteger(timestamp) || toleranceSeconds < 0 || Math.abs(nowSeconds - timestamp) > toleranceSeconds) return false
+
+  const prefix = new TextEncoder().encode(`${timestampValue}.`)
+  const body = webhookBodyBytes(rawBody)
+  const signedPayload = new Uint8Array(prefix.length + body.length)
+  signedPayload.set(prefix)
+  signedPayload.set(body, prefix.length)
+  const key = await globalThis.crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(signingSecret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  )
+  const digest = Array.from(new Uint8Array(await globalThis.crypto.subtle.sign('HMAC', key, signedPayload)))
+    .map(value => value.toString(16).padStart(2, '0'))
+    .join('')
+  return signatures.some(signature => constantTimeHexEqual(signature, digest))
 }
 
 export async function* paginate<T>(

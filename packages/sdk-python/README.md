@@ -1,13 +1,12 @@
-# `arcenciel` 0.8.2 published beta
+# `arcenciel` 0.9.0 registry beta
 
-Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.8.0` contract. The package provides synchronous and asynchronous
-generated APIs behind a small stable facade. PyPI publishes it from the signed public source tag through OIDC Trusted Publishing with a
-digital attestation.
+Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.9.0` contract. The package provides synchronous and asynchronous
+generated APIs behind a small stable facade. It is published from the signed public source tag through PyPI Trusted Publishing.
 
 ## Install
 
 ```bash
-python3.11 -m pip install arcenciel==0.8.2
+python3.11 -m pip install arcenciel==0.9.0
 ```
 
 ## Search and inspect a model
@@ -32,6 +31,21 @@ if model and model.id:
 
 Public catalogue reads do not require credentials. Configure `api_key` for account-specific filters and attribution. Use one key per
 integration and grant only the documented scope.
+
+## Test safely in the sandbox
+
+All 258 stable methods can target deterministic, non-persistent fixtures without changing generated code:
+
+```python
+sandbox = ArcEnCielClient(
+    base_url="https://arcenciel.io/developers/sandbox",
+    api_key="aec_test_public",
+)
+page = sandbox.call_sync(lambda: sandbox.models.search_models_sync(limit=5))
+```
+
+The sandbox rejects live API keys, bearer credentials, and cookies. It supports documented error scenarios, binary ranges, redirects, and
+streams for integration and retry tests. See the [sandbox guide](https://arcenciel.io/developers/sandbox).
 
 Async calls use the same typed namespace and opt into retries only when the operation is safe:
 
@@ -129,39 +143,59 @@ print(created.id)
 Grant `ChatRead` for thread, message, presence, unread, and preview reads. Add `ChatWrite` only for requests, groups, messages, reactions,
 read state, and group mutations. Reuse the same idempotency key when deliberately retrying a request, group, or message create.
 
+## Manage and verify Developer Webhooks
+
+```python
+from arcenciel import ArcEnCielClient, verify_webhook_signature
+
+client = ArcEnCielClient(api_key="...")
+endpoints = client.webhooks.list_webhook_endpoints_sync()
+valid = verify_webhook_signature(
+    raw_body,
+    request.headers["x-aec-signature"],
+    webhook_secret,
+)
+```
+
+Grant `WebhooksRead` for event, endpoint, and delivery reads. Add `WebhooksWrite` for endpoint lifecycle, test delivery, secret rotation, and
+manual retry. Pass the exact unparsed request body to `verify_webhook_signature`; its default replay window is five minutes.
+Run [`examples/webhook_workflow.py`](./examples/webhook_workflow.py) with a `WebhooksRead` key for a non-mutating discovery and local
+signature-verification smoke workflow.
+
 ## Stable namespaces
 
-| Namespace              | Stable operations                                                                    |
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| `client.articles`      | Article discovery, drafts, media, scheduling, publication, updates, and deletion     |
-| `client.chat`          | Private threads, requests, groups, messages, reactions, presence, and read state     |
-| `client.collabs`       | Collaboration discovery, showcases, requests, participant media, and membership      |
-| `client.collections`   | Collection discovery, creation, collaborators, contribution review, items, and media |
-| `client.comments`      | Typed article, image, model, and video comment reads and mutations                   |
-| `client.downloads`     | Model download metadata, binary transfers, training TOML, archives, and registration |
-| `client.emotes`        | Anonymous emote catalogue reads                                                      |
-| `client.feedback`      | Caller-owned product feedback, attachments, and deletion                             |
-| `client.generator`     | Image/video generation options, presets, uploads, jobs, events, outputs, and publish |
-| `client.images`        | Image discovery, uploads, metadata, crossposts, publishing, and bulk transfer        |
-| `client.models`        | Models, versions, resumable uploads, managed media, resources, and publishing        |
-| `client.notifications` | Cursor-paginated inbox, summary, and read-state updates                              |
-| `client.profile`       | Own profile, uploads, export, history, pinned templates, links, and profile media    |
-| `client.social`        | Favorites, follows, image/video reactions, and their explicit removal operations     |
-| `client.tags`          | Anonymous tag-usage discovery                                                        |
-| `client.trust_safety`  | Illegal-content notices, private evidence, review requests, and content reports      |
-| `client.users`         | Public profiles, creator statistics, search, and visible uploads                     |
-| `client.videos`        | Video discovery, uploads, metadata, publishing, HLS, streaming, and downloads        |
+| Namespace              | Stable operations                                                                     |
+| ---------------------- | ------------------------------------------------------------------------------------- |
+| `client.articles`      | Article discovery, drafts, media, scheduling, publication, updates, and deletion      |
+| `client.chat`          | Private threads, requests, groups, messages, reactions, presence, and read state      |
+| `client.collabs`       | Collaboration discovery, showcases, requests, participant media, and membership       |
+| `client.collections`   | Collection discovery, creation, collaborators, contribution review, items, and media  |
+| `client.comments`      | Typed article, image, model, and video comment reads and mutations                    |
+| `client.downloads`     | Model download metadata, binary transfers, training TOML, archives, and registration  |
+| `client.emotes`        | Anonymous emote catalogue reads                                                       |
+| `client.feedback`      | Caller-owned product feedback, attachments, and deletion                              |
+| `client.generator`     | Image/video generation options, presets, uploads, jobs, events, outputs, and publish  |
+| `client.images`        | Image discovery, uploads, metadata, crossposts, publishing, and bulk transfer         |
+| `client.models`        | Models, versions, resumable uploads, managed media, resources, and publishing         |
+| `client.notifications` | Cursor-paginated inbox, summary, and read-state updates                               |
+| `client.profile`       | Own profile, uploads, export, history, pinned templates, links, and profile media     |
+| `client.social`        | Favorites, follows, image/video reactions, and their explicit removal operations      |
+| `client.tags`          | Anonymous tag-usage discovery                                                         |
+| `client.trust_safety`  | Illegal-content notices, private evidence, review requests, and content reports       |
+| `client.users`         | Public profiles, creator statistics, search, and visible uploads                      |
+| `client.videos`        | Video discovery, uploads, metadata, publishing, HLS, streaming, and downloads         |
+| `client.webhooks`      | Endpoint lifecycle, event catalog, delivery diagnostics, retries, and secret rotation |
 
 The generated low-level APIs and Pydantic models remain available under `arcenciel.generated`.
 
 ## Contract and generation
 
-- Developer API: `1.8.0`, 246 operations
-- SDK: `0.8.2` published beta
+- Developer API: `1.9.0`, 258 operations
+- SDK: `0.9.0` published beta
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.8.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.9.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

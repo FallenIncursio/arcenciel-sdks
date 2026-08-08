@@ -19,3 +19,4 @@ from arcenciel.generated.api.tags_api import TagsApi
 from arcenciel.generated.api.trust_safety_api import TrustSafetyApi
 from arcenciel.generated.api.users_api import UsersApi
 from arcenciel.generated.api.videos_api import VideosApi
+from arcenciel.generated.api.webhooks_api import WebhooksApi

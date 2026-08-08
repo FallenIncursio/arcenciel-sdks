@@ -62,6 +62,8 @@ docs/CreateGeneratorPresetRequest.md
 docs/CreateIllegalContentNoticeRequest.md
 docs/CreateImageCrosspostRequest.md
 docs/CreateModelVersionChunkUploadRequest.md
+docs/CreateWebhookEndpoint201Response.md
+docs/CreateWebhookEndpointRequest.md
 docs/CreatorStatsAppliedRange.md
 docs/CreatorStatsRangeBounds.md
 docs/CreatorStatsResponse.md
@@ -145,6 +147,11 @@ docs/DeveloperVersionMutationResponse.md
 docs/DeveloperVideoMutationResponse.md
 docs/DeveloperVideoReactionResponse.md
 docs/DeveloperVideoUploadResponse.md
+docs/DeveloperWebhookDelivery.md
+docs/DeveloperWebhookDeliveryResponse.md
+docs/DeveloperWebhookEndpoint.md
+docs/DeveloperWebhookEndpointResponse.md
+docs/DeveloperWebhookEventType.md
 docs/DownloadGeneratorJobsBulkRequest.md
 docs/DownloadGeneratorVideoJob403Response.md
 docs/DownloadImagesBulkRequest.md
@@ -274,6 +281,9 @@ docs/ListModelClasses200Response.md
 docs/ListModelClasses200ResponseClassesInner.md
 docs/ListTagUsage200ResponseInner.md
 docs/ListUsers200Response.md
+docs/ListWebhookDeliveries200Response.md
+docs/ListWebhookEndpoints200Response.md
+docs/ListWebhookEventTypes200Response.md
 docs/MarkAllNotificationsReadRequest.md
 docs/MarkChatThreadReadRequest.md
 docs/MarkNotificationsReadRequest.md
@@ -319,6 +329,7 @@ docs/RequestIllegalContentNoticeReviewRequest.md
 docs/ResequenceCollectionItemsRequest.md
 docs/ResolveUsersRequest.md
 docs/RespondCollectionContributionRequestRequest.md
+docs/RotateWebhookSecret200Response.md
 docs/ScheduleImageRequest.md
 docs/ScheduleModelVersionRequest.md
 docs/ScheduleVideoRequest.md
@@ -343,6 +354,8 @@ docs/SocialApi.md
 docs/StreamGeneratorVideoOutput403Response.md
 docs/Tag.md
 docs/TagsApi.md
+docs/TestWebhookEndpoint202Response.md
+docs/TestWebhookEndpoint202ResponseData.md
 docs/ToggleChatMessageReactionRequest.md
 docs/TogglePinnedTemplateRequest.md
 docs/TouchGeneratorUploads404Response.md
@@ -361,6 +374,7 @@ docs/UpdateMyProfileRequest.md
 docs/UpdateMySocialLinksRequest.md
 docs/UpdateMySocialLinksRequestLinksInner.md
 docs/UpdateVideoRequest.md
+docs/UpdateWebhookEndpointRequest.md
 docs/Uploads.md
 docs/User.md
 docs/UserProfile.md
@@ -375,6 +389,7 @@ docs/VersionTrainingMetadataSummaryRun.md
 docs/VersionTrainingMetadataSummaryTagsTopInner.md
 docs/Video.md
 docs/VideosApi.md
+docs/WebhooksApi.md
 src/apis/ArticlesApi.ts
 src/apis/ChatApi.ts
 src/apis/CollabsApi.ts
@@ -393,6 +408,7 @@ src/apis/TagsApi.ts
 src/apis/TrustSafetyApi.ts
 src/apis/UsersApi.ts
 src/apis/VideosApi.ts
+src/apis/WebhooksApi.ts
 src/apis/index.ts
 src/models/AddCollectionCollaboratorRequest.ts
 src/models/AddCollectionItemsRequest.ts
@@ -453,6 +469,8 @@ src/models/CreateGeneratorPresetRequest.ts
 src/models/CreateIllegalContentNoticeRequest.ts
 src/models/CreateImageCrosspostRequest.ts
 src/models/CreateModelVersionChunkUploadRequest.ts
+src/models/CreateWebhookEndpoint201Response.ts
+src/models/CreateWebhookEndpointRequest.ts
 src/models/CreatorStatsAppliedRange.ts
 src/models/CreatorStatsRangeBounds.ts
 src/models/CreatorStatsResponse.ts
@@ -536,6 +554,11 @@ src/models/DeveloperVersionMutationResponse.ts
 src/models/DeveloperVideoMutationResponse.ts
 src/models/DeveloperVideoReactionResponse.ts
 src/models/DeveloperVideoUploadResponse.ts
+src/models/DeveloperWebhookDelivery.ts
+src/models/DeveloperWebhookDeliveryResponse.ts
+src/models/DeveloperWebhookEndpoint.ts
+src/models/DeveloperWebhookEndpointResponse.ts
+src/models/DeveloperWebhookEventType.ts
 src/models/DownloadGeneratorJobsBulkRequest.ts
 src/models/DownloadGeneratorVideoJob403Response.ts
 src/models/DownloadImagesBulkRequest.ts
@@ -660,6 +683,9 @@ src/models/ListModelClasses200Response.ts
 src/models/ListModelClasses200ResponseClassesInner.ts
 src/models/ListTagUsage200ResponseInner.ts
 src/models/ListUsers200Response.ts
+src/models/ListWebhookDeliveries200Response.ts
+src/models/ListWebhookEndpoints200Response.ts
+src/models/ListWebhookEventTypes200Response.ts
 src/models/MarkAllNotificationsReadRequest.ts
 src/models/MarkChatThreadReadRequest.ts
 src/models/MarkNotificationsReadRequest.ts
@@ -702,6 +728,7 @@ src/models/RequestIllegalContentNoticeReviewRequest.ts
 src/models/ResequenceCollectionItemsRequest.ts
 src/models/ResolveUsersRequest.ts
 src/models/RespondCollectionContributionRequestRequest.ts
+src/models/RotateWebhookSecret200Response.ts
 src/models/ScheduleImageRequest.ts
 src/models/ScheduleModelVersionRequest.ts
 src/models/ScheduleVideoRequest.ts
@@ -724,6 +751,8 @@ src/models/SetModelVersionCommunityMediaRequest.ts
 src/models/SetVideoReactionRequest.ts
 src/models/StreamGeneratorVideoOutput403Response.ts
 src/models/Tag.ts
+src/models/TestWebhookEndpoint202Response.ts
+src/models/TestWebhookEndpoint202ResponseData.ts
 src/models/ToggleChatMessageReactionRequest.ts
 src/models/TogglePinnedTemplateRequest.ts
 src/models/TouchGeneratorUploads404Response.ts
@@ -741,6 +770,7 @@ src/models/UpdateMyProfileRequest.ts
 src/models/UpdateMySocialLinksRequest.ts
 src/models/UpdateMySocialLinksRequestLinksInner.ts
 src/models/UpdateVideoRequest.ts
+src/models/UpdateWebhookEndpointRequest.ts
 src/models/Uploads.ts
 src/models/User.ts
 src/models/UserProfile.ts
