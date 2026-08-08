@@ -1,14 +1,14 @@
 # GeneratorQuotaBudgetBucket
 
-Gpu Ms accepted or returned by this contract.
+Structured gpu ms details for this budgets.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**limit** | **int** | Limit accepted or returned by this contract. |
-**remaining** | **int** | Remaining accepted or returned by this contract. |
-**used** | **int** | Used accepted or returned by this contract. |
+**limit** | **int** | Maximum number of records requested or returned in one page of this gpu ms. |
+**remaining** | **int** | Numeric remaining reported for this gpu ms. |
+**used** | **int** | Numeric used reported for this gpu ms. |
 
 ## Example
 

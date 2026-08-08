@@ -1,7 +1,7 @@
 
 # SearchUsers200ResponseInner
 
-200 response for api users search item used by the Arc en Ciel API contract.
+Structured 200 response for api users search item details for this 200 response for api users search.
 
 ## Properties
 

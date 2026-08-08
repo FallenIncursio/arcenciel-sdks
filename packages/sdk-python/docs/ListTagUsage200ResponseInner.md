@@ -1,14 +1,14 @@
 # ListTagUsage200ResponseInner
 
-200 response for api tags usage item used by the Arc en Ciel API contract.
+Structured 200 response for api tags usage item details for this 200 response for api tags usage.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **int** | Count accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
+**count** | **int** | Number of count records represented by this 200 response for api tags usage item. | [optional]
+**id** | **int** | Stable identifier for the 200 response for api tags usage item; use it in subsequent API calls instead of a display name. | [optional]
+**name** | **str** | Human-readable name for this 200 response for api tags usage item; it is not a stable identifier. | [optional]
 
 ## Example
 

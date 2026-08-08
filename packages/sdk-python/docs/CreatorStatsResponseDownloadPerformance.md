@@ -1,13 +1,13 @@
 # CreatorStatsResponseDownloadPerformance
 
-Download Performance accepted or returned by this contract.
+Structured download performance details for this creator stats response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **returning_downloader_rate** | **float** | Ratio from zero through one. |
-**returning_downloaders** | **int** | Returning Downloaders accepted or returned by this contract. |
+**returning_downloaders** | **int** | Numeric returning downloaders reported for this download performance. |
 
 ## Example
 

@@ -1,16 +1,16 @@
 # GeneratorTagSuggestion
 
-Generator Tag Suggestion used by the Arc en Ciel API contract.
+Fields describing generator tag suggestion in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**aliases** | **List[str]** | Aliases accepted or returned by this contract. |
-**count** | **int** | Count accepted or returned by this contract. | [optional]
-**display** | **str** | Display accepted or returned by this contract. |
-**name** | **str** | Name accepted or returned by this contract. |
-**type** | **int** | Type accepted or returned by this contract. | [optional]
+**aliases** | **List[str]** | Ordered aliases entries included with this generator tag suggestion; an empty list means none are available. |
+**count** | **int** | Number of count records represented by this generator tag suggestion. | [optional]
+**display** | **str** | Display associated with this generator tag suggestion; preserve server-returned values when passing them to another operation. |
+**name** | **str** | Human-readable name for this generator tag suggestion; it is not a stable identifier. |
+**type** | **int** | Discriminator identifying the kind of generator tag suggestion; clients should tolerate future values. | [optional]
 
 ## Example
 

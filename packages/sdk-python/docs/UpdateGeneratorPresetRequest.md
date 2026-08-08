@@ -1,15 +1,15 @@
 # UpdateGeneratorPresetRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** | Description accepted or returned by this contract. | [optional]
+**description** | **str** | User-facing description of this request payload; it may contain an empty string when no description was supplied. | [optional]
 **is_public** | **bool** | Staff only. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
-**payload** | **Dict[str, object]** | Payload accepted or returned by this contract. | [optional]
+**name** | **str** | Human-readable name for this request payload; it is not a stable identifier. | [optional]
+**payload** | **Dict[str, object]** | Structured payload details for this request payload. | [optional]
 
 ## Example
 

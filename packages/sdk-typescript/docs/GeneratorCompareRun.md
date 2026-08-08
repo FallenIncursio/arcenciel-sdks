@@ -1,7 +1,7 @@
 
 # GeneratorCompareRun
 
-Generator Compare Run used by the Arc en Ciel API contract.
+Fields describing generator compare run in Developer API requests and responses.
 
 ## Properties
 

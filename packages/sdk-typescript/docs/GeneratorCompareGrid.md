@@ -1,7 +1,7 @@
 
 # GeneratorCompareGrid
 
-Generator Compare Grid used by the Arc en Ciel API contract.
+Fields describing generator compare grid in Developer API requests and responses.
 
 ## Properties
 

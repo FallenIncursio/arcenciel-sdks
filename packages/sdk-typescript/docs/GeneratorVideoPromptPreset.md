@@ -1,7 +1,7 @@
 
 # GeneratorVideoPromptPreset
 
-Generator Video Prompt Preset used by the Arc en Ciel API contract.
+Fields describing generator video prompt preset in Developer API requests and responses.
 
 ## Properties
 

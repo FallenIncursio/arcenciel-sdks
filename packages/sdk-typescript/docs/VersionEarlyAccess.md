@@ -1,7 +1,7 @@
 
 # VersionEarlyAccess
 
-Early Access accepted or returned by this contract.
+Structured early access details for this versions item.
 
 ## Properties
 

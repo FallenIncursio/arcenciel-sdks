@@ -2172,7 +2172,7 @@ async function example() {
   const api = new GeneratorApi(config);
 
   const body = {
-    // Blob | Image accepted or returned by this contract.
+    // Blob | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
     image: BINARY_DATA_HERE,
   } satisfies InterrogateGeneratorImageRequest;
 
@@ -2193,7 +2193,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **image** | `Blob` | Image accepted or returned by this contract. | [Defaults to `undefined`] |
+| **image** | `Blob` | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Defaults to `undefined`] |
 
 ### Return type
 
@@ -3527,7 +3527,7 @@ async function example() {
   const api = new GeneratorApi(config);
 
   const body = {
-    // Blob | Image accepted or returned by this contract.
+    // Blob | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
     image: BINARY_DATA_HERE,
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
@@ -3552,7 +3552,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **image** | `Blob` | Image accepted or returned by this contract. | [Defaults to `undefined`] |
+| **image** | `Blob` | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Defaults to `undefined`] |
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
 | **kind** | `SOURCE`, `MASK`, `ATTENTION`, `CONTROLNET`, `OTHER` | Upload classification used for TTL/quota tracking. Unknown values fall back to &#x60;SOURCE&#x60;. | [Optional] [Defaults to `&#39;SOURCE&#39;`] [Enum: SOURCE, MASK, ATTENTION, CONTROLNET, OTHER] |
 

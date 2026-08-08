@@ -1,7 +1,7 @@
 
 # SearchVideos200Response
 
-200 response for api videos search used by the Arc en Ciel API contract.
+Fields describing 200 response for api videos search in Developer API requests and responses.
 
 ## Properties
 

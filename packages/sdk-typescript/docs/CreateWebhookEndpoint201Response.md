@@ -1,7 +1,7 @@
 
 # CreateWebhookEndpoint201Response
 
-201 response for api webhooks endpoints used by the Arc en Ciel API contract.
+201 response for api webhooks endpoints value documented for this operation.
 
 ## Properties
 

@@ -1,20 +1,20 @@
 # ModelVersionResourceBase
 
-Required item used by the Arc en Ciel API contract.
+Structured required item details for this required.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**confidence** | **float** | Confidence accepted or returned by this contract. |
-**edge_id** | **int** | Edge Id accepted or returned by this contract. |
+**confidence** | **float** | Numeric confidence reported for this required item. Format: double. |
+**edge_id** | **int** | Stable identifier for the edge; use it in subsequent API calls instead of a display name. |
 **evidence** | **object** | Source-specific evidence. New evidence fields may be added without a contract change. |
-**id** | **int** | Id accepted or returned by this contract. |
+**id** | **int** | Stable identifier for the required item; use it in subsequent API calls instead of a display name. |
 **kind** | **str** | Dependency kind such as REQUIRED, RECOMMENDED, COMPATIBLE, or SAMPLE_USED. |
 **management** | [**ModelVersionResourceBaseManagement**](ModelVersionResourceBaseManagement.md) |  | [optional]
 **source** | **str** | Discovery source such as IMAGE_METADATA, IMPORTER_WEBHOOK, MANUAL, or SYSTEM. |
 **status** | **str** | Current values are ACTIVE and HIDDEN; clients must tolerate additions. |
-**strength** | **float** | Strength accepted or returned by this contract. |
+**strength** | **float** | Numeric strength reported for this required item. Format: double. |
 **target_type** | **str** | Current values are local and external; clients must tolerate additions. |
 
 ## Example

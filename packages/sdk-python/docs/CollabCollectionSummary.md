@@ -1,18 +1,18 @@
 # CollabCollectionSummary
 
-Collab Collection Summary used by the Arc en Ciel API contract.
+Fields describing collab collection summary in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cover_image** | **str** | Cover Image accepted or returned by this contract. | [optional]
-**cover_image_rating** | **str** | Cover Image Rating accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. |
-**model_count** | **int** | Model Count accepted or returned by this contract. |
-**name** | **str** | Name accepted or returned by this contract. |
-**slug** | **str** | Slug accepted or returned by this contract. |
-**visibility** | **str** | Visibility accepted or returned by this contract. |
+**cover_image** | **str** | Cover Image associated with this collab collection summary; preserve server-returned values when passing them to another operation. | [optional]
+**cover_image_rating** | **str** | Cover Image Rating associated with this collab collection summary; preserve server-returned values when passing them to another operation. | [optional]
+**id** | **int** | Stable identifier for the collab collection summary; use it in subsequent API calls instead of a display name. Minimum: 1. |
+**model_count** | **int** | Number of model records represented by this collab collection summary. Minimum: 0. |
+**name** | **str** | Human-readable name for this collab collection summary; it is not a stable identifier. |
+**slug** | **str** | Slug associated with this collab collection summary; preserve server-returned values when passing them to another operation. |
+**visibility** | **str** | Visibility associated with this collab collection summary; preserve server-returned values when passing them to another operation. Supported values: &#x60;PUBLIC&#x60;, &#x60;UNLISTED&#x60;, &#x60;PRIVATE&#x60;. |
 
 ## Example
 

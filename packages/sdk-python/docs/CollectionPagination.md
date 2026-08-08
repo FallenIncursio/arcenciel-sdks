@@ -1,6 +1,6 @@
 # CollectionPagination
 
-Collection Pagination used by the Arc en Ciel API contract.
+Fields describing collection pagination in Developer API requests and responses.
 
 ## Properties
 

@@ -1,19 +1,19 @@
 # TouchGeneratorUploads404Response
 
-404 response for api generator uploads touch used by the Arc en Ciel API contract.
+404 response for api generator uploads touch value documented for this operation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | **str** | Error accepted or returned by this contract. |
+**error** | **str** | Error associated with this generator error; preserve server-returned values when passing them to another operation. |
 **error_code** | **str** | Stable machine-readable error code for client handling. | [optional]
 **safety_reason** | **str** | Present for safety-restricted output access responses (for example &#x60;nsfw&#x60;). | [optional]
 **safety_status** | **str** | Present for safety-restricted output access responses. | [optional]
-**expires_at** | **datetime** | Expires At accepted or returned by this contract. |
-**missing** | **List[str]** | Missing accepted or returned by this contract. |
-**touched** | **int** | Touched accepted or returned by this contract. |
-**ttl_seconds** | **int** | Ttl Seconds accepted or returned by this contract. |
+**expires_at** | **datetime** | UTC timestamp for the expires at transition of this generator upload touch response. Format: date-time. |
+**missing** | **List[str]** | Ordered missing entries included with this generator upload touch response; an empty list means none are available. |
+**touched** | **int** | Numeric touched reported for this generator upload touch response. Minimum: 0. |
+**ttl_seconds** | **int** | Numeric ttl seconds reported for this generator upload touch response. |
 
 ## Example
 

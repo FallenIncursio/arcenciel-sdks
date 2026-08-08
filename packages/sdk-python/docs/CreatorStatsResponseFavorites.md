@@ -1,13 +1,13 @@
 # CreatorStatsResponseFavorites
 
-Favorites accepted or returned by this contract.
+Structured favorites details for this creator stats response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**articles** | **int** | Articles accepted or returned by this contract. |
-**models** | **int** | Models accepted or returned by this contract. |
+**articles** | **int** | Numeric articles reported for this favorites. |
+**models** | **int** | Numeric models reported for this favorites. |
 
 ## Example
 

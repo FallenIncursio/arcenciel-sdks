@@ -1,7 +1,7 @@
 
 # GeneratorCompareResponse
 
-Generator Compare Response used by the Arc en Ciel API contract.
+Fields describing generator compare response in Developer API requests and responses.
 
 ## Properties
 

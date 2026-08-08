@@ -1,7 +1,7 @@
 
 # CreateGeneratorJobRequestPromptControlOneOf
 
-Prompt Control used by the Arc en Ciel API contract.
+Structured prompt control details for this request payload.
 
 ## Properties
 

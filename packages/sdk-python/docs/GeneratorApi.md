@@ -2688,7 +2688,7 @@ configuration = arcenciel.generated.Configuration(
 async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.GeneratorApi(api_client)
-    image = None # bytes | Image accepted or returned by this contract.
+    image = None # bytes | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
 
     try:
         # Interrogate uploaded image with autotagger (artist+)
@@ -2706,7 +2706,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image** | **bytes**| Image accepted or returned by this contract. |
+ **image** | **bytes**| Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. |
 
 ### Return type
 
@@ -4330,7 +4330,7 @@ configuration = arcenciel.generated.Configuration(
 async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.GeneratorApi(api_client)
-    image = None # bytes | Image accepted or returned by this contract.
+    image = None # bytes | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     kind = 'SOURCE' # str | Upload classification used for TTL/quota tracking. Unknown values fall back to `SOURCE`. (optional) (default to 'SOURCE')
 
@@ -4350,7 +4350,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image** | **bytes**| Image accepted or returned by this contract. |
+ **image** | **bytes**| Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. |
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
  **kind** | **str**| Upload classification used for TTL/quota tracking. Unknown values fall back to &#x60;SOURCE&#x60;. | [optional] [default to &#39;SOURCE&#39;]
 

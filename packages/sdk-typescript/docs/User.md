@@ -1,7 +1,7 @@
 
 # User
 
-Uploader accepted or returned by this contract.
+Structured uploader details for this video.
 
 ## Properties
 

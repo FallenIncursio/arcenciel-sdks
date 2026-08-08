@@ -1,7 +1,7 @@
 
 # ListTagUsage200ResponseInner
 
-200 response for api tags usage item used by the Arc en Ciel API contract.
+Structured 200 response for api tags usage item details for this 200 response for api tags usage.
 
 ## Properties
 

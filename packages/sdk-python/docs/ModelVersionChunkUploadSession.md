@@ -1,17 +1,17 @@
 # ModelVersionChunkUploadSession
 
-Model Version Chunk Upload Session used by the Arc en Ciel API contract.
+Fields describing model version chunk upload session in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **chunk_size** | **int** | Negotiated non-final chunk length in bytes. Clients must use this returned value. |
-**created_at** | **datetime** | Created At accepted or returned by this contract. |
+**created_at** | **datetime** | UTC timestamp when this model version chunk upload session was created. Format: date-time. |
 **error** | **str** | Processing failure message when &#x60;status&#x60; is &#x60;error&#x60;; otherwise &#x60;null&#x60;. |
 **expires_at** | **datetime** | Fixed expiry set 24 hours after creation; chunk uploads do not extend it. |
 **file_size** | **int** | Expected total file length in bytes. |
-**model_id** | **int** | Model Id accepted or returned by this contract. |
+**model_id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. Minimum: 1. |
 **original_name** | **str** | Path-stripped base name supplied when the session was created. |
 **received_bytes** | **int** | Sum of valid staged chunk lengths. |
 **received_chunks** | **List[int]** | Zero-based indices of chunks currently stored with the expected byte length. |

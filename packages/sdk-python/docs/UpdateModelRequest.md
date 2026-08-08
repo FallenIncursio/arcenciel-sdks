@@ -1,6 +1,6 @@
 # UpdateModelRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author_wishes** | **str** | JSON array of author wishes. | [optional]
 **description** | **str** | Sanitized rich HTML model description. Legacy Markdown or mixed Civitai-style HTML is accepted for compatibility and rendered by the rich-content pipeline. | [optional]
-**tags** | **str** | Tags accepted or returned by this contract. | [optional]
-**title** | **str** | Title accepted or returned by this contract. | [optional]
-**type** | **str** | Type accepted or returned by this contract. | [optional]
+**tags** | **str** | Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+**title** | **str** | Display title shown to users for this request payload. | [optional]
+**type** | **str** | Discriminator identifying the kind of request payload; clients should tolerate future values. | [optional]
 
 ## Example
 

@@ -1971,9 +1971,9 @@ configuration = arcenciel.generated.Configuration(
 async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.ImagesApi(api_client)
-    image = None # bytes | Image accepted or returned by this contract.
+    image = None # bytes | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
     backend = 'backend_example' # str | Optional style matcher backend override. (optional)
-    limit = 8 # int | Limit accepted or returned by this contract. (optional) (default to 8)
+    limit = 8 # int | Maximum number of records requested or returned in one page of this request payload. Maximum: 50. (optional) (default to 8)
 
     try:
         # Upload an image and retrieve style-similar matches.
@@ -1991,9 +1991,9 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **image** | **bytes**| Image accepted or returned by this contract. |
+ **image** | **bytes**| Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. |
  **backend** | **str**| Optional style matcher backend override. | [optional]
- **limit** | **int**| Limit accepted or returned by this contract. | [optional] [default to 8]
+ **limit** | **int**| Maximum number of records requested or returned in one page of this request payload. Maximum: 50. | [optional] [default to 8]
 
 ### Return type
 
@@ -2385,10 +2385,10 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.ImagesApi(api_client)
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    description = 'description_example' # str | Description accepted or returned by this contract. (optional)
+    description = 'description_example' # str | User-facing description of this request payload; it may contain an empty string when no description was supplied. (optional)
     image_files = None # List[bytes] | Array of image files. (optional)
     tags = 'tags_example' # str | Comma-separated list of tags. (optional)
-    title = 'title_example' # str | Title accepted or returned by this contract. (optional)
+    title = 'title_example' # str | Display title shown to users for this request payload. (optional)
 
     try:
         # Upload one or multiple images
@@ -2407,10 +2407,10 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
- **description** | **str**| Description accepted or returned by this contract. | [optional]
+ **description** | **str**| User-facing description of this request payload; it may contain an empty string when no description was supplied. | [optional]
  **image_files** | **List[bytes]**| Array of image files. | [optional]
  **tags** | **str**| Comma-separated list of tags. | [optional]
- **title** | **str**| Title accepted or returned by this contract. | [optional]
+ **title** | **str**| Display title shown to users for this request payload. | [optional]
 
 ### Return type
 

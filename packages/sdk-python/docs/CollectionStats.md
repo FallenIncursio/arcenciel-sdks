@@ -1,15 +1,15 @@
 # CollectionStats
 
-Collection Stats used by the Arc en Ciel API contract.
+Fields describing collection stats in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_count** | **int** | Image Count accepted or returned by this contract. |
-**last_updated** | **datetime** | Last Updated accepted or returned by this contract. |
-**model_count** | **int** | Model Count accepted or returned by this contract. |
-**total_items** | **int** | Total Items accepted or returned by this contract. |
+**image_count** | **int** | Number of image records represented by this collection stats. Minimum: 0. |
+**last_updated** | **datetime** | Last Updated associated with this collection stats; preserve server-returned values when passing them to another operation. Format: date-time. |
+**model_count** | **int** | Number of model records represented by this collection stats. Minimum: 0. |
+**total_items** | **int** | Numeric total items reported for this collection stats. Minimum: 0. |
 
 ## Example
 

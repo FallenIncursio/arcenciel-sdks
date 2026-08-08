@@ -1,13 +1,13 @@
 # VersionTrainingMetadataSummaryDatasetDirsInner
 
-Dirs item used by the Arc en Ciel API contract.
+Structured dirs item details for this dirs.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_count** | **int** | Image Count accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
+**image_count** | **int** | Number of image records represented by this dirs item. | [optional]
+**name** | **str** | Human-readable name for this dirs item; it is not a stable identifier. | [optional]
 
 ## Example
 

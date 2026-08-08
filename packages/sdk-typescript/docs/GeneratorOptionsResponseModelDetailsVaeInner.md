@@ -1,7 +1,7 @@
 
 # GeneratorOptionsResponseModelDetailsVaeInner
 
-Vae item used by the Arc en Ciel API contract.
+Structured vae item details for this vae.
 
 ## Properties
 

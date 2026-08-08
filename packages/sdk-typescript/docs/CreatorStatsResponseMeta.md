@@ -1,7 +1,7 @@
 
 # CreatorStatsResponseMeta
 
-Meta accepted or returned by this contract.
+Structured meta details for this creator stats response.
 
 ## Properties
 

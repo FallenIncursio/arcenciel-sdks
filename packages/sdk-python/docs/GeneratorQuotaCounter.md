@@ -1,14 +1,14 @@
 # GeneratorQuotaCounter
 
-Daily accepted or returned by this contract.
+Structured daily details for this quota.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**limit** | **int** | Limit accepted or returned by this contract. |
-**remaining** | **int** | Remaining accepted or returned by this contract. |
-**used** | **int** | Used accepted or returned by this contract. |
+**limit** | **int** | Maximum number of records requested or returned in one page of this daily. |
+**remaining** | **int** | Numeric remaining reported for this daily. |
+**used** | **int** | Numeric used reported for this daily. |
 
 ## Example
 

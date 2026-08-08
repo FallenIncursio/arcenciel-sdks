@@ -1,7 +1,7 @@
 
 # GeneratorPresetExport
 
-Generator Preset Export used by the Arc en Ciel API contract.
+Fields describing generator preset export in Developer API requests and responses.
 
 ## Properties
 

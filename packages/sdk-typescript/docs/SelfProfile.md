@@ -1,7 +1,7 @@
 
 # SelfProfile
 
-Self Profile used by the Arc en Ciel API contract.
+Fields describing self profile in Developer API requests and responses.
 
 ## Properties
 

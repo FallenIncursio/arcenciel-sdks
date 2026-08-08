@@ -1,13 +1,13 @@
 # GeneratorCompareResponse
 
-Generator Compare Response used by the Arc en Ciel API contract.
+Fields describing generator compare response in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **compare_run** | [**GeneratorCompareRun**](GeneratorCompareRun.md) |  |
-**jobs** | [**List[GeneratorJobEnvelope]**](GeneratorJobEnvelope.md) | Jobs accepted or returned by this contract. |
+**jobs** | [**List[GeneratorJobEnvelope]**](GeneratorJobEnvelope.md) | Ordered jobs entries included with this generator compare response; an empty list means none are available. |
 
 ## Example
 

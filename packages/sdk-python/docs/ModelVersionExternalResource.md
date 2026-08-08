@@ -1,30 +1,30 @@
 # ModelVersionExternalResource
 
-External item used by the Arc en Ciel API contract.
+External item associated with this external; preserve server-returned values when passing them to another operation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**confidence** | **float** | Confidence accepted or returned by this contract. |
-**edge_id** | **int** | Edge Id accepted or returned by this contract. |
+**confidence** | **float** | Numeric confidence reported for this required item. Format: double. |
+**edge_id** | **int** | Stable identifier for the edge; use it in subsequent API calls instead of a display name. |
 **evidence** | **object** | Source-specific evidence. New evidence fields may be added without a contract change. |
-**id** | **int** | Id accepted or returned by this contract. |
+**id** | **int** | Stable identifier for the required item; use it in subsequent API calls instead of a display name. |
 **kind** | **str** | Dependency kind such as REQUIRED, RECOMMENDED, COMPATIBLE, or SAMPLE_USED. |
 **management** | [**ModelVersionResourceBaseManagement**](ModelVersionResourceBaseManagement.md) |  | [optional]
 **source** | **str** | Discovery source such as IMAGE_METADATA, IMPORTER_WEBHOOK, MANUAL, or SYSTEM. |
 **status** | **str** | Current values are ACTIVE and HIDDEN; clients must tolerate additions. |
-**strength** | **float** | Strength accepted or returned by this contract. |
+**strength** | **float** | Numeric strength reported for this required item. Format: double. |
 **target_type** | **str** | Current values are local and external; clients must tolerate additions. |
-**base_model** | **str** | Base Model accepted or returned by this contract. | [optional]
-**download_url** | **str** | Download Url accepted or returned by this contract. | [optional]
-**external_resource_id** | **int** | External Resource Id accepted or returned by this contract. |
-**file_name** | **str** | File Name accepted or returned by this contract. | [optional]
-**model_type** | **str** | Model Type accepted or returned by this contract. | [optional]
-**provider** | **str** | Provider accepted or returned by this contract. |
-**title** | **str** | Title accepted or returned by this contract. |
-**url** | **str** | Url accepted or returned by this contract. |
-**version_name** | **str** | Version Name accepted or returned by this contract. | [optional]
+**base_model** | **str** | Base Model associated with this external item; preserve server-returned values when passing them to another operation. | [optional]
+**download_url** | **str** | URL for the download url associated with this external item; do not persist temporary signed query parameters. Format: uri. | [optional]
+**external_resource_id** | **int** | Stable identifier for the external resource; use it in subsequent API calls instead of a display name. |
+**file_name** | **str** | Human-readable file name for this external item; it is not a stable identifier. | [optional]
+**model_type** | **str** | Discriminator identifying the kind of external item; clients should tolerate future values. | [optional]
+**provider** | **str** | Provider associated with this external item; preserve server-returned values when passing them to another operation. |
+**title** | **str** | Display title shown to users for this external item. |
+**url** | **str** | URL for the url associated with this external item; do not persist temporary signed query parameters. Format: uri. |
+**version_name** | **str** | Human-readable version name for this external item; it is not a stable identifier. | [optional]
 
 ## Example
 

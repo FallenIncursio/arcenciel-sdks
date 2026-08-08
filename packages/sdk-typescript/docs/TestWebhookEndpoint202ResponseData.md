@@ -1,7 +1,7 @@
 
 # TestWebhookEndpoint202ResponseData
 
-Data accepted or returned by this contract.
+Structured data details for this 202 response for api webhooks endpoints endpoint id test.
 
 ## Properties
 

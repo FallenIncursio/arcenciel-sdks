@@ -1,7 +1,7 @@
 
 # RemixGeneratorJob202Response
 
-202 response for api generator jobs id remix used by the Arc en Ciel API contract.
+202 response for api generator jobs id remix value documented for this operation.
 
 ## Properties
 

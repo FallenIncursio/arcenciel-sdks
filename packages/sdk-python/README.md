@@ -1,13 +1,13 @@
-# `arcenciel` 1.0.0 stable
+# `arcenciel` 1.0.1 stable
 
-Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.9.0` contract. The package provides synchronous and asynchronous
+Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.9.1` contract. The package provides synchronous and asynchronous
 generated APIs behind a small stable facade. PyPI publishes it from the signed public source tag through OIDC Trusted Publishing with a
 digital attestation.
 
 ## Install
 
 ```bash
-python3.11 -m pip install arcenciel==1.0.0
+python3.11 -m pip install arcenciel==1.0.1
 ```
 
 ## Search and inspect a model
@@ -32,6 +32,33 @@ if model and model.id:
 
 Public catalogue reads do not require credentials. Configure `api_key` for account-specific filters and attribution. Use one key per
 integration and grant only the documented scope.
+
+## Page and cursor pagination
+
+The facade exposes separate sync and async helpers for the API's two pagination styles. Wrap a generated response in
+`PagePaginationResult` or `CursorPaginationResult`; callers then iterate values without maintaining page counters or opaque cursors:
+
+```python
+from arcenciel import CursorPaginationResult, PagePaginationResult
+from arcenciel import paginate_cursor, paginate_pages
+
+def load_models(page_number: int) -> PagePaginationResult:
+    result = client.models.search_models_sync(page=page_number, limit=50)
+    return PagePaginationResult(result.data, total_pages=result.total_pages)
+
+for model in paginate_pages(load_models):
+    print(model.id)
+
+def load_notifications(cursor: str | None) -> CursorPaginationResult:
+    result = client.notifications.list_notifications_sync(cursor=cursor, limit=50)
+    return CursorPaginationResult(result.data, next_cursor=result.next_cursor)
+
+for notification in paginate_cursor(load_notifications):
+    print(notification.id)
+```
+
+Use `paginate_pages_async` and `paginate_cursor_async` with async generated methods. Invalid starts and repeated cursors raise
+`ArcEnCielError` with code `INVALID_PAGINATION` instead of looping forever.
 
 ## Test safely in the sandbox
 
@@ -191,12 +218,12 @@ The generated low-level APIs and Pydantic models remain available under `arcenci
 
 ## Contract and generation
 
-- Developer API: `1.9.0`, 258 operations
-- SDK: `1.0.0` stable
+- Developer API: `1.9.1`, 258 operations
+- SDK: `1.0.1` stable
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.9.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.9.1.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

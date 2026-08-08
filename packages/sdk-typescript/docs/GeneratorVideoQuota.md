@@ -1,7 +1,7 @@
 
 # GeneratorVideoQuota
 
-Generator Video Quota used by the Arc en Ciel API contract.
+Fields describing generator video quota in Developer API requests and responses.
 
 ## Properties
 

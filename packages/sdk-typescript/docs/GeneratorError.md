@@ -1,7 +1,7 @@
 
 # GeneratorError
 
-Generator Error used by the Arc en Ciel API contract.
+Fields describing generator error in Developer API requests and responses.
 
 ## Properties
 

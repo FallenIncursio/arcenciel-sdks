@@ -1,7 +1,7 @@
 
 # ListModelClasses200Response
 
-200 response for api models classes used by the Arc en Ciel API contract.
+Fields describing 200 response for api models classes in Developer API requests and responses.
 
 ## Properties
 

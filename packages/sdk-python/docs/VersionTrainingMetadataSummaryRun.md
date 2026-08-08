@@ -1,21 +1,21 @@
 # VersionTrainingMetadataSummaryRun
 
-Run accepted or returned by this contract.
+Structured run details for this training metadata summary.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**batch_size** | **int** | Batch Size accepted or returned by this contract. | [optional]
-**epoch** | **int** | Epoch accepted or returned by this contract. | [optional]
-**learning_rate** | **float** | Learning Rate accepted or returned by this contract. | [optional]
-**optimizer** | **str** | Optimizer accepted or returned by this contract. | [optional]
-**resolution** | **str** | Resolution accepted or returned by this contract. | [optional]
-**scheduler** | **str** | Scheduler accepted or returned by this contract. | [optional]
-**steps** | **int** | Steps accepted or returned by this contract. | [optional]
-**text_encoder_learning_rate** | **float** | Text Encoder Learning Rate accepted or returned by this contract. | [optional]
-**total_epochs** | **int** | Total Epochs accepted or returned by this contract. | [optional]
-**unet_learning_rate** | **float** | Unet Learning Rate accepted or returned by this contract. | [optional]
+**batch_size** | **int** | Numeric batch size reported for this run. | [optional]
+**epoch** | **int** | Numeric epoch reported for this run. | [optional]
+**learning_rate** | **float** | Numeric learning rate reported for this run. | [optional]
+**optimizer** | **str** | Optimizer associated with this run; preserve server-returned values when passing them to another operation. | [optional]
+**resolution** | **str** | Resolution associated with this run; preserve server-returned values when passing them to another operation. | [optional]
+**scheduler** | **str** | Scheduler associated with this run; preserve server-returned values when passing them to another operation. | [optional]
+**steps** | **int** | Numeric steps reported for this run. | [optional]
+**text_encoder_learning_rate** | **float** | Numeric text encoder learning rate reported for this run. | [optional]
+**total_epochs** | **int** | Numeric total epochs reported for this run. | [optional]
+**unet_learning_rate** | **float** | Numeric unet learning rate reported for this run. | [optional]
 
 ## Example
 

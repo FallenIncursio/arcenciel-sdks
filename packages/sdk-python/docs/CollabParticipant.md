@@ -1,28 +1,28 @@
 # CollabParticipant
 
-Collab Participant used by the Arc en Ciel API contract.
+Fields describing collab participant in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**character_name** | **str** | Character Name accepted or returned by this contract. | [optional]
-**created_at** | **datetime** | Created At accepted or returned by this contract. | [optional]
-**display_order** | **int** | Display Order accepted or returned by this contract. |
-**id** | **int** | Id accepted or returned by this contract. |
-**notes** | **str** | Notes accepted or returned by this contract. | [optional]
-**placeholder_image** | **str** | Placeholder Image accepted or returned by this contract. | [optional]
-**placeholder_image_description** | **str** | Placeholder Image Description accepted or returned by this contract. | [optional]
-**placeholder_image_rating** | **str** | Placeholder Image Rating accepted or returned by this contract. | [optional]
-**placeholder_image_source_url** | **str** | Placeholder Image Source Url accepted or returned by this contract. | [optional]
-**requested_at** | **datetime** | Requested At accepted or returned by this contract. | [optional]
-**responded_at** | **datetime** | Responded At accepted or returned by this contract. | [optional]
-**source_title** | **str** | Source Title accepted or returned by this contract. | [optional]
-**status** | **str** | Status accepted or returned by this contract. |
-**submissions** | **List[Dict[str, object]]** | Submissions accepted or returned by this contract. |
-**updated_at** | **datetime** | Updated At accepted or returned by this contract. | [optional]
-**user** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | User accepted or returned by this contract. | [optional]
-**user_id** | **int** | User Id accepted or returned by this contract. | [optional]
+**character_name** | **str** | Human-readable character name for this collab participant; it is not a stable identifier. | [optional]
+**created_at** | **datetime** | UTC timestamp when this collab participant was created. Format: date-time. | [optional]
+**display_order** | **int** | Numeric display order reported for this collab participant. |
+**id** | **int** | Stable identifier for the collab participant; use it in subsequent API calls instead of a display name. |
+**notes** | **str** | Notes associated with this collab participant; preserve server-returned values when passing them to another operation. | [optional]
+**placeholder_image** | **str** | Placeholder Image associated with this collab participant; preserve server-returned values when passing them to another operation. | [optional]
+**placeholder_image_description** | **str** | User-facing description of this collab participant; it may contain an empty string when no description was supplied. | [optional]
+**placeholder_image_rating** | **str** | Placeholder Image Rating associated with this collab participant; preserve server-returned values when passing them to another operation. | [optional]
+**placeholder_image_source_url** | **str** | URL for the placeholder image source url associated with this collab participant; do not persist temporary signed query parameters. Format: uri. | [optional]
+**requested_at** | **datetime** | UTC timestamp for the requested at transition of this collab participant. Format: date-time. | [optional]
+**responded_at** | **datetime** | UTC timestamp for the responded at transition of this collab participant. Format: date-time. | [optional]
+**source_title** | **str** | Source Title associated with this collab participant; preserve server-returned values when passing them to another operation. | [optional]
+**status** | **str** | Current lifecycle state of this collab participant; clients should tolerate future values. |
+**submissions** | **List[Dict[str, object]]** | Ordered submissions entries included with this collab participant; an empty list means none are available. |
+**updated_at** | **datetime** | UTC timestamp of the most recent persisted change to this collab participant. Format: date-time. | [optional]
+**user** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | User associated with this collab participant; preserve server-returned values when passing them to another operation. | [optional]
+**user_id** | **int** | Stable identifier for the user; use it in subsequent API calls instead of a display name. | [optional]
 
 ## Example
 

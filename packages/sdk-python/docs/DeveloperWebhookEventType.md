@@ -1,14 +1,14 @@
 # DeveloperWebhookEventType
 
-Developer Webhook Event Type used by the Arc en Ciel API contract.
+Fields describing developer webhook event type in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** | Description accepted or returned by this contract. |
-**type** | **str** | Type accepted or returned by this contract. |
-**version** | **str** | Version accepted or returned by this contract. |
+**description** | **str** | User-facing description of this developer webhook event type; it may contain an empty string when no description was supplied. |
+**type** | **str** | Discriminator identifying the kind of developer webhook event type; clients should tolerate future values. |
+**version** | **str** | Version associated with this developer webhook event type; preserve server-returned values when passing them to another operation. |
 
 ## Example
 

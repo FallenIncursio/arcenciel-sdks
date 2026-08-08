@@ -1,15 +1,15 @@
 # Uploads
 
-Uploads accepted or returned by this contract.
+Structured uploads details for this self profile.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**articles** | [**List[ApiKey]**](ApiKey.md) | Articles accepted or returned by this contract. | [optional]
-**images** | [**List[ApiKey]**](ApiKey.md) | Images accepted or returned by this contract. | [optional]
-**models** | [**List[User]**](User.md) | Models accepted or returned by this contract. | [optional]
-**videos** | [**List[ApiKey]**](ApiKey.md) | Videos accepted or returned by this contract. | [optional]
+**articles** | [**List[ApiKey]**](ApiKey.md) | Ordered articles entries included with this uploads; an empty list means none are available. | [optional]
+**images** | [**List[ApiKey]**](ApiKey.md) | Ordered images entries included with this uploads; an empty list means none are available. | [optional]
+**models** | [**List[User]**](User.md) | Ordered models entries included with this uploads; an empty list means none are available. | [optional]
+**videos** | [**List[ApiKey]**](ApiKey.md) | Ordered videos entries included with this uploads; an empty list means none are available. | [optional]
 
 ## Example
 

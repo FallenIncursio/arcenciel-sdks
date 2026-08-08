@@ -1,15 +1,15 @@
 # CollectionCollaboratorSummary
 
-Collection Collaborator Summary used by the Arc en Ciel API contract.
+Fields describing collection collaborator summary in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Id accepted or returned by this contract. |
+**id** | **int** | Stable identifier for the collection collaborator summary; use it in subsequent API calls instead of a display name. Minimum: 1. |
 **role** | **str** | Current collection collaborator role. Clients must tolerate new roles. |
 **user** | [**DeveloperUserSummary**](DeveloperUserSummary.md) |  |
-**user_id** | **int** | User Id accepted or returned by this contract. | [optional]
+**user_id** | **int** | Stable identifier for the user; use it in subsequent API calls instead of a display name. Minimum: 1. | [optional]
 
 ## Example
 

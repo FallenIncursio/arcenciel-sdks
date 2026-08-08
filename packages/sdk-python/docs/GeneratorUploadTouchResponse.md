@@ -1,15 +1,15 @@
 # GeneratorUploadTouchResponse
 
-Generator Upload Touch Response used by the Arc en Ciel API contract.
+Fields describing generator upload touch response in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**expires_at** | **datetime** | Expires At accepted or returned by this contract. |
-**missing** | **List[str]** | Missing accepted or returned by this contract. |
-**touched** | **int** | Touched accepted or returned by this contract. |
-**ttl_seconds** | **int** | Ttl Seconds accepted or returned by this contract. |
+**expires_at** | **datetime** | UTC timestamp for the expires at transition of this generator upload touch response. Format: date-time. |
+**missing** | **List[str]** | Ordered missing entries included with this generator upload touch response; an empty list means none are available. |
+**touched** | **int** | Numeric touched reported for this generator upload touch response. Minimum: 0. |
+**ttl_seconds** | **int** | Numeric ttl seconds reported for this generator upload touch response. |
 
 ## Example
 

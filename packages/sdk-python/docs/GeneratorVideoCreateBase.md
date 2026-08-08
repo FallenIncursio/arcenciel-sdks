@@ -1,6 +1,6 @@
 # GeneratorVideoCreateBase
 
-Generator Video Create Base used by the Arc en Ciel API contract.
+Fields describing generator video create base in Developer API requests and responses.
 
 ## Properties
 

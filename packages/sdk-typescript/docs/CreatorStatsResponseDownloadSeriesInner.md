@@ -1,7 +1,7 @@
 
 # CreatorStatsResponseDownloadSeriesInner
 
-Download Series item used by the Arc en Ciel API contract.
+Structured download series item details for this download series.
 
 ## Properties
 

@@ -1,7 +1,7 @@
 
 # CreatorStatsRangeBounds
 
-Range Bounds accepted or returned by this contract.
+Structured range bounds details for this creator stats response.
 
 ## Properties
 

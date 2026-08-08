@@ -1,15 +1,15 @@
 # AnalyzeImagePrompt200ResponseGroupsInnerTagsInner
 
-Tags item used by the Arc en Ciel API contract.
+Structured tags item details for this tags.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**canonical** | **str** | Canonical accepted or returned by this contract. |
-**match** | **str** | Match accepted or returned by this contract. |
+**canonical** | **str** | Canonical associated with this tags item; preserve server-returned values when passing them to another operation. |
+**match** | **str** | Match associated with this tags item; preserve server-returned values when passing them to another operation. Supported values: &#x60;EXACT&#x60;, &#x60;ALIAS&#x60;, &#x60;HEURISTIC&#x60;. |
 **raw** | **str** | Original token fragment, retaining inline weighting and artist markers. Outer wrappers shared by multi-tag attention groups may be omitted.  |
-**source** | **str** | Source accepted or returned by this contract. |
+**source** | **str** | Source associated with this tags item; preserve server-returned values when passing them to another operation. Supported values: &#x60;ACTIVATION&#x60;, &#x60;CATALOG&#x60;, &#x60;SEMANTIC&#x60;, &#x60;HEURISTIC&#x60;. |
 
 ## Example
 

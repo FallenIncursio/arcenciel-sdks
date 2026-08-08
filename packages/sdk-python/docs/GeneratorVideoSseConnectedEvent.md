@@ -1,6 +1,6 @@
 # GeneratorVideoSseConnectedEvent
 
-Generator Video Sse Connected Event used by the Arc en Ciel API contract.
+Fields describing generator video sse connected event in Developer API requests and responses.
 
 ## Properties
 

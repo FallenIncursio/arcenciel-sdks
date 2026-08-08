@@ -1,7 +1,7 @@
 
 # CreatorStatsResponseFavorites
 
-Favorites accepted or returned by this contract.
+Structured favorites details for this creator stats response.
 
 ## Properties
 

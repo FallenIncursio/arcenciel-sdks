@@ -1635,7 +1635,7 @@ async function example() {
   const body = {
     // number | Thread Id provided in the path.
     threadId: 81,
-    // Blob | Avatar accepted or returned by this contract.
+    // Blob | Avatar associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
     avatar: BINARY_DATA_HERE,
   } satisfies UpdateChatGroupAvatarRequest;
 
@@ -1657,7 +1657,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **threadId** | `number` | Thread Id provided in the path. | [Defaults to `undefined`] |
-| **avatar** | `Blob` | Avatar accepted or returned by this contract. | [Defaults to `undefined`] |
+| **avatar** | `Blob` | Avatar associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Defaults to `undefined`] |
 
 ### Return type
 

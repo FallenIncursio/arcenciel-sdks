@@ -1,32 +1,32 @@
 # GeneratorOptionsResponseLimits
 
-Limits accepted or returned by this contract.
+Structured limits details for this generator options response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adetailer_attention_couple_policies** | **List[str]** | Adetailer Attention Couple Policies accepted or returned by this contract. |
-**adetailer_attention_couple_policy_default** | **str** | Adetailer Attention Couple Policy Default accepted or returned by this contract. |
-**adetailer_detection_order_default** | **str** | Adetailer Detection Order Default accepted or returned by this contract. |
-**adetailer_detection_orders** | **List[str]** | Adetailer Detection Orders accepted or returned by this contract. |
-**adetailer_detectors** | **List[str]** | Adetailer Detectors accepted or returned by this contract. |
-**adetailer_enabled** | **bool** | Adetailer Enabled accepted or returned by this contract. |
-**adetailer_mask_mode_default** | **str** | Adetailer Mask Mode Default accepted or returned by this contract. |
-**adetailer_mask_modes** | **List[str]** | Adetailer Mask Modes accepted or returned by this contract. |
-**adetailer_models** | **List[str]** | Adetailer Models accepted or returned by this contract. |
-**compare_enabled** | **bool** | Compare Enabled accepted or returned by this contract. |
-**max_batch_size** | **int** | Max Batch Size accepted or returned by this contract. |
-**max_cfg** | **float** | Max Cfg accepted or returned by this contract. |
-**max_compare_targets** | **int** | Max Compare Targets accepted or returned by this contract. |
-**max_pixels** | **int** | Max Pixels accepted or returned by this contract. |
-**max_resolution** | **int** | Max Resolution accepted or returned by this contract. |
-**max_scale_factor** | **float** | Max Scale Factor accepted or returned by this contract. |
-**max_steps** | **int** | Max Steps accepted or returned by this contract. |
-**max_upscale_profiles** | **int** | Max Upscale Profiles accepted or returned by this contract. |
-**max_weight** | **float** | Max Weight accepted or returned by this contract. |
-**samplers** | **List[str]** | Samplers accepted or returned by this contract. |
-**schedulers** | **List[str]** | Schedulers accepted or returned by this contract. |
+**adetailer_attention_couple_policies** | **List[str]** | Ordered adetailer attention couple policies entries included with this limits; an empty list means none are available. |
+**adetailer_attention_couple_policy_default** | **str** | Adetailer Attention Couple Policy Default associated with this limits; preserve server-returned values when passing them to another operation. Supported values: &#x60;strict-face-bbox&#x60;, &#x60;prefer-face&#x60;, &#x60;passthrough&#x60;. |
+**adetailer_detection_order_default** | **str** | Adetailer Detection Order Default associated with this limits; preserve server-returned values when passing them to another operation. |
+**adetailer_detection_orders** | **List[str]** | Ordered adetailer detection orders entries included with this limits; an empty list means none are available. |
+**adetailer_detectors** | **List[str]** | Ordered adetailer detectors entries included with this limits; an empty list means none are available. |
+**adetailer_enabled** | **bool** | Whether adetailer enabled applies to this limits. |
+**adetailer_mask_mode_default** | **str** | Adetailer Mask Mode Default associated with this limits; preserve server-returned values when passing them to another operation. Supported values: &#x60;bbox-only&#x60;, &#x60;segmentation&#x60;. |
+**adetailer_mask_modes** | **List[str]** | Ordered adetailer mask modes entries included with this limits; an empty list means none are available. |
+**adetailer_models** | **List[str]** | Ordered adetailer models entries included with this limits; an empty list means none are available. |
+**compare_enabled** | **bool** | Whether compare enabled applies to this limits. |
+**max_batch_size** | **int** | Numeric max batch size reported for this limits. |
+**max_cfg** | **float** | Numeric max cfg reported for this limits. |
+**max_compare_targets** | **int** | Numeric max compare targets reported for this limits. |
+**max_pixels** | **int** | Numeric max pixels reported for this limits. |
+**max_resolution** | **int** | Numeric max resolution reported for this limits. |
+**max_scale_factor** | **float** | Numeric max scale factor reported for this limits. |
+**max_steps** | **int** | Numeric max steps reported for this limits. |
+**max_upscale_profiles** | **int** | Numeric max upscale profiles reported for this limits. |
+**max_weight** | **float** | Numeric max weight reported for this limits. |
+**samplers** | **List[str]** | Ordered samplers entries included with this limits; an empty list means none are available. |
+**schedulers** | **List[str]** | Ordered schedulers entries included with this limits; an empty list means none are available. |
 
 ## Example
 

@@ -1,14 +1,14 @@
 # AnalyzeImagePrompt200ResponseGroupsInner
 
-Groups item used by the Arc en Ciel API contract.
+Structured groups item details for this groups.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **str** | Key accepted or returned by this contract. |
-**label** | **str** | Label accepted or returned by this contract. |
-**tags** | [**List[AnalyzeImagePrompt200ResponseGroupsInnerTagsInner]**](AnalyzeImagePrompt200ResponseGroupsInnerTagsInner.md) | Tags accepted or returned by this contract. |
+**key** | **str** | Key associated with this groups item; preserve server-returned values when passing them to another operation. |
+**label** | **str** | Label associated with this groups item; preserve server-returned values when passing them to another operation. |
+**tags** | [**List[AnalyzeImagePrompt200ResponseGroupsInnerTagsInner]**](AnalyzeImagePrompt200ResponseGroupsInnerTagsInner.md) | Ordered tags entries included with this groups item; an empty list means none are available. |
 
 ## Example
 

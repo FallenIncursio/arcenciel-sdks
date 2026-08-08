@@ -1,7 +1,7 @@
 
 # GeneratorModelCatalog
 
-Generator Model Catalog used by the Arc en Ciel API contract.
+Fields describing generator model catalog in Developer API requests and responses.
 
 ## Properties
 

@@ -1,13 +1,13 @@
 # GeneratorOptionsResponseSettings
 
-Settings accepted or returned by this contract.
+Structured settings details for this generator options response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**defaults** | **Dict[str, object]** | Defaults accepted or returned by this contract. |
-**retention_options** | **List[int]** | Retention Options accepted or returned by this contract. |
+**defaults** | **Dict[str, object]** | Structured defaults details for this settings. |
+**retention_options** | **List[int]** | Ordered retention options entries included with this settings; an empty list means none are available. |
 
 ## Example
 

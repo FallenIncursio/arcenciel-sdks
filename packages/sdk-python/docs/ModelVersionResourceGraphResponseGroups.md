@@ -1,16 +1,16 @@
 # ModelVersionResourceGraphResponseGroups
 
-Groups accepted or returned by this contract.
+Structured groups details for this model version resource graph response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**compatible** | [**List[ModelVersionLocalResource]**](ModelVersionLocalResource.md) | Compatible accepted or returned by this contract. |
-**external** | [**List[ModelVersionExternalResource]**](ModelVersionExternalResource.md) | External accepted or returned by this contract. |
-**recommended** | [**List[ModelVersionLocalResource]**](ModelVersionLocalResource.md) | Recommended accepted or returned by this contract. |
-**required** | [**List[ModelVersionLocalResource]**](ModelVersionLocalResource.md) | Required accepted or returned by this contract. |
-**sample_used** | [**List[ModelVersionLocalResource]**](ModelVersionLocalResource.md) | Sample Used accepted or returned by this contract. |
+**compatible** | [**List[ModelVersionLocalResource]**](ModelVersionLocalResource.md) | Ordered compatible entries included with this groups; an empty list means none are available. |
+**external** | [**List[ModelVersionExternalResource]**](ModelVersionExternalResource.md) | Ordered external entries included with this groups; an empty list means none are available. |
+**recommended** | [**List[ModelVersionLocalResource]**](ModelVersionLocalResource.md) | Ordered recommended entries included with this groups; an empty list means none are available. |
+**required** | [**List[ModelVersionLocalResource]**](ModelVersionLocalResource.md) | Ordered required entries included with this groups; an empty list means none are available. |
+**sample_used** | [**List[ModelVersionLocalResource]**](ModelVersionLocalResource.md) | Ordered sample used entries included with this groups; an empty list means none are available. |
 
 ## Example
 

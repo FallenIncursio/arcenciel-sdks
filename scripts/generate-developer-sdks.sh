@@ -44,6 +44,7 @@ NODE
 
 node scripts/normalize-python-sdk-enums.mjs
 node scripts/normalize-python-sdk-response-scalars.mjs
+node scripts/add-developer-sdk-compatibility-aliases.mjs
 node scripts/normalize-generated-sdk-whitespace.mjs \
   packages/sdk-typescript/src/apis \
   packages/sdk-typescript/src/models \

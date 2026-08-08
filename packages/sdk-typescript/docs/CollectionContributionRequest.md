@@ -1,7 +1,7 @@
 
 # CollectionContributionRequest
 
-Collection Contribution Request used by the Arc en Ciel API contract.
+Fields describing collection contribution request in Developer API requests and responses.
 
 ## Properties
 

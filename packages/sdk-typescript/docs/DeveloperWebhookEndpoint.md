@@ -1,7 +1,7 @@
 
 # DeveloperWebhookEndpoint
 
-Developer Webhook Endpoint used by the Arc en Ciel API contract.
+Fields describing developer webhook endpoint in Developer API requests and responses.
 
 ## Properties
 

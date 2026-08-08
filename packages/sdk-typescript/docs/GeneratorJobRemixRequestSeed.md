@@ -1,7 +1,7 @@
 
 # GeneratorJobRemixRequestSeed
 
-Seed accepted or returned by this contract.
+Seed associated with this generator job remix request; preserve server-returned values when passing them to another operation.
 
 ## Properties
 

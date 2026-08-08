@@ -1,7 +1,7 @@
 
 # InterrogateGeneratorImageUrl200Response
 
-200 response for api generator autotag interrogate url used by the Arc en Ciel API contract.
+Fields describing 200 response for api generator autotag interrogate url in Developer API requests and responses.
 
 ## Properties
 

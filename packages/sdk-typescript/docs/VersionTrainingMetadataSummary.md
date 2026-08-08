@@ -1,7 +1,7 @@
 
 # VersionTrainingMetadataSummary
 
-Training Metadata Summary accepted or returned by this contract.
+Structured training metadata summary details for this versions item.
 
 ## Properties
 

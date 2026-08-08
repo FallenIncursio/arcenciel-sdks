@@ -1,7 +1,7 @@
 
 # GeneratorVideoPublicMetadata
 
-Generator Video Public Metadata used by the Arc en Ciel API contract.
+Fields describing generator video public metadata in Developer API requests and responses.
 
 ## Properties
 

@@ -332,7 +332,7 @@ async function example() {
     description: description_example,
     // string | Comma-separated list of tags. (optional)
     tags: tags_example,
-    // string | Title accepted or returned by this contract. (optional)
+    // string | Display title shown to users for this request payload. (optional)
     title: title_example,
     // string | The model type (e.g., LORA, CHECKPOINT). (optional)
     type: type_example,
@@ -359,7 +359,7 @@ example().catch(console.error);
 | **authorWishes** | `string` | JSON array of author wishes. | [Optional] [Defaults to `undefined`] |
 | **description** | `string` | Sanitized rich HTML model description. Legacy Markdown or mixed Civitai-style HTML is accepted for compatibility and rendered by the rich-content pipeline. | [Optional] [Defaults to `undefined`] |
 | **tags** | `string` | Comma-separated list of tags. | [Optional] [Defaults to `undefined`] |
-| **title** | `string` | Title accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **title** | `string` | Display title shown to users for this request payload. | [Optional] [Defaults to `undefined`] |
 | **type** | `string` | The model type (e.g., LORA, CHECKPOINT). | [Optional] [Defaults to `undefined`] |
 
 ### Return type
@@ -425,11 +425,11 @@ async function example() {
     modelId: 1,
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
-    // string | About This Version accepted or returned by this contract. (optional)
+    // string | About This Version associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     aboutThisVersion: aboutThisVersion_example,
-    // string | Activation Tags accepted or returned by this contract. (optional)
+    // string | Activation Tags associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     activationTags: activationTags_example,
-    // string | Base Model accepted or returned by this contract. (optional)
+    // string | Base Model associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     baseModel: baseModel_example,
     // string | URL to a HuggingFace model file. Either versionFile or huggingfaceLink must be provided. Allowed by default: .safetensors, .pt. For models of type OTHER, archive extensions are also allowed. (optional)
     huggingfaceLink: huggingfaceLink_example,
@@ -437,7 +437,7 @@ async function example() {
     supporterEarlyAccessEnabled: true,
     // Blob | The file for the model version. Allowed by default: .safetensors, .pt. For models of type OTHER, archives are also allowed (.zip, .7z, .rar, .tar, .tar.gz, .tar.xz, .tar.bz2, .gz, .xz, .bz2). (optional)
     versionFile: BINARY_DATA_HERE,
-    // string | Version Name accepted or returned by this contract. (optional)
+    // string | Human-readable version name for this request payload; it is not a stable identifier. (optional)
     versionName: versionName_example,
   } satisfies CreateModelVersionRequest;
 
@@ -460,13 +460,13 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **modelId** | `number` | ID of the model. | [Defaults to `undefined`] |
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
-| **aboutThisVersion** | `string` | About This Version accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
-| **activationTags** | `string` | Activation Tags accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
-| **baseModel** | `string` | Base Model accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **aboutThisVersion** | `string` | About This Version associated with this request payload; preserve server-returned values when passing them to another operation. | [Optional] [Defaults to `undefined`] |
+| **activationTags** | `string` | Activation Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [Optional] [Defaults to `undefined`] |
+| **baseModel** | `string` | Base Model associated with this request payload; preserve server-returned values when passing them to another operation. | [Optional] [Defaults to `undefined`] |
 | **huggingfaceLink** | `string` | URL to a HuggingFace model file. Either versionFile or huggingfaceLink must be provided. Allowed by default: .safetensors, .pt. For models of type OTHER, archive extensions are also allowed. | [Optional] [Defaults to `undefined`] |
 | **supporterEarlyAccessEnabled** | `boolean` | Creator opt-out for the 72-hour supporter early-access window. External sources are always excluded. | [Optional] [Defaults to `true`] |
 | **versionFile** | `Blob` | The file for the model version. Allowed by default: .safetensors, .pt. For models of type OTHER, archives are also allowed (.zip, .7z, .rar, .tar, .tar.gz, .tar.xz, .tar.bz2, .gz, .xz, .bz2). | [Optional] [Defaults to `undefined`] |
-| **versionName** | `string` | Version Name accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **versionName** | `string` | Human-readable version name for this request payload; it is not a stable identifier. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -2655,15 +2655,15 @@ async function example() {
     modelId: 1,
     // number | Version Id provided in the path.
     versionId: 1,
-    // string | About This Version accepted or returned by this contract. (optional)
+    // string | About This Version associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     aboutThisVersion: aboutThisVersion_example,
-    // string | Activation Tags accepted or returned by this contract. (optional)
+    // string | Activation Tags associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     activationTags: activationTags_example,
-    // string | Base Model accepted or returned by this contract. (optional)
+    // string | Base Model associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     baseModel: baseModel_example,
     // boolean | Set false to opt this hosted version out of supporter early access. (optional)
     supporterEarlyAccessEnabled: true,
-    // string | Version Name accepted or returned by this contract. (optional)
+    // string | Human-readable version name for this request payload; it is not a stable identifier. (optional)
     versionName: versionName_example,
   } satisfies UpdateModelVersionRequest;
 
@@ -2686,11 +2686,11 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **modelId** | `number` | Model Id provided in the path. | [Defaults to `undefined`] |
 | **versionId** | `number` | Version Id provided in the path. | [Defaults to `undefined`] |
-| **aboutThisVersion** | `string` | About This Version accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
-| **activationTags** | `string` | Activation Tags accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
-| **baseModel** | `string` | Base Model accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **aboutThisVersion** | `string` | About This Version associated with this request payload; preserve server-returned values when passing them to another operation. | [Optional] [Defaults to `undefined`] |
+| **activationTags** | `string` | Activation Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [Optional] [Defaults to `undefined`] |
+| **baseModel** | `string` | Base Model associated with this request payload; preserve server-returned values when passing them to another operation. | [Optional] [Defaults to `undefined`] |
 | **supporterEarlyAccessEnabled** | `boolean` | Set false to opt this hosted version out of supporter early access. | [Optional] [Defaults to `undefined`] |
-| **versionName** | `string` | Version Name accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **versionName** | `string` | Human-readable version name for this request payload; it is not a stable identifier. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -3026,13 +3026,13 @@ async function example() {
     versionId: 1,
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8',
-    // string | Description accepted or returned by this contract. (optional)
+    // string | User-facing description of this request payload; it may contain an empty string when no description was supplied. (optional)
     description: 'description_example',
     // Array<Blob> | Array of image files. (optional)
     imageFiles: [new Blob(['example file content'], { type: 'application/octet-stream' })],
     // string | Comma-separated list of tags. (optional)
     tags: 'tags_example',
-    // string | Title accepted or returned by this contract. (optional)
+    // string | Display title shown to users for this request payload. (optional)
     title: 'title_example',
   } satisfies UploadModelVersionImagesRequest;
 
@@ -3056,10 +3056,10 @@ example().catch(console.error);
 | **modelId** | `number` | Model Id provided in the path. | [Defaults to `undefined`] |
 | **versionId** | `number` | Version Id provided in the path. | [Defaults to `undefined`] |
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
-| **description** | `string` | Description accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **description** | `string` | User-facing description of this request payload; it may contain an empty string when no description was supplied. | [Optional] [Defaults to `undefined`] |
 | **imageFiles** | `Array<Blob>` | Array of image files. | [Optional] |
 | **tags** | `string` | Comma-separated list of tags. | [Optional] [Defaults to `undefined`] |
-| **title** | `string` | Title accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **title** | `string` | Display title shown to users for this request payload. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -3128,13 +3128,13 @@ async function example() {
     versionId: 1,
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8',
-    // string | Description accepted or returned by this contract. (optional)
+    // string | User-facing description of this request payload; it may contain an empty string when no description was supplied. (optional)
     description: 'description_example',
     // Array<Blob> | Optional preview images. (optional)
     metaImages: [new Blob(['example file content'], { type: 'application/octet-stream' })],
     // string | Comma-separated list of tags. (optional)
     tags: 'tags_example',
-    // string | Title accepted or returned by this contract. (optional)
+    // string | Display title shown to users for this request payload. (optional)
     title: 'title_example',
     // Array<Blob> | Array of video files. (optional)
     videoFiles: [new Blob(['example file content'], { type: 'application/octet-stream' })],
@@ -3160,10 +3160,10 @@ example().catch(console.error);
 | **modelId** | `number` | Model Id provided in the path. | [Defaults to `undefined`] |
 | **versionId** | `number` | Version Id provided in the path. | [Defaults to `undefined`] |
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
-| **description** | `string` | Description accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **description** | `string` | User-facing description of this request payload; it may contain an empty string when no description was supplied. | [Optional] [Defaults to `undefined`] |
 | **metaImages** | `Array<Blob>` | Optional preview images. | [Optional] |
 | **tags** | `string` | Comma-separated list of tags. | [Optional] [Defaults to `undefined`] |
-| **title** | `string` | Title accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **title** | `string` | Display title shown to users for this request payload. | [Optional] [Defaults to `undefined`] |
 | **videoFiles** | `Array<Blob>` | Array of video files. | [Optional] |
 
 ### Return type

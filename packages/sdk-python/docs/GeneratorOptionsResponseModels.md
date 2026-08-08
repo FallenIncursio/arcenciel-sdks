@@ -1,17 +1,17 @@
 # GeneratorOptionsResponseModels
 
-Models accepted or returned by this contract.
+Structured models details for this generator options response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adetailer** | **List[str]** | Adetailer accepted or returned by this contract. |
-**checkpoints** | **List[str]** | Checkpoints accepted or returned by this contract. |
-**controlnets** | **List[str]** | Controlnets accepted or returned by this contract. |
-**loras** | **List[str]** | Loras accepted or returned by this contract. |
-**upscale** | **List[str]** | Upscale accepted or returned by this contract. |
-**vae** | **List[str]** | Vae accepted or returned by this contract. |
+**adetailer** | **List[str]** | Ordered adetailer entries included with this models; an empty list means none are available. |
+**checkpoints** | **List[str]** | Ordered checkpoints entries included with this models; an empty list means none are available. |
+**controlnets** | **List[str]** | Ordered controlnets entries included with this models; an empty list means none are available. |
+**loras** | **List[str]** | Ordered loras entries included with this models; an empty list means none are available. |
+**upscale** | **List[str]** | Ordered upscale entries included with this models; an empty list means none are available. |
+**vae** | **List[str]** | Ordered vae entries included with this models; an empty list means none are available. |
 
 ## Example
 

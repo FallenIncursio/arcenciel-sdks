@@ -1,16 +1,16 @@
 # ImageSpatialAttributionRequestAccess
 
-Request Access accepted or returned by this contract.
+Structured request access details for this image spatial attribution.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_tier** | **str** | Access Tier accepted or returned by this contract. | [optional]
-**can_request** | **bool** | Can Request accepted or returned by this contract. | [optional]
-**free_limit** | **int** | Free Limit accepted or returned by this contract. | [optional]
-**reason** | **str** | Reason accepted or returned by this contract. | [optional]
-**remaining** | **int** | Remaining accepted or returned by this contract. | [optional]
+**access_tier** | **str** | Access Tier associated with this request access; preserve server-returned values when passing them to another operation. Supported values: &#x60;ANONYMOUS&#x60;, &#x60;STANDARD&#x60;, &#x60;SUPPORTER&#x60;, &#x60;STAFF&#x60;. | [optional]
+**can_request** | **bool** | Whether can request applies to this request access. | [optional]
+**free_limit** | **int** | Numeric free limit reported for this request access. | [optional]
+**reason** | **str** | Reason associated with this request access; preserve server-returned values when passing them to another operation. Supported values: &#x60;AUTH_REQUIRED&#x60;, &#x60;FREE_LIMIT_REACHED&#x60;. | [optional]
+**remaining** | **int** | Numeric remaining reported for this request access. | [optional]
 
 ## Example
 

@@ -1,17 +1,17 @@
 # CollectionImageItem
 
-Collection Image Item used by the Arc en Ciel API contract.
+Fields describing collection image item in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**added_at** | **datetime** | Added At accepted or returned by this contract. |
-**added_by** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Added By accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. |
+**added_at** | **datetime** | UTC timestamp for the added at transition of this collection image item. Format: date-time. |
+**added_by** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Added By associated with this collection image item; preserve server-returned values when passing them to another operation. | [optional]
+**id** | **int** | Stable identifier for the collection image item; use it in subsequent API calls instead of a display name. Minimum: 1. |
 **image** | [**Image**](Image.md) |  |
-**note** | **str** | Note accepted or returned by this contract. | [optional]
-**order** | **int** | Order accepted or returned by this contract. |
+**note** | **str** | Note associated with this collection image item; preserve server-returned values when passing them to another operation. | [optional]
+**order** | **int** | Numeric order reported for this collection image item. |
 
 ## Example
 

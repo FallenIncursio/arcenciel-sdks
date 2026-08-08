@@ -1,13 +1,13 @@
 # ListImageExternalResources200Response
 
-200 response for api images id external resources used by the Arc en Ciel API contract.
+Fields describing 200 response for api images id external resources in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**external_resources** | **List[object]** | External Resources accepted or returned by this contract. | [optional]
-**resources** | **List[object]** | Resources accepted or returned by this contract. | [optional]
+**external_resources** | **List[object]** | Ordered external resources entries included with this 200 response for api images id external resources; an empty list means none are available. | [optional]
+**resources** | **List[object]** | Ordered resources entries included with this 200 response for api images id external resources; an empty list means none are available. | [optional]
 
 ## Example
 

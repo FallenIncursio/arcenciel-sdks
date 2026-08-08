@@ -193,8 +193,10 @@ docs/GeneratorJobRemixRequestAttentionCoupleRegionsInner.md
 docs/GeneratorJobRemixRequestControlnetsInner.md
 docs/GeneratorJobRemixRequestExtraSeed.md
 docs/GeneratorJobRemixRequestPromptControl.md
+docs/GeneratorJobRemixRequestPromptControlOneOf.md
 docs/GeneratorJobRemixRequestSeed.md
 docs/GeneratorJobRemixRequestUpscaleProfilesInner.md
+docs/GeneratorJobSeed.md
 docs/GeneratorJobUpscaleProfilesInner.md
 docs/GeneratorModelCatalog.md
 docs/GeneratorModelCatalogEntry.md
@@ -596,8 +598,10 @@ src/models/GeneratorJobRemixRequestAttentionCoupleRegionsInner.ts
 src/models/GeneratorJobRemixRequestControlnetsInner.ts
 src/models/GeneratorJobRemixRequestExtraSeed.ts
 src/models/GeneratorJobRemixRequestPromptControl.ts
+src/models/GeneratorJobRemixRequestPromptControlOneOf.ts
 src/models/GeneratorJobRemixRequestSeed.ts
 src/models/GeneratorJobRemixRequestUpscaleProfilesInner.ts
+src/models/GeneratorJobSeed.ts
 src/models/GeneratorJobUpscaleProfilesInner.ts
 src/models/GeneratorModelCatalog.ts
 src/models/GeneratorModelCatalogEntry.ts

@@ -1,16 +1,16 @@
 # GeneratorJobDiagnostics
 
-Diagnostics accepted or returned by this contract.
+Structured diagnostics details for this generator job.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adetailer** | **Dict[str, object]** | Adetailer accepted or returned by this contract. | [optional]
+**adetailer** | **Dict[str, object]** | Structured adetailer details for this diagnostics. | [optional]
 **adetailer_bridge** | [**GeneratorJobDiagnosticsAdetailerBridge**](GeneratorJobDiagnosticsAdetailerBridge.md) |  | [optional]
-**attention_couple** | **Dict[str, object]** | Attention Couple accepted or returned by this contract. | [optional]
-**history_timeout_ms** | **int** | History Timeout Ms accepted or returned by this contract. | [optional]
-**workflow_captured** | **bool** | Workflow Captured accepted or returned by this contract. | [optional]
+**attention_couple** | **Dict[str, object]** | Structured attention couple details for this diagnostics. | [optional]
+**history_timeout_ms** | **int** | Numeric history timeout ms reported for this diagnostics. | [optional]
+**workflow_captured** | **bool** | Whether workflow captured applies to this diagnostics. | [optional]
 
 ## Example
 

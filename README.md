@@ -9,20 +9,21 @@ Official, typed TypeScript and Python clients for the stable Arc en Ciel Develop
 
 | Package                                     | Version | Runtime                            | Registry / source                                                                                                                                              |
 | ------------------------------------------- | ------: | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@arcenciel/sdk`](packages/sdk-typescript) | `1.0.0` | Node.js 20.20+ and modern browsers | [npm](https://www.npmjs.com/package/@arcenciel/sdk) / [`sdk-v1.0.0`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.0/packages/sdk-typescript) |
-| [`arcenciel`](packages/sdk-python)          | `1.0.0` | Python 3.11+; sync and async       | [PyPI](https://pypi.org/project/arcenciel/) / [`sdk-v1.0.0`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.0/packages/sdk-python)             |
+| [`@arcenciel/sdk`](packages/sdk-typescript) | `1.0.1` | Node.js 20.20+ and modern browsers | [npm](https://www.npmjs.com/package/@arcenciel/sdk) / [`sdk-v1.0.1`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.1/packages/sdk-typescript) |
+| [`arcenciel`](packages/sdk-python)          | `1.0.1` | Python 3.11+; sync and async       | [PyPI](https://pypi.org/project/arcenciel/) / [`sdk-v1.0.1`](https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.1/packages/sdk-python)             |
 
-Version `1.0.0` is the stable SDK release for Developer API `1.9.0` (258 operations). Both packages are built from the same immutable
-contract and include owner-scoped Developer Webhook APIs, signature helpers, controlled retries, download streaming, and pagination
-helpers. Publication uses the signed source tag and OIDC Trusted Publishing; the workflow verifies clean registry installations against
-production before the GitHub release.
+Version `1.0.1` is the stable SDK release for Developer API `1.9.1` (258 operations). Both packages are built from the same immutable
+contract and include owner-scoped Developer Webhook APIs, signature helpers, controlled retries, download streaming, and explicit helpers
+for page/limit and cursor pagination. The patch also improves generated model documentation and preserves the SDK `1.0.0` social-link
+type import as a deprecated compatibility alias. Publication uses the signed source tag and OIDC Trusted Publishing; the workflow verifies
+clean registry installations against production before the GitHub release.
 
 ```bash
-npm install @arcenciel/sdk@1.0.0
+npm install @arcenciel/sdk@1.0.1
 ```
 
 ```bash
-python3.11 -m pip install arcenciel==1.0.0
+python3.11 -m pip install arcenciel==1.0.1
 ```
 
 Public catalogue reads work without credentials. Account-specific operations use an API key with the least-privilege scope documented in
@@ -33,7 +34,7 @@ the [Developer Portal](https://arcenciel.io/developers).
 This repository contains only:
 
 - reviewed TypeScript and Python SDK source, generated APIs, models, tests, and examples;
-- immutable Developer API contracts `1.1.0` through `1.9.0`;
+- immutable Developer API contracts `1.1.0` through `1.9.1`;
 - deterministic generation and release automation; and
 - the public release-signing key.
 
@@ -45,7 +46,7 @@ The generator wrapper pins OpenAPI Generator CLI `2.40.1` and OpenAPI Generator 
 rebuilding the low-level clients from the selected immutable contract.
 
 ```bash
-SDK_VERSION=1.0.0 ./scripts/generate-developer-sdks.sh contracts/1.9.0.openapi.json
+SDK_VERSION=1.0.1 ./scripts/generate-developer-sdks.sh contracts/1.9.1.openapi.json
 git diff --exit-code -- packages/sdk-typescript packages/sdk-python
 ```
 

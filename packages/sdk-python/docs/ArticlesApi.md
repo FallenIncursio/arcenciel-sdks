@@ -70,9 +70,9 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.ArticlesApi(api_client)
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     content = 'content_example' # str | Sanitized rich HTML article body. Legacy Markdown or mixed Markdown/HTML is accepted for compatibility and rendered by the rich-content pipeline. (optional)
-    tags = 'tags_example' # str | Tags accepted or returned by this contract. (optional)
-    thumbnail_file = None # bytes | Thumbnail File accepted or returned by this contract. (optional)
-    title = 'title_example' # str | Title accepted or returned by this contract. (optional)
+    tags = 'tags_example' # str | Tags associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
+    thumbnail_file = None # bytes | Thumbnail File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
+    title = 'title_example' # str | Display title shown to users for this request payload. (optional)
 
     try:
         # Create a new article
@@ -92,9 +92,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
  **content** | **str**| Sanitized rich HTML article body. Legacy Markdown or mixed Markdown/HTML is accepted for compatibility and rendered by the rich-content pipeline. | [optional]
- **tags** | **str**| Tags accepted or returned by this contract. | [optional]
- **thumbnail_file** | **bytes**| Thumbnail File accepted or returned by this contract. | [optional]
- **title** | **str**| Title accepted or returned by this contract. | [optional]
+ **tags** | **str**| Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+ **thumbnail_file** | **bytes**| Thumbnail File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [optional]
+ **title** | **str**| Display title shown to users for this request payload. | [optional]
 
 ### Return type
 
@@ -886,7 +886,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.ArticlesApi(api_client)
     id = 1 # int | The article ID.
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    image_files = None # List[bytes] | Image Files accepted or returned by this contract. (optional)
+    image_files = None # List[bytes] | Ordered image files entries included with this request payload; an empty list means none are available. (optional)
 
     try:
         # Upload images for an article
@@ -906,7 +906,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The article ID. |
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
- **image_files** | **List[bytes]**| Image Files accepted or returned by this contract. | [optional]
+ **image_files** | **List[bytes]**| Ordered image files entries included with this request payload; an empty list means none are available. | [optional]
 
 ### Return type
 

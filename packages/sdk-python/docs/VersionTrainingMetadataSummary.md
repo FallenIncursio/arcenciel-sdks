@@ -1,17 +1,17 @@
 # VersionTrainingMetadataSummary
 
-Training Metadata Summary accepted or returned by this contract.
+Structured training metadata summary details for this versions item.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dataset** | [**VersionTrainingMetadataSummaryDataset**](VersionTrainingMetadataSummaryDataset.md) |  | [optional]
-**extracted_at** | **datetime** | Extracted At accepted or returned by this contract. | [optional]
+**extracted_at** | **datetime** | UTC timestamp for the extracted at transition of this training metadata summary. Format: date-time. | [optional]
 **run** | [**VersionTrainingMetadataSummaryRun**](VersionTrainingMetadataSummaryRun.md) |  | [optional]
-**schema_version** | **int** | Schema Version accepted or returned by this contract. | [optional]
-**source** | **str** | Source accepted or returned by this contract. | [optional]
-**tags_top** | [**List[VersionTrainingMetadataSummaryTagsTopInner]**](VersionTrainingMetadataSummaryTagsTopInner.md) | Tags Top accepted or returned by this contract. | [optional]
+**schema_version** | **int** | Numeric schema version reported for this training metadata summary. Supported values: &#x60;1&#x60;. | [optional]
+**source** | **str** | Source associated with this training metadata summary; preserve server-returned values when passing them to another operation. Supported values: &#x60;upload_local&#x60;, &#x60;upload_hf&#x60;, &#x60;admin_backfill&#x60;. | [optional]
+**tags_top** | [**List[VersionTrainingMetadataSummaryTagsTopInner]**](VersionTrainingMetadataSummaryTagsTopInner.md) | Ordered tags top entries included with this training metadata summary; an empty list means none are available. | [optional]
 
 ## Example
 

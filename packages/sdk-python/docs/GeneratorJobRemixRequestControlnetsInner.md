@@ -1,17 +1,17 @@
 # GeneratorJobRemixRequestControlnetsInner
 
-Controlnets item used by the Arc en Ciel API contract.
+Structured controlnets item details for this controlnets.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**end** | **float** | End accepted or returned by this contract. | [optional]
-**image_path** | **str** | Image Path accepted or returned by this contract. | [optional]
-**model** | **str** | Model accepted or returned by this contract. | [optional]
-**model_name** | **str** | Model Name accepted or returned by this contract. | [optional]
-**start** | **float** | Start accepted or returned by this contract. | [optional]
-**strength** | **float** | Strength accepted or returned by this contract. | [optional]
+**end** | **float** | Numeric end reported for this controlnets item. Minimum: 0. Maximum: 1. | [optional]
+**image_path** | **str** | Server-provided path for the image path associated with this controlnets item; treat it as opaque. | [optional]
+**model** | **str** | Model associated with this controlnets item; preserve server-returned values when passing them to another operation. | [optional]
+**model_name** | **str** | Human-readable model name for this controlnets item; it is not a stable identifier. | [optional]
+**start** | **float** | Numeric start reported for this controlnets item. Minimum: 0. Maximum: 1. | [optional]
+**strength** | **float** | Numeric strength reported for this controlnets item. Minimum: 0. Maximum: 2. | [optional]
 
 ## Example
 

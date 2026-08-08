@@ -1,7 +1,7 @@
 
 # GeneratorJobOutputsInner
 
-Outputs item used by the Arc en Ciel API contract.
+Structured outputs item details for this outputs.
 
 ## Properties
 

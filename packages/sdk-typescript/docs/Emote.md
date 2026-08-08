@@ -1,7 +1,7 @@
 
 # Emote
 
-Emote used by the Arc en Ciel API contract.
+Fields describing emote in Developer API requests and responses.
 
 ## Properties
 

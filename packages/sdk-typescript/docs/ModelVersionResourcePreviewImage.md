@@ -1,7 +1,7 @@
 
 # ModelVersionResourcePreviewImage
 
-Preview Image used by the Arc en Ciel API contract.
+Structured preview image details for this required item.
 
 ## Properties
 

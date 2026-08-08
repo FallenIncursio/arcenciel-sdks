@@ -1,12 +1,12 @@
 # ListWebhookEventTypes200Response
 
-200 response for api webhooks event types used by the Arc en Ciel API contract.
+Fields describing 200 response for api webhooks event types in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[DeveloperWebhookEventType]**](DeveloperWebhookEventType.md) | Data accepted or returned by this contract. |
+**data** | [**List[DeveloperWebhookEventType]**](DeveloperWebhookEventType.md) | Ordered data entries included with this 200 response for api webhooks event types; an empty list means none are available. |
 
 ## Example
 

@@ -1,7 +1,7 @@
 
 # GeneratorQuotaCounter
 
-Daily accepted or returned by this contract.
+Structured daily details for this quota.
 
 ## Properties
 

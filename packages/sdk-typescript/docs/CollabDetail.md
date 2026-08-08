@@ -1,7 +1,7 @@
 
 # CollabDetail
 
-Collab Detail used by the Arc en Ciel API contract.
+Collab Detail value documented for this operation.
 
 ## Properties
 

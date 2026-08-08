@@ -1,13 +1,13 @@
 # Tag
 
-Tags item used by the Arc en Ciel API contract.
+Structured tags item details for this tags.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
+**id** | **int** | Stable identifier for the tags item; use it in subsequent API calls instead of a display name. | [optional]
+**name** | **str** | Human-readable name for this tags item; it is not a stable identifier. | [optional]
 
 ## Example
 

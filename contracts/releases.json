@@ -1,8 +1,41 @@
 {
   "schemaVersion": 1,
-  "currentVersion": "1.9.0",
+  "currentVersion": "1.9.1",
   "nextVersion": "1.10.0",
   "releases": [
+    {
+      "version": "1.9.1",
+      "releasedAt": "2026-08-08",
+      "sha256": "98912d2887ace12727bf5311557a0d3b555df250b6bf04ef8540b0237f576940",
+      "operationCount": 258,
+      "openApiPath": "/developers/openapi/1.9.1.json",
+      "referencePath": "/developers/reference/?version=1.9.1",
+      "summary": "Human-oriented schema guidance, explicit webhook signature metadata, contract-path versioning, and SDK pagination helpers.",
+      "existingClients": "No action is required. API 1.9.1 changes documentation metadata only; SDK 1.0.1 adds optional pagination helpers without changing generated operation signatures.",
+      "sdk": {
+        "typescript": {
+          "package": "@arcenciel/sdk",
+          "version": "1.0.1",
+          "status": "stable",
+          "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.1/packages/sdk-typescript"
+        },
+        "python": {
+          "package": "arcenciel",
+          "version": "1.0.1",
+          "status": "stable",
+          "registryUrl": "https://pypi.org/project/arcenciel/",
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.1/packages/sdk-python"
+        }
+      },
+      "webhooks": {
+        "asyncApiVersion": "1.0.0",
+        "asyncApiPath": "/developers/asyncapi/1.0.0.json",
+        "referencePath": "/developers/webhooks/reference",
+        "sha256": "05689baf73d02398e9969ee7437980028d43fee9fef3080d9d452831787426b4",
+        "eventCount": 3
+      }
+    },
     {
       "version": "1.9.0",
       "releasedAt": "2026-08-08",

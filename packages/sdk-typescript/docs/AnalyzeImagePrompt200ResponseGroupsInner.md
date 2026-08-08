@@ -1,7 +1,7 @@
 
 # AnalyzeImagePrompt200ResponseGroupsInner
 
-Groups item used by the Arc en Ciel API contract.
+Structured groups item details for this groups.
 
 ## Properties
 

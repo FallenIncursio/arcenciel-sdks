@@ -1603,11 +1603,11 @@ async function example() {
   const api = new ImagesApi(config);
 
   const body = {
-    // Blob | Image accepted or returned by this contract.
+    // Blob | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
     image: BINARY_DATA_HERE,
     // string | Optional style matcher backend override. (optional)
     backend: backend_example,
-    // number | Limit accepted or returned by this contract. (optional)
+    // number | Maximum number of records requested or returned in one page of this request payload. Maximum: 50. (optional)
     limit: 56,
   } satisfies SearchImagesByStyleUploadRequest;
 
@@ -1628,9 +1628,9 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **image** | `Blob` | Image accepted or returned by this contract. | [Defaults to `undefined`] |
+| **image** | `Blob` | Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Defaults to `undefined`] |
 | **backend** | `string` | Optional style matcher backend override. | [Optional] [Defaults to `undefined`] |
-| **limit** | `number` | Limit accepted or returned by this contract. | [Optional] [Defaults to `8`] |
+| **limit** | `number` | Maximum number of records requested or returned in one page of this request payload. Maximum: 50. | [Optional] [Defaults to `8`] |
 
 ### Return type
 
@@ -1944,13 +1944,13 @@ async function example() {
   const body = {
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8',
-    // string | Description accepted or returned by this contract. (optional)
+    // string | User-facing description of this request payload; it may contain an empty string when no description was supplied. (optional)
     description: 'description_example',
     // Array<Blob> | Array of image files. (optional)
     imageFiles: [new Blob(['example file content'], { type: 'application/octet-stream' })],
     // string | Comma-separated list of tags. (optional)
     tags: 'tags_example',
-    // string | Title accepted or returned by this contract. (optional)
+    // string | Display title shown to users for this request payload. (optional)
     title: 'title_example',
   } satisfies UploadImagesRequest;
 
@@ -1972,10 +1972,10 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
-| **description** | `string` | Description accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **description** | `string` | User-facing description of this request payload; it may contain an empty string when no description was supplied. | [Optional] [Defaults to `undefined`] |
 | **imageFiles** | `Array<Blob>` | Array of image files. | [Optional] |
 | **tags** | `string` | Comma-separated list of tags. | [Optional] [Defaults to `undefined`] |
-| **title** | `string` | Title accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **title** | `string` | Display title shown to users for this request payload. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 

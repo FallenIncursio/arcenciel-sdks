@@ -1,13 +1,13 @@
 # ListImageStyleMatches200Response
 
-200 response for api images id style matches used by the Arc en Ciel API contract.
+Fields describing 200 response for api images id style matches in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**matches** | [**List[Image]**](Image.md) | Matches accepted or returned by this contract. | [optional]
-**meta** | **object** | Meta accepted or returned by this contract. | [optional]
+**matches** | [**List[Image]**](Image.md) | Ordered matches entries included with this 200 response for api images id style matches; an empty list means none are available. | [optional]
+**meta** | **object** | Structured meta details for this 200 response for api images id style matches. | [optional]
 
 ## Example
 

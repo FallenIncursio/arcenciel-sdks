@@ -1,13 +1,13 @@
 # VersionTrainingMetadataSummaryDataset
 
-Dataset accepted or returned by this contract.
+Structured dataset details for this training metadata summary.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dirs** | [**List[VersionTrainingMetadataSummaryDatasetDirsInner]**](VersionTrainingMetadataSummaryDatasetDirsInner.md) | Dirs accepted or returned by this contract. | [optional]
-**total_images** | **int** | Total Images accepted or returned by this contract. | [optional]
+**dirs** | [**List[VersionTrainingMetadataSummaryDatasetDirsInner]**](VersionTrainingMetadataSummaryDatasetDirsInner.md) | Ordered dirs entries included with this dataset; an empty list means none are available. | [optional]
+**total_images** | **int** | Numeric total images reported for this dataset. | [optional]
 
 ## Example
 

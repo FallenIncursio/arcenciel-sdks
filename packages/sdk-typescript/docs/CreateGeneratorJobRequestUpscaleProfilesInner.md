@@ -1,7 +1,7 @@
 
 # CreateGeneratorJobRequestUpscaleProfilesInner
 
-Upscale Profiles item used by the Arc en Ciel API contract.
+Structured upscale profiles item details for this upscale profiles.
 
 ## Properties
 

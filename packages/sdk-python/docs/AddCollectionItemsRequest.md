@@ -1,12 +1,12 @@
 # AddCollectionItemsRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | **List[int]** | Items accepted or returned by this contract. |
+**items** | **List[int]** | Ordered items entries included with this request payload; an empty list means none are available. |
 
 ## Example
 

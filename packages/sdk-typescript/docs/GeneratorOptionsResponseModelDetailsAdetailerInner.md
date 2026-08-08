@@ -1,7 +1,7 @@
 
 # GeneratorOptionsResponseModelDetailsAdetailerInner
 
-Adetailer item used by the Arc en Ciel API contract.
+Structured adetailer item details for this adetailer.
 
 ## Properties
 

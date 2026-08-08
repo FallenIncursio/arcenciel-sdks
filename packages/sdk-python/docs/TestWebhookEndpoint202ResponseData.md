@@ -1,14 +1,14 @@
 # TestWebhookEndpoint202ResponseData
 
-Data accepted or returned by this contract.
+Structured data details for this 202 response for api webhooks endpoints endpoint id test.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**delivery_id** | **str** | Delivery Id accepted or returned by this contract. |
-**event_id** | **str** | Event Id accepted or returned by this contract. |
-**status** | **str** | Status accepted or returned by this contract. |
+**delivery_id** | **str** | Stable identifier for the delivery; use it in subsequent API calls instead of a display name. |
+**event_id** | **str** | Stable identifier for the event; use it in subsequent API calls instead of a display name. |
+**status** | **str** | Current lifecycle state of this data; clients should tolerate future values. Supported values: &#x60;PENDING&#x60;. |
 
 ## Example
 

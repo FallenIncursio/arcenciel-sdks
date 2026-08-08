@@ -1,17 +1,17 @@
 # GeneratorOptionsResponse
 
-Generator Options Response used by the Arc en Ciel API contract.
+Fields describing generator options response in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **limits** | [**GeneratorOptionsResponseLimits**](GeneratorOptionsResponseLimits.md) |  |
-**model_capabilities** | **Dict[str, List[str]]** | Model Capabilities accepted or returned by this contract. |
+**model_capabilities** | **Dict[str, List[str]]** | Structured model capabilities details for this generator options response. |
 **model_details** | [**GeneratorOptionsResponseModelDetails**](GeneratorOptionsResponseModelDetails.md) |  |
 **models** | [**GeneratorOptionsResponseModels**](GeneratorOptionsResponseModels.md) |  |
 **quota** | [**GeneratorQuotaSnapshot**](GeneratorQuotaSnapshot.md) |  |
-**rf_required_notes** | **Dict[str, List[str]]** | Rf Required Notes accepted or returned by this contract. |
+**rf_required_notes** | **Dict[str, List[str]]** | Structured rf required notes details for this generator options response. |
 **settings** | [**GeneratorOptionsResponseSettings**](GeneratorOptionsResponseSettings.md) |  |
 
 ## Example

@@ -1,14 +1,14 @@
 # CollectionItemPage
 
-Collection Item Page used by the Arc en Ciel API contract.
+Fields describing collection item page in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_offset** | **int** | Next Offset accepted or returned by this contract. |
-**returned** | **int** | Returned accepted or returned by this contract. |
-**total** | **int** | Total accepted or returned by this contract. |
+**next_offset** | **int** | Numeric next offset reported for this collection item page. Minimum: 0. |
+**returned** | **int** | Numeric returned reported for this collection item page. Minimum: 0. |
+**total** | **int** | Total number of matching records across all pages for this collection item page. Minimum: 0. |
 
 ## Example
 

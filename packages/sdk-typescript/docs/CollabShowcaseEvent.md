@@ -1,7 +1,7 @@
 
 # CollabShowcaseEvent
 
-Collab Showcase Event used by the Arc en Ciel API contract.
+Fields describing collab showcase event in Developer API requests and responses.
 
 ## Properties
 

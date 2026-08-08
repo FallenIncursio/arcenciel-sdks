@@ -1,12 +1,12 @@
 # GeneratorUploadTouchRequest
 
-Generator Upload Touch Request used by the Arc en Ciel API contract.
+Fields describing generator upload touch request in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**paths** | **List[str]** | Paths accepted or returned by this contract. |
+**paths** | **List[str]** | Ordered paths entries included with this generator upload touch request; an empty list means none are available. |
 
 ## Example
 

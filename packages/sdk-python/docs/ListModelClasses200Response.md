@@ -1,12 +1,12 @@
 # ListModelClasses200Response
 
-200 response for api models classes used by the Arc en Ciel API contract.
+Fields describing 200 response for api models classes in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**classes** | [**List[ListModelClasses200ResponseClassesInner]**](ListModelClasses200ResponseClassesInner.md) | Classes accepted or returned by this contract. | [optional]
+**classes** | [**List[ListModelClasses200ResponseClassesInner]**](ListModelClasses200ResponseClassesInner.md) | Ordered classes entries included with this 200 response for api models classes; an empty list means none are available. | [optional]
 
 ## Example
 

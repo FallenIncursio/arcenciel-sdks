@@ -1,13 +1,13 @@
 # GeneratorStorageStatus
 
-Generator Storage Status used by the Arc en Ciel API contract.
+Fields describing generator storage status in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**errors** | [**List[GeneratorStorageStatusErrorsInner]**](GeneratorStorageStatusErrorsInner.md) | Errors accepted or returned by this contract. |
-**status** | **str** | Status accepted or returned by this contract. |
+**errors** | [**List[GeneratorStorageStatusErrorsInner]**](GeneratorStorageStatusErrorsInner.md) | Ordered errors entries included with this generator storage status; an empty list means none are available. |
+**status** | **str** | Current lifecycle state of this generator storage status; clients should tolerate future values. |
 **stored_at** | **int** | Unix epoch timestamp in milliseconds. |
 
 ## Example

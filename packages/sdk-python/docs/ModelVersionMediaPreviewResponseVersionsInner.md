@@ -1,12 +1,12 @@
 # ModelVersionMediaPreviewResponseVersionsInner
 
-Versions item used by the Arc en Ciel API contract.
+Structured versions item details for this versions.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**entries** | [**List[ModelVersionMediaPreviewEntry]**](ModelVersionMediaPreviewEntry.md) | Entries accepted or returned by this contract. |
+**entries** | [**List[ModelVersionMediaPreviewEntry]**](ModelVersionMediaPreviewEntry.md) | Ordered entries entries included with this versions item; an empty list means none are available. |
 **id** | **int** | Model version identifier. |
 
 ## Example

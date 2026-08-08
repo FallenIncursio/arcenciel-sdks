@@ -1,7 +1,7 @@
 
 # GeneratorPreset
 
-Generator Preset used by the Arc en Ciel API contract.
+Fields describing generator preset in Developer API requests and responses.
 
 ## Properties
 

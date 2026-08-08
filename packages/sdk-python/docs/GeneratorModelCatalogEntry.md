@@ -1,33 +1,33 @@
 # GeneratorModelCatalogEntry
 
-Generator Model Catalog Entry used by the Arc en Ciel API contract.
+Fields describing generator model catalog entry in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_model** | **str** | Base Model accepted or returned by this contract. | [optional]
-**cover_image** | **str** | Cover Image accepted or returned by this contract. | [optional]
-**cover_rating** | **str** | Cover Rating accepted or returned by this contract. | [optional]
-**favorite_count** | **int** | Favorite Count accepted or returned by this contract. | [optional]
-**model_capabilities** | **List[str]** | Model Capabilities accepted or returned by this contract. | [optional]
-**model_id** | **int** | Model Id accepted or returned by this contract. | [optional]
-**model_tags** | **List[str]** | Model Tags accepted or returned by this contract. | [optional]
+**base_model** | **str** | Base Model associated with this generator model catalog entry; preserve server-returned values when passing them to another operation. | [optional]
+**cover_image** | **str** | Cover Image associated with this generator model catalog entry; preserve server-returned values when passing them to another operation. | [optional]
+**cover_rating** | **str** | Cover Rating associated with this generator model catalog entry; preserve server-returned values when passing them to another operation. | [optional]
+**favorite_count** | **int** | Number of favorite records represented by this generator model catalog entry. | [optional]
+**model_capabilities** | **List[str]** | Ordered model capabilities entries included with this generator model catalog entry; an empty list means none are available. | [optional]
+**model_id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. | [optional]
+**model_tags** | **List[str]** | Ordered model tags entries included with this generator model catalog entry; an empty list means none are available. | [optional]
 **model_title** | **str** | Human-readable title/label for UI display (&#x60;displayName&#x60; equivalent for catalog responses). | [optional]
-**model_type** | **str** | Model Type accepted or returned by this contract. | [optional]
-**model_version_count** | **int** | Model Version Count accepted or returned by this contract. | [optional]
+**model_type** | **str** | Discriminator identifying the kind of generator model catalog entry; clients should tolerate future values. | [optional]
+**model_version_count** | **int** | Number of model version records represented by this generator model catalog entry. | [optional]
 **model_version_rank** | **int** | Position of this version within the model order (0 &#x3D; first/latest). | [optional]
-**name** | **str** | Name accepted or returned by this contract. |
-**precision** | **str** | Precision accepted or returned by this contract. | [optional]
-**preview_image** | **str** | Preview Image accepted or returned by this contract. | [optional]
-**preview_rating** | **str** | Preview Rating accepted or returned by this contract. | [optional]
-**rf_required_notes** | **List[str]** | Rf Required Notes accepted or returned by this contract. | [optional]
-**trigger_prompts** | **List[str]** | Trigger Prompts accepted or returned by this contract. | [optional]
-**uploader_id** | **int** | Uploader Id accepted or returned by this contract. | [optional]
-**uploader_profile_picture** | **str** | Uploader Profile Picture accepted or returned by this contract. | [optional]
-**uploader_username** | **str** | Uploader Username accepted or returned by this contract. | [optional]
-**version_id** | **int** | Version Id accepted or returned by this contract. | [optional]
-**version_name** | **str** | Version Name accepted or returned by this contract. | [optional]
+**name** | **str** | Human-readable name for this generator model catalog entry; it is not a stable identifier. |
+**precision** | **str** | Precision associated with this generator model catalog entry; preserve server-returned values when passing them to another operation. | [optional]
+**preview_image** | **str** | Preview Image associated with this generator model catalog entry; preserve server-returned values when passing them to another operation. | [optional]
+**preview_rating** | **str** | Preview Rating associated with this generator model catalog entry; preserve server-returned values when passing them to another operation. | [optional]
+**rf_required_notes** | **List[str]** | Ordered rf required notes entries included with this generator model catalog entry; an empty list means none are available. | [optional]
+**trigger_prompts** | **List[str]** | Ordered trigger prompts entries included with this generator model catalog entry; an empty list means none are available. | [optional]
+**uploader_id** | **int** | Stable identifier for the uploader; use it in subsequent API calls instead of a display name. | [optional]
+**uploader_profile_picture** | **str** | Uploader Profile Picture associated with this generator model catalog entry; preserve server-returned values when passing them to another operation. | [optional]
+**uploader_username** | **str** | Uploader Username associated with this generator model catalog entry; preserve server-returned values when passing them to another operation. | [optional]
+**version_id** | **int** | Stable identifier for the version; use it in subsequent API calls instead of a display name. | [optional]
+**version_name** | **str** | Human-readable version name for this generator model catalog entry; it is not a stable identifier. | [optional]
 
 ## Example
 

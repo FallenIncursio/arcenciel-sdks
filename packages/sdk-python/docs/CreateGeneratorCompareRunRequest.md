@@ -1,6 +1,6 @@
 # CreateGeneratorCompareRunRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
@@ -12,35 +12,35 @@ Name | Type | Description | Notes
 **adetailer_positive** | **str** | Deprecated compatibility alias for &#x60;adetailer.positivePrompt&#x60;. | [optional]
 **attention_couple** | [**CreateGeneratorCompareRunRequestAttentionCouple**](CreateGeneratorCompareRunRequestAttentionCouple.md) |  | [optional]
 **batch_size** | **int** | Compare always queues each target as one output; non-1 values are normalized to 1. | [optional]
-**cfg** | **float** | Cfg accepted or returned by this contract. | [optional]
+**cfg** | **float** | Numeric cfg reported for this request payload. | [optional]
 **controlnets** | [**List[CreateGeneratorJobRequestControlnetsInner]**](CreateGeneratorJobRequestControlnetsInner.md) | ControlNet stack, validated once per target before any compare job is queued. | [optional]
-**denoise** | **float** | Denoise accepted or returned by this contract. | [optional]
+**denoise** | **float** | Numeric denoise reported for this request payload. | [optional]
 **extra_seed** | [**CreateGeneratorJobRequestExtraSeed**](CreateGeneratorJobRequestExtraSeed.md) |  | [optional]
-**extra_seed_strength** | **float** | Extra Seed Strength accepted or returned by this contract. | [optional]
-**height** | **int** | Height accepted or returned by this contract. | [optional]
+**extra_seed_strength** | **float** | Numeric extra seed strength reported for this request payload. Minimum: 0. Maximum: 1. | [optional]
+**height** | **int** | Numeric height reported for this request payload. | [optional]
 **lora_name** | **str** | Legacy single-LoRA alias. Prefer &#x60;loras&#x60;. | [optional]
-**loras** | [**List[CreateGeneratorJobRequestLorasInner]**](CreateGeneratorJobRequestLorasInner.md) | Loras accepted or returned by this contract. | [optional]
-**metadata** | **Dict[str, object]** | Metadata accepted or returned by this contract. | [optional]
-**mode** | **str** | Mode accepted or returned by this contract. | [optional]
+**loras** | [**List[CreateGeneratorJobRequestLorasInner]**](CreateGeneratorJobRequestLorasInner.md) | Ordered loras entries included with this request payload; an empty list means none are available. | [optional]
+**metadata** | **Dict[str, object]** | Structured metadata details for this request payload. | [optional]
+**mode** | **str** | Mode associated with this request payload; preserve server-returned values when passing them to another operation. Supported values: &#x60;txt2img&#x60;. | [optional]
 **model_name** | **str** | Ignored for compare requests; use &#x60;modelNames&#x60;. | [optional]
 **model_names** | **List[str]** | Exact checkpoint names. Duplicate names are rejected. |
-**negative_prompt** | **str** | Negative Prompt accepted or returned by this contract. | [optional]
-**preset_id** | **int** | Preset Id accepted or returned by this contract. | [optional]
-**prompt** | **str** | Prompt accepted or returned by this contract. |
+**negative_prompt** | **str** | Negative Prompt text associated with generation of this request payload; availability depends on visibility and privacy rules. | [optional]
+**preset_id** | **int** | Stable identifier for the preset; use it in subsequent API calls instead of a display name. | [optional]
+**prompt** | **str** | Prompt text associated with generation of this request payload; availability depends on visibility and privacy rules. |
 **prompt_control** | [**CreateGeneratorCompareRunRequestPromptControl**](CreateGeneratorCompareRunRequestPromptControl.md) |  | [optional]
-**retention_days** | **int** | Retention Days accepted or returned by this contract. | [optional]
-**rf_shift** | **float** | Rf Shift accepted or returned by this contract. | [optional]
-**sampler_name** | **str** | Sampler Name accepted or returned by this contract. | [optional]
+**retention_days** | **int** | Numeric retention days reported for this request payload. | [optional]
+**rf_shift** | **float** | Numeric rf shift reported for this request payload. Minimum: 1. Maximum: 15. | [optional]
+**sampler_name** | **str** | Human-readable sampler name for this request payload; it is not a stable identifier. | [optional]
 **scale_factor** | **float** | Upscale target factor. Applied only when &#x60;upscaleProfiles&#x60; or legacy &#x60;upscaleModelName&#x60; is set. | [optional]
-**scheduler** | **str** | Scheduler accepted or returned by this contract. | [optional]
+**scheduler** | **str** | Scheduler associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
 **scheduler_name** | **str** | Compatibility alias for &#x60;scheduler&#x60;. | [optional]
 **seed** | [**CreateGeneratorCompareRunRequestSeed**](CreateGeneratorCompareRunRequestSeed.md) |  | [optional]
-**sfw_mode** | **bool** | Sfw Mode accepted or returned by this contract. | [optional]
-**steps** | **int** | Steps accepted or returned by this contract. | [optional]
-**tags** | **List[str]** | Tags accepted or returned by this contract. | [optional]
+**sfw_mode** | **bool** | Whether sfw mode applies to this request payload. | [optional]
+**steps** | **int** | Numeric steps reported for this request payload. | [optional]
+**tags** | **List[str]** | Ordered tags entries included with this request payload; an empty list means none are available. | [optional]
 **upscale_profiles** | [**List[CreateGeneratorCompareRunRequestUpscaleProfilesInner]**](CreateGeneratorCompareRunRequestUpscaleProfilesInner.md) | Upscale pipeline passes, applied independently to every compare target. | [optional]
-**vae_name** | **str** | Vae Name accepted or returned by this contract. | [optional]
-**width** | **int** | Width accepted or returned by this contract. | [optional]
+**vae_name** | **str** | Human-readable vae name for this request payload; it is not a stable identifier. | [optional]
+**width** | **int** | Numeric width reported for this request payload. | [optional]
 
 ## Example
 

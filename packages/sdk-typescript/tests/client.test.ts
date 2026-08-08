@@ -1,8 +1,26 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import { ArcEnCielClient, createArcEnCielFetch, paginate, readAndVerifySha256, sha256Hex, verifyWebhookSignature } from '../src'
+import {
+  ArcEnCielClient,
+  createArcEnCielFetch,
+  paginate,
+  paginateCursor,
+  paginatePages,
+  readAndVerifySha256,
+  sha256Hex,
+  UserProfileSocialLinksInnerFromJSON,
+  verifyWebhookSignature,
+} from '../src'
+import type { SelfProfileSocialLinksInner, UserProfileSocialLinksInner } from '../src'
 
 describe('ArcEnCielClient', () => {
+  it('preserves the SDK 1.0.0 social-link model alias', () => {
+    const legacy: UserProfileSocialLinksInner = { id: 1, url: 'https://example.test/creator' }
+    const canonical: SelfProfileSocialLinksInner = legacy
+
+    expect(UserProfileSocialLinksInnerFromJSON(canonical)).toEqual(legacy)
+  })
+
   it('configures the API key and base URL', async () => {
     const fetch = vi.fn(async () => Response.json({ classes: [] }, { headers: { 'x-request-id': 'request-1' } }))
     const client = new ArcEnCielClient({ apiKey: 'secret', baseUrl: `https://example.test${'/'.repeat(2_048)}`, fetch })
@@ -168,6 +186,34 @@ describe('ArcEnCielClient', () => {
     const values: number[] = []
     for await (const value of paginate(load)) values.push(value)
     expect(values).toEqual([1, 2])
+  })
+
+  it('abstracts page/limit and cursor pagination without exposing transport loops', async () => {
+    const pageValues: number[] = []
+    for await (const value of paginatePages(async page => ({ items: [page], hasMore: page < 3 }))) pageValues.push(value)
+    expect(pageValues).toEqual([1, 2, 3])
+
+    const cursorValues: string[] = []
+    const cursors: Array<string | undefined> = []
+    for await (const value of paginateCursor(async cursor => {
+      cursors.push(cursor)
+      return cursor === undefined ? { data: ['first'], nextCursor: 'page-2' } : { data: ['second'], nextCursor: null }
+    })) {
+      cursorValues.push(value)
+    }
+    expect(cursors).toEqual([undefined, 'page-2'])
+    expect(cursorValues).toEqual(['first', 'second'])
+
+    await expect(
+      (async () => {
+        for await (const _value of paginatePages(async () => ({ data: [] }), 0)) void _value
+      })()
+    ).rejects.toMatchObject({ code: 'INVALID_PAGINATION' })
+    await expect(
+      (async () => {
+        for await (const _value of paginateCursor(async () => ({ data: [], nextCursor: 'same' }), 'same')) void _value
+      })()
+    ).rejects.toMatchObject({ code: 'INVALID_PAGINATION' })
   })
 
   it('streams downloads with auth, range, redirects, and encoded filenames', async () => {

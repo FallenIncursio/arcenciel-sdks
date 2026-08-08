@@ -1,7 +1,7 @@
 
 # GeneratorVideoJobListResponse
 
-Generator Video Job List Response used by the Arc en Ciel API contract.
+Fields describing generator video job list response in Developer API requests and responses.
 
 ## Properties
 

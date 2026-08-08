@@ -1,7 +1,7 @@
 
 # GeneratorJobDiagnosticsAdetailerBridge
 
-Adetailer Bridge accepted or returned by this contract.
+Structured adetailer bridge details for this diagnostics.
 
 ## Properties
 

@@ -50,11 +50,11 @@ async function example() {
     idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
     // string | Sanitized rich HTML article body. Legacy Markdown or mixed Markdown/HTML is accepted for compatibility and rendered by the rich-content pipeline. (optional)
     content: content_example,
-    // string | Tags accepted or returned by this contract. (optional)
+    // string | Tags associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     tags: tags_example,
-    // Blob | Thumbnail File accepted or returned by this contract. (optional)
+    // Blob | Thumbnail File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
     thumbnailFile: BINARY_DATA_HERE,
-    // string | Title accepted or returned by this contract. (optional)
+    // string | Display title shown to users for this request payload. (optional)
     title: title_example,
   } satisfies CreateArticleRequest;
 
@@ -77,9 +77,9 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
 | **content** | `string` | Sanitized rich HTML article body. Legacy Markdown or mixed Markdown/HTML is accepted for compatibility and rendered by the rich-content pipeline. | [Optional] [Defaults to `undefined`] |
-| **tags** | `string` | Tags accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
-| **thumbnailFile** | `Blob` | Thumbnail File accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
-| **title** | `string` | Title accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **tags** | `string` | Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [Optional] [Defaults to `undefined`] |
+| **thumbnailFile** | `Blob` | Thumbnail File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Optional] [Defaults to `undefined`] |
+| **title** | `string` | Display title shown to users for this request payload. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -726,7 +726,7 @@ async function example() {
     id: 1,
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8',
-    // Array<Blob> | Image Files accepted or returned by this contract. (optional)
+    // Array<Blob> | Ordered image files entries included with this request payload; an empty list means none are available. (optional)
     imageFiles: [new Blob(['example file content'], { type: 'application/octet-stream' })],
   } satisfies UploadArticleImagesRequest;
 
@@ -749,7 +749,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **id** | `number` | The article ID. | [Defaults to `undefined`] |
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
-| **imageFiles** | `Array<Blob>` | Image Files accepted or returned by this contract. | [Optional] |
+| **imageFiles** | `Array<Blob>` | Ordered image files entries included with this request payload; an empty list means none are available. | [Optional] |
 
 ### Return type
 

@@ -1,19 +1,19 @@
 # GeneratorPreset
 
-Generator Preset used by the Arc en Ciel API contract.
+Fields describing generator preset in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** | Created At accepted or returned by this contract. | [optional]
-**description** | **str** | Description accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. |
-**is_public** | **bool** | Is Public accepted or returned by this contract. |
-**name** | **str** | Name accepted or returned by this contract. |
-**owner_id** | **int** | Owner Id accepted or returned by this contract. | [optional]
-**payload** | **Dict[str, object]** | Payload accepted or returned by this contract. |
-**updated_at** | **datetime** | Updated At accepted or returned by this contract. | [optional]
+**created_at** | **datetime** | UTC timestamp when this generator preset was created. Format: date-time. | [optional]
+**description** | **str** | User-facing description of this generator preset; it may contain an empty string when no description was supplied. | [optional]
+**id** | **int** | Stable identifier for the generator preset; use it in subsequent API calls instead of a display name. |
+**is_public** | **bool** | Whether is public applies to this generator preset. |
+**name** | **str** | Human-readable name for this generator preset; it is not a stable identifier. |
+**owner_id** | **int** | Stable identifier for the owner; use it in subsequent API calls instead of a display name. | [optional]
+**payload** | **Dict[str, object]** | Structured payload details for this generator preset. |
+**updated_at** | **datetime** | UTC timestamp of the most recent persisted change to this generator preset. Format: date-time. | [optional]
 
 ## Example
 

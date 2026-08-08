@@ -1,17 +1,17 @@
 # SearchModels200Response
 
-200 response for api models search used by the Arc en Ciel API contract.
+Fields describing 200 response for api models search in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[Model]**](Model.md) | Data accepted or returned by this contract. | [optional]
-**limit** | **int** | Limit accepted or returned by this contract. | [optional]
-**page** | **int** | Page accepted or returned by this contract. | [optional]
-**showcased** | [**List[Model]**](Model.md) | Showcased accepted or returned by this contract. | [optional]
-**total_count** | **int** | Total Count accepted or returned by this contract. | [optional]
-**total_pages** | **int** | Total Pages accepted or returned by this contract. | [optional]
+**data** | [**List[Model]**](Model.md) | Ordered data entries included with this 200 response for api models search; an empty list means none are available. | [optional]
+**limit** | **int** | Maximum number of records requested or returned in one page of this 200 response for api models search. | [optional]
+**page** | **int** | One-based result page requested or returned for this 200 response for api models search. | [optional]
+**showcased** | [**List[Model]**](Model.md) | Ordered showcased entries included with this 200 response for api models search; an empty list means none are available. | [optional]
+**total_count** | **int** | Total number of matching records across all pages for this 200 response for api models search. | [optional]
+**total_pages** | **int** | Total number of pages available at the current page size for this 200 response for api models search. | [optional]
 
 ## Example
 

@@ -1,15 +1,15 @@
 # SelfProfileSocialLinksInner
 
-Social Links item used by the Arc en Ciel API contract.
+Structured social links item details for this social links.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**icon** | **str** | Icon accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**order** | **int** | Order accepted or returned by this contract. | [optional]
-**url** | **str** | Url accepted or returned by this contract. | [optional]
+**icon** | **str** | Icon associated with this social links item; preserve server-returned values when passing them to another operation. | [optional]
+**id** | **int** | Stable identifier for the social links item; use it in subsequent API calls instead of a display name. | [optional]
+**order** | **int** | Numeric order reported for this social links item. | [optional]
+**url** | **str** | URL for the url associated with this social links item; do not persist temporary signed query parameters. | [optional]
 
 ## Example
 

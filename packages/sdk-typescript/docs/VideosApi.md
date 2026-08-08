@@ -1118,7 +1118,7 @@ async function example() {
   const body = {
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
-    // string | Description accepted or returned by this contract. (optional)
+    // string | User-facing description of this request payload; it may contain an empty string when no description was supplied. (optional)
     description: description_example,
     // number | Duration of the video in seconds. (optional)
     duration: 8.14,
@@ -1126,11 +1126,11 @@ async function example() {
     format: format_example,
     // number | Frames per second. (optional)
     fps: 8.14,
-    // string | Tags accepted or returned by this contract. (optional)
+    // string | Tags associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     tags: tags_example,
-    // string | Title accepted or returned by this contract. (optional)
+    // string | Display title shown to users for this request payload. (optional)
     title: title_example,
-    // Blob | Video File accepted or returned by this contract. (optional)
+    // Blob | Video File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
     videoFile: BINARY_DATA_HERE,
   } satisfies UploadVideosRequest;
 
@@ -1152,13 +1152,13 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
-| **description** | `string` | Description accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **description** | `string` | User-facing description of this request payload; it may contain an empty string when no description was supplied. | [Optional] [Defaults to `undefined`] |
 | **duration** | `number` | Duration of the video in seconds. | [Optional] [Defaults to `undefined`] |
 | **format** | `string` | File format (e.g. mp4, webm). | [Optional] [Defaults to `undefined`] |
 | **fps** | `number` | Frames per second. | [Optional] [Defaults to `undefined`] |
-| **tags** | `string` | Tags accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
-| **title** | `string` | Title accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
-| **videoFile** | `Blob` | Video File accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **tags** | `string` | Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [Optional] [Defaults to `undefined`] |
+| **title** | `string` | Display title shown to users for this request payload. | [Optional] [Defaults to `undefined`] |
+| **videoFile** | `Blob` | Video File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 

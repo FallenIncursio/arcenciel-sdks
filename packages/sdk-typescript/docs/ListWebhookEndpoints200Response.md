@@ -1,7 +1,7 @@
 
 # ListWebhookEndpoints200Response
 
-200 response for api webhooks endpoints used by the Arc en Ciel API contract.
+Fields describing 200 response for api webhooks endpoints in Developer API requests and responses.
 
 ## Properties
 

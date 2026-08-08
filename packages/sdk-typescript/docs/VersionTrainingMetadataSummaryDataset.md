@@ -1,7 +1,7 @@
 
 # VersionTrainingMetadataSummaryDataset
 
-Dataset accepted or returned by this contract.
+Structured dataset details for this training metadata summary.
 
 ## Properties
 

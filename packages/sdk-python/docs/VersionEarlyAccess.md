@@ -1,18 +1,18 @@
 # VersionEarlyAccess
 
-Early Access accepted or returned by this contract.
+Structured early access details for this versions item.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**can_download** | **bool** | Can Download accepted or returned by this contract. |
-**can_download_via_link** | **bool** | Can Download Via Link accepted or returned by this contract. |
+**can_download** | **bool** | Whether can download applies to this early access. |
+**can_download_via_link** | **bool** | Whether can download via link applies to this early access. |
 **enabled** | **bool** | True when the version is configured and eligible for the supporter early-access flow. |
 **reason** | **str** | Stable machine-readable reason for the current state. |
-**starts_at** | **datetime** | Starts At accepted or returned by this contract. |
-**state** | **str** | State accepted or returned by this contract. |
-**window_hours** | **int** | Window Hours accepted or returned by this contract. |
+**starts_at** | **datetime** | UTC timestamp for the starts at transition of this early access. Format: date-time. |
+**state** | **str** | Current lifecycle state of this early access; clients should tolerate future values. Supported values: &#x60;PUBLIC&#x60;, &#x60;AVAILABLE&#x60;, &#x60;UPCOMING&#x60;, &#x60;LOCKED&#x60;, &#x60;DISABLED&#x60;, &#x60;UNAVAILABLE&#x60;. |
+**window_hours** | **int** | Numeric window hours reported for this early access. |
 
 ## Example
 

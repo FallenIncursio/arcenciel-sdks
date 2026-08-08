@@ -1,20 +1,20 @@
 # ApiKey
 
-Api Keys item used by the Arc en Ciel API contract.
+Structured api keys item details for this api keys.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** | Created At accepted or returned by this contract. | [optional]
-**expires_at** | **datetime** | Expires At accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**last_used_at** | **datetime** | Last Used At accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
-**preview** | **str** | Preview accepted or returned by this contract. | [optional]
-**revoked_at** | **datetime** | Revoked At accepted or returned by this contract. | [optional]
+**created_at** | **datetime** | UTC timestamp when this api keys item was created. Format: date-time. | [optional]
+**expires_at** | **datetime** | UTC timestamp for the expires at transition of this api keys item. Format: date-time. | [optional]
+**id** | **int** | Stable identifier for the api keys item; use it in subsequent API calls instead of a display name. | [optional]
+**last_used_at** | **datetime** | UTC timestamp for the last used at transition of this api keys item. Format: date-time. | [optional]
+**name** | **str** | Human-readable name for this api keys item; it is not a stable identifier. | [optional]
+**preview** | **str** | Preview associated with this api keys item; preserve server-returned values when passing them to another operation. | [optional]
+**revoked_at** | **datetime** | UTC timestamp for the revoked at transition of this api keys item. Format: date-time. | [optional]
 **scope_mask** | **int** | Bitmask of API-key scopes. See components.x-api-key-scopes for the full scope table. | [optional]
-**usage_count** | **int** | Usage Count accepted or returned by this contract. | [optional]
+**usage_count** | **int** | Number of usage records represented by this api keys item. | [optional]
 
 ## Example
 

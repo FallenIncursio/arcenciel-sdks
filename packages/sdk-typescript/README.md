@@ -1,18 +1,18 @@
-# `@arcenciel/sdk` 1.0.0 stable
+# `@arcenciel/sdk` 1.0.1 stable
 
-Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.9.0` contract. The package is tested for Node.js
+Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.9.1` contract. The package is tested for Node.js
 20.20+ and modern browsers. npm publishes it from the signed public source tag through OIDC Trusted Publishing with provenance.
 
 ## Install
 
 ```bash
-npm install @arcenciel/sdk@1.0.0
+npm install @arcenciel/sdk@1.0.1
 ```
 
 ## Search and inspect a model
 
 ```ts
-import { ArcEnCielClient, paginate } from '@arcenciel/sdk'
+import { ArcEnCielClient, paginatePages } from '@arcenciel/sdk'
 
 const client = new ArcEnCielClient({
   apiKey: process.env.ARCENCIEL_API_KEY,
@@ -33,13 +33,34 @@ if (model?.id) {
   console.log(detail.name)
 }
 
-for await (const item of paginate(page => client.models.searchModels({ search: 'landscape', page, limit: 50 }))) {
+for await (const item of paginatePages(page => client.models.searchModels({ search: 'landscape', page, limit: 50 }))) {
   console.log(item.name)
 }
 ```
 
 Public catalogue reads do not require credentials. Configure `apiKey` for account-specific filters and attribution. Use one key per
 integration and grant only the documented scope.
+
+## Page and cursor pagination
+
+The facade keeps the two API pagination styles explicit while hiding their continuation loops. `paginatePages` accepts one-based
+`page`/`limit` responses with `totalPages` or `hasMore`; the existing `paginate` export remains a compatible alias. `paginateCursor`
+treats continuation values as opaque and stops only when `nextCursor` is absent:
+
+```ts
+import { paginateCursor, paginatePages } from '@arcenciel/sdk'
+
+for await (const model of paginatePages(page => client.models.searchModels({ page, limit: 50 }))) {
+  console.log(model.id)
+}
+
+for await (const notification of paginateCursor(cursor => client.notifications.listNotifications({ cursor, limit: 50 }))) {
+  console.log(notification.id)
+}
+```
+
+Both helpers reject invalid starts or repeated continuation tokens with `ArcEnCielError` code `INVALID_PAGINATION` instead of looping
+forever.
 
 ## Test safely in the sandbox
 
@@ -182,11 +203,11 @@ The generated low-level APIs and models are also exported from the package root.
 
 ## Contract and generation
 
-- Developer API: `1.9.0`, 258 operations
-- SDK: `1.0.0` stable
+- Developer API: `1.9.1`, 258 operations
+- SDK: `1.0.1` stable
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.9.0.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.9.1.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

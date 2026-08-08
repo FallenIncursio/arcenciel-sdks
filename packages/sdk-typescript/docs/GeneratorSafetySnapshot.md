@@ -1,7 +1,7 @@
 
 # GeneratorSafetySnapshot
 
-Generator Safety Snapshot used by the Arc en Ciel API contract.
+Fields describing generator safety snapshot in Developer API requests and responses.
 
 ## Properties
 

@@ -1,7 +1,7 @@
 
 # GeneratorUploadTouchRequest
 
-Generator Upload Touch Request used by the Arc en Ciel API contract.
+Fields describing generator upload touch request in Developer API requests and responses.
 
 ## Properties
 

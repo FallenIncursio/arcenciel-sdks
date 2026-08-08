@@ -1,6 +1,6 @@
 # GeneratorVideoJob
 
-Generator Video Job used by the Arc en Ciel API contract.
+Fields describing generator video job in Developer API requests and responses.
 
 ## Properties
 

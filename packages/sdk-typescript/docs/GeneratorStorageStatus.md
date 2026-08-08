@@ -1,7 +1,7 @@
 
 # GeneratorStorageStatus
 
-Generator Storage Status used by the Arc en Ciel API contract.
+Fields describing generator storage status in Developer API requests and responses.
 
 ## Properties
 

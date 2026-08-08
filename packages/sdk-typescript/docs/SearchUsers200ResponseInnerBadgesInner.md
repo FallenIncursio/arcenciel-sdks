@@ -1,7 +1,7 @@
 
 # SearchUsers200ResponseInnerBadgesInner
 
-Badges item used by the Arc en Ciel API contract.
+Structured badges item details for this badges.
 
 ## Properties
 

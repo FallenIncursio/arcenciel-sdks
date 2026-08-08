@@ -1,7 +1,7 @@
 
 # GeneratorPresetExportPreset
 
-Preset accepted or returned by this contract.
+Structured preset details for this generator preset export.
 
 ## Properties
 

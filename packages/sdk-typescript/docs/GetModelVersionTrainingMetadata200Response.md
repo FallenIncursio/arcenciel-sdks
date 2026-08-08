@@ -1,7 +1,7 @@
 
 # GetModelVersionTrainingMetadata200Response
 
-200 response for api models model Id versions version Id training metadata raw used by the Arc en Ciel API contract.
+Fields describing 200 response for api models model id versions version id training metadata raw in Developer API requests and responses.
 
 ## Properties
 

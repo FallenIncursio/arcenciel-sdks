@@ -1,7 +1,7 @@
 
 # CreatorStatsResponseTopModelsInner
 
-Top Models item used by the Arc en Ciel API contract.
+Structured top models item details for this top models.
 
 ## Properties
 

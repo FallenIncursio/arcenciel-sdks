@@ -1,17 +1,17 @@
 # GeneratorUploadResponse
 
-Generator Upload Response used by the Arc en Ciel API contract.
+Fields describing generator upload response in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**expires_at** | **datetime** | Expires At accepted or returned by this contract. |
-**mime_type** | **str** | Mime Type accepted or returned by this contract. |
-**original_name** | **str** | Original Name accepted or returned by this contract. |
-**path** | **str** | Path accepted or returned by this contract. |
-**size** | **int** | Size accepted or returned by this contract. |
-**ttl_seconds** | **int** | Ttl Seconds accepted or returned by this contract. |
+**expires_at** | **datetime** | UTC timestamp for the expires at transition of this generator upload response. Format: date-time. |
+**mime_type** | **str** | Discriminator identifying the kind of generator upload response; clients should tolerate future values. |
+**original_name** | **str** | Human-readable original name for this generator upload response; it is not a stable identifier. |
+**path** | **str** | Server-provided path for the path associated with this generator upload response; treat it as opaque. |
+**size** | **int** | Size of the associated generator upload response content in the unit indicated by the field name. |
+**ttl_seconds** | **int** | Numeric ttl seconds reported for this generator upload response. |
 
 ## Example
 

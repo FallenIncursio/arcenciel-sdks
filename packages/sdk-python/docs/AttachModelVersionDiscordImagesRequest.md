@@ -1,12 +1,12 @@
 # AttachModelVersionDiscordImagesRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_ids** | **List[int]** | Image Ids accepted or returned by this contract. | [optional]
+**image_ids** | **List[int]** | Ordered image ids entries included with this request payload; an empty list means none are available. | [optional]
 
 ## Example
 

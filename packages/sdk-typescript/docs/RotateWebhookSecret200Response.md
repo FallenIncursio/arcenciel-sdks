@@ -1,7 +1,7 @@
 
 # RotateWebhookSecret200Response
 
-200 response for api webhooks endpoints endpoint Id rotate secret used by the Arc en Ciel API contract.
+200 response for api webhooks endpoints endpoint Id rotate secret value documented for this operation.
 
 ## Properties
 

@@ -1,19 +1,19 @@
 # GetImagesBulk200ResponseImagesInner
 
-Images item used by the Arc en Ciel API contract.
+Structured images item details for this images.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cfg** | **float** | Cfg accepted or returned by this contract. | [optional]
-**file_path** | **str** | File Path accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**negative_prompt** | **str** | Negative Prompt accepted or returned by this contract. | [optional]
-**prompt** | **str** | Prompt accepted or returned by this contract. | [optional]
-**sampler** | **str** | Sampler accepted or returned by this contract. | [optional]
-**seed** | **str** | Seed accepted or returned by this contract. | [optional]
-**steps** | **float** | Steps accepted or returned by this contract. | [optional]
+**cfg** | **float** | Numeric cfg reported for this images item. | [optional]
+**file_path** | **str** | Server-provided path for the file path associated with this images item; treat it as opaque. | [optional]
+**id** | **int** | Stable identifier for the images item; use it in subsequent API calls instead of a display name. | [optional]
+**negative_prompt** | **str** | Negative Prompt text associated with generation of this images item; availability depends on visibility and privacy rules. | [optional]
+**prompt** | **str** | Prompt text associated with generation of this images item; availability depends on visibility and privacy rules. | [optional]
+**sampler** | **str** | Sampler associated with this images item; preserve server-returned values when passing them to another operation. | [optional]
+**seed** | **str** | Seed associated with this images item; preserve server-returned values when passing them to another operation. | [optional]
+**steps** | **float** | Numeric steps reported for this images item. | [optional]
 
 ## Example
 

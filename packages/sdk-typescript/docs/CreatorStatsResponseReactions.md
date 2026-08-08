@@ -1,7 +1,7 @@
 
 # CreatorStatsResponseReactions
 
-Reactions accepted or returned by this contract.
+Structured reactions details for this creator stats response.
 
 ## Properties
 

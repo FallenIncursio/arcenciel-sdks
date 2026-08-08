@@ -1,12 +1,12 @@
 # GeneratorTagSuggestionsResponse
 
-Generator Tag Suggestions Response used by the Arc en Ciel API contract.
+Fields describing generator tag suggestions response in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tags** | [**List[GeneratorTagSuggestion]**](GeneratorTagSuggestion.md) | Tags accepted or returned by this contract. |
+**tags** | [**List[GeneratorTagSuggestion]**](GeneratorTagSuggestion.md) | Ordered tags entries included with this generator tag suggestions response; an empty list means none are available. |
 
 ## Example
 

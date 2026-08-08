@@ -1,7 +1,7 @@
 
 # GeneratorOptionsResponseModelDetails
 
-Model Details accepted or returned by this contract.
+Structured model details details for this generator options response.
 
 ## Properties
 

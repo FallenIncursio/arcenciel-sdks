@@ -1,7 +1,7 @@
 
 # DownloadGeneratorVideoJob403Response
 
-403 response for api generator video jobs id download used by the Arc en Ciel API contract.
+403 response for api generator video jobs id download value documented for this operation.
 
 ## Properties
 

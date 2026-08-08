@@ -6,8 +6,8 @@ Enables ComfyUI Prompt Control scheduling and alternates, for example `[red hair
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** | Enabled accepted or returned by this contract. | [optional]
-**mode** | **str** | Mode accepted or returned by this contract. | [optional]
+**enabled** | **bool** | Whether enabled applies to this prompt control. | [optional]
+**mode** | **str** | Mode associated with this prompt control; preserve server-returned values when passing them to another operation. Supported values: &#x60;auto&#x60;, &#x60;manual&#x60;, &#x60;disabled&#x60;. | [optional]
 
 ## Example
 

@@ -1,13 +1,13 @@
 # CreateGeneratorJobRequestLorasInner
 
-Loras item used by the Arc en Ciel API contract.
+Loras item associated with this loras; preserve server-returned values when passing them to another operation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | Name accepted or returned by this contract. | [optional]
-**weight** | **float** | Weight accepted or returned by this contract. | [optional]
+**name** | **str** | Human-readable name for this loras item; it is not a stable identifier. | [optional]
+**weight** | **float** | Numeric weight reported for this loras item. | [optional]
 
 ## Example
 

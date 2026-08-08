@@ -806,7 +806,7 @@ async function example() {
     collabId: example-collab-id,
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
-    // Blob | Placeholder Image accepted or returned by this contract. (optional)
+    // Blob | Placeholder Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
     placeholderImage: BINARY_DATA_HERE,
   } satisfies UploadMyCollabParticipantPlaceholderRequest;
 
@@ -829,7 +829,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **collabId** | `string` | Collab Id provided in the path. | [Defaults to `undefined`] |
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
-| **placeholderImage** | `Blob` | Placeholder Image accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **placeholderImage** | `Blob` | Placeholder Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 

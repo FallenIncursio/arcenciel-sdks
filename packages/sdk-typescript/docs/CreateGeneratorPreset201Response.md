@@ -1,7 +1,7 @@
 
 # CreateGeneratorPreset201Response
 
-201 response for api generator presets used by the Arc en Ciel API contract.
+Fields describing 201 response for api generator presets in Developer API requests and responses.
 
 ## Properties
 

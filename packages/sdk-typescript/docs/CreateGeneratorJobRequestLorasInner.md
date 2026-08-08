@@ -1,7 +1,7 @@
 
 # CreateGeneratorJobRequestLorasInner
 
-Loras item used by the Arc en Ciel API contract.
+Loras item associated with this loras; preserve server-returned values when passing them to another operation.
 
 ## Properties
 

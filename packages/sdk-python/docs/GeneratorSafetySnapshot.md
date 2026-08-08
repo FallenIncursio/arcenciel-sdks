@@ -1,15 +1,15 @@
 # GeneratorSafetySnapshot
 
-Generator Safety Snapshot used by the Arc en Ciel API contract.
+Fields describing generator safety snapshot in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | **str** | Error accepted or returned by this contract. | [optional]
-**outputs** | **Dict[str, object]** | Outputs accepted or returned by this contract. | [optional]
-**reason** | **str** | Reason accepted or returned by this contract. | [optional]
-**status** | **str** | Status accepted or returned by this contract. | [optional]
+**error** | **str** | Error associated with this generator safety snapshot; preserve server-returned values when passing them to another operation. | [optional]
+**outputs** | **Dict[str, object]** | Structured outputs details for this generator safety snapshot. | [optional]
+**reason** | **str** | Reason associated with this generator safety snapshot; preserve server-returned values when passing them to another operation. | [optional]
+**status** | **str** | Current lifecycle state of this generator safety snapshot; clients should tolerate future values. Supported values: &#x60;ok&#x60;, &#x60;quarantined&#x60;, &#x60;pending_review&#x60;. | [optional]
 **updated_at** | **int** | Unix epoch timestamp in milliseconds. | [optional]
 
 ## Example

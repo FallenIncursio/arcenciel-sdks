@@ -1,13 +1,13 @@
 # GeneratorJobUpscaleProfilesInner
 
-Upscale Profiles item used by the Arc en Ciel API contract.
+Structured upscale profiles item details for this upscale profiles.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**denoise** | **float** | Denoise accepted or returned by this contract. | [optional]
-**model_name** | **str** | Model Name accepted or returned by this contract. |
+**denoise** | **float** | Numeric denoise reported for this upscale profiles item. | [optional]
+**model_name** | **str** | Human-readable model name for this upscale profiles item; it is not a stable identifier. |
 
 ## Example
 

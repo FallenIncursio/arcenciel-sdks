@@ -1,7 +1,7 @@
 
 # GeneratorOptionsResponseSettings
 
-Settings accepted or returned by this contract.
+Structured settings details for this generator options response.
 
 ## Properties
 

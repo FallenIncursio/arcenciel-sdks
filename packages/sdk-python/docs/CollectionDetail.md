@@ -6,30 +6,30 @@ Collection detail filtered for the caller. Manager-only pendingRequests may be a
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allow_collaborators** | **bool** | Allow Collaborators accepted or returned by this contract. |
-**collaborators** | [**List[CollectionCollaboratorSummary]**](CollectionCollaboratorSummary.md) | Collaborators accepted or returned by this contract. |
-**contribution_request** | [**CollectionContributionRequest**](CollectionContributionRequest.md) | Contribution Request accepted or returned by this contract. |
-**cover_image** | **str** | Cover Image accepted or returned by this contract. | [optional]
-**cover_image_rating** | **str** | Cover Image Rating accepted or returned by this contract. | [optional]
-**created_at** | **datetime** | Created At accepted or returned by this contract. |
-**description** | **str** | Description accepted or returned by this contract. | [optional]
-**favorite_count** | **int** | Favorite Count accepted or returned by this contract. |
-**favorited_by** | [**List[CollectionDetailFavoritedByInner]**](CollectionDetailFavoritedByInner.md) | Favorited By accepted or returned by this contract. | [optional]
-**featured** | **str** | Featured accepted or returned by this contract. |
-**id** | **int** | Id accepted or returned by this contract. |
-**image_items** | [**List[CollectionImageItem]**](CollectionImageItem.md) | Image Items accepted or returned by this contract. |
-**item_placement** | **str** | Item Placement accepted or returned by this contract. |
-**model_items** | [**List[CollectionModelItem]**](CollectionModelItem.md) | Model Items accepted or returned by this contract. |
-**name** | **str** | Name accepted or returned by this contract. |
-**owner** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Owner accepted or returned by this contract. | [optional]
+**allow_collaborators** | **bool** | Whether allow collaborators applies to this collection detail. |
+**collaborators** | [**List[CollectionCollaboratorSummary]**](CollectionCollaboratorSummary.md) | Ordered collaborators entries included with this collection detail; an empty list means none are available. |
+**contribution_request** | [**CollectionContributionRequest**](CollectionContributionRequest.md) | Contribution Request associated with this collection detail; preserve server-returned values when passing them to another operation. |
+**cover_image** | **str** | Cover Image associated with this collection detail; preserve server-returned values when passing them to another operation. | [optional]
+**cover_image_rating** | **str** | Cover Image Rating associated with this collection detail; preserve server-returned values when passing them to another operation. | [optional]
+**created_at** | **datetime** | UTC timestamp when this collection detail was created. Format: date-time. |
+**description** | **str** | User-facing description of this collection detail; it may contain an empty string when no description was supplied. | [optional]
+**favorite_count** | **int** | Number of favorite records represented by this collection detail. Minimum: 0. |
+**favorited_by** | [**List[CollectionDetailFavoritedByInner]**](CollectionDetailFavoritedByInner.md) | Ordered favorited by entries included with this collection detail; an empty list means none are available. | [optional]
+**featured** | **str** | Featured associated with this collection detail; preserve server-returned values when passing them to another operation. |
+**id** | **int** | Stable identifier for the collection detail; use it in subsequent API calls instead of a display name. Minimum: 1. |
+**image_items** | [**List[CollectionImageItem]**](CollectionImageItem.md) | Ordered image items entries included with this collection detail; an empty list means none are available. |
+**item_placement** | **str** | Item Placement associated with this collection detail; preserve server-returned values when passing them to another operation. Supported values: &#x60;APPEND&#x60;, &#x60;PREPEND&#x60;. |
+**model_items** | [**List[CollectionModelItem]**](CollectionModelItem.md) | Ordered model items entries included with this collection detail; an empty list means none are available. |
+**name** | **str** | Human-readable name for this collection detail; it is not a stable identifier. |
+**owner** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Owner associated with this collection detail; preserve server-returned values when passing them to another operation. | [optional]
 **pagination** | [**CollectionPagination**](CollectionPagination.md) |  |
-**pending_requests** | [**List[CollectionContributionRequest]**](CollectionContributionRequest.md) | Pending Requests accepted or returned by this contract. | [optional]
+**pending_requests** | [**List[CollectionContributionRequest]**](CollectionContributionRequest.md) | Ordered pending requests entries included with this collection detail; an empty list means none are available. | [optional]
 **permissions** | [**CollectionPermissions**](CollectionPermissions.md) |  |
-**self_favorited** | **bool** | Self Favorited accepted or returned by this contract. |
-**slug** | **str** | Slug accepted or returned by this contract. |
+**self_favorited** | **bool** | Whether self favorited applies to this collection detail. |
+**slug** | **str** | Slug associated with this collection detail; preserve server-returned values when passing them to another operation. |
 **stats** | [**CollectionStats**](CollectionStats.md) |  |
-**type** | **str** | Type accepted or returned by this contract. |
-**visibility** | **str** | Visibility accepted or returned by this contract. |
+**type** | **str** | Discriminator identifying the kind of collection detail; clients should tolerate future values. Supported values: &#x60;MODEL&#x60;, &#x60;IMAGE&#x60;. |
+**visibility** | **str** | Visibility associated with this collection detail; preserve server-returned values when passing them to another operation. Supported values: &#x60;PUBLIC&#x60;, &#x60;UNLISTED&#x60;, &#x60;PRIVATE&#x60;. |
 
 ## Example
 

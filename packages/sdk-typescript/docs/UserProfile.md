@@ -1,7 +1,7 @@
 
 # UserProfile
 
-User Profile used by the Arc en Ciel API contract.
+Fields describing user profile in Developer API requests and responses.
 
 ## Properties
 

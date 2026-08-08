@@ -1,13 +1,13 @@
 # GeneratorQuotaBudgets
 
-Budgets accepted or returned by this contract.
+Structured budgets details for this quota.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **gpu_ms** | [**GeneratorQuotaBudgetBucket**](GeneratorQuotaBudgetBucket.md) |  |
-**profile** | **str** | Profile accepted or returned by this contract. |
+**profile** | **str** | Profile associated with this budgets; preserve server-returned values when passing them to another operation. |
 **vram_mb** | [**GeneratorQuotaBudgetBucket**](GeneratorQuotaBudgetBucket.md) |  |
 
 ## Example

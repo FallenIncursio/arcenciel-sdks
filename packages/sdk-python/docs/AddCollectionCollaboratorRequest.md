@@ -1,13 +1,13 @@
 # AddCollectionCollaboratorRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role** | **str** | Role accepted or returned by this contract. | [optional]
-**user_id** | **int** | User Id accepted or returned by this contract. |
+**role** | **str** | Access role represented by this request payload; use it for display and capability checks, not authentication. Supported values: &#x60;CONTRIBUTOR&#x60;, &#x60;MANAGER&#x60;. | [optional]
+**user_id** | **int** | Stable identifier for the user; use it in subsequent API calls instead of a display name. |
 
 ## Example
 

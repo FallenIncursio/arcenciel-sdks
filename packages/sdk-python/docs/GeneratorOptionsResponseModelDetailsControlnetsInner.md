@@ -1,15 +1,15 @@
 # GeneratorOptionsResponseModelDetailsControlnetsInner
 
-Controlnets item used by the Arc en Ciel API contract.
+Structured controlnets item details for this controlnets.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_model** | **str** | Base Model accepted or returned by this contract. | [optional]
-**display_name** | **str** | Display Name accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. |
-**precision** | **str** | Precision accepted or returned by this contract. | [optional]
+**base_model** | **str** | Base Model associated with this controlnets item; preserve server-returned values when passing them to another operation. | [optional]
+**display_name** | **str** | Human-readable display name for this controlnets item; it is not a stable identifier. | [optional]
+**name** | **str** | Human-readable name for this controlnets item; it is not a stable identifier. |
+**precision** | **str** | Precision associated with this controlnets item; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

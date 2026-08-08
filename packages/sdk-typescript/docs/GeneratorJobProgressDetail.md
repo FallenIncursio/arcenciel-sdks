@@ -1,7 +1,7 @@
 
 # GeneratorJobProgressDetail
 
-Detail accepted or returned by this contract.
+Structured detail details for this generator job progress.
 
 ## Properties
 

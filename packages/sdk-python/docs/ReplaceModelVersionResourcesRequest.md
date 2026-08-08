@@ -1,13 +1,13 @@
 # ReplaceModelVersionResourcesRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**replace** | **bool** | Replace accepted or returned by this contract. | [optional]
-**resources** | **List[object]** | Resources accepted or returned by this contract. | [optional]
+**replace** | **bool** | Whether replace applies to this request payload. | [optional]
+**resources** | **List[object]** | Ordered resources entries included with this request payload; an empty list means none are available. | [optional]
 
 ## Example
 

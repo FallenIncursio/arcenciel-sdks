@@ -1,12 +1,12 @@
 # DownloadModelVersion200Response
 
-200 response for api models model Id versions version Id download used by the Arc en Ciel API contract.
+Fields describing 200 response for api models model id versions version id download in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **str** | Message accepted or returned by this contract. | [optional]
+**message** | **str** | Message associated with this 200 response for api models model id versions version id download; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

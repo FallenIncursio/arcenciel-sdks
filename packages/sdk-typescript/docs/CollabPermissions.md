@@ -1,7 +1,7 @@
 
 # CollabPermissions
 
-Collab Permissions used by the Arc en Ciel API contract.
+Fields describing collab permissions in Developer API requests and responses.
 
 ## Properties
 

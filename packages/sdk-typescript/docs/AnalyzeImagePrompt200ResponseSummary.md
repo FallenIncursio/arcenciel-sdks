@@ -1,7 +1,7 @@
 
 # AnalyzeImagePrompt200ResponseSummary
 
-Summary accepted or returned by this contract.
+Structured summary details for this 200 response for api images id prompt analysis.
 
 ## Properties
 

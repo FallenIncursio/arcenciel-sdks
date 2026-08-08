@@ -1,6 +1,6 @@
 # GeneratorVideoCapabilities
 
-Generator Video Capabilities used by the Arc en Ciel API contract.
+Fields describing generator video capabilities in Developer API requests and responses.
 
 ## Properties
 

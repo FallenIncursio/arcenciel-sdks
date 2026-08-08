@@ -1,15 +1,15 @@
 # UpdateWebhookEndpointRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** | Enabled accepted or returned by this contract. | [optional]
-**event_types** | **List[str]** | Event Types accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
-**url** | **str** | Url accepted or returned by this contract. | [optional]
+**enabled** | **bool** | Whether enabled applies to this request payload. | [optional]
+**event_types** | **List[str]** | Ordered event types entries included with this request payload; an empty list means none are available. | [optional]
+**name** | **str** | Human-readable name for this request payload; it is not a stable identifier. Maximum length: 100 characters. | [optional]
+**url** | **str** | URL for the url associated with this request payload; do not persist temporary signed query parameters. Format: uri. | [optional]
 
 ## Example
 

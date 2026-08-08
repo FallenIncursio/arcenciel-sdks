@@ -1,16 +1,16 @@
 # UpdateMyProfileRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bio** | **str** | Bio accepted or returned by this contract. | [optional]
-**nsfw_age_verified** | **bool** | Nsfw Age Verified accepted or returned by this contract. | [optional]
-**sfw_mode** | **bool** | Sfw Mode accepted or returned by this contract. | [optional]
-**track_downloads** | **bool** | Track Downloads accepted or returned by this contract. | [optional]
-**username** | **str** | Username accepted or returned by this contract. | [optional]
+**bio** | **str** | Bio associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+**nsfw_age_verified** | **bool** | Whether nsfw age verified applies to this request payload. | [optional]
+**sfw_mode** | **bool** | Whether sfw mode applies to this request payload. | [optional]
+**track_downloads** | **bool** | Whether track downloads applies to this request payload. | [optional]
+**username** | **str** | Username associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

@@ -1,7 +1,7 @@
 
 # CollabCreatorPreview
 
-Collab Creator Preview used by the Arc en Ciel API contract.
+Fields describing collab creator preview in Developer API requests and responses.
 
 ## Properties
 

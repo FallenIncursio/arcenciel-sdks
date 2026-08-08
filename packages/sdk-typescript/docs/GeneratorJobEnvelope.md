@@ -1,7 +1,7 @@
 
 # GeneratorJobEnvelope
 
-Generator Job Envelope used by the Arc en Ciel API contract.
+Fields describing generator job envelope in Developer API requests and responses.
 
 ## Properties
 

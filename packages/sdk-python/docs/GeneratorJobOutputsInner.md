@@ -1,14 +1,14 @@
 # GeneratorJobOutputsInner
 
-Outputs item used by the Arc en Ciel API contract.
+Structured outputs item details for this outputs.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filename** | **str** | Filename accepted or returned by this contract. |
-**subfolder** | **str** | Subfolder accepted or returned by this contract. |
-**type** | **str** | Type accepted or returned by this contract. | [optional]
+**filename** | **str** | Client-visible filename for this outputs item; do not use it as a resource identifier or filesystem path without sanitizing it. |
+**subfolder** | **str** | Subfolder associated with this outputs item; preserve server-returned values when passing them to another operation. |
+**type** | **str** | Discriminator identifying the kind of outputs item; clients should tolerate future values. | [optional]
 
 ## Example
 

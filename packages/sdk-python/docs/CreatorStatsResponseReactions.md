@@ -1,14 +1,14 @@
 # CreatorStatsResponseReactions
 
-Reactions accepted or returned by this contract.
+Structured reactions details for this creator stats response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dislikes** | **int** | Dislikes accepted or returned by this contract. |
-**hearts** | **int** | Hearts accepted or returned by this contract. |
-**likes** | **int** | Likes accepted or returned by this contract. |
+**dislikes** | **int** | Numeric dislikes reported for this reactions. |
+**hearts** | **int** | Numeric hearts reported for this reactions. |
+**likes** | **int** | Numeric likes reported for this reactions. |
 
 ## Example
 

@@ -1,6 +1,6 @@
 # GeneratorVideoSseHeartbeatEvent
 
-Generator Video Sse Heartbeat Event used by the Arc en Ciel API contract.
+Fields describing generator video sse heartbeat event in Developer API requests and responses.
 
 ## Properties
 

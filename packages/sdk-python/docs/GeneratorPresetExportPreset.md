@@ -1,14 +1,14 @@
 # GeneratorPresetExportPreset
 
-Preset accepted or returned by this contract.
+Structured preset details for this generator preset export.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** | Description accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. |
-**payload** | **Dict[str, object]** | Payload accepted or returned by this contract. |
+**description** | **str** | User-facing description of this preset; it may contain an empty string when no description was supplied. | [optional]
+**name** | **str** | Human-readable name for this preset; it is not a stable identifier. |
+**payload** | **Dict[str, object]** | Structured payload details for this preset. |
 
 ## Example
 

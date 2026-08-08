@@ -1,7 +1,7 @@
 
 # GeneratorJobProgress
 
-Generator Job Progress used by the Arc en Ciel API contract.
+Fields describing generator job progress in Developer API requests and responses.
 
 ## Properties
 

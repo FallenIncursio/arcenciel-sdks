@@ -1,18 +1,18 @@
 # InterrogateGeneratorImageUrl200Response
 
-200 response for api generator autotag interrogate url used by the Arc en Ciel API contract.
+Fields describing 200 response for api generator autotag interrogate url in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content_type** | **str** | Content Type accepted or returned by this contract. |
-**image_url** | **str** | Image Url accepted or returned by this contract. |
-**rating** | **str** | Rating accepted or returned by this contract. |
-**size** | **int** | Size accepted or returned by this contract. |
-**source** | **str** | Source accepted or returned by this contract. |
-**tag_count** | **int** | Tag Count accepted or returned by this contract. |
-**tags** | **List[str]** | Tags accepted or returned by this contract. |
+**content_type** | **str** | Discriminator identifying the kind of 200 response for api generator autotag interrogate url; clients should tolerate future values. |
+**image_url** | **str** | URL for the image url associated with this 200 response for api generator autotag interrogate url; do not persist temporary signed query parameters. Format: uri. |
+**rating** | **str** | Content-safety rating assigned to this 200 response for api generator autotag interrogate url; callers must still apply their own audience policy. Supported values: &#x60;safe&#x60;, &#x60;questionable&#x60;, &#x60;sensitive&#x60;, &#x60;explicit&#x60;, &#x60;unknown&#x60;. |
+**size** | **int** | Size of the associated 200 response for api generator autotag interrogate url content in the unit indicated by the field name. |
+**source** | **str** | Source associated with this 200 response for api generator autotag interrogate url; preserve server-returned values when passing them to another operation. Supported values: &#x60;url&#x60;. |
+**tag_count** | **int** | Number of tag records represented by this 200 response for api generator autotag interrogate url. |
+**tags** | **List[str]** | Ordered tags entries included with this 200 response for api generator autotag interrogate url; an empty list means none are available. |
 
 ## Example
 

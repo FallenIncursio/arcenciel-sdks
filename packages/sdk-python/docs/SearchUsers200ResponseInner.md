@@ -1,17 +1,17 @@
 # SearchUsers200ResponseInner
 
-200 response for api users search item used by the Arc en Ciel API contract.
+Structured 200 response for api users search item details for this 200 response for api users search.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**badges** | [**List[SearchUsers200ResponseInnerBadgesInner]**](SearchUsers200ResponseInnerBadgesInner.md) | Badges accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**profile_picture** | **str** | Profile Picture accepted or returned by this contract. | [optional]
-**profile_picture_rating** | **str** | Profile Picture Rating accepted or returned by this contract. | [optional]
-**relation_label** | **str** | Relation Label accepted or returned by this contract. | [optional]
-**username** | **str** | Username accepted or returned by this contract. | [optional]
+**badges** | [**List[SearchUsers200ResponseInnerBadgesInner]**](SearchUsers200ResponseInnerBadgesInner.md) | Ordered badges entries included with this 200 response for api users search item; an empty list means none are available. | [optional]
+**id** | **int** | Stable identifier for the 200 response for api users search item; use it in subsequent API calls instead of a display name. | [optional]
+**profile_picture** | **str** | Profile Picture associated with this 200 response for api users search item; preserve server-returned values when passing them to another operation. | [optional]
+**profile_picture_rating** | **str** | Profile Picture Rating associated with this 200 response for api users search item; preserve server-returned values when passing them to another operation. | [optional]
+**relation_label** | **str** | Relation Label associated with this 200 response for api users search item; preserve server-returned values when passing them to another operation. Supported values: &#x60;Owner&#x60;, &#x60;Collaborator&#x60;. | [optional]
+**username** | **str** | Username associated with this 200 response for api users search item; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

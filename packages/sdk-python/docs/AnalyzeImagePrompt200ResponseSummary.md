@@ -1,14 +1,14 @@
 # AnalyzeImagePrompt200ResponseSummary
 
-Summary accepted or returned by this contract.
+Structured summary details for this 200 response for api images id prompt analysis.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description_count** | **int** | Description Count accepted or returned by this contract. |
-**tag_count** | **int** | Tag Count accepted or returned by this contract. |
-**unclassified_count** | **int** | Unclassified Count accepted or returned by this contract. |
+**description_count** | **int** | Number of description records represented by this summary. |
+**tag_count** | **int** | Number of tag records represented by this summary. |
+**unclassified_count** | **int** | Number of unclassified records represented by this summary. |
 
 ## Example
 

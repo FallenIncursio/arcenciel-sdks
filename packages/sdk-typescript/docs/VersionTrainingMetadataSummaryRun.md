@@ -1,7 +1,7 @@
 
 # VersionTrainingMetadataSummaryRun
 
-Run accepted or returned by this contract.
+Structured run details for this training metadata summary.
 
 ## Properties
 

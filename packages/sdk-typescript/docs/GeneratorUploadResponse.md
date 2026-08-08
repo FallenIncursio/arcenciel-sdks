@@ -1,7 +1,7 @@
 
 # GeneratorUploadResponse
 
-Generator Upload Response used by the Arc en Ciel API contract.
+Fields describing generator upload response in Developer API requests and responses.
 
 ## Properties
 

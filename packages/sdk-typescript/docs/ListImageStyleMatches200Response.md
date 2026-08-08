@@ -1,7 +1,7 @@
 
 # ListImageStyleMatches200Response
 
-200 response for api images id style matches used by the Arc en Ciel API contract.
+Fields describing 200 response for api images id style matches in Developer API requests and responses.
 
 ## Properties
 

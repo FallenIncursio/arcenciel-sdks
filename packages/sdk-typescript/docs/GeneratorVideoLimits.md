@@ -1,7 +1,7 @@
 
 # GeneratorVideoLimits
 
-Generator Video Limits used by the Arc en Ciel API contract.
+Fields describing generator video limits in Developer API requests and responses.
 
 ## Properties
 

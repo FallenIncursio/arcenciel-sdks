@@ -1,6 +1,6 @@
 # TestWebhookEndpoint202Response
 
-202 response for api webhooks endpoints endpoint Id test used by the Arc en Ciel API contract.
+Fields describing 202 response for api webhooks endpoints endpoint id test in Developer API requests and responses.
 
 ## Properties
 

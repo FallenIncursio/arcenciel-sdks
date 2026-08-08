@@ -1,28 +1,28 @@
 # CollabShowcaseEntry
 
-Collab Showcase Entry used by the Arc en Ciel API contract.
+Fields describing collab showcase entry in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**character_name** | **str** | Character Name accepted or returned by this contract. | [optional]
-**entry_id** | **str** | Entry Id accepted or returned by this contract. |
-**model_id** | **int** | Model Id accepted or returned by this contract. | [optional]
-**model_title** | **str** | Model Title accepted or returned by this contract. | [optional]
-**model_url** | **str** | Model Url accepted or returned by this contract. | [optional]
-**participant_id** | **int** | Participant Id accepted or returned by this contract. | [optional]
-**profile_picture_path** | **str** | Profile Picture Path accepted or returned by this contract. | [optional]
-**profile_picture_url** | **str** | Profile Picture Url accepted or returned by this contract. | [optional]
-**profile_url** | **str** | Profile Url accepted or returned by this contract. | [optional]
-**source_kind** | **str** | Source Kind accepted or returned by this contract. |
-**source_title** | **str** | Source Title accepted or returned by this contract. | [optional]
-**status** | **str** | Status accepted or returned by this contract. |
-**submission_id** | **int** | Submission Id accepted or returned by this contract. | [optional]
-**thumbnail_path** | **str** | Thumbnail Path accepted or returned by this contract. | [optional]
-**thumbnail_url** | **str** | Thumbnail Url accepted or returned by this contract. | [optional]
-**user_id** | **int** | User Id accepted or returned by this contract. | [optional]
-**username** | **str** | Username accepted or returned by this contract. | [optional]
+**character_name** | **str** | Human-readable character name for this collab showcase entry; it is not a stable identifier. | [optional]
+**entry_id** | **str** | Stable identifier for the entry; use it in subsequent API calls instead of a display name. |
+**model_id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. | [optional]
+**model_title** | **str** | Model Title associated with this collab showcase entry; preserve server-returned values when passing them to another operation. | [optional]
+**model_url** | **str** | URL for the model url associated with this collab showcase entry; do not persist temporary signed query parameters. Format: uri. | [optional]
+**participant_id** | **int** | Stable identifier for the participant; use it in subsequent API calls instead of a display name. | [optional]
+**profile_picture_path** | **str** | Server-provided path for the profile picture path associated with this collab showcase entry; treat it as opaque. | [optional]
+**profile_picture_url** | **str** | URL for the profile picture url associated with this collab showcase entry; do not persist temporary signed query parameters. Format: uri. | [optional]
+**profile_url** | **str** | URL for the profile url associated with this collab showcase entry; do not persist temporary signed query parameters. Format: uri. | [optional]
+**source_kind** | **str** | Source Kind associated with this collab showcase entry; preserve server-returned values when passing them to another operation. |
+**source_title** | **str** | Source Title associated with this collab showcase entry; preserve server-returned values when passing them to another operation. | [optional]
+**status** | **str** | Current lifecycle state of this collab showcase entry; clients should tolerate future values. |
+**submission_id** | **int** | Stable identifier for the submission; use it in subsequent API calls instead of a display name. | [optional]
+**thumbnail_path** | **str** | Server-provided path for the thumbnail path associated with this collab showcase entry; treat it as opaque. | [optional]
+**thumbnail_url** | **str** | URL for the thumbnail url associated with this collab showcase entry; do not persist temporary signed query parameters. Format: uri. | [optional]
+**user_id** | **int** | Stable identifier for the user; use it in subsequent API calls instead of a display name. | [optional]
+**username** | **str** | Username associated with this collab showcase entry; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

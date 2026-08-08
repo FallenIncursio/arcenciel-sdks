@@ -1,12 +1,12 @@
 # CollectionDetailFavoritedByInner
 
-Favorited By item used by the Arc en Ciel API contract.
+Structured favorited by item details for this favorited by.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Id accepted or returned by this contract. |
+**id** | **int** | Stable identifier for the favorited by item; use it in subsequent API calls instead of a display name. Minimum: 1. |
 
 ## Example
 

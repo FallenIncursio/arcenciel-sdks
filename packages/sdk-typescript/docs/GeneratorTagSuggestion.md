@@ -1,7 +1,7 @@
 
 # GeneratorTagSuggestion
 
-Generator Tag Suggestion used by the Arc en Ciel API contract.
+Fields describing generator tag suggestion in Developer API requests and responses.
 
 ## Properties
 

@@ -1,7 +1,7 @@
 
 # CollectionCollaboratorSummary
 
-Collection Collaborator Summary used by the Arc en Ciel API contract.
+Fields describing collection collaborator summary in Developer API requests and responses.
 
 ## Properties
 

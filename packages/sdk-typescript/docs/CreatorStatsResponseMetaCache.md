@@ -1,7 +1,7 @@
 
 # CreatorStatsResponseMetaCache
 
-Cache accepted or returned by this contract.
+Structured cache details for this meta.
 
 ## Properties
 

@@ -1,13 +1,13 @@
 # GeneratorStorageStatusErrorsInner
 
-Errors item used by the Arc en Ciel API contract.
+Structured errors item details for this errors.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | **str** | Error accepted or returned by this contract. |
-**path** | **str** | Path accepted or returned by this contract. |
+**error** | **str** | Error associated with this errors item; preserve server-returned values when passing them to another operation. |
+**path** | **str** | Server-provided path for the path associated with this errors item; treat it as opaque. |
 
 ## Example
 

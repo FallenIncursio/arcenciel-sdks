@@ -1,7 +1,7 @@
 
 # GeneratorVideoEstimateRange
 
-Generator Video Estimate Range used by the Arc en Ciel API contract.
+Fields describing generator video estimate range in Developer API requests and responses.
 
 ## Properties
 

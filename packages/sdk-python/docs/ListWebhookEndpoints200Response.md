@@ -1,12 +1,12 @@
 # ListWebhookEndpoints200Response
 
-200 response for api webhooks endpoints used by the Arc en Ciel API contract.
+Fields describing 200 response for api webhooks endpoints in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[DeveloperWebhookEndpoint]**](DeveloperWebhookEndpoint.md) | Data accepted or returned by this contract. |
+**data** | [**List[DeveloperWebhookEndpoint]**](DeveloperWebhookEndpoint.md) | Ordered data entries included with this 200 response for api webhooks endpoints; an empty list means none are available. |
 
 ## Example
 
