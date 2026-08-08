@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import hmac
 from importlib.metadata import version as package_version
 from pathlib import Path
 from typing import Any
@@ -9,7 +10,13 @@ from unittest.mock import AsyncMock
 import httpx
 import pytest
 
-from arcenciel import ArcEnCielClient, ArcEnCielError, __version__, to_arcenciel_error
+from arcenciel import (
+    ArcEnCielClient,
+    ArcEnCielError,
+    __version__,
+    to_arcenciel_error,
+    verify_webhook_signature,
+)
 from arcenciel.generated.exceptions import ApiException
 from arcenciel.generated.models.create_collection_request import CreateCollectionRequest
 from arcenciel.generated.models.image import Image
@@ -46,6 +53,7 @@ def test_configures_namespaces_and_api_key() -> None:
             client.trust_safety,
             client.users,
             client.videos,
+            client.webhooks,
         )
     )
 
@@ -106,6 +114,21 @@ def test_exposes_v18_feedback_and_trust_namespaces() -> None:
     assert feedback_url == "https://example.test/api/feedback/me"
     assert trust_url == "https://example.test/api/illegal-content-notices/me"
     assert feedback_headers["x-api-key"] == trust_headers["x-api-key"] == "feedback-read-key"
+
+
+def test_exposes_v19_webhooks_namespace() -> None:
+    client = ArcEnCielClient(api_key="webhooks-read-key", base_url="https://example.test")
+
+    method, url, headers, _, _ = client.webhooks._list_webhook_endpoints_serialize(
+        _request_auth=None,
+        _content_type=None,
+        _headers=None,
+        _host_index=0,
+    )
+
+    assert method == "GET"
+    assert url == "https://example.test/api/webhooks/endpoints"
+    assert headers["x-api-key"] == "webhooks-read-key"
 
 
 def test_normalizes_api_errors() -> None:
@@ -361,3 +384,26 @@ def test_download_checksum_rejects_invalid_expected_value() -> None:
         ArcEnCielClient._verify_download_checksum("0" * 64, "invalid")
 
     assert raised.value.code == "INVALID_CHECKSUM"
+
+
+def test_verifies_webhook_signatures_rotation_and_timestamp_tolerance() -> None:
+    body = b'{"id":"evt_1"}'
+    secret = "whsec_sdk_test"
+    timestamp = 1_786_147_200
+    signature = hmac.new(
+        secret.encode(), f"{timestamp}.".encode() + body, hashlib.sha256
+    ).hexdigest()
+
+    assert verify_webhook_signature(
+        body,
+        f"t={timestamp},v1={'0' * 64},v1={signature}",
+        secret,
+        now=float(timestamp),
+    )
+    assert not verify_webhook_signature(
+        body,
+        f"t={timestamp},v1={signature}",
+        secret,
+        now=float(timestamp + 301),
+    )
+    assert not verify_webhook_signature(body, "invalid", secret)

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import { ArcEnCielClient, createArcEnCielFetch, paginate, readAndVerifySha256, sha256Hex } from '../src'
+import { ArcEnCielClient, createArcEnCielFetch, paginate, readAndVerifySha256, sha256Hex, verifyWebhookSignature } from '../src'
 
 describe('ArcEnCielClient', () => {
   it('configures the API key and base URL', async () => {
@@ -28,9 +28,10 @@ describe('ArcEnCielClient', () => {
           'trustSafety',
           'users',
           'videos',
+          'webhooks',
         ].includes(key)
       )
-    ).toHaveLength(18)
+    ).toHaveLength(19)
 
     await client.models.listModelClasses()
 
@@ -77,6 +78,15 @@ describe('ArcEnCielClient', () => {
     expect(fetch.mock.calls[0][0]).toBe('https://example.test/api/feedback/me')
     expect(fetch.mock.calls[1][0]).toBe('https://example.test/api/illegal-content-notices/me')
     for (const [, init] of fetch.mock.calls) expect(new Headers(init?.headers).get('x-api-key')).toBe('feedback-read-key')
+  })
+
+  it('exposes the v1.9 webhooks namespace', async () => {
+    const fetch = vi.fn(async () => Response.json({ data: [] }))
+    const client = new ArcEnCielClient({ apiKey: 'webhooks-read-key', baseUrl: 'https://example.test', fetch, retry: false })
+
+    expect((await client.webhooks.listWebhookEndpoints()).data).toEqual([])
+    expect(fetch.mock.calls[0][0]).toBe('https://example.test/api/webhooks/endpoints')
+    expect(new Headers(fetch.mock.calls[0][1]?.headers).get('x-api-key')).toBe('webhooks-read-key')
   })
 
   it('normalizes generated response errors', async () => {
@@ -201,5 +211,26 @@ describe('ArcEnCielClient', () => {
     await expect(readAndVerifySha256(new Response('hello'), expected)).resolves.toEqual(new TextEncoder().encode('hello'))
     await expect(readAndVerifySha256(new Response('hello'), '0'.repeat(64))).rejects.toMatchObject({ code: 'CHECKSUM_MISMATCH' })
     await expect(readAndVerifySha256(new Response('hello'), 'invalid')).rejects.toMatchObject({ code: 'INVALID_CHECKSUM' })
+  })
+
+  it('verifies webhook signatures, rotation candidates, and timestamp tolerance', async () => {
+    const body = '{"id":"evt_1"}'
+    const secret = 'whsec_sdk_test'
+    const timestamp = '1786147200'
+    const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'])
+    const digest = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(`${timestamp}.${body}`))
+    const signature = Array.from(new Uint8Array(digest))
+      .map(value => value.toString(16).padStart(2, '0'))
+      .join('')
+
+    await expect(
+      verifyWebhookSignature(body, `t=${timestamp},v1=${'0'.repeat(64)},v1=${signature}`, secret, {
+        now: new Date(Number(timestamp) * 1000),
+      })
+    ).resolves.toBe(true)
+    await expect(
+      verifyWebhookSignature(body, `t=${timestamp},v1=${signature}`, secret, { now: new Date((Number(timestamp) + 301) * 1000) })
+    ).resolves.toBe(false)
+    await expect(verifyWebhookSignature(body, 'invalid', secret)).resolves.toBe(false)
   })
 })

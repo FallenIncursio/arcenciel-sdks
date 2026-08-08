@@ -1,8 +1,41 @@
 {
   "schemaVersion": 1,
-  "currentVersion": "1.8.0",
-  "nextVersion": "1.9.0",
+  "currentVersion": "1.9.0",
+  "nextVersion": "1.10.0",
   "releases": [
+    {
+      "version": "1.9.0",
+      "releasedAt": "2026-08-08",
+      "sha256": "33a29d8662fa4e85f09c4347f01f784c22e23e2c23b9a25f20e5a0e78c0f6a71",
+      "operationCount": 258,
+      "openApiPath": "/developers/openapi/1.9.0.json",
+      "referencePath": "/developers/reference/?version=1.9.0",
+      "summary": "Stable owner-scoped Developer Webhooks with signed delivery, diagnostics, and an immutable AsyncAPI contract.",
+      "existingClients": "No action is required. v1.9.0 is additive; adopt SDK 0.9.0 only to manage Developer Webhooks.",
+      "sdk": {
+        "typescript": {
+          "package": "@arcenciel/sdk",
+          "version": "0.9.0",
+          "status": "source-beta",
+          "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.9.0/packages/sdk-typescript"
+        },
+        "python": {
+          "package": "arcenciel",
+          "version": "0.9.0",
+          "status": "source-beta",
+          "registryUrl": "https://pypi.org/project/arcenciel/",
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.9.0/packages/sdk-python"
+        }
+      },
+      "webhooks": {
+        "asyncApiVersion": "1.0.0",
+        "asyncApiPath": "/developers/asyncapi/1.0.0.json",
+        "referencePath": "/developers/webhooks/reference",
+        "sha256": "05689baf73d02398e9969ee7437980028d43fee9fef3080d9d452831787426b4",
+        "eventCount": 3
+      }
+    },
     {
       "version": "1.8.0",
       "releasedAt": "2026-08-07",

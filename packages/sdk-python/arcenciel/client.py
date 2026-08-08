@@ -4,9 +4,11 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import hmac
 import os
 import random
 import tempfile
+import time
 from collections.abc import AsyncIterator, Awaitable, Callable, Iterator
 from contextlib import asynccontextmanager, contextmanager
 from pathlib import Path
@@ -33,6 +35,7 @@ from arcenciel.generated.api.tags_api import TagsApi
 from arcenciel.generated.api.trust_safety_api import TrustSafetyApi
 from arcenciel.generated.api.users_api import UsersApi
 from arcenciel.generated.api.videos_api import VideosApi
+from arcenciel.generated.api.webhooks_api import WebhooksApi
 from arcenciel.generated.api_client import ApiClient
 from arcenciel.generated.configuration import Configuration
 
@@ -81,6 +84,7 @@ class ArcEnCielClient:
         self.trust_safety = TrustSafetyApi(self.api_client)
         self.users = UsersApi(self.api_client)
         self.videos = VideosApi(self.api_client)
+        self.webhooks = WebhooksApi(self.api_client)
 
     async def close(self) -> None:
         await self.api_client.close()
@@ -301,3 +305,28 @@ class ArcEnCielClient:
         if retry_after is not None:
             return retry_after
         return random.uniform(0.0, min(8.0, 0.25 * 2**attempt))
+
+
+def verify_webhook_signature(
+    raw_body: bytes | str,
+    signature_header: str,
+    signing_secret: str,
+    *,
+    tolerance_seconds: int = 300,
+    now: float | None = None,
+) -> bool:
+    """Verify an ``X-AEC-Signature`` against the exact unparsed request body."""
+
+    fields = [part.strip().partition("=") for part in signature_header.split(",")]
+    timestamp_values = [value for name, separator, value in fields if separator and name == "t"]
+    signatures = [value.lower() for name, separator, value in fields if separator and name == "v1"]
+    if not timestamp_values or not signatures or not timestamp_values[0].isdigit():
+        return False
+    timestamp = int(timestamp_values[0])
+    current = int(time.time() if now is None else now)
+    if tolerance_seconds < 0 or abs(current - timestamp) > tolerance_seconds:
+        return False
+    body = raw_body.encode("utf-8") if isinstance(raw_body, str) else raw_body
+    signed = timestamp_values[0].encode("ascii") + b"." + body
+    expected = hmac.new(signing_secret.encode("utf-8"), signed, hashlib.sha256).hexdigest()
+    return any(hmac.compare_digest(signature, expected) for signature in signatures)

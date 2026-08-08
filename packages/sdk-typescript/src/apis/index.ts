@@ -18,3 +18,4 @@ export * from './TagsApi.js';
 export * from './TrustSafetyApi.js';
 export * from './UsersApi.js';
 export * from './VideosApi.js';
+export * from './WebhooksApi.js';
