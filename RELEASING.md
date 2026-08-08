@@ -16,14 +16,14 @@ This process publishes one TypeScript/Python version pair from one immutable Dev
 Dispatch **Publish SDKs** with:
 
 - `api_release`: the immutable contract version, such as `1.9.0`;
-- `sdk_version`: the shared package version, such as `0.9.0`; and
-- `release_tag`: the signed public tag, such as `sdk-v0.9.0`.
+- `sdk_version`: the shared package version, such as `1.0.0`; and
+- `release_tag`: the signed public tag, such as `sdk-v1.0.0`.
 
 The workflow independently verifies the tag, fingerprint, contract checksum, operation count, package versions, repository metadata, and
 deterministic generation. It skips an immutable version already present in a registry. After publishing, it installs both packages into
 clean environments and runs anonymous production reads before creating the GitHub release.
 
-Only after that workflow is green may the private Developer API manifest change both SDK statuses from `source-beta` to
-`published-beta`. Deploy and verify the portal after the manifest change.
+Only after that workflow is green may the private Developer API manifest mark both SDK packages as stable. Deploy and verify the portal
+after the manifest change.
 
 Never use a long-lived npm or PyPI token to bypass a Trusted Publisher mismatch.

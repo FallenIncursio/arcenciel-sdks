@@ -11,21 +11,21 @@
       "openApiPath": "/developers/openapi/1.9.0.json",
       "referencePath": "/developers/reference/?version=1.9.0",
       "summary": "Stable owner-scoped Developer Webhooks with signed delivery, diagnostics, and an immutable AsyncAPI contract.",
-      "existingClients": "No action is required. v1.9.0 is additive; adopt SDK 0.9.0 only to manage Developer Webhooks.",
+      "existingClients": "No action is required. SDK 1.0.0 stabilizes the existing v1.9.0 surface without changing its wire contract.",
       "sdk": {
         "typescript": {
           "package": "@arcenciel/sdk",
-          "version": "0.9.0",
-          "status": "published-beta",
+          "version": "1.0.0",
+          "status": "stable",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
-          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.9.0/packages/sdk-typescript"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
-          "version": "0.9.0",
-          "status": "published-beta",
+          "version": "1.0.0",
+          "status": "stable",
           "registryUrl": "https://pypi.org/project/arcenciel/",
-          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.9.0/packages/sdk-python"
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.0/packages/sdk-python"
         }
       },
       "webhooks": {
