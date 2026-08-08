@@ -1,5 +1,11 @@
 # Python SDK Changelog
 
+## 1.0.2 — 2026-08-08
+
+- Regenerated from Developer API 1.9.2 with corrected article mutation examples and explicit retryable 429/502/503 documentation.
+- Preserved all 258 sync/async operation signatures, namespaces, pagination helpers, request behavior, and webhook helpers from 1.0.1.
+- Existing 1.0.1 clients need no action; upgrade for corrected generated reference material.
+
 ## 1.0.1 — 2026-08-08
 
 - Added sync and async `paginate_pages` and `paginate_cursor` iterators with normalized result containers.

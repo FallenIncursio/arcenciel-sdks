@@ -17,7 +17,7 @@ import type { DeveloperArticleMutationResponse } from '@arcenciel/sdk'
 // TODO: Update the object below with actual values
 const example = {
   "article": null,
-  "message": Article updated,
+  "message": null,
 } satisfies DeveloperArticleMutationResponse
 
 console.log(example)
