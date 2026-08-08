@@ -1,7 +1,7 @@
 
 # CreateModelVersionChunkUploadRequest
 
-Create Model Version Chunk Upload Request used by the Arc en Ciel API contract.
+Fields describing create model version chunk upload request in Developer API requests and responses.
 
 ## Properties
 

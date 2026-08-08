@@ -1,12 +1,12 @@
 # RespondCollectionContributionRequestRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action** | **str** | Action accepted or returned by this contract. |
+**action** | **str** | Action associated with this request payload; preserve server-returned values when passing them to another operation. Supported values: &#x60;approve&#x60;, &#x60;decline&#x60;. |
 
 ## Example
 

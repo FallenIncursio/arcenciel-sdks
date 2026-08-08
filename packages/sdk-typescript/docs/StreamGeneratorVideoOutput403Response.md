@@ -1,7 +1,7 @@
 
 # StreamGeneratorVideoOutput403Response
 
-403 response for api generator video jobs id output used by the Arc en Ciel API contract.
+403 response for api generator video jobs id output value documented for this operation.
 
 ## Properties
 

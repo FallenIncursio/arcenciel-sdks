@@ -1,69 +1,69 @@
 # GeneratorJob
 
-Generator Job used by the Arc en Ciel API contract.
+Fields describing generator job in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **adetailer** | [**GeneratorAdetailerConfig**](GeneratorAdetailerConfig.md) |  | [optional]
-**attempts** | **int** | Attempts accepted or returned by this contract. | [optional]
+**attempts** | **int** | Numeric attempts reported for this generator job. | [optional]
 **attention_couple** | [**GeneratorJobAttentionCouple**](GeneratorJobAttentionCouple.md) |  | [optional]
-**batch_size** | **int** | Batch Size accepted or returned by this contract. | [optional]
-**cancelled** | **bool** | Cancelled accepted or returned by this contract. | [optional]
-**cfg** | **float** | Cfg accepted or returned by this contract. | [optional]
+**batch_size** | **int** | Numeric batch size reported for this generator job. | [optional]
+**cancelled** | **bool** | Whether cancelled applies to this generator job. | [optional]
+**cfg** | **float** | Numeric cfg reported for this generator job. | [optional]
 **comfy** | [**GeneratorJobComfy**](GeneratorJobComfy.md) |  | [optional]
-**controlnets** | [**List[GeneratorJobControlnetsInner]**](GeneratorJobControlnetsInner.md) | Controlnets accepted or returned by this contract. | [optional]
+**controlnets** | [**List[GeneratorJobControlnetsInner]**](GeneratorJobControlnetsInner.md) | Ordered controlnets entries included with this generator job; an empty list means none are available. | [optional]
 **created_at** | **int** | Unix epoch timestamp in milliseconds. |
 **deleted_at** | **int** | Unix epoch timestamp in milliseconds. | [optional]
-**deleted_by_user_id** | **int** | Deleted By User Id accepted or returned by this contract. | [optional]
-**denoise** | **float** | Denoise accepted or returned by this contract. | [optional]
+**deleted_by_user_id** | **int** | Stable identifier for the deleted by user; use it in subsequent API calls instead of a display name. | [optional]
+**denoise** | **float** | Numeric denoise reported for this generator job. | [optional]
 **diagnostics** | [**GeneratorJobDiagnostics**](GeneratorJobDiagnostics.md) |  | [optional]
-**error** | **str** | Error accepted or returned by this contract. | [optional]
+**error** | **str** | Error associated with this generator job; preserve server-returned values when passing them to another operation. | [optional]
 **expires_at** | **int** | Unix epoch timestamp in milliseconds. | [optional]
 **extra_seed** | [**GeneratorJobExtraSeed**](GeneratorJobExtraSeed.md) |  | [optional]
-**extra_seed_strength** | **float** | Extra Seed Strength accepted or returned by this contract. | [optional]
-**height** | **int** | Height accepted or returned by this contract. | [optional]
-**id** | **str** | Id accepted or returned by this contract. |
-**image_path** | **str** | Image Path accepted or returned by this contract. | [optional]
-**lora_name** | **str** | Lora Name accepted or returned by this contract. | [optional]
-**loras** | [**List[GeneratorJobLorasInner]**](GeneratorJobLorasInner.md) | Loras accepted or returned by this contract. | [optional]
-**metadata** | **Dict[str, object]** | Metadata accepted or returned by this contract. | [optional]
-**mode** | **str** | Mode accepted or returned by this contract. |
-**model_capabilities** | **List[str]** | Model Capabilities accepted or returned by this contract. | [optional]
-**model_name** | **str** | Model Name accepted or returned by this contract. | [optional]
-**negative_prompt** | **str** | Negative Prompt accepted or returned by this contract. | [optional]
+**extra_seed_strength** | **float** | Numeric extra seed strength reported for this generator job. Minimum: 0. Maximum: 1. | [optional]
+**height** | **int** | Numeric height reported for this generator job. | [optional]
+**id** | **str** | Stable identifier for the generator job; use it in subsequent API calls instead of a display name. |
+**image_path** | **str** | Server-provided path for the image path associated with this generator job; treat it as opaque. | [optional]
+**lora_name** | **str** | Human-readable lora name for this generator job; it is not a stable identifier. | [optional]
+**loras** | [**List[GeneratorJobLorasInner]**](GeneratorJobLorasInner.md) | Ordered loras entries included with this generator job; an empty list means none are available. | [optional]
+**metadata** | **Dict[str, object]** | Structured metadata details for this generator job. | [optional]
+**mode** | **str** | Mode associated with this generator job; preserve server-returned values when passing them to another operation. Supported values: &#x60;txt2img&#x60;, &#x60;img2img&#x60;, &#x60;inpaint&#x60;. |
+**model_capabilities** | **List[str]** | Ordered model capabilities entries included with this generator job; an empty list means none are available. | [optional]
+**model_name** | **str** | Human-readable model name for this generator job; it is not a stable identifier. | [optional]
+**negative_prompt** | **str** | Negative Prompt text associated with generation of this generator job; availability depends on visibility and privacy rules. | [optional]
 **output_token** | **str** | Short-lived token for direct output access. | [optional]
-**outputs** | [**List[GeneratorJobOutputsInner]**](GeneratorJobOutputsInner.md) | Outputs accepted or returned by this contract. | [optional]
+**outputs** | [**List[GeneratorJobOutputsInner]**](GeneratorJobOutputsInner.md) | Ordered outputs entries included with this generator job; an empty list means none are available. | [optional]
 **outputs_expired_at** | **int** | Unix epoch timestamp in milliseconds. | [optional]
 **position** | **int** | Queue position hint, present on list/SSE payloads. | [optional]
-**priority** | **int** | Priority accepted or returned by this contract. | [optional]
+**priority** | **int** | Numeric priority reported for this generator job. | [optional]
 **progress** | [**GeneratorJobProgress**](GeneratorJobProgress.md) |  | [optional]
-**prompt** | **str** | Prompt accepted or returned by this contract. |
+**prompt** | **str** | Prompt text associated with generation of this generator job; availability depends on visibility and privacy rules. |
 **prompt_control** | [**GeneratorJobPromptControl**](GeneratorJobPromptControl.md) |  | [optional]
-**published_outputs** | **List[str]** | Published Outputs accepted or returned by this contract. | [optional]
+**published_outputs** | **List[str]** | Ordered published outputs entries included with this generator job; an empty list means none are available. | [optional]
 **queue_eta_ms** | **int** | Estimated queue wait time in milliseconds for this job hint. | [optional]
-**rf_shift** | **float** | Rf Shift accepted or returned by this contract. | [optional]
-**role** | **str** | Role accepted or returned by this contract. | [optional]
+**rf_shift** | **float** | Numeric rf shift reported for this generator job. | [optional]
+**role** | **str** | Access role represented by this generator job; use it for display and capability checks, not authentication. | [optional]
 **safety** | [**GeneratorSafetySnapshot**](GeneratorSafetySnapshot.md) |  | [optional]
-**sampler_name** | **str** | Sampler Name accepted or returned by this contract. | [optional]
-**scale_factor** | **float** | Scale Factor accepted or returned by this contract. | [optional]
-**scheduler** | **str** | Scheduler accepted or returned by this contract. | [optional]
-**seed** | [**GeneratorCompareRunSeed**](GeneratorCompareRunSeed.md) |  | [optional]
-**status** | **str** | Status accepted or returned by this contract. |
-**steps** | **int** | Steps accepted or returned by this contract. | [optional]
+**sampler_name** | **str** | Human-readable sampler name for this generator job; it is not a stable identifier. | [optional]
+**scale_factor** | **float** | Numeric scale factor reported for this generator job. | [optional]
+**scheduler** | **str** | Scheduler associated with this generator job; preserve server-returned values when passing them to another operation. | [optional]
+**seed** | [**GeneratorJobSeed**](GeneratorJobSeed.md) |  | [optional]
+**status** | **str** | Current lifecycle state of this generator job; clients should tolerate future values. Supported values: &#x60;queued&#x60;, &#x60;running&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;. |
+**steps** | **int** | Numeric steps reported for this generator job. | [optional]
 **storage** | [**GeneratorStorageStatus**](GeneratorStorageStatus.md) |  | [optional]
-**tagger_tags** | **List[str]** | Tagger Tags accepted or returned by this contract. | [optional]
-**tags** | **List[str]** | Tags accepted or returned by this contract. | [optional]
+**tagger_tags** | **List[str]** | Ordered tagger tags entries included with this generator job; an empty list means none are available. | [optional]
+**tags** | **List[str]** | Ordered tags entries included with this generator job; an empty list means none are available. | [optional]
 **updated_at** | **int** | Unix epoch timestamp in milliseconds. |
-**upscale_model_name** | **str** | Upscale Model Name accepted or returned by this contract. | [optional]
-**upscale_profiles** | [**List[GeneratorJobUpscaleProfilesInner]**](GeneratorJobUpscaleProfilesInner.md) | Upscale Profiles accepted or returned by this contract. | [optional]
-**upscale_target_height** | **int** | Upscale Target Height accepted or returned by this contract. | [optional]
-**upscale_target_width** | **int** | Upscale Target Width accepted or returned by this contract. | [optional]
-**user_id** | **int** | User Id accepted or returned by this contract. |
-**vae_name** | **str** | Vae Name accepted or returned by this contract. | [optional]
-**weight** | **float** | Weight accepted or returned by this contract. | [optional]
-**width** | **int** | Width accepted or returned by this contract. | [optional]
+**upscale_model_name** | **str** | Human-readable upscale model name for this generator job; it is not a stable identifier. | [optional]
+**upscale_profiles** | [**List[GeneratorJobUpscaleProfilesInner]**](GeneratorJobUpscaleProfilesInner.md) | Ordered upscale profiles entries included with this generator job; an empty list means none are available. | [optional]
+**upscale_target_height** | **int** | Numeric upscale target height reported for this generator job. | [optional]
+**upscale_target_width** | **int** | Numeric upscale target width reported for this generator job. | [optional]
+**user_id** | **int** | Stable identifier for the user; use it in subsequent API calls instead of a display name. |
+**vae_name** | **str** | Human-readable vae name for this generator job; it is not a stable identifier. | [optional]
+**weight** | **float** | Numeric weight reported for this generator job. | [optional]
+**width** | **int** | Numeric width reported for this generator job. | [optional]
 
 ## Example
 

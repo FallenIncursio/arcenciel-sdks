@@ -1,7 +1,7 @@
 
 # DeveloperWebhookEventType
 
-Developer Webhook Event Type used by the Arc en Ciel API contract.
+Fields describing developer webhook event type in Developer API requests and responses.
 
 ## Properties
 

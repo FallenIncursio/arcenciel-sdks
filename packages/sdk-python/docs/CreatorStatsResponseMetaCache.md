@@ -1,14 +1,14 @@
 # CreatorStatsResponseMetaCache
 
-Cache accepted or returned by this contract.
+Structured cache details for this meta.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**expires_at** | **datetime** | Expires At accepted or returned by this contract. |
-**hit** | **bool** | Hit accepted or returned by this contract. |
-**ttl_ms** | **int** | Ttl Ms accepted or returned by this contract. |
+**expires_at** | **datetime** | UTC timestamp for the expires at transition of this cache. Format: date-time. |
+**hit** | **bool** | Whether hit applies to this cache. |
+**ttl_ms** | **int** | Numeric ttl ms reported for this cache. |
 
 ## Example
 

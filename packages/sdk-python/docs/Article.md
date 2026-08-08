@@ -1,20 +1,20 @@
 # Article
 
-Article used by the Arc en Ciel API contract.
+Fields describing article in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bumped_at** | **datetime** | Bumped At accepted or returned by this contract. | [optional]
+**bumped_at** | **datetime** | UTC timestamp for the bumped at transition of this article. Format: date-time. | [optional]
 **content** | **str** | Sanitized rich HTML article body. Existing legacy Markdown remains render-compatible during migration. | [optional]
-**content_bumped_at** | **datetime** | Content Bumped At accepted or returned by this contract. | [optional]
-**created_at** | **datetime** | Created At accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**tags** | **List[str]** | Tags accepted or returned by this contract. | [optional]
-**thumbnail_file** | **str** | Thumbnail File accepted or returned by this contract. | [optional]
-**title** | **str** | Title accepted or returned by this contract. | [optional]
-**updated_at** | **datetime** | Updated At accepted or returned by this contract. | [optional]
+**content_bumped_at** | **datetime** | UTC timestamp for the content bumped at transition of this article. Format: date-time. | [optional]
+**created_at** | **datetime** | UTC timestamp when this article was created. Format: date-time. | [optional]
+**id** | **int** | Stable identifier for the article; use it in subsequent API calls instead of a display name. | [optional]
+**tags** | **List[str]** | Ordered tags entries included with this article; an empty list means none are available. | [optional]
+**thumbnail_file** | **str** | Thumbnail File associated with this article; preserve server-returned values when passing them to another operation. | [optional]
+**title** | **str** | Display title shown to users for this article. | [optional]
+**updated_at** | **datetime** | UTC timestamp of the most recent persisted change to this article. Format: date-time. | [optional]
 
 ## Example
 

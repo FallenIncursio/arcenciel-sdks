@@ -1,12 +1,12 @@
 # GetImagesBulk200Response
 
-200 response for api images bulk info used by the Arc en Ciel API contract.
+Fields describing 200 response for api images bulk info in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**List[GetImagesBulk200ResponseImagesInner]**](GetImagesBulk200ResponseImagesInner.md) | Images accepted or returned by this contract. |
+**images** | [**List[GetImagesBulk200ResponseImagesInner]**](GetImagesBulk200ResponseImagesInner.md) | Ordered images entries included with this 200 response for api images bulk info; an empty list means none are available. |
 
 ## Example
 

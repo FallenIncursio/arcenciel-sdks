@@ -1,7 +1,7 @@
 
 # ImageSpatialAttributionRequestAccess
 
-Request Access accepted or returned by this contract.
+Structured request access details for this image spatial attribution.
 
 ## Properties
 

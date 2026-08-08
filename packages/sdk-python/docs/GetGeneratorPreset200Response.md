@@ -1,6 +1,6 @@
 # GetGeneratorPreset200Response
 
-200 response for api generator presets id used by the Arc en Ciel API contract.
+Fields describing 200 response for api generator presets id in Developer API requests and responses.
 
 ## Properties
 

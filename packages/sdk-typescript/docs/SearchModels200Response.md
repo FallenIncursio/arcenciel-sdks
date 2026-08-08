@@ -1,7 +1,7 @@
 
 # SearchModels200Response
 
-200 response for api models search used by the Arc en Ciel API contract.
+Fields describing 200 response for api models search in Developer API requests and responses.
 
 ## Properties
 

@@ -1,12 +1,12 @@
 # GeneratorVideoJobListResponse
 
-Generator Video Job List Response used by the Arc en Ciel API contract.
+Fields describing generator video job list response in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobs** | [**List[GeneratorVideoJob]**](GeneratorVideoJob.md) | Jobs accepted or returned by this contract. |
+**jobs** | [**List[GeneratorVideoJob]**](GeneratorVideoJob.md) | Ordered jobs entries included with this generator video job list response; an empty list means none are available. |
 **next_cursor** | **UUID** | Cursor for the next page. |
 **quota** | [**GeneratorVideoQuota**](GeneratorVideoQuota.md) |  |
 

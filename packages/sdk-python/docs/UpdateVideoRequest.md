@@ -1,21 +1,21 @@
 # UpdateVideoRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cfg** | **float** | Cfg accepted or returned by this contract. | [optional]
-**description** | **str** | Description accepted or returned by this contract. | [optional]
-**negative_prompt** | **str** | Negative Prompt accepted or returned by this contract. | [optional]
-**prompt** | **str** | Prompt accepted or returned by this contract. | [optional]
+**cfg** | **float** | Numeric cfg reported for this request payload. | [optional]
+**description** | **str** | User-facing description of this request payload; it may contain an empty string when no description was supplied. | [optional]
+**negative_prompt** | **str** | Negative Prompt text associated with generation of this request payload; availability depends on visibility and privacy rules. | [optional]
+**prompt** | **str** | Prompt text associated with generation of this request payload; availability depends on visibility and privacy rules. | [optional]
 **rating** | **str** | safe, questionable, sensitive or explicit | [optional]
-**sampler** | **str** | Sampler accepted or returned by this contract. | [optional]
-**seed** | **str** | Seed accepted or returned by this contract. | [optional]
-**steps** | **float** | Steps accepted or returned by this contract. | [optional]
+**sampler** | **str** | Sampler associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+**seed** | **str** | Seed associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+**steps** | **float** | Numeric steps reported for this request payload. | [optional]
 **tags** | **str** | Comma-separated list of tags. | [optional]
-**title** | **str** | Title accepted or returned by this contract. | [optional]
+**title** | **str** | Display title shown to users for this request payload. | [optional]
 
 ## Example
 

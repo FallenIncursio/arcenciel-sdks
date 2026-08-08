@@ -1,7 +1,7 @@
 
 # ImageSpatialAttributionTagsInner
 
-Tags item used by the Arc en Ciel API contract.
+Structured tags item details for this tags.
 
 ## Properties
 

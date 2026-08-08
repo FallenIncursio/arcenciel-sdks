@@ -6,9 +6,9 @@ Regional prompt payload (max 2 regions). UI clients typically derive prompts fro
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** | Enabled accepted or returned by this contract. | [optional]
-**global_prompt_weight** | **float** | Global Prompt Weight accepted or returned by this contract. | [optional] [default to 0.01]
-**regions** | [**List[CreateGeneratorJobRequestAttentionCoupleRegionsInner]**](CreateGeneratorJobRequestAttentionCoupleRegionsInner.md) | Regions accepted or returned by this contract. | [optional]
+**enabled** | **bool** | Whether enabled applies to this attention couple. | [optional]
+**global_prompt_weight** | **float** | Numeric global prompt weight reported for this attention couple. Minimum: 0.01. Maximum: 1. | [optional] [default to 0.01]
+**regions** | [**List[CreateGeneratorJobRequestAttentionCoupleRegionsInner]**](CreateGeneratorJobRequestAttentionCoupleRegionsInner.md) | Ordered regions entries included with this attention couple; an empty list means none are available. | [optional]
 
 ## Example
 

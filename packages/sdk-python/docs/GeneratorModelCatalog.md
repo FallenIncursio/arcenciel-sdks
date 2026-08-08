@@ -1,14 +1,14 @@
 # GeneratorModelCatalog
 
-Generator Model Catalog used by the Arc en Ciel API contract.
+Fields describing generator model catalog in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adetailer** | [**List[GeneratorModelCatalogEntry]**](GeneratorModelCatalogEntry.md) | Adetailer accepted or returned by this contract. |
-**checkpoints** | [**List[GeneratorModelCatalogEntry]**](GeneratorModelCatalogEntry.md) | Checkpoints accepted or returned by this contract. |
-**loras** | [**List[GeneratorModelCatalogEntry]**](GeneratorModelCatalogEntry.md) | Loras accepted or returned by this contract. |
+**adetailer** | [**List[GeneratorModelCatalogEntry]**](GeneratorModelCatalogEntry.md) | Ordered adetailer entries included with this generator model catalog; an empty list means none are available. |
+**checkpoints** | [**List[GeneratorModelCatalogEntry]**](GeneratorModelCatalogEntry.md) | Ordered checkpoints entries included with this generator model catalog; an empty list means none are available. |
+**loras** | [**List[GeneratorModelCatalogEntry]**](GeneratorModelCatalogEntry.md) | Ordered loras entries included with this generator model catalog; an empty list means none are available. |
 
 ## Example
 

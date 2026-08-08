@@ -1,7 +1,7 @@
 
 # GeneratorState
 
-Generator State used by the Arc en Ciel API contract.
+Fields describing generator state in Developer API requests and responses.
 
 ## Properties
 

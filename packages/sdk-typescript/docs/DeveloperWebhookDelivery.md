@@ -1,7 +1,7 @@
 
 # DeveloperWebhookDelivery
 
-Developer Webhook Delivery used by the Arc en Ciel API contract.
+Fields describing developer webhook delivery in Developer API requests and responses.
 
 ## Properties
 

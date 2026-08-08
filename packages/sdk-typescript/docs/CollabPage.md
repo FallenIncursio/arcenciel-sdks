@@ -1,7 +1,7 @@
 
 # CollabPage
 
-Collab Page used by the Arc en Ciel API contract.
+Fields describing collab page in Developer API requests and responses.
 
 ## Properties
 

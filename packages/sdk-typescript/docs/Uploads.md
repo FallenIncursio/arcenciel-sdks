@@ -1,7 +1,7 @@
 
 # Uploads
 
-Uploads accepted or returned by this contract.
+Structured uploads details for this self profile.
 
 ## Properties
 

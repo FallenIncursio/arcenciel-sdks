@@ -1,14 +1,14 @@
 # GeneratorPresetExport
 
-Generator Preset Export used by the Arc en Ciel API contract.
+Fields describing generator preset export in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**exported_at** | **datetime** | Exported At accepted or returned by this contract. |
+**exported_at** | **datetime** | UTC timestamp for the exported at transition of this generator preset export. Format: date-time. |
 **preset** | [**GeneratorPresetExportPreset**](GeneratorPresetExportPreset.md) |  |
-**version** | **int** | Version accepted or returned by this contract. |
+**version** | **int** | Numeric version reported for this generator preset export. |
 
 ## Example
 

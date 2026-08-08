@@ -1,16 +1,16 @@
 # CollectionContributionRequest
 
-Collection Contribution Request used by the Arc en Ciel API contract.
+Fields describing collection contribution request in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** | Created At accepted or returned by this contract. |
-**id** | **int** | Id accepted or returned by this contract. |
-**message** | **str** | Message accepted or returned by this contract. |
-**responded_at** | **datetime** | Responded At accepted or returned by this contract. |
-**responded_by** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Responded By accepted or returned by this contract. |
+**created_at** | **datetime** | UTC timestamp when this collection contribution request was created. Format: date-time. |
+**id** | **int** | Stable identifier for the collection contribution request; use it in subsequent API calls instead of a display name. Minimum: 1. |
+**message** | **str** | Message associated with this collection contribution request; preserve server-returned values when passing them to another operation. |
+**responded_at** | **datetime** | UTC timestamp for the responded at transition of this collection contribution request. Format: date-time. |
+**responded_by** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Responded By associated with this collection contribution request; preserve server-returned values when passing them to another operation. |
 **status** | **str** | Current request status. Clients must tolerate new workflow states. |
 **user** | [**DeveloperUserSummary**](DeveloperUserSummary.md) |  |
 

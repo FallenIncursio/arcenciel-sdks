@@ -1,6 +1,6 @@
 # GeneratorVideoSafetyReview
 
-Generator Video Safety Review used by the Arc en Ciel API contract.
+Fields describing generator video safety review in Developer API requests and responses.
 
 ## Properties
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **limit** | **int** | Maximum entries returned per version after server clamping. |
 **model_id** | **int** | Model whose versions were queried. |
-**versions** | [**List[ModelVersionMediaPreviewResponseVersionsInner]**](ModelVersionMediaPreviewResponseVersionsInner.md) | Versions accepted or returned by this contract. |
+**versions** | [**List[ModelVersionMediaPreviewResponseVersionsInner]**](ModelVersionMediaPreviewResponseVersionsInner.md) | Ordered versions entries included with this model version media preview response; an empty list means none are available. |
 
 ## Example
 

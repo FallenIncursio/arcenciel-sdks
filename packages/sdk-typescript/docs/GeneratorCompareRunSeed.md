@@ -1,7 +1,7 @@
 
 # GeneratorCompareRunSeed
 
-Seed accepted or returned by this contract.
+Seed associated with this generator compare run; preserve server-returned values when passing them to another operation.
 
 ## Properties
 

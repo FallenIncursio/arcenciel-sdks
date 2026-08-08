@@ -1,6 +1,6 @@
 # GeneratorVideoLegacyResolution
 
-Generator Video Legacy Resolution used by the Arc en Ciel API contract.
+Fields describing generator video legacy resolution in Developer API requests and responses.
 
 ## Properties
 

@@ -1,7 +1,7 @@
 
 # ListWebhookDeliveries200Response
 
-200 response for api webhooks endpoints endpoint Id deliveries used by the Arc en Ciel API contract.
+Fields describing 200 response for api webhooks endpoints endpoint id deliveries in Developer API requests and responses.
 
 ## Properties
 

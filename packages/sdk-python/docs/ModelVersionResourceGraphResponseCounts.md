@@ -1,15 +1,15 @@
 # ModelVersionResourceGraphResponseCounts
 
-Counts accepted or returned by this contract.
+Structured counts details for this model version resource graph response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**detected** | **int** | Detected accepted or returned by this contract. |
-**external** | **int** | External accepted or returned by this contract. |
-**hidden** | **int** | Hidden accepted or returned by this contract. |
-**local** | **int** | Local accepted or returned by this contract. |
+**detected** | **int** | Numeric detected reported for this counts. Minimum: 0. |
+**external** | **int** | Numeric external reported for this counts. Minimum: 0. |
+**hidden** | **int** | Numeric hidden reported for this counts. Minimum: 0. |
+**local** | **int** | Numeric local reported for this counts. Minimum: 0. |
 
 ## Example
 

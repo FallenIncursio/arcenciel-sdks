@@ -1,7 +1,7 @@
 
 # VersionTrainingMetadataSummaryTagsTopInner
 
-Tags Top item used by the Arc en Ciel API contract.
+Structured tags top item details for this tags top.
 
 ## Properties
 

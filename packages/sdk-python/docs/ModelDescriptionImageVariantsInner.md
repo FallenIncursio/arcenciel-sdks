@@ -1,17 +1,17 @@
 # ModelDescriptionImageVariantsInner
 
-Variants item used by the Arc en Ciel API contract.
+Structured variants item details for this variants.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bytes** | **int** | Bytes accepted or returned by this contract. | [optional]
-**format** | **str** | Format accepted or returned by this contract. | [optional]
-**height** | **int** | Height accepted or returned by this contract. | [optional]
-**label** | **str** | Label accepted or returned by this contract. | [optional]
-**path** | **str** | Path accepted or returned by this contract. | [optional]
-**width** | **int** | Width accepted or returned by this contract. | [optional]
+**bytes** | **int** | Size of the associated variants item content in the unit indicated by the field name. | [optional]
+**format** | **str** | Format associated with this variants item; preserve server-returned values when passing them to another operation. | [optional]
+**height** | **int** | Numeric height reported for this variants item. | [optional]
+**label** | **str** | Label associated with this variants item; preserve server-returned values when passing them to another operation. | [optional]
+**path** | **str** | Server-provided path for the path associated with this variants item; treat it as opaque. | [optional]
+**width** | **int** | Numeric width reported for this variants item. | [optional]
 
 ## Example
 

@@ -1,7 +1,7 @@
 
 # CollectionImageItem
 
-Collection Image Item used by the Arc en Ciel API contract.
+Fields describing collection image item in Developer API requests and responses.
 
 ## Properties
 

@@ -1,16 +1,16 @@
 # User
 
-Uploader accepted or returned by this contract.
+Structured uploader details for this video.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** | Email accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**profile_picture** | **str** | Profile Picture accepted or returned by this contract. | [optional]
-**role** | **str** | Role accepted or returned by this contract. | [optional]
-**username** | **str** | Username accepted or returned by this contract. | [optional]
+**email** | **str** | Email associated with this uploader; preserve server-returned values when passing them to another operation. | [optional]
+**id** | **int** | Stable identifier for the uploader; use it in subsequent API calls instead of a display name. | [optional]
+**profile_picture** | **str** | Profile Picture associated with this uploader; preserve server-returned values when passing them to another operation. | [optional]
+**role** | **str** | Access role represented by this uploader; use it for display and capability checks, not authentication. | [optional]
+**username** | **str** | Username associated with this uploader; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

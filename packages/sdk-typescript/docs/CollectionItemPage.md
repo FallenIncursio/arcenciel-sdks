@@ -1,7 +1,7 @@
 
 # CollectionItemPage
 
-Collection Item Page used by the Arc en Ciel API contract.
+Fields describing collection item page in Developer API requests and responses.
 
 ## Properties
 

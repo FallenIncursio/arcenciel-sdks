@@ -9,10 +9,11 @@ import os
 import random
 import tempfile
 import time
-from collections.abc import AsyncIterator, Awaitable, Callable, Iterator
+from collections.abc import AsyncIterator, Awaitable, Callable, Iterator, Sequence
 from contextlib import asynccontextmanager, contextmanager
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Self, TypeVar
+from typing import Generic, Self, TypeVar
 
 import httpx
 
@@ -40,7 +41,111 @@ from arcenciel.generated.api_client import ApiClient
 from arcenciel.generated.configuration import Configuration
 
 T = TypeVar("T")
+CursorT = TypeVar("CursorT")
 RETRYABLE_STATUS = {429, 502, 503, 504}
+
+
+@dataclass(frozen=True, slots=True)
+class PagePaginationResult(Generic[T]):
+    """One normalized page from a page/limit API operation."""
+
+    data: Sequence[T]
+    total_pages: int | None = None
+    has_more: bool | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class CursorPaginationResult(Generic[T, CursorT]):
+    """One normalized page from a cursor API operation."""
+
+    data: Sequence[T]
+    next_cursor: CursorT | None = None
+
+
+def paginate_pages(
+    load_page: Callable[[int], PagePaginationResult[T]],
+    *,
+    start_page: int = 1,
+) -> Iterator[T]:
+    """Iterate a page/limit operation until its documented completion signal."""
+
+    if isinstance(start_page, bool) or not isinstance(start_page, int) or start_page < 1:
+        raise ArcEnCielError("start_page must be a positive integer", code="INVALID_PAGINATION")
+    page = start_page
+    while True:
+        result = load_page(page)
+        yield from result.data
+        if result.total_pages is not None:
+            if page >= result.total_pages:
+                return
+        elif result.has_more is not True or not result.data:
+            return
+        page += 1
+
+
+async def paginate_pages_async(
+    load_page: Callable[[int], Awaitable[PagePaginationResult[T]]],
+    *,
+    start_page: int = 1,
+) -> AsyncIterator[T]:
+    """Asynchronously iterate a page/limit operation."""
+
+    if isinstance(start_page, bool) or not isinstance(start_page, int) or start_page < 1:
+        raise ArcEnCielError("start_page must be a positive integer", code="INVALID_PAGINATION")
+    page = start_page
+    while True:
+        result = await load_page(page)
+        for item in result.data:
+            yield item
+        if result.total_pages is not None:
+            if page >= result.total_pages:
+                return
+        elif result.has_more is not True or not result.data:
+            return
+        page += 1
+
+
+def paginate_cursor(
+    load_page: Callable[[CursorT | None], CursorPaginationResult[T, CursorT]],
+    *,
+    initial_cursor: CursorT | None = None,
+) -> Iterator[T]:
+    """Iterate an opaque cursor operation without exposing its continuation loop."""
+
+    cursor = initial_cursor
+    while True:
+        result = load_page(cursor)
+        yield from result.data
+        if result.next_cursor is None:
+            return
+        if result.next_cursor == cursor:
+            raise ArcEnCielError(
+                "Cursor pagination returned the same continuation token twice",
+                code="INVALID_PAGINATION",
+            )
+        cursor = result.next_cursor
+
+
+async def paginate_cursor_async(
+    load_page: Callable[[CursorT | None], Awaitable[CursorPaginationResult[T, CursorT]]],
+    *,
+    initial_cursor: CursorT | None = None,
+) -> AsyncIterator[T]:
+    """Asynchronously iterate an opaque cursor operation."""
+
+    cursor = initial_cursor
+    while True:
+        result = await load_page(cursor)
+        for item in result.data:
+            yield item
+        if result.next_cursor is None:
+            return
+        if result.next_cursor == cursor:
+            raise ArcEnCielError(
+                "Cursor pagination returned the same continuation token twice",
+                code="INVALID_PAGINATION",
+            )
+        cursor = result.next_cursor
 
 
 class ArcEnCielClient:

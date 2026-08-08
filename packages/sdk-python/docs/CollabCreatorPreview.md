@@ -1,13 +1,13 @@
 # CollabCreatorPreview
 
-Collab Creator Preview used by the Arc en Ciel API contract.
+Fields describing collab creator preview in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**display_name** | **str** | Display Name accepted or returned by this contract. |
-**local_user** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Local User accepted or returned by this contract. | [optional]
+**display_name** | **str** | Human-readable display name for this collab creator preview; it is not a stable identifier. |
+**local_user** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Local User associated with this collab creator preview; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

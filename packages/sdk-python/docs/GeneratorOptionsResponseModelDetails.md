@@ -1,17 +1,17 @@
 # GeneratorOptionsResponseModelDetails
 
-Model Details accepted or returned by this contract.
+Structured model details details for this generator options response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adetailer** | [**List[GeneratorOptionsResponseModelDetailsAdetailerInner]**](GeneratorOptionsResponseModelDetailsAdetailerInner.md) | Adetailer accepted or returned by this contract. |
-**checkpoints** | [**List[GeneratorOptionsResponseModelDetailsCheckpointsInner]**](GeneratorOptionsResponseModelDetailsCheckpointsInner.md) | Checkpoints accepted or returned by this contract. |
-**controlnets** | [**List[GeneratorOptionsResponseModelDetailsControlnetsInner]**](GeneratorOptionsResponseModelDetailsControlnetsInner.md) | Controlnets accepted or returned by this contract. |
-**loras** | [**List[GeneratorOptionsResponseModelDetailsLorasInner]**](GeneratorOptionsResponseModelDetailsLorasInner.md) | Loras accepted or returned by this contract. |
-**upscale** | [**List[GeneratorOptionsResponseModelDetailsUpscaleInner]**](GeneratorOptionsResponseModelDetailsUpscaleInner.md) | Upscale accepted or returned by this contract. |
-**vae** | [**List[GeneratorOptionsResponseModelDetailsVaeInner]**](GeneratorOptionsResponseModelDetailsVaeInner.md) | Vae accepted or returned by this contract. |
+**adetailer** | [**List[GeneratorOptionsResponseModelDetailsAdetailerInner]**](GeneratorOptionsResponseModelDetailsAdetailerInner.md) | Ordered adetailer entries included with this model details; an empty list means none are available. |
+**checkpoints** | [**List[GeneratorOptionsResponseModelDetailsCheckpointsInner]**](GeneratorOptionsResponseModelDetailsCheckpointsInner.md) | Ordered checkpoints entries included with this model details; an empty list means none are available. |
+**controlnets** | [**List[GeneratorOptionsResponseModelDetailsControlnetsInner]**](GeneratorOptionsResponseModelDetailsControlnetsInner.md) | Ordered controlnets entries included with this model details; an empty list means none are available. |
+**loras** | [**List[GeneratorOptionsResponseModelDetailsLorasInner]**](GeneratorOptionsResponseModelDetailsLorasInner.md) | Ordered loras entries included with this model details; an empty list means none are available. |
+**upscale** | [**List[GeneratorOptionsResponseModelDetailsUpscaleInner]**](GeneratorOptionsResponseModelDetailsUpscaleInner.md) | Ordered upscale entries included with this model details; an empty list means none are available. |
+**vae** | [**List[GeneratorOptionsResponseModelDetailsVaeInner]**](GeneratorOptionsResponseModelDetailsVaeInner.md) | Ordered vae entries included with this model details; an empty list means none are available. |
 
 ## Example
 

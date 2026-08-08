@@ -1,6 +1,6 @@
 # GeneratorVideoDurationOption
 
-Generator Video Duration Option used by the Arc en Ciel API contract.
+Fields describing generator video duration option in Developer API requests and responses.
 
 ## Properties
 

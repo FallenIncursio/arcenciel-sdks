@@ -1,7 +1,7 @@
 
 # GeneratorVideoDefaults
 
-Generator Video Defaults used by the Arc en Ciel API contract.
+Fields describing generator video defaults in Developer API requests and responses.
 
 ## Properties
 

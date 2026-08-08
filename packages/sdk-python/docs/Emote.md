@@ -1,15 +1,15 @@
 # Emote
 
-Emote used by the Arc en Ciel API contract.
+Fields describing emote in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**animated** | **bool** | Animated accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
-**url** | **str** | Url accepted or returned by this contract. | [optional]
+**animated** | **bool** | Whether animated applies to this emote. | [optional]
+**id** | **int** | Stable identifier for the emote; use it in subsequent API calls instead of a display name. | [optional]
+**name** | **str** | Human-readable name for this emote; it is not a stable identifier. | [optional]
+**url** | **str** | URL for the url associated with this emote; do not persist temporary signed query parameters. | [optional]
 
 ## Example
 

@@ -1,13 +1,13 @@
 # CreateWebhookEndpoint201Response
 
-201 response for api webhooks endpoints used by the Arc en Ciel API contract.
+201 response for api webhooks endpoints value documented for this operation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**DeveloperWebhookEndpoint**](DeveloperWebhookEndpoint.md) |  |
-**secret** | **str** | Secret accepted or returned by this contract. |
+**secret** | **str** | Secret associated with this 201 response for api webhooks endpoints; preserve server-returned values when passing them to another operation. |
 
 ## Example
 

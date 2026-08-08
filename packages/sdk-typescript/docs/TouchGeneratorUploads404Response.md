@@ -1,7 +1,7 @@
 
 # TouchGeneratorUploads404Response
 
-404 response for api generator uploads touch used by the Arc en Ciel API contract.
+404 response for api generator uploads touch value documented for this operation.
 
 ## Properties
 

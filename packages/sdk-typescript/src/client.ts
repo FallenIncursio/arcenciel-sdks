@@ -46,6 +46,20 @@ export interface VerifyWebhookSignatureOptions {
   now?: Date
 }
 
+export interface PagePaginationResult<T> {
+  data?: readonly T[]
+  items?: readonly T[]
+  page?: number
+  totalPages?: number | null
+  hasMore?: boolean
+}
+
+export interface CursorPaginationResult<T, Cursor = string> {
+  data?: readonly T[]
+  items?: readonly T[]
+  nextCursor?: Cursor | null
+}
+
 const RETRYABLE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS'])
 const RETRYABLE_STATUSES = new Set([429, 502, 503, 504])
 
@@ -266,13 +280,44 @@ export async function verifyWebhookSignature(
   return signatures.some(signature => constantTimeHexEqual(signature, digest))
 }
 
-export async function* paginate<T>(
-  loadPage: (page: number) => Promise<{ data?: T[]; totalPages?: number }>,
-  startPage = 1
-): AsyncGenerator<T> {
+const paginationItems = <T>(result: { data?: readonly T[]; items?: readonly T[] }): readonly T[] => result.data ?? result.items ?? []
+
+export async function* paginatePages<T>(loadPage: (page: number) => Promise<PagePaginationResult<T>>, startPage = 1): AsyncGenerator<T> {
+  if (!Number.isInteger(startPage) || startPage < 1) {
+    throw new ArcEnCielError('startPage must be a positive integer', { code: 'INVALID_PAGINATION' })
+  }
   for (let page = startPage; ; page += 1) {
     const result = await loadPage(page)
-    yield* result.data ?? []
-    if (page >= (result.totalPages ?? page)) return
+    const items = paginationItems(result)
+    yield* items
+    if (result.totalPages != null) {
+      if (page >= result.totalPages) return
+      continue
+    }
+    if (result.hasMore !== true || items.length === 0) return
   }
+}
+
+export async function* paginateCursor<T, Cursor = string>(
+  loadPage: (cursor: Cursor | undefined) => Promise<CursorPaginationResult<T, Cursor>>,
+  initialCursor?: Cursor
+): AsyncGenerator<T> {
+  let cursor = initialCursor
+  for (;;) {
+    const result = await loadPage(cursor)
+    yield* paginationItems(result)
+    const nextCursor = result.nextCursor
+    if (nextCursor == null) return
+    if (Object.is(nextCursor, cursor)) {
+      throw new ArcEnCielError('Cursor pagination returned the same continuation token twice', {
+        code: 'INVALID_PAGINATION',
+      })
+    }
+    cursor = nextCursor
+  }
+}
+
+/** Backwards-compatible alias for page/limit pagination. */
+export async function* paginate<T>(loadPage: (page: number) => Promise<PagePaginationResult<T>>, startPage = 1): AsyncGenerator<T> {
+  yield* paginatePages(loadPage, startPage)
 }

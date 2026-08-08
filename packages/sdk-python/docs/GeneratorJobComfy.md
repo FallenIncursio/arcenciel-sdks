@@ -1,14 +1,14 @@
 # GeneratorJobComfy
 
-Comfy accepted or returned by this contract.
+Structured comfy details for this generator job.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**messages** | **List[Dict[str, object]]** | Messages accepted or returned by this contract. | [optional]
-**node_errors** | **List[Dict[str, object]]** | Node Errors accepted or returned by this contract. | [optional]
-**status** | **str** | Status accepted or returned by this contract. | [optional]
+**messages** | **List[Dict[str, object]]** | Ordered messages entries included with this comfy; an empty list means none are available. | [optional]
+**node_errors** | **List[Dict[str, object]]** | Ordered node errors entries included with this comfy; an empty list means none are available. | [optional]
+**status** | **str** | Current lifecycle state of this comfy; clients should tolerate future values. | [optional]
 
 ## Example
 

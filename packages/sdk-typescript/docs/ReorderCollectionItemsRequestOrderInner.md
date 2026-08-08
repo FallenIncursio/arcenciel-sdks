@@ -1,7 +1,7 @@
 
 # ReorderCollectionItemsRequestOrderInner
 
-Order item used by the Arc en Ciel API contract.
+Structured order item details for this order.
 
 ## Properties
 

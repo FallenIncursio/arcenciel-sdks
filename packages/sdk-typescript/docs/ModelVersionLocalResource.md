@@ -1,7 +1,7 @@
 
 # ModelVersionLocalResource
 
-Required item used by the Arc en Ciel API contract.
+Required item associated with this required; preserve server-returned values when passing them to another operation.
 
 ## Properties
 

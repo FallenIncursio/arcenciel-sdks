@@ -1,23 +1,23 @@
 # GeneratorCompareRun
 
-Generator Compare Run used by the Arc en Ciel API contract.
+Fields describing generator compare run in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**completed_count** | **int** | Completed Count accepted or returned by this contract. |
+**completed_count** | **int** | Number of completed records represented by this generator compare run. |
 **cost** | [**GeneratorCompareCost**](GeneratorCompareCost.md) |  |
-**count** | **int** | Count accepted or returned by this contract. |
-**created_at** | **int** | Created At accepted or returned by this contract. | [optional]
-**failed_count** | **int** | Failed Count accepted or returned by this contract. |
+**count** | **int** | Number of count records represented by this generator compare run. |
+**created_at** | **int** | UTC timestamp when this generator compare run was created. | [optional]
+**failed_count** | **int** | Number of failed records represented by this generator compare run. |
 **grid** | [**GeneratorCompareGrid**](GeneratorCompareGrid.md) |  |
-**id** | **UUID** | Id accepted or returned by this contract. |
-**model_names** | **List[str]** | Model Names accepted or returned by this contract. |
-**pending_count** | **int** | Pending Count accepted or returned by this contract. |
+**id** | **UUID** | Stable identifier for the generator compare run; use it in subsequent API calls instead of a display name. Format: uuid. |
+**model_names** | **List[str]** | Ordered model names entries included with this generator compare run; an empty list means none are available. |
+**pending_count** | **int** | Number of pending records represented by this generator compare run. |
 **seed** | [**GeneratorCompareRunSeed**](GeneratorCompareRunSeed.md) |  | [optional]
-**status** | **str** | Status accepted or returned by this contract. |
-**updated_at** | **int** | Updated At accepted or returned by this contract. | [optional]
+**status** | **str** | Current lifecycle state of this generator compare run; clients should tolerate future values. Supported values: &#x60;queued&#x60;, &#x60;running&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;partial&#x60;. |
+**updated_at** | **int** | UTC timestamp of the most recent persisted change to this generator compare run. | [optional]
 
 ## Example
 

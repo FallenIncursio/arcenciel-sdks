@@ -1,16 +1,16 @@
 # GeneratorJobControlnetsInner
 
-Controlnets item used by the Arc en Ciel API contract.
+Structured controlnets item details for this controlnets.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**end** | **float** | End accepted or returned by this contract. | [optional]
-**image_path** | **str** | Image Path accepted or returned by this contract. |
-**model** | **str** | Model accepted or returned by this contract. |
-**start** | **float** | Start accepted or returned by this contract. | [optional]
-**strength** | **float** | Strength accepted or returned by this contract. | [optional]
+**end** | **float** | Numeric end reported for this controlnets item. | [optional]
+**image_path** | **str** | Server-provided path for the image path associated with this controlnets item; treat it as opaque. |
+**model** | **str** | Model associated with this controlnets item; preserve server-returned values when passing them to another operation. |
+**start** | **float** | Numeric start reported for this controlnets item. | [optional]
+**strength** | **float** | Numeric strength reported for this controlnets item. | [optional]
 
 ## Example
 

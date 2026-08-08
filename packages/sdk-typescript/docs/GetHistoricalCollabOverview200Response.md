@@ -1,7 +1,7 @@
 
 # GetHistoricalCollabOverview200Response
 
-200 response for api collabs history overview used by the Arc en Ciel API contract.
+Fields describing 200 response for api collabs history overview in Developer API requests and responses.
 
 ## Properties
 

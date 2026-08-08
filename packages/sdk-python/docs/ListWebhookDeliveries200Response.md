@@ -1,13 +1,13 @@
 # ListWebhookDeliveries200Response
 
-200 response for api webhooks endpoints endpoint Id deliveries used by the Arc en Ciel API contract.
+Fields describing 200 response for api webhooks endpoints endpoint id deliveries in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[DeveloperWebhookDelivery]**](DeveloperWebhookDelivery.md) | Data accepted or returned by this contract. |
-**next_cursor** | **str** | Next Cursor accepted or returned by this contract. |
+**data** | [**List[DeveloperWebhookDelivery]**](DeveloperWebhookDelivery.md) | Ordered data entries included with this 200 response for api webhooks endpoints endpoint id deliveries; an empty list means none are available. |
+**next_cursor** | **str** | Opaque continuation token for the next page of this 200 response for api webhooks endpoints endpoint id deliveries; absent or null means iteration is complete. |
 
 ## Example
 

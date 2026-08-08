@@ -1,17 +1,17 @@
 # CreatorStatsResponseMeta
 
-Meta accepted or returned by this contract.
+Structured meta details for this creator stats response.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_tier** | **str** | Current access tier. Known values are STANDARD, SUPPORTER, and STAFF; clients must tolerate additions. |
-**advanced_access** | **bool** | Advanced Access accepted or returned by this contract. |
+**advanced_access** | **bool** | Whether advanced access applies to this meta. |
 **cache** | [**CreatorStatsResponseMetaCache**](CreatorStatsResponseMetaCache.md) |  |
-**max_window_days** | **int** | Max Window Days accepted or returned by this contract. |
-**range_clamped** | **bool** | Range Clamped accepted or returned by this contract. |
-**standard_window_days** | **int** | Standard Window Days accepted or returned by this contract. |
+**max_window_days** | **int** | Numeric max window days reported for this meta. |
+**range_clamped** | **bool** | Whether range clamped applies to this meta. |
+**standard_window_days** | **int** | Numeric standard window days reported for this meta. |
 
 ## Example
 

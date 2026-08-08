@@ -1,6 +1,6 @@
 # GeneratorVideoAspectRatioOption
 
-Generator Video Aspect Ratio Option used by the Arc en Ciel API contract.
+Fields describing generator video aspect ratio option in Developer API requests and responses.
 
 ## Properties
 

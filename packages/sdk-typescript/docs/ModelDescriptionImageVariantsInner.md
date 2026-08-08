@@ -1,7 +1,7 @@
 
 # ModelDescriptionImageVariantsInner
 
-Variants item used by the Arc en Ciel API contract.
+Structured variants item details for this variants.
 
 ## Properties
 

@@ -1,5 +1,12 @@
 # TypeScript SDK Changelog
 
+## 1.0.1 — 2026-08-08
+
+- Added explicit `paginatePages` and `paginateCursor` async iterators while preserving `paginate` as a compatible page-based alias.
+- Regenerated documentation from Developer API 1.9.1 with semantic property guidance, exact Webhook signature metadata, and explicit
+  `/api/...` contract-versioning rules.
+- Existing operation signatures and runtime requests are unchanged; current 1.0.0 clients need no action.
+
 ## 1.0.0 — 2026-08-08
 
 - Declared the complete 258-operation Developer API v1.9.0 surface stable after deterministic generation, contract checks, package

@@ -1,7 +1,7 @@
 
 # SearchGeneratorCheckpoints200Response
 
-200 response for api generator models checkpoints used by the Arc en Ciel API contract.
+Fields describing 200 response for api generator models checkpoints in Developer API requests and responses.
 
 ## Properties
 

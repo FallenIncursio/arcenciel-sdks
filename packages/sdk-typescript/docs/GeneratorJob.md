@@ -1,7 +1,7 @@
 
 # GeneratorJob
 
-Generator Job used by the Arc en Ciel API contract.
+Fields describing generator job in Developer API requests and responses.
 
 ## Properties
 
@@ -50,7 +50,7 @@ Name | Type
 `samplerName` | string
 `scaleFactor` | number
 `scheduler` | string
-`seed` | [GeneratorCompareRunSeed](GeneratorCompareRunSeed.md)
+`seed` | [GeneratorJobSeed](GeneratorJobSeed.md)
 `status` | string
 `steps` | number
 `storage` | [GeneratorStorageStatus](GeneratorStorageStatus.md)

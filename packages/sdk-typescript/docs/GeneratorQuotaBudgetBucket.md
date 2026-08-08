@@ -1,7 +1,7 @@
 
 # GeneratorQuotaBudgetBucket
 
-Gpu Ms accepted or returned by this contract.
+Structured gpu ms details for this budgets.
 
 ## Properties
 

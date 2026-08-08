@@ -1,6 +1,6 @@
 # GeneratorVideoSafetyRestriction
 
-Generator Video Safety Restriction used by the Arc en Ciel API contract.
+Fields describing generator video safety restriction in Developer API requests and responses.
 
 ## Properties
 

@@ -1,21 +1,21 @@
 # CollabCoverImage
 
-Collab Cover Image used by the Arc en Ciel API contract.
+Fields describing collab cover image in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**external** | **bool** | External accepted or returned by this contract. |
-**file_path** | **str** | File Path accepted or returned by this contract. |
-**height** | **int** | Height accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. |
-**model_id** | **int** | Model Id accepted or returned by this contract. | [optional]
-**rating** | **str** | Rating accepted or returned by this contract. | [optional]
-**source_model_id** | **int** | Source Model Id accepted or returned by this contract. |
-**title** | **str** | Title accepted or returned by this contract. |
-**variants** | **Dict[str, object]** | Variants accepted or returned by this contract. | [optional]
-**width** | **int** | Width accepted or returned by this contract. | [optional]
+**external** | **bool** | Whether external applies to this collab cover image. |
+**file_path** | **str** | Server-provided path for the file path associated with this collab cover image; treat it as opaque. |
+**height** | **int** | Numeric height reported for this collab cover image. | [optional]
+**id** | **int** | Stable identifier for the collab cover image; use it in subsequent API calls instead of a display name. |
+**model_id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. | [optional]
+**rating** | **str** | Content-safety rating assigned to this collab cover image; callers must still apply their own audience policy. | [optional]
+**source_model_id** | **int** | Stable identifier for the source model; use it in subsequent API calls instead of a display name. |
+**title** | **str** | Display title shown to users for this collab cover image. |
+**variants** | **Dict[str, object]** | Structured variants details for this collab cover image. | [optional]
+**width** | **int** | Numeric width reported for this collab cover image. | [optional]
 
 ## Example
 

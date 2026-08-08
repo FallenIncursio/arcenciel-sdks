@@ -1,6 +1,6 @@
 # GeneratorQuotaSnapshotSupporterPreview
 
-Supporter Preview accepted or returned by this contract.
+Structured supporter preview details for this quota.
 
 ## Properties
 

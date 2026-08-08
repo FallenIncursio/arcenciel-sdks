@@ -1,13 +1,13 @@
 # CollabShowcase
 
-Collab Showcase used by the Arc en Ciel API contract.
+Fields describing collab showcase in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **collab** | [**CollabShowcaseEvent**](CollabShowcaseEvent.md) |  |
-**entries** | [**List[CollabShowcaseEntry]**](CollabShowcaseEntry.md) | Entries accepted or returned by this contract. |
+**entries** | [**List[CollabShowcaseEntry]**](CollabShowcaseEntry.md) | Ordered entries entries included with this collab showcase; an empty list means none are available. |
 
 ## Example
 

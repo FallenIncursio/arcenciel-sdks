@@ -1,13 +1,13 @@
 # ListModelClasses200ResponseClassesInner
 
-Classes item used by the Arc en Ciel API contract.
+Structured classes item details for this classes.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
+**id** | **int** | Stable identifier for the classes item; use it in subsequent API calls instead of a display name. | [optional]
+**name** | **str** | Human-readable name for this classes item; it is not a stable identifier. | [optional]
 
 ## Example
 

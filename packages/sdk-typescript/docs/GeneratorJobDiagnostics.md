@@ -1,7 +1,7 @@
 
 # GeneratorJobDiagnostics
 
-Diagnostics accepted or returned by this contract.
+Structured diagnostics details for this generator job.
 
 ## Properties
 

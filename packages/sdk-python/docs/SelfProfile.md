@@ -1,34 +1,34 @@
 # SelfProfile
 
-Self Profile used by the Arc en Ciel API contract.
+Fields describing self profile in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**api_keys** | [**List[ApiKey]**](ApiKey.md) | Api Keys accepted or returned by this contract. | [optional]
-**article_count** | **int** | Article Count accepted or returned by this contract. | [optional]
-**bio** | **str** | Bio accepted or returned by this contract. | [optional]
+**api_keys** | [**List[ApiKey]**](ApiKey.md) | Ordered api keys entries included with this self profile; an empty list means none are available. | [optional]
+**article_count** | **int** | Number of article records represented by this self profile. | [optional]
+**bio** | **str** | Bio associated with this self profile; preserve server-returned values when passing them to another operation. | [optional]
 **civitai_api_key** | **str** | Always null because the encrypted Civitai credential is write-only. | [optional] [readonly]
-**created_at** | **datetime** | Created At accepted or returned by this contract. | [optional]
-**date_format** | **str** | Date Format accepted or returned by this contract. | [optional]
-**discord_linked** | **bool** | Discord Linked accepted or returned by this contract. | [optional]
-**email** | **str** | Email accepted or returned by this contract. | [optional]
-**followers_count** | **int** | Followers Count accepted or returned by this contract. | [optional]
+**created_at** | **datetime** | UTC timestamp when this self profile was created. Format: date-time. | [optional]
+**date_format** | **str** | Date Format associated with this self profile; preserve server-returned values when passing them to another operation. | [optional]
+**discord_linked** | **bool** | Whether discord linked applies to this self profile. | [optional]
+**email** | **str** | Email associated with this self profile; preserve server-returned values when passing them to another operation. | [optional]
+**followers_count** | **int** | Number of followers records represented by this self profile. | [optional]
 **has_civitai_api_key** | **bool** | Whether a Civitai API key is configured. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**image_count** | **int** | Image Count accepted or returned by this contract. | [optional]
-**is_followed** | **bool** | Is Followed accepted or returned by this contract. | [optional]
-**model_count** | **int** | Model Count accepted or returned by this contract. | [optional]
-**profile_banner** | **str** | Profile Banner accepted or returned by this contract. | [optional]
-**profile_picture** | **str** | Profile Picture accepted or returned by this contract. | [optional]
-**role** | **str** | Role accepted or returned by this contract. | [optional]
-**sfw_mode** | **bool** | Sfw Mode accepted or returned by this contract. | [optional]
-**social_links** | [**List[SelfProfileSocialLinksInner]**](SelfProfileSocialLinksInner.md) | Social Links accepted or returned by this contract. | [optional]
-**track_downloads** | **bool** | Track Downloads accepted or returned by this contract. | [optional]
+**id** | **int** | Stable identifier for the self profile; use it in subsequent API calls instead of a display name. | [optional]
+**image_count** | **int** | Number of image records represented by this self profile. | [optional]
+**is_followed** | **bool** | Whether is followed applies to this self profile. | [optional]
+**model_count** | **int** | Number of model records represented by this self profile. | [optional]
+**profile_banner** | **str** | Profile Banner associated with this self profile; preserve server-returned values when passing them to another operation. | [optional]
+**profile_picture** | **str** | Profile Picture associated with this self profile; preserve server-returned values when passing them to another operation. | [optional]
+**role** | **str** | Access role represented by this self profile; use it for display and capability checks, not authentication. | [optional]
+**sfw_mode** | **bool** | Whether sfw mode applies to this self profile. | [optional]
+**social_links** | [**List[SelfProfileSocialLinksInner]**](SelfProfileSocialLinksInner.md) | Ordered social links entries included with this self profile; an empty list means none are available. | [optional]
+**track_downloads** | **bool** | Whether track downloads applies to this self profile. | [optional]
 **uploads** | [**Uploads**](Uploads.md) |  | [optional]
-**username** | **str** | Username accepted or returned by this contract. | [optional]
-**video_count** | **int** | Video Count accepted or returned by this contract. | [optional]
+**username** | **str** | Username associated with this self profile; preserve server-returned values when passing them to another operation. | [optional]
+**video_count** | **int** | Number of video records represented by this self profile. | [optional]
 
 ## Example
 

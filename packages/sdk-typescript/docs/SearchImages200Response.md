@@ -1,7 +1,7 @@
 
 # SearchImages200Response
 
-200 response for api images search used by the Arc en Ciel API contract.
+Fields describing 200 response for api images search in Developer API requests and responses.
 
 ## Properties
 

@@ -1,12 +1,12 @@
 # DownloadModelVersion423Response
 
-423 response for api models model Id versions version Id download used by the Arc en Ciel API contract.
+Fields describing 423 response for api models model id versions version id download in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | **str** | Error accepted or returned by this contract. | [optional]
+**error** | **str** | Error associated with this 423 response for api models model id versions version id download; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

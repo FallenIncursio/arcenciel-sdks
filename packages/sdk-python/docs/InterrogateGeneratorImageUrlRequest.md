@@ -1,12 +1,12 @@
 # InterrogateGeneratorImageUrlRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_url** | **str** | Image Url accepted or returned by this contract. |
+**image_url** | **str** | URL for the image url associated with this request payload; do not persist temporary signed query parameters. Format: uri. |
 
 ## Example
 

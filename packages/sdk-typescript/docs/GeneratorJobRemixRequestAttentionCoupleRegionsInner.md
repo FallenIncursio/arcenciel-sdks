@@ -1,7 +1,7 @@
 
 # GeneratorJobRemixRequestAttentionCoupleRegionsInner
 
-Regions item used by the Arc en Ciel API contract.
+Structured regions item details for this regions.
 
 ## Properties
 

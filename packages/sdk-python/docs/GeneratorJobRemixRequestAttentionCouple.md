@@ -6,9 +6,9 @@ Regional prompt payload. Supports up to 2 regions. Accepted prompt split forms i
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** | Enabled accepted or returned by this contract. | [optional]
+**enabled** | **bool** | Whether enabled applies to this attention couple. | [optional]
 **global_prompt_weight** | **float** | Optional compatibility/base blend weight. | [optional] [default to 0.01]
-**regions** | [**List[GeneratorJobRemixRequestAttentionCoupleRegionsInner]**](GeneratorJobRemixRequestAttentionCoupleRegionsInner.md) | Regions accepted or returned by this contract. | [optional]
+**regions** | [**List[GeneratorJobRemixRequestAttentionCoupleRegionsInner]**](GeneratorJobRemixRequestAttentionCoupleRegionsInner.md) | Ordered regions entries included with this attention couple; an empty list means none are available. | [optional]
 
 ## Example
 

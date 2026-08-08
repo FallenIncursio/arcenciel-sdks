@@ -1,6 +1,6 @@
 # GeneratorVideoModeOption
 
-Generator Video Mode Option used by the Arc en Ciel API contract.
+Fields describing generator video mode option in Developer API requests and responses.
 
 ## Properties
 

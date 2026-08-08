@@ -1,35 +1,35 @@
 # ModelVersionLocalResource
 
-Required item used by the Arc en Ciel API contract.
+Required item associated with this required; preserve server-returned values when passing them to another operation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**confidence** | **float** | Confidence accepted or returned by this contract. |
-**edge_id** | **int** | Edge Id accepted or returned by this contract. |
+**confidence** | **float** | Numeric confidence reported for this required item. Format: double. |
+**edge_id** | **int** | Stable identifier for the edge; use it in subsequent API calls instead of a display name. |
 **evidence** | **object** | Source-specific evidence. New evidence fields may be added without a contract change. |
-**id** | **int** | Id accepted or returned by this contract. |
+**id** | **int** | Stable identifier for the required item; use it in subsequent API calls instead of a display name. |
 **kind** | **str** | Dependency kind such as REQUIRED, RECOMMENDED, COMPATIBLE, or SAMPLE_USED. |
 **management** | [**ModelVersionResourceBaseManagement**](ModelVersionResourceBaseManagement.md) |  | [optional]
 **source** | **str** | Discovery source such as IMAGE_METADATA, IMPORTER_WEBHOOK, MANUAL, or SYSTEM. |
 **status** | **str** | Current values are ACTIVE and HIDDEN; clients must tolerate additions. |
-**strength** | **float** | Strength accepted or returned by this contract. |
+**strength** | **float** | Numeric strength reported for this required item. Format: double. |
 **target_type** | **str** | Current values are local and external; clients must tolerate additions. |
-**base_model** | **str** | Base Model accepted or returned by this contract. | [optional]
+**base_model** | **str** | Base Model associated with this required item; preserve server-returned values when passing them to another operation. | [optional]
 **download_url** | **str** | Null when the caller cannot download the target version. | [optional]
-**file_name** | **str** | File Name accepted or returned by this contract. | [optional]
-**file_scan_status** | **str** | File Scan Status accepted or returned by this contract. | [optional]
-**file_size_kb** | **int** | File Size Kb accepted or returned by this contract. | [optional]
-**model_id** | **int** | Model Id accepted or returned by this contract. |
-**model_type** | **str** | Model Type accepted or returned by this contract. |
-**open_url** | **str** | Open Url accepted or returned by this contract. |
-**preview_image** | [**ModelVersionResourcePreviewImage**](ModelVersionResourcePreviewImage.md) | Preview Image accepted or returned by this contract. | [optional]
-**publish_at** | **datetime** | Publish At accepted or returned by this contract. | [optional]
-**title** | **str** | Title accepted or returned by this contract. |
-**version_id** | **int** | Version Id accepted or returned by this contract. |
-**version_name** | **str** | Version Name accepted or returned by this contract. |
-**version_status** | **str** | Version Status accepted or returned by this contract. |
+**file_name** | **str** | Human-readable file name for this required item; it is not a stable identifier. | [optional]
+**file_scan_status** | **str** | Current lifecycle state of this required item; clients should tolerate future values. | [optional]
+**file_size_kb** | **int** | Size of the associated required item content in the unit indicated by the field name. | [optional]
+**model_id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. |
+**model_type** | **str** | Discriminator identifying the kind of required item; clients should tolerate future values. |
+**open_url** | **str** | URL for the open url associated with this required item; do not persist temporary signed query parameters. |
+**preview_image** | [**ModelVersionResourcePreviewImage**](ModelVersionResourcePreviewImage.md) | Preview Image associated with this required item; preserve server-returned values when passing them to another operation. | [optional]
+**publish_at** | **datetime** | UTC publication time for this required item; a future value indicates scheduled publication. Format: date-time. | [optional]
+**title** | **str** | Display title shown to users for this required item. |
+**version_id** | **int** | Stable identifier for the version; use it in subsequent API calls instead of a display name. |
+**version_name** | **str** | Human-readable version name for this required item; it is not a stable identifier. |
+**version_status** | **str** | Current lifecycle state of this required item; clients should tolerate future values. |
 
 ## Example
 

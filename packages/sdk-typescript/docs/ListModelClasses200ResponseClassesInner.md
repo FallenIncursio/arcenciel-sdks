@@ -1,7 +1,7 @@
 
 # ListModelClasses200ResponseClassesInner
 
-Classes item used by the Arc en Ciel API contract.
+Structured classes item details for this classes.
 
 ## Properties
 

@@ -1,15 +1,15 @@
 # SearchUsers200ResponseInnerBadgesInner
 
-Badges item used by the Arc en Ciel API contract.
+Structured badges item details for this badges.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**icon** | **str** | Icon accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. | [optional]
-**type** | **str** | Type accepted or returned by this contract. | [optional]
+**icon** | **str** | Icon associated with this badges item; preserve server-returned values when passing them to another operation. | [optional]
+**id** | **int** | Stable identifier for the badges item; use it in subsequent API calls instead of a display name. | [optional]
+**name** | **str** | Human-readable name for this badges item; it is not a stable identifier. | [optional]
+**type** | **str** | Discriminator identifying the kind of badges item; clients should tolerate future values. | [optional]
 
 ## Example
 

@@ -1,13 +1,13 @@
 # ReorderCollectionItemsRequestOrderInner
 
-Order item used by the Arc en Ciel API contract.
+Structured order item details for this order.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Id accepted or returned by this contract. |
-**order** | **int** | Order accepted or returned by this contract. |
+**id** | **int** | Stable identifier for the order item; use it in subsequent API calls instead of a display name. |
+**order** | **int** | Numeric order reported for this order item. |
 
 ## Example
 

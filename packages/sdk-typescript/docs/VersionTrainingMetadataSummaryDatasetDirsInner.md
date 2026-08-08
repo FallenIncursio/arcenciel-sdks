@@ -1,7 +1,7 @@
 
 # VersionTrainingMetadataSummaryDatasetDirsInner
 
-Dirs item used by the Arc en Ciel API contract.
+Structured dirs item details for this dirs.
 
 ## Properties
 

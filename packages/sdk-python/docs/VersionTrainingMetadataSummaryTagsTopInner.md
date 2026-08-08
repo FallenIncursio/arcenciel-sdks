@@ -1,13 +1,13 @@
 # VersionTrainingMetadataSummaryTagsTopInner
 
-Tags Top item used by the Arc en Ciel API contract.
+Structured tags top item details for this tags top.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **int** | Count accepted or returned by this contract. | [optional]
-**tag** | **str** | Tag accepted or returned by this contract. | [optional]
+**count** | **int** | Number of count records represented by this tags top item. | [optional]
+**tag** | **str** | Tag associated with this tags top item; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

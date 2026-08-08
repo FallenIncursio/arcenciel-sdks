@@ -1,12 +1,12 @@
 # ReorderCollectionItemsRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**order** | [**List[ReorderCollectionItemsRequestOrderInner]**](ReorderCollectionItemsRequestOrderInner.md) | Order accepted or returned by this contract. |
+**order** | [**List[ReorderCollectionItemsRequestOrderInner]**](ReorderCollectionItemsRequestOrderInner.md) | Ordered order entries included with this request payload; an empty list means none are available. |
 
 ## Example
 

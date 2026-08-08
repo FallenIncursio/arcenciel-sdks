@@ -1,16 +1,16 @@
 # ImageSpatialAttributionTagsInner
 
-Tags item used by the Arc en Ciel API contract.
+Structured tags item details for this tags.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**distribution** | **str** | Distribution accepted or returned by this contract. |
-**focus** | **float** | Focus accepted or returned by this contract. |
-**index** | **int** | Index accepted or returned by this contract. |
-**name** | **str** | Name accepted or returned by this contract. |
-**score** | **float** | Score accepted or returned by this contract. |
+**distribution** | **str** | Distribution associated with this tags item; preserve server-returned values when passing them to another operation. Supported values: &#x60;localized&#x60;, &#x60;mixed&#x60;, &#x60;distributed&#x60;. |
+**focus** | **float** | Numeric focus reported for this tags item. Minimum: 0. Maximum: 1. |
+**index** | **int** | Numeric index reported for this tags item. Minimum: 0. |
+**name** | **str** | Human-readable name for this tags item; it is not a stable identifier. |
+**score** | **float** | Numeric score reported for this tags item. Minimum: 0. Maximum: 1. |
 
 ## Example
 

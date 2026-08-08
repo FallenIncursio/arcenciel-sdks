@@ -1,7 +1,7 @@
 
 # Article
 
-Article used by the Arc en Ciel API contract.
+Fields describing article in Developer API requests and responses.
 
 ## Properties
 

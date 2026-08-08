@@ -1,14 +1,14 @@
 # UpdateArticleRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | **str** | Sanitized rich HTML article body. Legacy Markdown or mixed Markdown/HTML is accepted for compatibility and rendered by the rich-content pipeline. | [optional]
-**tags** | **str** | Tags accepted or returned by this contract. | [optional]
-**title** | **str** | Title accepted or returned by this contract. | [optional]
+**tags** | **str** | Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+**title** | **str** | Display title shown to users for this request payload. | [optional]
 
 ## Example
 

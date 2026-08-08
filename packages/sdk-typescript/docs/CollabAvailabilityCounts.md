@@ -1,7 +1,7 @@
 
 # CollabAvailabilityCounts
 
-Collab Availability Counts used by the Arc en Ciel API contract.
+Fields describing collab availability counts in Developer API requests and responses.
 
 ## Properties
 

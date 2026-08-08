@@ -1,13 +1,13 @@
 # RegisterModelVersionDownload200Response
 
-200 response for api models model Id versions version Id download register used by the Arc en Ciel API contract.
+Fields describing 200 response for api models model id versions version id download register in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**delivery** | **str** | Delivery accepted or returned by this contract. | [optional]
-**message** | **str** | Message accepted or returned by this contract. | [optional]
+**delivery** | **str** | Delivery associated with this 200 response for api models model id versions version id download register; preserve server-returned values when passing them to another operation. Supported values: &#x60;external&#x60;, &#x60;local&#x60;. | [optional]
+**message** | **str** | Message associated with this 200 response for api models model id versions version id download register; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

@@ -1,7 +1,7 @@
 
 # ModelVersionChunkUploadSession
 
-Model Version Chunk Upload Session used by the Arc en Ciel API contract.
+Fields describing model version chunk upload session in Developer API requests and responses.
 
 ## Properties
 

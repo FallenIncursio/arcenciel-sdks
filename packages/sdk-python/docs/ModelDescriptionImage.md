@@ -1,20 +1,20 @@
 # ModelDescriptionImage
 
-Description Images item used by the Arc en Ciel API contract.
+Structured description images item details for this description images.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** | Created At accepted or returned by this contract. | [optional]
-**file_name** | **str** | File Name accepted or returned by this contract. | [optional]
-**file_path** | **str** | File Path accepted or returned by this contract. | [optional]
-**height** | **int** | Height accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**model_id** | **int** | Model Id accepted or returned by this contract. | [optional]
-**rating** | **str** | Rating accepted or returned by this contract. | [optional]
-**variants** | [**List[ModelDescriptionImageVariantsInner]**](ModelDescriptionImageVariantsInner.md) | Variants accepted or returned by this contract. | [optional]
-**width** | **int** | Width accepted or returned by this contract. | [optional]
+**created_at** | **datetime** | UTC timestamp when this description images item was created. Format: date-time. | [optional]
+**file_name** | **str** | Human-readable file name for this description images item; it is not a stable identifier. | [optional]
+**file_path** | **str** | Server-provided path for the file path associated with this description images item; treat it as opaque. | [optional]
+**height** | **int** | Numeric height reported for this description images item. | [optional]
+**id** | **int** | Stable identifier for the description images item; use it in subsequent API calls instead of a display name. | [optional]
+**model_id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. | [optional]
+**rating** | **str** | Content-safety rating assigned to this description images item; callers must still apply their own audience policy. | [optional]
+**variants** | [**List[ModelDescriptionImageVariantsInner]**](ModelDescriptionImageVariantsInner.md) | Ordered variants entries included with this description images item; an empty list means none are available. | [optional]
+**width** | **int** | Numeric width reported for this description images item. | [optional]
 
 ## Example
 

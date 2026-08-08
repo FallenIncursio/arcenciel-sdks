@@ -1,15 +1,15 @@
 # GeneratorPublishResponse
 
-Generator Publish Response used by the Arc en Ciel API contract.
+Fields describing generator publish response in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**already_published** | **List[str]** | Already Published accepted or returned by this contract. |
-**already_published_count** | **int** | Already Published Count accepted or returned by this contract. |
-**count** | **int** | Count accepted or returned by this contract. |
-**images** | **List[Dict[str, object]]** | Images accepted or returned by this contract. |
+**already_published** | **List[str]** | Ordered already published entries included with this generator publish response; an empty list means none are available. |
+**already_published_count** | **int** | Number of already published records represented by this generator publish response. |
+**count** | **int** | Number of count records represented by this generator publish response. |
+**images** | **List[Dict[str, object]]** | Ordered images entries included with this generator publish response; an empty list means none are available. |
 
 ## Example
 

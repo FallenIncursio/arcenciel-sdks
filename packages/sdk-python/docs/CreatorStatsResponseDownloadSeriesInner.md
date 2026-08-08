@@ -1,15 +1,15 @@
 # CreatorStatsResponseDownloadSeriesInner
 
-Download Series item used by the Arc en Ciel API contract.
+Structured download series item details for this download series.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **int** | Compatibility alias for events. |
-**var_date** | **date** | Date accepted or returned by this contract. |
-**events** | **int** | Events accepted or returned by this contract. |
-**unique_downloaders** | **int** | Unique Downloaders accepted or returned by this contract. |
+**var_date** | **date** | Date associated with this download series item; preserve server-returned values when passing them to another operation. Format: date. |
+**events** | **int** | Numeric events reported for this download series item. |
+**unique_downloaders** | **int** | Numeric unique downloaders reported for this download series item. |
 
 ## Example
 

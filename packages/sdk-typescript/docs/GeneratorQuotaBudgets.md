@@ -1,7 +1,7 @@
 
 # GeneratorQuotaBudgets
 
-Budgets accepted or returned by this contract.
+Structured budgets details for this quota.
 
 ## Properties
 

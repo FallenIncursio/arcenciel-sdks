@@ -1,17 +1,17 @@
 # CollabPermissions
 
-Collab Permissions used by the Arc en Ciel API contract.
+Fields describing collab permissions in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**can_accept_invite** | **bool** | Can Accept Invite accepted or returned by this contract. |
-**can_cancel_own_request** | **bool** | Can Cancel Own Request accepted or returned by this contract. |
-**can_decline_invite** | **bool** | Can Decline Invite accepted or returned by this contract. |
-**can_edit_own_participant** | **bool** | Can Edit Own Participant accepted or returned by this contract. |
-**can_manage** | **bool** | Can Manage accepted or returned by this contract. |
-**can_request_join** | **bool** | Can Request Join accepted or returned by this contract. |
+**can_accept_invite** | **bool** | Whether can accept invite applies to this collab permissions. |
+**can_cancel_own_request** | **bool** | Whether can cancel own request applies to this collab permissions. |
+**can_decline_invite** | **bool** | Whether can decline invite applies to this collab permissions. |
+**can_edit_own_participant** | **bool** | Whether can edit own participant applies to this collab permissions. |
+**can_manage** | **bool** | Whether can manage applies to this collab permissions. |
+**can_request_join** | **bool** | Whether can request join applies to this collab permissions. |
 
 ## Example
 

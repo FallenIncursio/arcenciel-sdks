@@ -1,13 +1,13 @@
 # GeneratorJobLorasInner
 
-Loras item used by the Arc en Ciel API contract.
+Structured loras item details for this loras.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | Name accepted or returned by this contract. |
-**weight** | **float** | Weight accepted or returned by this contract. | [optional]
+**name** | **str** | Human-readable name for this loras item; it is not a stable identifier. |
+**weight** | **float** | Numeric weight reported for this loras item. | [optional]
 
 ## Example
 

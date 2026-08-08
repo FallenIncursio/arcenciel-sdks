@@ -1,15 +1,15 @@
 # InterrogateGeneratorImage200Response
 
-200 response for api generator autotag interrogate used by the Arc en Ciel API contract.
+Fields describing 200 response for api generator autotag interrogate in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rating** | **str** | Rating accepted or returned by this contract. |
-**source** | **str** | Source accepted or returned by this contract. |
-**tag_count** | **int** | Tag Count accepted or returned by this contract. |
-**tags** | **List[str]** | Tags accepted or returned by this contract. |
+**rating** | **str** | Content-safety rating assigned to this 200 response for api generator autotag interrogate; callers must still apply their own audience policy. Supported values: &#x60;safe&#x60;, &#x60;questionable&#x60;, &#x60;sensitive&#x60;, &#x60;explicit&#x60;, &#x60;unknown&#x60;. |
+**source** | **str** | Source associated with this 200 response for api generator autotag interrogate; preserve server-returned values when passing them to another operation. Supported values: &#x60;upload&#x60;. |
+**tag_count** | **int** | Number of tag records represented by this 200 response for api generator autotag interrogate. |
+**tags** | **List[str]** | Ordered tags entries included with this 200 response for api generator autotag interrogate; an empty list means none are available. |
 
 ## Example
 

@@ -1,7 +1,7 @@
 
 # GeneratorQuotaSnapshot
 
-Quota accepted or returned by this contract.
+Structured quota details for this generator options response.
 
 ## Properties
 

@@ -1,25 +1,25 @@
 # UserProfile
 
-User Profile used by the Arc en Ciel API contract.
+Fields describing user profile in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**article_count** | **int** | Article Count accepted or returned by this contract. | [optional]
-**bio** | **str** | Bio accepted or returned by this contract. | [optional]
-**created_at** | **datetime** | Created At accepted or returned by this contract. | [optional]
-**followers_count** | **int** | Followers Count accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**image_count** | **int** | Image Count accepted or returned by this contract. | [optional]
-**is_followed** | **bool** | Is Followed accepted or returned by this contract. | [optional]
-**model_count** | **int** | Model Count accepted or returned by this contract. | [optional]
-**profile_banner** | **str** | Profile Banner accepted or returned by this contract. | [optional]
-**profile_picture** | **str** | Profile Picture accepted or returned by this contract. | [optional]
-**role** | **str** | Role accepted or returned by this contract. | [optional]
-**social_links** | [**List[SelfProfileSocialLinksInner]**](SelfProfileSocialLinksInner.md) | Social Links accepted or returned by this contract. | [optional]
-**username** | **str** | Username accepted or returned by this contract. | [optional]
-**video_count** | **int** | Video Count accepted or returned by this contract. | [optional]
+**article_count** | **int** | Number of article records represented by this user profile. | [optional]
+**bio** | **str** | Bio associated with this user profile; preserve server-returned values when passing them to another operation. | [optional]
+**created_at** | **datetime** | UTC timestamp when this user profile was created. Format: date-time. | [optional]
+**followers_count** | **int** | Number of followers records represented by this user profile. | [optional]
+**id** | **int** | Stable identifier for the user profile; use it in subsequent API calls instead of a display name. | [optional]
+**image_count** | **int** | Number of image records represented by this user profile. | [optional]
+**is_followed** | **bool** | Whether is followed applies to this user profile. | [optional]
+**model_count** | **int** | Number of model records represented by this user profile. | [optional]
+**profile_banner** | **str** | Profile Banner associated with this user profile; preserve server-returned values when passing them to another operation. | [optional]
+**profile_picture** | **str** | Profile Picture associated with this user profile; preserve server-returned values when passing them to another operation. | [optional]
+**role** | **str** | Access role represented by this user profile; use it for display and capability checks, not authentication. | [optional]
+**social_links** | [**List[SelfProfileSocialLinksInner]**](SelfProfileSocialLinksInner.md) | Ordered social links entries included with this user profile; an empty list means none are available. | [optional]
+**username** | **str** | Username associated with this user profile; preserve server-returned values when passing them to another operation. | [optional]
+**video_count** | **int** | Number of video records represented by this user profile. | [optional]
 
 ## Example
 

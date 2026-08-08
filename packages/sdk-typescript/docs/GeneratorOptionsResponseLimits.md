@@ -1,7 +1,7 @@
 
 # GeneratorOptionsResponseLimits
 
-Limits accepted or returned by this contract.
+Structured limits details for this generator options response.
 
 ## Properties
 

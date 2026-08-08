@@ -1137,7 +1137,7 @@ configuration = arcenciel.generated.Configuration(
 async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.ProfileApi(api_client)
-    banner_file = None # bytes | Banner File accepted or returned by this contract. (optional)
+    banner_file = None # bytes | Banner File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
 
     try:
         # Upload or change your profile banner.
@@ -1155,7 +1155,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **banner_file** | **bytes**| Banner File accepted or returned by this contract. | [optional]
+ **banner_file** | **bytes**| Banner File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [optional]
 
 ### Return type
 
@@ -1237,7 +1237,7 @@ configuration = arcenciel.generated.Configuration(
 async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.ProfileApi(api_client)
-    profile_picture_file = None # bytes | Profile Picture File accepted or returned by this contract. (optional)
+    profile_picture_file = None # bytes | Profile Picture File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
 
     try:
         # Upload or change your profile picture.
@@ -1255,7 +1255,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **profile_picture_file** | **bytes**| Profile Picture File accepted or returned by this contract. | [optional]
+ **profile_picture_file** | **bytes**| Profile Picture File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [optional]
 
 ### Return type
 

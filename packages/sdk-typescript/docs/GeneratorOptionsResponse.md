@@ -1,7 +1,7 @@
 
 # GeneratorOptionsResponse
 
-Generator Options Response used by the Arc en Ciel API contract.
+Fields describing generator options response in Developer API requests and responses.
 
 ## Properties
 

@@ -1,16 +1,16 @@
 # CollabPage
 
-Collab Page used by the Arc en Ciel API contract.
+Fields describing collab page in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[CollabSummary]**](CollabSummary.md) | Data accepted or returned by this contract. |
-**limit** | **int** | Limit accepted or returned by this contract. |
-**page** | **int** | Page accepted or returned by this contract. |
-**total_count** | **int** | Total Count accepted or returned by this contract. |
-**total_pages** | **int** | Total Pages accepted or returned by this contract. |
+**data** | [**List[CollabSummary]**](CollabSummary.md) | Ordered data entries included with this collab page; an empty list means none are available. |
+**limit** | **int** | Maximum number of records requested or returned in one page of this collab page. Minimum: 1. |
+**page** | **int** | One-based result page requested or returned for this collab page. Minimum: 1. |
+**total_count** | **int** | Total number of matching records across all pages for this collab page. Minimum: 0. |
+**total_pages** | **int** | Total number of pages available at the current page size for this collab page. Minimum: 0. |
 
 ## Example
 

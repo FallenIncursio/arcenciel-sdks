@@ -1,14 +1,14 @@
 # GeneratorJobAttentionCoupleRegionsInner
 
-Regions item used by the Arc en Ciel API contract.
+Structured regions item details for this regions.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mask_path** | **str** | PNG mask path under &#x60;generator/&#x60; with alpha transparency (must include transparent + opaque alpha values). |
-**prompt** | **str** | Prompt accepted or returned by this contract. |
-**weight** | **float** | Weight accepted or returned by this contract. |
+**prompt** | **str** | Prompt text associated with generation of this regions item; availability depends on visibility and privacy rules. |
+**weight** | **float** | Numeric weight reported for this regions item. |
 
 ## Example
 

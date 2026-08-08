@@ -1,18 +1,18 @@
 # GeneratorJobProgressDetail
 
-Detail accepted or returned by this contract.
+Structured detail details for this generator job progress.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**elapsed_ms** | **int** | Elapsed Ms accepted or returned by this contract. | [optional]
-**max** | **float** | Max accepted or returned by this contract. | [optional]
-**node_id** | **str** | Node Id accepted or returned by this contract. | [optional]
-**ratio** | **float** | Ratio accepted or returned by this contract. | [optional]
-**source** | **str** | Source accepted or returned by this contract. | [optional]
-**timeout_ms** | **int** | Timeout Ms accepted or returned by this contract. | [optional]
-**value** | **float** | Value accepted or returned by this contract. | [optional]
+**elapsed_ms** | **int** | Numeric elapsed ms reported for this detail. | [optional]
+**max** | **float** | Numeric max reported for this detail. | [optional]
+**node_id** | **str** | Stable identifier for the node; use it in subsequent API calls instead of a display name. | [optional]
+**ratio** | **float** | Numeric ratio reported for this detail. Minimum: 0. Maximum: 1. | [optional]
+**source** | **str** | Source associated with this detail; preserve server-returned values when passing them to another operation. Supported values: &#x60;comfy_progress&#x60;, &#x60;comfy_progress_state&#x60;, &#x60;history_poll&#x60;, &#x60;finalizing&#x60;. | [optional]
+**timeout_ms** | **int** | Numeric timeout ms reported for this detail. | [optional]
+**value** | **float** | Numeric value reported for this detail. | [optional]
 
 ## Example
 

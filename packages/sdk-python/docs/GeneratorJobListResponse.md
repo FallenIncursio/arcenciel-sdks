@@ -1,13 +1,13 @@
 # GeneratorJobListResponse
 
-Generator Job List Response used by the Arc en Ciel API contract.
+Fields describing generator job list response in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobs** | [**List[GeneratorJobListItem]**](GeneratorJobListItem.md) | Jobs accepted or returned by this contract. |
-**next_cursor** | **str** | Next Cursor accepted or returned by this contract. |
+**jobs** | [**List[GeneratorJobListItem]**](GeneratorJobListItem.md) | Ordered jobs entries included with this generator job list response; an empty list means none are available. |
+**next_cursor** | **str** | Opaque continuation token for the next page of this generator job list response; absent or null means iteration is complete. |
 
 ## Example
 

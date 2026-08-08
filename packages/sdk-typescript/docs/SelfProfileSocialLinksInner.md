@@ -1,7 +1,7 @@
 
 # SelfProfileSocialLinksInner
 
-Social Links item used by the Arc en Ciel API contract.
+Structured social links item details for this social links.
 
 ## Properties
 

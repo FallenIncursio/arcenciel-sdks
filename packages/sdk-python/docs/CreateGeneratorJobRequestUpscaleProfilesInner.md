@@ -1,6 +1,6 @@
 # CreateGeneratorJobRequestUpscaleProfilesInner
 
-Upscale Profiles item used by the Arc en Ciel API contract.
+Structured upscale profiles item details for this upscale profiles.
 
 ## Properties
 
@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **denoise** | **float** | Denoise strength for the refinement pass. x4 upscalers require a target &#x60;scaleFactor&#x60;. | [optional]
 **model** | **str** | Compatibility alias for &#x60;modelName&#x60;. | [optional]
-**model_name** | **str** | Model Name accepted or returned by this contract. | [optional]
+**model_name** | **str** | Human-readable model name for this upscale profiles item; it is not a stable identifier. | [optional]
 **upscale_model_name** | **str** | Compatibility alias for &#x60;modelName&#x60;. | [optional]
 
 ## Example

@@ -1,6 +1,6 @@
 # GeneratorQuotaSnapshot
 
-Quota accepted or returned by this contract.
+Structured quota details for this generator options response.
 
 ## Properties
 
@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **daily** | [**GeneratorQuotaCounter**](GeneratorQuotaCounter.md) |  |
 **next_daily_relief_at** | **int** | Backwards-compatible alias of windowResetsAt. |
 **pending** | [**GeneratorQuotaCounter**](GeneratorQuotaCounter.md) |  |
-**role** | **str** | Role accepted or returned by this contract. |
-**supporter** | **bool** | Supporter accepted or returned by this contract. |
+**role** | **str** | Access role represented by this quota; use it for display and capability checks, not authentication. |
+**supporter** | **bool** | Whether supporter applies to this quota. |
 **supporter_preview** | [**GeneratorQuotaSnapshotSupporterPreview**](GeneratorQuotaSnapshotSupporterPreview.md) |  |
 **window_ms** | **int** | Personal usage period length in milliseconds. |
 **window_resets_at** | **int** | Epoch milliseconds when the current personal usage period resets and the full allowance returns. |

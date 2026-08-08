@@ -1,7 +1,7 @@
 
 # GeneratorModelCatalogEntry
 
-Generator Model Catalog Entry used by the Arc en Ciel API contract.
+Fields describing generator model catalog entry in Developer API requests and responses.
 
 ## Properties
 

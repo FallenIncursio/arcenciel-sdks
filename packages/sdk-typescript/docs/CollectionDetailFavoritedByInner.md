@@ -1,7 +1,7 @@
 
 # CollectionDetailFavoritedByInner
 
-Favorited By item used by the Arc en Ciel API contract.
+Structured favorited by item details for this favorited by.
 
 ## Properties
 

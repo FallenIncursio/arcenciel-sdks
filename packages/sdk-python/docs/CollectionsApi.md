@@ -1718,7 +1718,7 @@ configuration = arcenciel.generated.Configuration(
 async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.CollectionsApi(api_client)
-    cover_image = None # bytes | Cover Image accepted or returned by this contract.
+    cover_image = None # bytes | Cover Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
 
     try:
@@ -1737,7 +1737,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cover_image** | **bytes**| Cover Image accepted or returned by this contract. |
+ **cover_image** | **bytes**| Cover Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. |
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
 
 ### Return type

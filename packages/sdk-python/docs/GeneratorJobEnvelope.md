@@ -1,14 +1,14 @@
 # GeneratorJobEnvelope
 
-Generator Job Envelope used by the Arc en Ciel API contract.
+Fields describing generator job envelope in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **job** | [**GeneratorJob**](GeneratorJob.md) |  |
-**position** | **int** | Position accepted or returned by this contract. |
-**queue_eta_ms** | **int** | Queue Eta Ms accepted or returned by this contract. |
+**position** | **int** | Numeric position reported for this generator job envelope. |
+**queue_eta_ms** | **int** | Numeric queue eta ms reported for this generator job envelope. |
 
 ## Example
 

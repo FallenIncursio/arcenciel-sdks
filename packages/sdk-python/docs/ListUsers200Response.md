@@ -1,16 +1,16 @@
 # ListUsers200Response
 
-200 response for api users used by the Arc en Ciel API contract.
+Fields describing 200 response for api users in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[User]**](User.md) | Data accepted or returned by this contract. | [optional]
-**has_more** | **bool** | Has More accepted or returned by this contract. | [optional]
-**limit** | **int** | Limit accepted or returned by this contract. | [optional]
-**page** | **int** | Page accepted or returned by this contract. | [optional]
-**total** | **int** | Total accepted or returned by this contract. | [optional]
+**data** | [**List[User]**](User.md) | Ordered data entries included with this 200 response for api users; an empty list means none are available. | [optional]
+**has_more** | **bool** | Whether another page of this 200 response for api users is available after the current result. | [optional]
+**limit** | **int** | Maximum number of records requested or returned in one page of this 200 response for api users. | [optional]
+**page** | **int** | One-based result page requested or returned for this 200 response for api users. | [optional]
+**total** | **int** | Total number of matching records across all pages for this 200 response for api users. | [optional]
 
 ## Example
 

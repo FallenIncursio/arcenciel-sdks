@@ -210,8 +210,10 @@ arcenciel/generated/models/generator_job_remix_request_attention_couple_regions_
 arcenciel/generated/models/generator_job_remix_request_controlnets_inner.py
 arcenciel/generated/models/generator_job_remix_request_extra_seed.py
 arcenciel/generated/models/generator_job_remix_request_prompt_control.py
+arcenciel/generated/models/generator_job_remix_request_prompt_control_one_of.py
 arcenciel/generated/models/generator_job_remix_request_seed.py
 arcenciel/generated/models/generator_job_remix_request_upscale_profiles_inner.py
+arcenciel/generated/models/generator_job_seed.py
 arcenciel/generated/models/generator_job_upscale_profiles_inner.py
 arcenciel/generated/models/generator_model_catalog.py
 arcenciel/generated/models/generator_model_catalog_entry.py
@@ -595,8 +597,10 @@ docs/GeneratorJobRemixRequestAttentionCoupleRegionsInner.md
 docs/GeneratorJobRemixRequestControlnetsInner.md
 docs/GeneratorJobRemixRequestExtraSeed.md
 docs/GeneratorJobRemixRequestPromptControl.md
+docs/GeneratorJobRemixRequestPromptControlOneOf.md
 docs/GeneratorJobRemixRequestSeed.md
 docs/GeneratorJobRemixRequestUpscaleProfilesInner.md
+docs/GeneratorJobSeed.md
 docs/GeneratorJobUpscaleProfilesInner.md
 docs/GeneratorModelCatalog.md
 docs/GeneratorModelCatalogEntry.md

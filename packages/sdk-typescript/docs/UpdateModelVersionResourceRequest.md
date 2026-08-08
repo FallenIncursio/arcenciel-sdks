@@ -1,7 +1,7 @@
 
 # UpdateModelVersionResourceRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 

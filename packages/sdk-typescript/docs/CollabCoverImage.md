@@ -1,7 +1,7 @@
 
 # CollabCoverImage
 
-Collab Cover Image used by the Arc en Ciel API contract.
+Fields describing collab cover image in Developer API requests and responses.
 
 ## Properties
 

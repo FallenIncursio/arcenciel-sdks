@@ -1,15 +1,15 @@
 # GeneratorOptionsResponseModelDetailsAdetailerInner
 
-Adetailer item used by the Arc en Ciel API contract.
+Structured adetailer item details for this adetailer.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_model** | **str** | Base Model accepted or returned by this contract. | [optional]
-**display_name** | **str** | Display Name accepted or returned by this contract. | [optional]
-**name** | **str** | Name accepted or returned by this contract. |
-**precision** | **str** | Precision accepted or returned by this contract. | [optional]
+**base_model** | **str** | Base Model associated with this adetailer item; preserve server-returned values when passing them to another operation. | [optional]
+**display_name** | **str** | Human-readable display name for this adetailer item; it is not a stable identifier. | [optional]
+**name** | **str** | Human-readable name for this adetailer item; it is not a stable identifier. |
+**precision** | **str** | Precision associated with this adetailer item; preserve server-returned values when passing them to another operation. | [optional]
 
 ## Example
 

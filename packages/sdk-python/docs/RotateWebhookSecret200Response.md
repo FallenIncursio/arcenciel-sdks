@@ -1,14 +1,14 @@
 # RotateWebhookSecret200Response
 
-200 response for api webhooks endpoints endpoint Id rotate secret used by the Arc en Ciel API contract.
+200 response for api webhooks endpoints endpoint Id rotate secret value documented for this operation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**DeveloperWebhookEndpoint**](DeveloperWebhookEndpoint.md) |  |
-**previous_secret_expires_at** | **datetime** | Previous Secret Expires At accepted or returned by this contract. |
-**secret** | **str** | Secret accepted or returned by this contract. |
+**previous_secret_expires_at** | **datetime** | UTC timestamp for the previous secret expires at transition of this 200 response for api webhooks endpoints endpoint id rotate secret. Format: date-time. |
+**secret** | **str** | Secret associated with this 200 response for api webhooks endpoints endpoint id rotate secret; preserve server-returned values when passing them to another operation. |
 
 ## Example
 

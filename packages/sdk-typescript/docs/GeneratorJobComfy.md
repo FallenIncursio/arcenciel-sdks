@@ -1,7 +1,7 @@
 
 # GeneratorJobComfy
 
-Comfy accepted or returned by this contract.
+Structured comfy details for this generator job.
 
 ## Properties
 

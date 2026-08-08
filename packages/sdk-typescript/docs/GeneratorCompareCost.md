@@ -1,7 +1,7 @@
 
 # GeneratorCompareCost
 
-Generator Compare Cost used by the Arc en Ciel API contract.
+Fields describing generator compare cost in Developer API requests and responses.
 
 ## Properties
 

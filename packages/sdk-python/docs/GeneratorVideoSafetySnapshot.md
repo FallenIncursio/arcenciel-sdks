@@ -1,6 +1,6 @@
 # GeneratorVideoSafetySnapshot
 
-Generator Video Safety Snapshot used by the Arc en Ciel API contract.
+Fields describing generator video safety snapshot in Developer API requests and responses.
 
 ## Properties
 

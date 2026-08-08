@@ -1,13 +1,13 @@
 # UpdateModelVersionResourceRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | **str** | Kind accepted or returned by this contract. | [optional]
-**status** | **str** | Status accepted or returned by this contract. | [optional]
+**kind** | **str** | Kind associated with this request payload; preserve server-returned values when passing them to another operation. Supported values: &#x60;REQUIRED&#x60;, &#x60;RECOMMENDED&#x60;, &#x60;COMPATIBLE&#x60;, &#x60;SAMPLE_USED&#x60;. | [optional]
+**status** | **str** | Current lifecycle state of this request payload; clients should tolerate future values. Supported values: &#x60;ACTIVE&#x60;, &#x60;HIDDEN&#x60;. | [optional]
 
 ## Example
 

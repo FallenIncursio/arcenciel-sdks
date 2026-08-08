@@ -1,6 +1,6 @@
 # GeneratorVideoJobWithQuotaResponse
 
-Generator Video Job With Quota Response used by the Arc en Ciel API contract.
+Fields describing generator video job with quota response in Developer API requests and responses.
 
 ## Properties
 

@@ -1,17 +1,17 @@
 # ModelVersionResourcePreviewImage
 
-Preview Image used by the Arc en Ciel API contract.
+Structured preview image details for this required item.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file_path** | **str** | File Path accepted or returned by this contract. |
-**height** | **int** | Height accepted or returned by this contract. |
-**id** | **int** | Id accepted or returned by this contract. |
-**rating** | **str** | Rating accepted or returned by this contract. |
+**file_path** | **str** | Server-provided path for the file path associated with this preview image; treat it as opaque. |
+**height** | **int** | Numeric height reported for this preview image. |
+**id** | **int** | Stable identifier for the preview image; use it in subsequent API calls instead of a display name. |
+**rating** | **str** | Content-safety rating assigned to this preview image; callers must still apply their own audience policy. |
 **variants** | **List[object]** | Generated image variants as stored for the public image response. |
-**width** | **int** | Width accepted or returned by this contract. |
+**width** | **int** | Numeric width reported for this preview image. |
 
 ## Example
 

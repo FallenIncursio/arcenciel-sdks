@@ -1,7 +1,7 @@
 
 # ModelDescriptionImage
 
-Description Images item used by the Arc en Ciel API contract.
+Structured description images item details for this description images.
 
 ## Properties
 

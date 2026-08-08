@@ -1,7 +1,7 @@
 
 # CreatorStatsAppliedRange
 
-Applied Range accepted or returned by this contract.
+Structured applied range details for this creator stats response.
 
 ## Properties
 

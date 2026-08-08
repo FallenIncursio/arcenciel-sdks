@@ -1,12 +1,12 @@
 # TogglePinnedTemplateRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**model_id** | **int** | Model Id accepted or returned by this contract. |
+**model_id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. |
 
 ## Example
 

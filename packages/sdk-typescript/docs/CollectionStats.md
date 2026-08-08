@@ -1,7 +1,7 @@
 
 # CollectionStats
 
-Collection Stats used by the Arc en Ciel API contract.
+Fields describing collection stats in Developer API requests and responses.
 
 ## Properties
 

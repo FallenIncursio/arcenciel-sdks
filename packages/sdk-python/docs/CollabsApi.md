@@ -984,7 +984,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.CollabsApi(api_client)
     collab_id = 'example-collab-id' # str | Collab Id provided in the path.
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    placeholder_image = None # bytes | Placeholder Image accepted or returned by this contract. (optional)
+    placeholder_image = None # bytes | Placeholder Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
 
     try:
         # Upload a participant placeholder image
@@ -1004,7 +1004,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collab_id** | **str**| Collab Id provided in the path. |
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
- **placeholder_image** | **bytes**| Placeholder Image accepted or returned by this contract. | [optional]
+ **placeholder_image** | **bytes**| Placeholder Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [optional]
 
 ### Return type
 

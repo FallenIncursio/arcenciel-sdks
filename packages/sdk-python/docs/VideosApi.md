@@ -1371,13 +1371,13 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.VideosApi(api_client)
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    description = 'description_example' # str | Description accepted or returned by this contract. (optional)
+    description = 'description_example' # str | User-facing description of this request payload; it may contain an empty string when no description was supplied. (optional)
     duration = 3.4 # float | Duration of the video in seconds. (optional)
     format = 'format_example' # str | File format (e.g. mp4, webm). (optional)
     fps = 3.4 # float | Frames per second. (optional)
-    tags = 'tags_example' # str | Tags accepted or returned by this contract. (optional)
-    title = 'title_example' # str | Title accepted or returned by this contract. (optional)
-    video_file = None # bytes | Video File accepted or returned by this contract. (optional)
+    tags = 'tags_example' # str | Tags associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
+    title = 'title_example' # str | Display title shown to users for this request payload. (optional)
+    video_file = None # bytes | Video File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
 
     try:
         # Upload a video
@@ -1396,13 +1396,13 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
- **description** | **str**| Description accepted or returned by this contract. | [optional]
+ **description** | **str**| User-facing description of this request payload; it may contain an empty string when no description was supplied. | [optional]
  **duration** | **float**| Duration of the video in seconds. | [optional]
  **format** | **str**| File format (e.g. mp4, webm). | [optional]
  **fps** | **float**| Frames per second. | [optional]
- **tags** | **str**| Tags accepted or returned by this contract. | [optional]
- **title** | **str**| Title accepted or returned by this contract. | [optional]
- **video_file** | **bytes**| Video File accepted or returned by this contract. | [optional]
+ **tags** | **str**| Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+ **title** | **str**| Display title shown to users for this request payload. | [optional]
+ **video_file** | **bytes**| Video File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [optional]
 
 ### Return type
 

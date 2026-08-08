@@ -6,9 +6,9 @@ Present only for a caller allowed to manage this resource graph.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** | Created At accepted or returned by this contract. |
-**created_by_id** | **int** | Created By Id accepted or returned by this contract. |
-**updated_at** | **datetime** | Updated At accepted or returned by this contract. |
+**created_at** | **datetime** | UTC timestamp when this management was created. Format: date-time. |
+**created_by_id** | **int** | Stable identifier for the created by; use it in subsequent API calls instead of a display name. |
+**updated_at** | **datetime** | UTC timestamp of the most recent persisted change to this management. Format: date-time. |
 
 ## Example
 

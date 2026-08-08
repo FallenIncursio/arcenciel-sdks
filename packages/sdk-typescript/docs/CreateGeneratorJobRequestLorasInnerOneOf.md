@@ -1,7 +1,7 @@
 
 # CreateGeneratorJobRequestLorasInnerOneOf
 
-Loras item used by the Arc en Ciel API contract.
+Structured loras item details for this loras.
 
 ## Properties
 

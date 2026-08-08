@@ -1,15 +1,15 @@
 # CollabAvailabilityCounts
 
-Collab Availability Counts used by the Arc en Ciel API contract.
+Fields describing collab availability counts in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**arc** | **int** | Arc accepted or returned by this contract. |
-**archive** | **int** | Archive accepted or returned by this contract. |
-**source** | **int** | Source accepted or returned by this contract. |
-**unavailable** | **int** | Unavailable accepted or returned by this contract. |
+**arc** | **int** | Numeric arc reported for this collab availability counts. Minimum: 0. |
+**archive** | **int** | Numeric archive reported for this collab availability counts. Minimum: 0. |
+**source** | **int** | Numeric source reported for this collab availability counts. Minimum: 0. |
+**unavailable** | **int** | Numeric unavailable reported for this collab availability counts. Minimum: 0. |
 
 ## Example
 

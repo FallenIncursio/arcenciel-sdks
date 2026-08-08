@@ -1,7 +1,7 @@
 
 # ImageSpatialAttribution
 
-Image Spatial Attribution used by the Arc en Ciel API contract.
+Fields describing image spatial attribution in Developer API requests and responses.
 
 ## Properties
 

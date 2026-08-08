@@ -1,7 +1,7 @@
 
 # ListImageExternalResources200Response
 
-200 response for api images id external resources used by the Arc en Ciel API contract.
+Fields describing 200 response for api images id external resources in Developer API requests and responses.
 
 ## Properties
 

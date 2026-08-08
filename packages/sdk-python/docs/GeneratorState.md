@@ -1,15 +1,15 @@
 # GeneratorState
 
-Generator State used by the Arc en Ciel API contract.
+Fields describing generator state in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allow_moderators_when_disabled** | **bool** | Allow Moderators When Disabled accepted or returned by this contract. |
-**enabled** | **bool** | Enabled accepted or returned by this contract. |
-**message** | **str** | Message accepted or returned by this contract. |
-**regional_prompts_admins_only** | **bool** | Regional Prompts Admins Only accepted or returned by this contract. |
+**allow_moderators_when_disabled** | **bool** | Whether allow moderators when disabled applies to this generator state. |
+**enabled** | **bool** | Whether enabled applies to this generator state. |
+**message** | **str** | Message associated with this generator state; preserve server-returned values when passing them to another operation. |
+**regional_prompts_admins_only** | **bool** | Whether regional prompts admins only applies to this generator state. |
 
 ## Example
 

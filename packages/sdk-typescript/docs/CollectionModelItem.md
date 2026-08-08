@@ -1,7 +1,7 @@
 
 # CollectionModelItem
 
-Collection Model Item used by the Arc en Ciel API contract.
+Fields describing collection model item in Developer API requests and responses.
 
 ## Properties
 

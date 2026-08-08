@@ -1,7 +1,7 @@
 
 # CollabParticipant
 
-Collab Participant used by the Arc en Ciel API contract.
+Fields describing collab participant in Developer API requests and responses.
 
 ## Properties
 

@@ -1,16 +1,16 @@
 # CreatorStatsResponseTopModelsInner
 
-Top Models item used by the Arc en Ciel API contract.
+Structured top models item details for this top models.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **downloads** | **int** | Compatibility alias for events. |
-**events** | **int** | Events accepted or returned by this contract. |
-**model_id** | **int** | Model Id accepted or returned by this contract. |
-**title** | **str** | Title accepted or returned by this contract. |
-**unique_downloaders** | **int** | Unique Downloaders accepted or returned by this contract. |
+**events** | **int** | Numeric events reported for this top models item. |
+**model_id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. |
+**title** | **str** | Display title shown to users for this top models item. |
+**unique_downloaders** | **int** | Numeric unique downloaders reported for this top models item. |
 
 ## Example
 

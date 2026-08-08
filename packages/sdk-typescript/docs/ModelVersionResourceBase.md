@@ -1,7 +1,7 @@
 
 # ModelVersionResourceBase
 
-Required item used by the Arc en Ciel API contract.
+Structured required item details for this required.
 
 ## Properties
 

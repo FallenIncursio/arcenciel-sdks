@@ -1,7 +1,7 @@
 
 # AnalyzeImagePrompt200Response
 
-200 response for api images id prompt analysis used by the Arc en Ciel API contract.
+Fields describing 200 response for api images id prompt analysis in Developer API requests and responses.
 
 ## Properties
 

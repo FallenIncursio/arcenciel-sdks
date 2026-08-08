@@ -1,6 +1,6 @@
 # GeneratorVideoResolutionBucketOption
 
-Generator Video Resolution Bucket Option used by the Arc en Ciel API contract.
+Fields describing generator video resolution bucket option in Developer API requests and responses.
 
 ## Properties
 

@@ -1,7 +1,7 @@
 
 # ModelVersionMediaPreviewResponseVersionsInner
 
-Versions item used by the Arc en Ciel API contract.
+Structured versions item details for this versions.
 
 ## Properties
 

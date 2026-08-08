@@ -877,7 +877,7 @@ async function example() {
   const api = new ProfileApi(config);
 
   const body = {
-    // Blob | Banner File accepted or returned by this contract. (optional)
+    // Blob | Banner File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
     bannerFile: BINARY_DATA_HERE,
   } satisfies UpdateMyProfileBannerRequest;
 
@@ -898,7 +898,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bannerFile** | `Blob` | Banner File accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **bannerFile** | `Blob` | Banner File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -958,7 +958,7 @@ async function example() {
   const api = new ProfileApi(config);
 
   const body = {
-    // Blob | Profile Picture File accepted or returned by this contract. (optional)
+    // Blob | Profile Picture File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. (optional)
     profilePictureFile: BINARY_DATA_HERE,
   } satisfies UpdateMyProfilePictureRequest;
 
@@ -979,7 +979,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **profilePictureFile** | `Blob` | Profile Picture File accepted or returned by this contract. | [Optional] [Defaults to `undefined`] |
+| **profilePictureFile** | `Blob` | Profile Picture File associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 

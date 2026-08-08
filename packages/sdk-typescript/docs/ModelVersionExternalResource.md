@@ -1,7 +1,7 @@
 
 # ModelVersionExternalResource
 
-External item used by the Arc en Ciel API contract.
+External item associated with this external; preserve server-returned values when passing them to another operation.
 
 ## Properties
 

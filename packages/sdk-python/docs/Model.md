@@ -1,20 +1,20 @@
 # Model
 
-Model used by the Arc en Ciel API contract.
+Fields describing model in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** | Sanitized rich HTML model description. Existing legacy Markdown remains render-compatible during migration. | [optional]
-**description_images** | [**List[ModelDescriptionImage]**](ModelDescriptionImage.md) | Description Images accepted or returned by this contract. | [optional]
-**id** | **int** | Id accepted or returned by this contract. | [optional]
-**tags** | [**List[Tag]**](Tag.md) | Tags accepted or returned by this contract. | [optional]
-**title** | **str** | Title accepted or returned by this contract. | [optional]
-**type** | **str** | Type accepted or returned by this contract. | [optional]
+**description_images** | [**List[ModelDescriptionImage]**](ModelDescriptionImage.md) | Ordered description images entries included with this model; an empty list means none are available. | [optional]
+**id** | **int** | Stable identifier for the model; use it in subsequent API calls instead of a display name. | [optional]
+**tags** | [**List[Tag]**](Tag.md) | Ordered tags entries included with this model; an empty list means none are available. | [optional]
+**title** | **str** | Display title shown to users for this model. | [optional]
+**type** | **str** | Discriminator identifying the kind of model; clients should tolerate future values. | [optional]
 **uploader** | [**User**](User.md) |  | [optional]
-**uploader_id** | **int** | Uploader Id accepted or returned by this contract. | [optional]
-**versions** | [**List[Version]**](Version.md) | Versions accepted or returned by this contract. | [optional]
+**uploader_id** | **int** | Stable identifier for the uploader; use it in subsequent API calls instead of a display name. | [optional]
+**versions** | [**List[Version]**](Version.md) | Ordered versions entries included with this model; an empty list means none are available. | [optional]
 
 ## Example
 

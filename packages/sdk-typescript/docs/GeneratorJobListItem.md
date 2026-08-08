@@ -1,7 +1,7 @@
 
 # GeneratorJobListItem
 
-Generator Job List Item used by the Arc en Ciel API contract.
+Generator Job List Item value documented for this operation.
 
 ## Properties
 
@@ -50,7 +50,7 @@ Name | Type
 `samplerName` | string
 `scaleFactor` | number
 `scheduler` | string
-`seed` | [GeneratorCompareRunSeed](GeneratorCompareRunSeed.md)
+`seed` | [GeneratorJobSeed](GeneratorJobSeed.md)
 `status` | string
 `steps` | number
 `storage` | [GeneratorStorageStatus](GeneratorStorageStatus.md)

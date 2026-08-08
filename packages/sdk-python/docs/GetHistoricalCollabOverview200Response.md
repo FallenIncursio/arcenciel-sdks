@@ -1,19 +1,19 @@
 # GetHistoricalCollabOverview200Response
 
-200 response for api collabs history overview used by the Arc en Ciel API contract.
+Fields describing 200 response for api collabs history overview in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**collab_count** | **int** | Collab Count accepted or returned by this contract. |
-**creator_count** | **int** | Creator Count accepted or returned by this contract. |
-**end_year** | **int** | End Year accepted or returned by this contract. | [optional]
-**major_count** | **int** | Major Count accepted or returned by this contract. |
-**mini_count** | **int** | Mini Count accepted or returned by this contract. |
-**participant_count** | **int** | Participant Count accepted or returned by this contract. |
-**start_year** | **int** | Start Year accepted or returned by this contract. | [optional]
-**submission_count** | **int** | Submission Count accepted or returned by this contract. |
+**collab_count** | **int** | Number of collab records represented by this 200 response for api collabs history overview. |
+**creator_count** | **int** | Number of creator records represented by this 200 response for api collabs history overview. |
+**end_year** | **int** | Numeric end year reported for this 200 response for api collabs history overview. | [optional]
+**major_count** | **int** | Number of major records represented by this 200 response for api collabs history overview. |
+**mini_count** | **int** | Number of mini records represented by this 200 response for api collabs history overview. |
+**participant_count** | **int** | Number of participant records represented by this 200 response for api collabs history overview. |
+**start_year** | **int** | Numeric start year reported for this 200 response for api collabs history overview. | [optional]
+**submission_count** | **int** | Number of submission records represented by this 200 response for api collabs history overview. |
 
 ## Example
 

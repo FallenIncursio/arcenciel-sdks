@@ -1,7 +1,7 @@
 
 # ListUsers200Response
 
-200 response for api users used by the Arc en Ciel API contract.
+Fields describing 200 response for api users in Developer API requests and responses.
 
 ## Properties
 

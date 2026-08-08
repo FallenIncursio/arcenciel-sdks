@@ -1,6 +1,6 @@
 # GeneratorVideoEstimateModifiers
 
-Generator Video Estimate Modifiers used by the Arc en Ciel API contract.
+Fields describing generator video estimate modifiers in Developer API requests and responses.
 
 ## Properties
 

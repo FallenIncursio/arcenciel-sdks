@@ -1,6 +1,6 @@
 # GeneratorVideoSafetyOutput
 
-Generator Video Safety Output used by the Arc en Ciel API contract.
+Fields describing generator video safety output in Developer API requests and responses.
 
 ## Properties
 

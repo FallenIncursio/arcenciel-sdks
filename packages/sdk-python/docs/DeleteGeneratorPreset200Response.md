@@ -1,13 +1,13 @@
 # DeleteGeneratorPreset200Response
 
-200 response for api generator presets id used by the Arc en Ciel API contract.
+Fields describing 200 response for api generator presets id in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deleted** | **bool** | Deleted accepted or returned by this contract. |
-**id** | **int** | Id accepted or returned by this contract. |
+**deleted** | **bool** | Whether deleted applies to this 200 response for api generator presets id. |
+**id** | **int** | Stable identifier for the 200 response for api generator presets id; use it in subsequent API calls instead of a display name. |
 
 ## Example
 

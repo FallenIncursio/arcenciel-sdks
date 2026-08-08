@@ -1,15 +1,15 @@
 # CollectionPermissions
 
-Collection Permissions used by the Arc en Ciel API contract.
+Fields describing collection permissions in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**can_contribute** | **bool** | Can Contribute accepted or returned by this contract. |
-**can_manage_collaborators** | **bool** | Can Manage Collaborators accepted or returned by this contract. |
-**is_collaborator** | **bool** | Is Collaborator accepted or returned by this contract. |
-**is_owner** | **bool** | Is Owner accepted or returned by this contract. |
+**can_contribute** | **bool** | Whether can contribute applies to this collection permissions. |
+**can_manage_collaborators** | **bool** | Whether can manage collaborators applies to this collection permissions. |
+**is_collaborator** | **bool** | Whether is collaborator applies to this collection permissions. |
+**is_owner** | **bool** | Whether is owner applies to this collection permissions. |
 
 ## Example
 

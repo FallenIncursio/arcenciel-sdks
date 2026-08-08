@@ -1,7 +1,7 @@
 
 # ModelVersionMediaPreviewEntry
 
-Entries item used by the Arc en Ciel API contract.
+Structured entries item details for this entries.
 
 ## Properties
 

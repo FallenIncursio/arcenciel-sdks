@@ -1433,7 +1433,7 @@ async function example() {
   const api = new CollectionsApi(config);
 
   const body = {
-    // Blob | Cover Image accepted or returned by this contract.
+    // Blob | Cover Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
     coverImage: BINARY_DATA_HERE,
     // string | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
     idempotencyKey: request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8,
@@ -1456,7 +1456,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **coverImage** | `Blob` | Cover Image accepted or returned by this contract. | [Defaults to `undefined`] |
+| **coverImage** | `Blob` | Cover Image associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. | [Defaults to `undefined`] |
 | **idempotencyKey** | `string` | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [Optional] [Defaults to `undefined`] |
 
 ### Return type

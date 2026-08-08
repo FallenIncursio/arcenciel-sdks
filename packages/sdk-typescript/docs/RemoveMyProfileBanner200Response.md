@@ -1,7 +1,7 @@
 
 # RemoveMyProfileBanner200Response
 
-200 response for api users me banner used by the Arc en Ciel API contract.
+Fields describing 200 response for api users me banner in Developer API requests and responses.
 
 ## Properties
 

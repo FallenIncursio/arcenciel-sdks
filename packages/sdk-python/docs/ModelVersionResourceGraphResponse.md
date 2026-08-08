@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **can_manage** | **bool** | Whether the current caller may see hidden edges and management metadata. |
 **counts** | [**ModelVersionResourceGraphResponseCounts**](ModelVersionResourceGraphResponseCounts.md) |  |
 **groups** | [**ModelVersionResourceGraphResponseGroups**](ModelVersionResourceGraphResponseGroups.md) |  |
-**source_version_id** | **int** | Source Version Id accepted or returned by this contract. |
+**source_version_id** | **int** | Stable identifier for the source version; use it in subsequent API calls instead of a display name. |
 
 ## Example
 

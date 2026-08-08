@@ -1,7 +1,7 @@
 
 # CreatorStatsResponseDownloadPerformance
 
-Download Performance accepted or returned by this contract.
+Structured download performance details for this creator stats response.
 
 ## Properties
 

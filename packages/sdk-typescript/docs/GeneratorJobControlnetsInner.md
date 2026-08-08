@@ -1,7 +1,7 @@
 
 # GeneratorJobControlnetsInner
 
-Controlnets item used by the Arc en Ciel API contract.
+Structured controlnets item details for this controlnets.
 
 ## Properties
 

@@ -1,28 +1,28 @@
 # ImageSpatialAttribution
 
-Image Spatial Attribution used by the Arc en Ciel API contract.
+Fields describing image spatial attribution in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**algorithm_version** | **str** | Algorithm Version accepted or returned by this contract. | [optional]
-**atlas_url** | **str** | Atlas Url accepted or returned by this contract. | [optional]
-**columns** | **int** | Columns accepted or returned by this contract. | [optional]
-**completed_at** | **datetime** | Completed At accepted or returned by this contract. | [optional]
-**device** | **str** | Device accepted or returned by this contract. | [optional]
-**duration_ms** | **float** | Duration Ms accepted or returned by this contract. | [optional]
-**height** | **int** | Height accepted or returned by this contract. | [optional]
-**map_size** | **int** | Map Size accepted or returned by this contract. | [optional]
-**message** | **str** | Message accepted or returned by this contract. | [optional]
-**model_version** | **str** | Model Version accepted or returned by this contract. | [optional]
+**algorithm_version** | **str** | Algorithm Version associated with this image spatial attribution; preserve server-returned values when passing them to another operation. | [optional]
+**atlas_url** | **str** | URL for the atlas url associated with this image spatial attribution; do not persist temporary signed query parameters. | [optional]
+**columns** | **int** | Numeric columns reported for this image spatial attribution. | [optional]
+**completed_at** | **datetime** | UTC timestamp for the completed at transition of this image spatial attribution. Format: date-time. | [optional]
+**device** | **str** | Device associated with this image spatial attribution; preserve server-returned values when passing them to another operation. Supported values: &#x60;cuda&#x60;, &#x60;cpu&#x60;, &#x60;cpu-fallback&#x60;. | [optional]
+**duration_ms** | **float** | Numeric duration ms reported for this image spatial attribution. | [optional]
+**height** | **int** | Numeric height reported for this image spatial attribution. | [optional]
+**map_size** | **int** | Numeric map size reported for this image spatial attribution. | [optional]
+**message** | **str** | Message associated with this image spatial attribution; preserve server-returned values when passing them to another operation. | [optional]
+**model_version** | **str** | Model Version associated with this image spatial attribution; preserve server-returned values when passing them to another operation. | [optional]
 **request_access** | [**ImageSpatialAttributionRequestAccess**](ImageSpatialAttributionRequestAccess.md) |  | [optional]
-**requested_at** | **datetime** | Requested At accepted or returned by this contract. | [optional]
-**retry_after_ms** | **int** | Retry After Ms accepted or returned by this contract. | [optional]
-**rows** | **int** | Rows accepted or returned by this contract. | [optional]
-**status** | **str** | Status accepted or returned by this contract. |
-**tags** | [**List[ImageSpatialAttributionTagsInner]**](ImageSpatialAttributionTagsInner.md) | Tags accepted or returned by this contract. | [optional]
-**width** | **int** | Width accepted or returned by this contract. | [optional]
+**requested_at** | **datetime** | UTC timestamp for the requested at transition of this image spatial attribution. Format: date-time. | [optional]
+**retry_after_ms** | **int** | Numeric retry after ms reported for this image spatial attribution. Minimum: 0. | [optional]
+**rows** | **int** | Numeric rows reported for this image spatial attribution. | [optional]
+**status** | **str** | Current lifecycle state of this image spatial attribution; clients should tolerate future values. Supported values: &#x60;disabled&#x60;, &#x60;locked&#x60;, &#x60;unavailable&#x60;, &#x60;queued&#x60;, &#x60;processing&#x60;, &#x60;ready&#x60;, &#x60;failed&#x60;. |
+**tags** | [**List[ImageSpatialAttributionTagsInner]**](ImageSpatialAttributionTagsInner.md) | Ordered tags entries included with this image spatial attribution; an empty list means none are available. | [optional]
+**width** | **int** | Numeric width reported for this image spatial attribution. | [optional]
 
 ## Example
 

@@ -1,6 +1,6 @@
 # GeneratorVideoState
 
-Generator Video State used by the Arc en Ciel API contract.
+Fields describing generator video state in Developer API requests and responses.
 
 ## Properties
 

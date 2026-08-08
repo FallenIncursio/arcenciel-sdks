@@ -1,13 +1,13 @@
 # GeneratorJobDiagnosticsAdetailerBridge
 
-Adetailer Bridge accepted or returned by this contract.
+Structured adetailer bridge details for this diagnostics.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**failed** | **bool** | Failed accepted or returned by this contract. | [optional]
-**reason** | **str** | Reason accepted or returned by this contract. | [optional]
+**failed** | **bool** | Whether failed applies to this adetailer bridge. | [optional]
+**reason** | **str** | Reason associated with this adetailer bridge; preserve server-returned values when passing them to another operation. | [optional]
 **updated_at** | **int** | Unix epoch timestamp in milliseconds. | [optional]
 
 ## Example

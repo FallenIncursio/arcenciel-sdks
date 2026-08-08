@@ -1,15 +1,15 @@
 # SearchGeneratorCheckpoints200Response
 
-200 response for api generator models checkpoints used by the Arc en Ciel API contract.
+Fields describing 200 response for api generator models checkpoints in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**base_model** | **str** | Base Model accepted or returned by this contract. |
-**entries** | [**List[GeneratorModelCatalogEntry]**](GeneratorModelCatalogEntry.md) | Entries accepted or returned by this contract. |
-**limit** | **int** | Limit accepted or returned by this contract. |
-**query** | **str** | Query accepted or returned by this contract. |
+**base_model** | **str** | Base Model associated with this 200 response for api generator models checkpoints; preserve server-returned values when passing them to another operation. |
+**entries** | [**List[GeneratorModelCatalogEntry]**](GeneratorModelCatalogEntry.md) | Ordered entries entries included with this 200 response for api generator models checkpoints; an empty list means none are available. |
+**limit** | **int** | Maximum number of records requested or returned in one page of this 200 response for api generator models checkpoints. |
+**query** | **str** | Query associated with this 200 response for api generator models checkpoints; preserve server-returned values when passing them to another operation. |
 
 ## Example
 

@@ -6,9 +6,9 @@ Prompt Control state used for this job.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** | Enabled accepted or returned by this contract. | [optional]
-**mode** | **str** | Mode accepted or returned by this contract. | [optional]
-**source** | **str** | Source accepted or returned by this contract. | [optional]
+**enabled** | **bool** | Whether enabled applies to this prompt control. | [optional]
+**mode** | **str** | Mode associated with this prompt control; preserve server-returned values when passing them to another operation. Supported values: &#x60;manual&#x60;, &#x60;auto&#x60;, &#x60;disabled&#x60;. | [optional]
+**source** | **str** | Source associated with this prompt control; preserve server-returned values when passing them to another operation. Supported values: &#x60;explicit&#x60;, &#x60;auto&#x60;. | [optional]
 
 ## Example
 

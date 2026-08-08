@@ -1,14 +1,14 @@
 # CreateGeneratorCompareRunRequestAttentionCoupleRegionsInner
 
-Regions item used by the Arc en Ciel API contract.
+Structured regions item details for this regions.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mask_path** | **str** | Relative staging path (&#x60;generator/...&#x60;) to a PNG mask with an alpha channel. |
-**prompt** | **str** | Prompt accepted or returned by this contract. |
-**weight** | **float** | Weight accepted or returned by this contract. | [optional]
+**prompt** | **str** | Prompt text associated with generation of this regions item; availability depends on visibility and privacy rules. |
+**weight** | **float** | Numeric weight reported for this regions item. Minimum: 0.01. Maximum: 1. | [optional]
 
 ## Example
 

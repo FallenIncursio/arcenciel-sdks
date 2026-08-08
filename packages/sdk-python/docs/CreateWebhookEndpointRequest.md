@@ -1,14 +1,14 @@
 # CreateWebhookEndpointRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**event_types** | **List[str]** | Event Types accepted or returned by this contract. |
-**name** | **str** | Name accepted or returned by this contract. |
-**url** | **str** | Url accepted or returned by this contract. |
+**event_types** | **List[str]** | Ordered event types entries included with this request payload; an empty list means none are available. |
+**name** | **str** | Human-readable name for this request payload; it is not a stable identifier. Maximum length: 100 characters. |
+**url** | **str** | URL for the url associated with this request payload; do not persist temporary signed query parameters. Format: uri. |
 
 ## Example
 

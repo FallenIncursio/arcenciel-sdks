@@ -1,7 +1,7 @@
 
 # GeneratorOptionsResponseModelDetailsUpscaleInner
 
-Upscale item used by the Arc en Ciel API contract.
+Structured upscale item details for this upscale.
 
 ## Properties
 

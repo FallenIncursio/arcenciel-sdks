@@ -1,7 +1,7 @@
 
 # GeneratorOptionsResponseModelDetailsCheckpointsInner
 
-Checkpoints item used by the Arc en Ciel API contract.
+Structured checkpoints item details for this checkpoints.
 
 ## Properties
 

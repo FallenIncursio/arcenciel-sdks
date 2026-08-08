@@ -13,18 +13,85 @@ import pytest
 from arcenciel import (
     ArcEnCielClient,
     ArcEnCielError,
+    CursorPaginationResult,
+    PagePaginationResult,
     __version__,
+    paginate_cursor,
+    paginate_cursor_async,
+    paginate_pages,
+    paginate_pages_async,
     to_arcenciel_error,
     verify_webhook_signature,
 )
 from arcenciel.generated.exceptions import ApiException
 from arcenciel.generated.models.create_collection_request import CreateCollectionRequest
 from arcenciel.generated.models.image import Image
+from arcenciel.generated.models.self_profile_social_links_inner import (
+    SelfProfileSocialLinksInner,
+)
+from arcenciel.generated.models.user_profile_social_links_inner import (
+    UserProfileSocialLinksInner,
+)
 from arcenciel.generated.models.version import Version
 
 
 def test_reports_package_version() -> None:
     assert __version__ == package_version("arcenciel")
+
+
+def test_preserves_sdk_100_social_link_model_alias() -> None:
+    assert UserProfileSocialLinksInner is SelfProfileSocialLinksInner
+
+
+def test_abstracts_page_and_cursor_pagination() -> None:
+    pages: list[int] = []
+
+    def load_page(page: int) -> PagePaginationResult[int]:
+        pages.append(page)
+        return PagePaginationResult([page], has_more=page < 3)
+
+    assert list(paginate_pages(load_page)) == [1, 2, 3]
+    assert pages == [1, 2, 3]
+
+    cursors: list[str | None] = []
+
+    def load_cursor(cursor: str | None) -> CursorPaginationResult[str, str]:
+        cursors.append(cursor)
+        if cursor is None:
+            return CursorPaginationResult(["first"], next_cursor="page-2")
+        return CursorPaginationResult(["second"])
+
+    assert list(paginate_cursor(load_cursor)) == ["first", "second"]
+    assert cursors == [None, "page-2"]
+
+    with pytest.raises(ArcEnCielError, match="positive integer"):
+        list(paginate_pages(load_page, start_page=0))
+    with pytest.raises(ArcEnCielError, match="same continuation token"):
+        list(
+            paginate_cursor(
+                lambda cursor: CursorPaginationResult([], next_cursor="same"),
+                initial_cursor="same",
+            )
+        )
+
+
+@pytest.mark.asyncio
+async def test_abstracts_async_page_and_cursor_pagination() -> None:
+    async def load_page(page: int) -> PagePaginationResult[int]:
+        return PagePaginationResult([page], total_pages=2)
+
+    page_values = [item async for item in paginate_pages_async(load_page)]
+    assert page_values == [1, 2]
+
+    async def load_cursor(
+        cursor: str | None,
+    ) -> CursorPaginationResult[str, str]:
+        if cursor is None:
+            return CursorPaginationResult(["first"], next_cursor="next")
+        return CursorPaginationResult(["second"])
+
+    cursor_values = [item async for item in paginate_cursor_async(load_cursor)]
+    assert cursor_values == ["first", "second"]
 
 
 def test_configures_namespaces_and_api_key() -> None:

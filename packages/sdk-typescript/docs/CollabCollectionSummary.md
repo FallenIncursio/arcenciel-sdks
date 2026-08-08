@@ -1,7 +1,7 @@
 
 # CollabCollectionSummary
 
-Collab Collection Summary used by the Arc en Ciel API contract.
+Fields describing collab collection summary in Developer API requests and responses.
 
 ## Properties
 

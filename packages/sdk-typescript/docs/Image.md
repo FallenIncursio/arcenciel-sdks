@@ -1,7 +1,7 @@
 
 # Image
 
-Images item used by the Arc en Ciel API contract.
+Structured images item details for this images.
 
 ## Properties
 

@@ -1,7 +1,7 @@
 
 # Model
 
-Model used by the Arc en Ciel API contract.
+Fields describing model in Developer API requests and responses.
 
 ## Properties
 

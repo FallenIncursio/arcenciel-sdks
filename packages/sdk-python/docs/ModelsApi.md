@@ -406,7 +406,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     author_wishes = 'author_wishes_example' # str | JSON array of author wishes. (optional)
     description = 'description_example' # str | Sanitized rich HTML model description. Legacy Markdown or mixed Civitai-style HTML is accepted for compatibility and rendered by the rich-content pipeline. (optional)
     tags = 'tags_example' # str | Comma-separated list of tags. (optional)
-    title = 'title_example' # str | Title accepted or returned by this contract. (optional)
+    title = 'title_example' # str | Display title shown to users for this request payload. (optional)
     type = 'type_example' # str | The model type (e.g., LORA, CHECKPOINT). (optional)
 
     try:
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
  **author_wishes** | **str**| JSON array of author wishes. | [optional]
  **description** | **str**| Sanitized rich HTML model description. Legacy Markdown or mixed Civitai-style HTML is accepted for compatibility and rendered by the rich-content pipeline. | [optional]
  **tags** | **str**| Comma-separated list of tags. | [optional]
- **title** | **str**| Title accepted or returned by this contract. | [optional]
+ **title** | **str**| Display title shown to users for this request payload. | [optional]
  **type** | **str**| The model type (e.g., LORA, CHECKPOINT). | [optional]
 
 ### Return type
@@ -515,13 +515,13 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.ModelsApi(api_client)
     model_id = 1 # int | ID of the model.
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    about_this_version = 'about_this_version_example' # str | About This Version accepted or returned by this contract. (optional)
-    activation_tags = 'activation_tags_example' # str | Activation Tags accepted or returned by this contract. (optional)
-    base_model = 'base_model_example' # str | Base Model accepted or returned by this contract. (optional)
+    about_this_version = 'about_this_version_example' # str | About This Version associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
+    activation_tags = 'activation_tags_example' # str | Activation Tags associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
+    base_model = 'base_model_example' # str | Base Model associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     huggingface_link = 'huggingface_link_example' # str | URL to a HuggingFace model file. Either versionFile or huggingfaceLink must be provided. Allowed by default: .safetensors, .pt. For models of type OTHER, archive extensions are also allowed. (optional)
     supporter_early_access_enabled = True # bool | Creator opt-out for the 72-hour supporter early-access window. External sources are always excluded. (optional) (default to True)
     version_file = None # bytes | The file for the model version. Allowed by default: .safetensors, .pt. For models of type OTHER, archives are also allowed (.zip, .7z, .rar, .tar, .tar.gz, .tar.xz, .tar.bz2, .gz, .xz, .bz2). (optional)
-    version_name = 'version_name_example' # str | Version Name accepted or returned by this contract. (optional)
+    version_name = 'version_name_example' # str | Human-readable version name for this request payload; it is not a stable identifier. (optional)
 
     try:
         # Add a new version to an existing model
@@ -541,13 +541,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_id** | **int**| ID of the model. |
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
- **about_this_version** | **str**| About This Version accepted or returned by this contract. | [optional]
- **activation_tags** | **str**| Activation Tags accepted or returned by this contract. | [optional]
- **base_model** | **str**| Base Model accepted or returned by this contract. | [optional]
+ **about_this_version** | **str**| About This Version associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+ **activation_tags** | **str**| Activation Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+ **base_model** | **str**| Base Model associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
  **huggingface_link** | **str**| URL to a HuggingFace model file. Either versionFile or huggingfaceLink must be provided. Allowed by default: .safetensors, .pt. For models of type OTHER, archive extensions are also allowed. | [optional]
  **supporter_early_access_enabled** | **bool**| Creator opt-out for the 72-hour supporter early-access window. External sources are always excluded. | [optional] [default to True]
  **version_file** | **bytes**| The file for the model version. Allowed by default: .safetensors, .pt. For models of type OTHER, archives are also allowed (.zip, .7z, .rar, .tar, .tar.gz, .tar.xz, .tar.bz2, .gz, .xz, .bz2). | [optional]
- **version_name** | **str**| Version Name accepted or returned by this contract. | [optional]
+ **version_name** | **str**| Human-readable version name for this request payload; it is not a stable identifier. | [optional]
 
 ### Return type
 
@@ -3198,11 +3198,11 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     api_instance = arcenciel.generated.ModelsApi(api_client)
     model_id = 1 # int | Model Id provided in the path.
     version_id = 1 # int | Version Id provided in the path.
-    about_this_version = 'about_this_version_example' # str | About This Version accepted or returned by this contract. (optional)
-    activation_tags = 'activation_tags_example' # str | Activation Tags accepted or returned by this contract. (optional)
-    base_model = 'base_model_example' # str | Base Model accepted or returned by this contract. (optional)
+    about_this_version = 'about_this_version_example' # str | About This Version associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
+    activation_tags = 'activation_tags_example' # str | Activation Tags associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
+    base_model = 'base_model_example' # str | Base Model associated with this request payload; preserve server-returned values when passing them to another operation. (optional)
     supporter_early_access_enabled = True # bool | Set false to opt this hosted version out of supporter early access. (optional)
-    version_name = 'version_name_example' # str | Version Name accepted or returned by this contract. (optional)
+    version_name = 'version_name_example' # str | Human-readable version name for this request payload; it is not a stable identifier. (optional)
 
     try:
         # Edit an existing model version
@@ -3222,11 +3222,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_id** | **int**| Model Id provided in the path. |
  **version_id** | **int**| Version Id provided in the path. |
- **about_this_version** | **str**| About This Version accepted or returned by this contract. | [optional]
- **activation_tags** | **str**| Activation Tags accepted or returned by this contract. | [optional]
- **base_model** | **str**| Base Model accepted or returned by this contract. | [optional]
+ **about_this_version** | **str**| About This Version associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+ **activation_tags** | **str**| Activation Tags associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
+ **base_model** | **str**| Base Model associated with this request payload; preserve server-returned values when passing them to another operation. | [optional]
  **supporter_early_access_enabled** | **bool**| Set false to opt this hosted version out of supporter early access. | [optional]
- **version_name** | **str**| Version Name accepted or returned by this contract. | [optional]
+ **version_name** | **str**| Human-readable version name for this request payload; it is not a stable identifier. | [optional]
 
 ### Return type
 
@@ -3632,10 +3632,10 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     model_id = 1 # int | Model Id provided in the path.
     version_id = 1 # int | Version Id provided in the path.
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    description = 'description_example' # str | Description accepted or returned by this contract. (optional)
+    description = 'description_example' # str | User-facing description of this request payload; it may contain an empty string when no description was supplied. (optional)
     image_files = None # List[bytes] | Array of image files. (optional)
     tags = 'tags_example' # str | Comma-separated list of tags. (optional)
-    title = 'title_example' # str | Title accepted or returned by this contract. (optional)
+    title = 'title_example' # str | Display title shown to users for this request payload. (optional)
 
     try:
         # Upload one or more images for a specific model version
@@ -3656,10 +3656,10 @@ Name | Type | Description  | Notes
  **model_id** | **int**| Model Id provided in the path. |
  **version_id** | **int**| Version Id provided in the path. |
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
- **description** | **str**| Description accepted or returned by this contract. | [optional]
+ **description** | **str**| User-facing description of this request payload; it may contain an empty string when no description was supplied. | [optional]
  **image_files** | **List[bytes]**| Array of image files. | [optional]
  **tags** | **str**| Comma-separated list of tags. | [optional]
- **title** | **str**| Title accepted or returned by this contract. | [optional]
+ **title** | **str**| Display title shown to users for this request payload. | [optional]
 
 ### Return type
 
@@ -3747,10 +3747,10 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     model_id = 1 # int | Model Id provided in the path.
     version_id = 1 # int | Version Id provided in the path.
     idempotency_key = 'request-018f47f2-97e2-7a32-a693-3b1bc30c6ca8' # str | Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. (optional)
-    description = 'description_example' # str | Description accepted or returned by this contract. (optional)
+    description = 'description_example' # str | User-facing description of this request payload; it may contain an empty string when no description was supplied. (optional)
     meta_images = None # List[bytes] | Optional preview images. (optional)
     tags = 'tags_example' # str | Comma-separated list of tags. (optional)
-    title = 'title_example' # str | Title accepted or returned by this contract. (optional)
+    title = 'title_example' # str | Display title shown to users for this request payload. (optional)
     video_files = None # List[bytes] | Array of video files. (optional)
 
     try:
@@ -3772,10 +3772,10 @@ Name | Type | Description  | Notes
  **model_id** | **int**| Model Id provided in the path. |
  **version_id** | **int**| Version Id provided in the path. |
  **idempotency_key** | **str**| Visible ASCII key, 1-128 characters. Successful responses are retained per caller, method, and target path for 24 hours. | [optional]
- **description** | **str**| Description accepted or returned by this contract. | [optional]
+ **description** | **str**| User-facing description of this request payload; it may contain an empty string when no description was supplied. | [optional]
  **meta_images** | **List[bytes]**| Optional preview images. | [optional]
  **tags** | **str**| Comma-separated list of tags. | [optional]
- **title** | **str**| Title accepted or returned by this contract. | [optional]
+ **title** | **str**| Display title shown to users for this request payload. | [optional]
  **video_files** | **List[bytes]**| Array of video files. | [optional]
 
 ### Return type

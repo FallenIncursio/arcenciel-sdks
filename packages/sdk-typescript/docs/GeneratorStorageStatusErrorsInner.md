@@ -1,7 +1,7 @@
 
 # GeneratorStorageStatusErrorsInner
 
-Errors item used by the Arc en Ciel API contract.
+Structured errors item details for this errors.
 
 ## Properties
 

@@ -1,7 +1,7 @@
 
 # ModelVersionResourceGraphResponseCounts
 
-Counts accepted or returned by this contract.
+Structured counts details for this model version resource graph response.
 
 ## Properties
 

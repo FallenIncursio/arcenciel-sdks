@@ -6,28 +6,28 @@ Caller-safe collection summary. Integrations must ignore new presentation and ag
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allow_collaborators** | **bool** | Allow Collaborators accepted or returned by this contract. |
-**collaborator_count** | **int** | Collaborator Count accepted or returned by this contract. |
-**collaborators** | [**List[CollectionCollaboratorSummary]**](CollectionCollaboratorSummary.md) | Collaborators accepted or returned by this contract. |
-**cover_image** | **str** | Cover Image accepted or returned by this contract. | [optional]
-**cover_image_rating** | **str** | Cover Image Rating accepted or returned by this contract. | [optional]
-**created_at** | **datetime** | Created At accepted or returned by this contract. |
-**description** | **str** | Description accepted or returned by this contract. | [optional]
-**favorite_count** | **int** | Favorite Count accepted or returned by this contract. |
-**favorited_by** | [**List[CollectionDetailFavoritedByInner]**](CollectionDetailFavoritedByInner.md) | Favorited By accepted or returned by this contract. | [optional]
-**featured** | **str** | Featured accepted or returned by this contract. |
-**id** | **int** | Id accepted or returned by this contract. |
-**image_count** | **int** | Image Count accepted or returned by this contract. |
-**item_count** | **int** | Item Count accepted or returned by this contract. |
-**item_placement** | **str** | Item Placement accepted or returned by this contract. |
-**last_updated** | **datetime** | Last Updated accepted or returned by this contract. | [optional]
-**model_count** | **int** | Model Count accepted or returned by this contract. |
-**name** | **str** | Name accepted or returned by this contract. |
-**owner** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Owner accepted or returned by this contract. | [optional]
-**self_favorited** | **bool** | Self Favorited accepted or returned by this contract. |
-**slug** | **str** | Slug accepted or returned by this contract. |
-**type** | **str** | Type accepted or returned by this contract. |
-**visibility** | **str** | Visibility accepted or returned by this contract. |
+**allow_collaborators** | **bool** | Whether allow collaborators applies to this collection summary. |
+**collaborator_count** | **int** | Number of collaborator records represented by this collection summary. Minimum: 0. |
+**collaborators** | [**List[CollectionCollaboratorSummary]**](CollectionCollaboratorSummary.md) | Ordered collaborators entries included with this collection summary; an empty list means none are available. |
+**cover_image** | **str** | Cover Image associated with this collection summary; preserve server-returned values when passing them to another operation. | [optional]
+**cover_image_rating** | **str** | Cover Image Rating associated with this collection summary; preserve server-returned values when passing them to another operation. | [optional]
+**created_at** | **datetime** | UTC timestamp when this collection summary was created. Format: date-time. |
+**description** | **str** | User-facing description of this collection summary; it may contain an empty string when no description was supplied. | [optional]
+**favorite_count** | **int** | Number of favorite records represented by this collection summary. Minimum: 0. |
+**favorited_by** | [**List[CollectionDetailFavoritedByInner]**](CollectionDetailFavoritedByInner.md) | Ordered favorited by entries included with this collection summary; an empty list means none are available. | [optional]
+**featured** | **str** | Featured associated with this collection summary; preserve server-returned values when passing them to another operation. |
+**id** | **int** | Stable identifier for the collection summary; use it in subsequent API calls instead of a display name. Minimum: 1. |
+**image_count** | **int** | Number of image records represented by this collection summary. Minimum: 0. |
+**item_count** | **int** | Number of item records represented by this collection summary. Minimum: 0. |
+**item_placement** | **str** | Item Placement associated with this collection summary; preserve server-returned values when passing them to another operation. Supported values: &#x60;APPEND&#x60;, &#x60;PREPEND&#x60;. |
+**last_updated** | **datetime** | Last Updated associated with this collection summary; preserve server-returned values when passing them to another operation. Format: date-time. | [optional]
+**model_count** | **int** | Number of model records represented by this collection summary. Minimum: 0. |
+**name** | **str** | Human-readable name for this collection summary; it is not a stable identifier. |
+**owner** | [**DeveloperUserSummary**](DeveloperUserSummary.md) | Owner associated with this collection summary; preserve server-returned values when passing them to another operation. | [optional]
+**self_favorited** | **bool** | Whether self favorited applies to this collection summary. |
+**slug** | **str** | Slug associated with this collection summary; preserve server-returned values when passing them to another operation. |
+**type** | **str** | Discriminator identifying the kind of collection summary; clients should tolerate future values. Supported values: &#x60;MODEL&#x60;, &#x60;IMAGE&#x60;. |
+**visibility** | **str** | Visibility associated with this collection summary; preserve server-returned values when passing them to another operation. Supported values: &#x60;PUBLIC&#x60;, &#x60;UNLISTED&#x60;, &#x60;PRIVATE&#x60;. |
 
 ## Example
 

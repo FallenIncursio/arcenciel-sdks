@@ -1,12 +1,12 @@
 # GeneratorError
 
-Generator Error used by the Arc en Ciel API contract.
+Fields describing generator error in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**error** | **str** | Error accepted or returned by this contract. |
+**error** | **str** | Error associated with this generator error; preserve server-returned values when passing them to another operation. |
 **error_code** | **str** | Stable machine-readable error code for client handling. | [optional]
 **safety_reason** | **str** | Present for safety-restricted output access responses (for example &#x60;nsfw&#x60;). | [optional]
 **safety_status** | **str** | Present for safety-restricted output access responses. | [optional]

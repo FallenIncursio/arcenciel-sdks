@@ -1,12 +1,12 @@
 # ListGeneratorPresets200Response
 
-200 response for api generator presets used by the Arc en Ciel API contract.
+Fields describing 200 response for api generator presets in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**presets** | [**List[GeneratorPreset]**](GeneratorPreset.md) | Presets accepted or returned by this contract. |
+**presets** | [**List[GeneratorPreset]**](GeneratorPreset.md) | Ordered presets entries included with this 200 response for api generator presets; an empty list means none are available. |
 
 ## Example
 

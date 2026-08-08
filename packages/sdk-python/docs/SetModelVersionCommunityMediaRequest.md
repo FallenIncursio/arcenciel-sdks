@@ -1,14 +1,14 @@
 # SetModelVersionCommunityMediaRequest
 
-Request payload used by the Arc en Ciel API contract.
+Fields describing request payload in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **include** | **bool** | Set to true to add the media, false to remove it. |
-**media_id** | **int** | Media Id accepted or returned by this contract. |
-**media_type** | **str** | Media Type accepted or returned by this contract. |
+**media_id** | **int** | Stable identifier for the media; use it in subsequent API calls instead of a display name. |
+**media_type** | **str** | Discriminator identifying the kind of request payload; clients should tolerate future values. Supported values: &#x60;IMAGE&#x60;, &#x60;VIDEO&#x60;. |
 
 ## Example
 

@@ -1,7 +1,7 @@
 
 # ApiKey
 
-Api Keys item used by the Arc en Ciel API contract.
+Structured api keys item details for this api keys.
 
 ## Properties
 

@@ -1,7 +1,7 @@
 
 # ModelVersionResourceGraphResponseGroups
 
-Groups accepted or returned by this contract.
+Structured groups details for this model version resource graph response.
 
 ## Properties
 

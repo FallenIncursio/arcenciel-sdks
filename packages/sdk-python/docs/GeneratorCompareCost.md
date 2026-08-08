@@ -1,12 +1,12 @@
 # GeneratorCompareCost
 
-Generator Compare Cost used by the Arc en Ciel API contract.
+Fields describing generator compare cost in Developer API requests and responses.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**budget_profile** | **str** | Budget Profile accepted or returned by this contract. |
+**budget_profile** | **str** | Budget Profile associated with this generator compare cost; preserve server-returned values when passing them to another operation. |
 **daily_usage** | **int** | Number of daily generator uses charged by this compare run. |
 **estimated_gpu_ms** | **int** | Aggregate GPU budget estimate in milliseconds. |
 **estimated_vram_mb** | **int** | Aggregate VRAM budget estimate in megabytes. |

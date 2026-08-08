@@ -1,7 +1,7 @@
 
 # Video
 
-Video used by the Arc en Ciel API contract.
+Fields describing video in Developer API requests and responses.
 
 ## Properties
 

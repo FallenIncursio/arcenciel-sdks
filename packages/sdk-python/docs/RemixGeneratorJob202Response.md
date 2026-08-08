@@ -1,15 +1,15 @@
 # RemixGeneratorJob202Response
 
-202 response for api generator jobs id remix used by the Arc en Ciel API contract.
+202 response for api generator jobs id remix value documented for this operation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **job** | [**GeneratorJob**](GeneratorJob.md) |  |
-**position** | **int** | Position accepted or returned by this contract. |
-**queue_eta_ms** | **int** | Queue Eta Ms accepted or returned by this contract. |
-**remixed_from** | **str** | Remixed From accepted or returned by this contract. |
+**position** | **int** | Numeric position reported for this generator job envelope. |
+**queue_eta_ms** | **int** | Numeric queue eta ms reported for this generator job envelope. |
+**remixed_from** | **str** | Remixed From associated with this 202 response for api generator jobs id remix; preserve server-returned values when passing them to another operation. |
 
 ## Example
 

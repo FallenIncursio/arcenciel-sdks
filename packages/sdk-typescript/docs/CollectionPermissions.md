@@ -1,7 +1,7 @@
 
 # CollectionPermissions
 
-Collection Permissions used by the Arc en Ciel API contract.
+Fields describing collection permissions in Developer API requests and responses.
 
 ## Properties
 

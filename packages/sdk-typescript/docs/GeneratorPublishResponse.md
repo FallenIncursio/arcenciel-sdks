@@ -1,7 +1,7 @@
 
 # GeneratorPublishResponse
 
-Generator Publish Response used by the Arc en Ciel API contract.
+Fields describing generator publish response in Developer API requests and responses.
 
 ## Properties
 

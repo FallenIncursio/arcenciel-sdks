@@ -2010,7 +2010,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = arcenciel.generated.ChatApi(api_client)
     thread_id = 81 # int | Thread Id provided in the path.
-    avatar = None # bytes | Avatar accepted or returned by this contract.
+    avatar = None # bytes | Avatar associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary.
 
     try:
         # Upload or replace a group avatar
@@ -2029,7 +2029,7 @@ async with arcenciel.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **thread_id** | **int**| Thread Id provided in the path. |
- **avatar** | **bytes**| Avatar accepted or returned by this contract. |
+ **avatar** | **bytes**| Avatar associated with this request payload; preserve server-returned values when passing them to another operation. Format: binary. |
 
 ### Return type
 
