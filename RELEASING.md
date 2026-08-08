@@ -15,9 +15,9 @@ This process publishes one TypeScript/Python version pair from one immutable Dev
 
 Dispatch **Publish SDKs** with:
 
-- `api_release`: the immutable contract version, such as `1.9.1`;
-- `sdk_version`: the shared package version, such as `1.0.1`; and
-- `release_tag`: the signed public tag, such as `sdk-v1.0.1`.
+- `api_release`: the immutable contract version, such as `1.9.2`;
+- `sdk_version`: the shared package version, such as `1.0.2`; and
+- `release_tag`: the signed public tag, such as `sdk-v1.0.2`.
 
 The workflow independently verifies the tag, fingerprint, contract checksum, operation count, package versions, repository metadata, and
 deterministic generation. It skips an immutable version already present in a registry. After publishing, it installs both packages into

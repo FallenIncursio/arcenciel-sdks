@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **article** | [**Article**](Article.md) |  |
-**message** | **str** |  |
+**message** | **str** | Human-readable confirmation of the completed article mutation; use the HTTP status and article payload for logic. |
 
 ## Example
 

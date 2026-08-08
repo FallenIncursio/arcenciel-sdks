@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **safety_status** | **str** | Current blocking safety state. |
 **details** | **Dict[str, object]** | Optional structured error details. | [optional]
 **message** | **str** | Additional human-readable context. | [optional]
-**retryable** | **bool** | Whether retrying the request may succeed. | [optional]
+**retryable** | **bool** | Whether the same request may succeed later. This is not permission for an SDK to retry an unsafe write; automatic retries still follow the operation x-sdk-retry-classification and Idempotency-Key contract. | [optional]
 
 ## Example
 

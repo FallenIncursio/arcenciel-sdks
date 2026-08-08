@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **error** | **str** | Human-readable error message. | [optional]
 **error_code** | **str** | Stable machine-readable error code. | [optional]
 **message** | **str** | Additional human-readable context. | [optional]
-**retryable** | **bool** | Whether retrying the request may succeed. | [optional]
+**retryable** | **bool** | Whether the same request may succeed later. This is not permission for an SDK to retry an unsafe write; automatic retries still follow the operation x-sdk-retry-classification and Idempotency-Key contract. | [optional]
 
 ## Example
 
