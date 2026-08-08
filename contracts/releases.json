@@ -16,14 +16,14 @@
         "typescript": {
           "package": "@arcenciel/sdk",
           "version": "0.9.0",
-          "status": "source-beta",
+          "status": "published-beta",
           "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
           "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.9.0/packages/sdk-typescript"
         },
         "python": {
           "package": "arcenciel",
           "version": "0.9.0",
-          "status": "source-beta",
+          "status": "published-beta",
           "registryUrl": "https://pypi.org/project/arcenciel/",
           "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v0.9.0/packages/sdk-python"
         }
