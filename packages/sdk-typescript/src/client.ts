@@ -130,7 +130,9 @@ export class ArcEnCielClient {
     if (!sourceFetch) throw new ArcEnCielError('A Fetch API implementation is required')
     this.apiKey = options.apiKey
     this.accessToken = options.accessToken
-    this.baseUrl = (options.baseUrl ?? 'https://arcenciel.io').replace(/\/+$/, '')
+    let baseUrl = options.baseUrl ?? 'https://arcenciel.io'
+    while (baseUrl.endsWith('/')) baseUrl = baseUrl.slice(0, -1)
+    this.baseUrl = baseUrl
     this.fetchApi = createArcEnCielFetch(sourceFetch.bind(globalThis) as FetchAPI, options.timeoutMs ?? 30_000, options.retry ?? {})
     const configuration = new Configuration({
       basePath: this.baseUrl,

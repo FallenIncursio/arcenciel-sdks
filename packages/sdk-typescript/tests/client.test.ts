@@ -5,7 +5,7 @@ import { ArcEnCielClient, createArcEnCielFetch, paginate, readAndVerifySha256, s
 describe('ArcEnCielClient', () => {
   it('configures the API key and base URL', async () => {
     const fetch = vi.fn(async () => Response.json({ classes: [] }, { headers: { 'x-request-id': 'request-1' } }))
-    const client = new ArcEnCielClient({ apiKey: 'secret', baseUrl: 'https://example.test/', fetch })
+    const client = new ArcEnCielClient({ apiKey: 'secret', baseUrl: `https://example.test${'/'.repeat(2_048)}`, fetch })
 
     expect(
       Object.keys(client).filter(key =>
