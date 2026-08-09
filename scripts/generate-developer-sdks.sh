@@ -33,13 +33,32 @@ npx --yes "${GENERATOR}" generate \
 SDK_VERSION="${SDK_VERSION}" node --input-type=module <<'NODE'
 import { readFileSync, writeFileSync } from 'node:fs'
 
-const path = 'packages/sdk-python/arcenciel/__init__.py'
-const source = readFileSync(path, 'utf8')
-const updated = source.replace(/^__version__ = "[^"]+"$/m, `__version__ = "${process.env.SDK_VERSION}"`)
-if (source === updated && !source.includes(`__version__ = "${process.env.SDK_VERSION}"`)) {
-  throw new Error(`Unable to synchronize ${path}`)
+const version = process.env.SDK_VERSION
+if (!version) throw new Error('SDK_VERSION is required')
+
+const updateJsonVersion = path => {
+  const document = JSON.parse(readFileSync(path, 'utf8'))
+  document.version = version
+  if (document.packages?.['']) document.packages[''].version = version
+  writeFileSync(path, `${JSON.stringify(document, null, 2)}\n`)
 }
-writeFileSync(path, updated)
+updateJsonVersion('packages/sdk-typescript/package.json')
+updateJsonVersion('packages/sdk-typescript/package-lock.json')
+
+const updateText = (path, transform) => {
+  const source = readFileSync(path, 'utf8')
+  const updated = transform(source)
+  if (source === updated && !updated.includes(version)) throw new Error(`Unable to synchronize ${path}`)
+  writeFileSync(path, updated)
+}
+updateText('packages/sdk-python/arcenciel/__init__.py', source =>
+  source.replace(/^__version__ = "[^"]+"$/m, `__version__ = "${version}"`)
+)
+updateText('packages/sdk-python/pyproject.toml', source =>
+  source
+    .replace(/^version = "[^"]+"$/m, `version = "${version}"`)
+    .replace(/tree\/sdk-v[^/]+\/packages\/sdk-python/g, `tree/sdk-v${version}/packages/sdk-python`)
+)
 NODE
 
 node scripts/normalize-python-sdk-enums.mjs

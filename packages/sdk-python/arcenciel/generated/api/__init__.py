@@ -13,6 +13,7 @@ from arcenciel.generated.api.generator_api import GeneratorApi
 from arcenciel.generated.api.images_api import ImagesApi
 from arcenciel.generated.api.models_api import ModelsApi
 from arcenciel.generated.api.notifications_api import NotificationsApi
+from arcenciel.generated.api.o_auth_api import OAuthApi
 from arcenciel.generated.api.profile_api import ProfileApi
 from arcenciel.generated.api.social_api import SocialApi
 from arcenciel.generated.api.tags_api import TagsApi

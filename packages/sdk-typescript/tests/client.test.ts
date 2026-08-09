@@ -6,6 +6,7 @@ import {
   paginate,
   paginateCursor,
   paginatePages,
+  type OAuthAuthorization,
   readAndVerifySha256,
   sha256Hex,
   UserProfileSocialLinksInnerFromJSON,
@@ -105,6 +106,103 @@ describe('ArcEnCielClient', () => {
     expect((await client.webhooks.listWebhookEndpoints()).data).toEqual([])
     expect(fetch.mock.calls[0][0]).toBe('https://example.test/api/webhooks/endpoints')
     expect(new Headers(fetch.mock.calls[0][1]?.headers).get('x-api-key')).toBe('webhooks-read-key')
+  })
+
+  it('exposes v1.10 generated OAuth methods and a state/issuer/PKCE-safe flow', async () => {
+    const fetch = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input)
+      if (url.endsWith('/api/oauth/token')) {
+        const body = new URLSearchParams(String(init?.body))
+        expect(init?.method).toBe('POST')
+        expect(body.get('grant_type')).toBe('authorization_code')
+        expect(body.get('code')).toBe('single-use-code')
+        expect(body.get('code_verifier')?.length).toBeGreaterThanOrEqual(43)
+        expect(body.get('client_id')).toBe('aec_client_test')
+        expect(new Headers(init?.headers).has('x-api-key')).toBe(false)
+        return Response.json({
+          access_token: 'access-1',
+          token_type: 'Bearer',
+          expires_in: 900,
+          scope: 'models:read offline_access',
+          refresh_token: 'refresh-1',
+        })
+      }
+      return Response.json({ data: [] })
+    })
+    const client = new ArcEnCielClient({ baseUrl: 'https://example.test', fetch, retry: false })
+    expect(client.oauthApi).toBeDefined()
+    const authorization = await client.oauth.createAuthorization({
+      clientId: 'aec_client_test',
+      redirectUri: 'https://client.test/callback',
+      scopes: ['models:read', 'offline_access'],
+      state: 'state-value-123',
+    })
+    const authorizationUrl = new URL(authorization.url)
+    expect(authorizationUrl.searchParams.get('code_challenge_method')).toBe('S256')
+    expect(authorizationUrl.searchParams.get('code_challenge')).toMatch(/^[A-Za-z0-9_-]{43}$/)
+
+    const tokens = await client.oauth.exchangeCallback({
+      callbackUrl: 'https://client.test/callback?code=single-use-code&state=state-value-123&iss=https%3A%2F%2Fexample.test',
+      authorization,
+    })
+    expect(tokens).toMatchObject({ accessToken: 'access-1', refreshToken: 'refresh-1', expiresIn: 900 })
+  })
+
+  it('rejects OAuth callback mix-up attacks before making a token request', async () => {
+    const fetch = vi.fn(async () => Response.json({}))
+    const client = new ArcEnCielClient({ baseUrl: 'https://example.test', fetch, retry: false })
+    const authorization: OAuthAuthorization = {
+      url: 'https://example.test/api/oauth/authorize',
+      state: 'expected-state',
+      codeVerifier: 'v'.repeat(64),
+      clientId: 'client',
+      redirectUri: 'https://client.test/callback',
+      issuer: 'https://example.test',
+    }
+    await expect(
+      client.oauth.exchangeCallback({
+        callbackUrl: 'https://client.test/callback?code=code&state=wrong-state&iss=https%3A%2F%2Fexample.test',
+        authorization,
+      })
+    ).rejects.toMatchObject({ code: 'OAUTH_STATE_MISMATCH' })
+    await expect(
+      client.oauth.exchangeCallback({
+        callbackUrl: 'https://client.test/callback?code=code&state=expected-state&iss=https%3A%2F%2Fevil.test',
+        authorization,
+      })
+    ).rejects.toMatchObject({ code: 'OAUTH_ISSUER_MISMATCH' })
+    expect(fetch).not.toHaveBeenCalled()
+  })
+
+  it('rotates, revokes, and introspects OAuth credentials without retrying protocol writes', async () => {
+    const requests: Array<{ url: string; body: URLSearchParams; headers: Headers }> = []
+    const fetch = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const entry = { url: String(input), body: new URLSearchParams(String(init?.body)), headers: new Headers(init?.headers) }
+      requests.push(entry)
+      if (entry.url.endsWith('/token')) {
+        return Response.json({
+          access_token: 'access-2',
+          token_type: 'Bearer',
+          expires_in: 900,
+          scope: 'models:read',
+          refresh_token: 'refresh-2',
+        })
+      }
+      if (entry.url.endsWith('/introspect')) return Response.json({ active: true, client_id: 'client', exp: 123, sub: '42' })
+      return new Response(null, { status: 200 })
+    })
+    const client = new ArcEnCielClient({ baseUrl: 'https://example.test', fetch, retry: { maxRetries: 3, baseDelayMs: 0 } })
+    expect(await client.oauth.refresh({ clientId: 'client', refreshToken: 'refresh-1' })).toMatchObject({ refreshToken: 'refresh-2' })
+    await client.oauth.revoke({ clientId: 'client', token: 'refresh-2' })
+    expect(await client.oauth.introspect({ clientId: 'client', clientSecret: 'secret', token: 'access-2' })).toMatchObject({
+      active: true,
+      clientId: 'client',
+      sub: '42',
+    })
+    expect(requests[0].body.get('refresh_token')).toBe('refresh-1')
+    expect(requests[1].body.get('client_id')).toBe('client')
+    expect(requests[2].headers.get('authorization')).toBe(`Basic ${btoa('client:secret')}`)
+    expect(fetch).toHaveBeenCalledTimes(3)
   })
 
   it('normalizes generated response errors', async () => {

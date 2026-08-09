@@ -12,6 +12,7 @@ export * from './GeneratorApi.js';
 export * from './ImagesApi.js';
 export * from './ModelsApi.js';
 export * from './NotificationsApi.js';
+export * from './OAuthApi.js';
 export * from './ProfileApi.js';
 export * from './SocialApi.js';
 export * from './TagsApi.js';

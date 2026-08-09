@@ -12,6 +12,7 @@ arcenciel/generated/api/generator_api.py
 arcenciel/generated/api/images_api.py
 arcenciel/generated/api/models_api.py
 arcenciel/generated/api/notifications_api.py
+arcenciel/generated/api/o_auth_api.py
 arcenciel/generated/api/profile_api.py
 arcenciel/generated/api/social_api.py
 arcenciel/generated/api/tags_api.py
@@ -284,6 +285,8 @@ arcenciel/generated/models/get_historical_collab_overview200_response.py
 arcenciel/generated/models/get_images_bulk200_response.py
 arcenciel/generated/models/get_images_bulk200_response_images_inner.py
 arcenciel/generated/models/get_model_version_training_metadata200_response.py
+arcenciel/generated/models/get_o_auth_authorization_server_metadata200_response.py
+arcenciel/generated/models/get_public_o_auth_client200_response.py
 arcenciel/generated/models/image.py
 arcenciel/generated/models/image_spatial_attribution.py
 arcenciel/generated/models/image_spatial_attribution_request_access.py
@@ -297,6 +300,7 @@ arcenciel/generated/models/list_image_external_resources200_response.py
 arcenciel/generated/models/list_image_style_matches200_response.py
 arcenciel/generated/models/list_model_classes200_response.py
 arcenciel/generated/models/list_model_classes200_response_classes_inner.py
+arcenciel/generated/models/list_o_auth_scopes200_response.py
 arcenciel/generated/models/list_tag_usage200_response_inner.py
 arcenciel/generated/models/list_users200_response.py
 arcenciel/generated/models/list_webhook_deliveries200_response.py
@@ -327,6 +331,12 @@ arcenciel/generated/models/model_version_resource_graph_response.py
 arcenciel/generated/models/model_version_resource_graph_response_counts.py
 arcenciel/generated/models/model_version_resource_graph_response_groups.py
 arcenciel/generated/models/model_version_resource_preview_image.py
+arcenciel/generated/models/o_auth_client_public.py
+arcenciel/generated/models/o_auth_client_public_owner.py
+arcenciel/generated/models/o_auth_introspection.py
+arcenciel/generated/models/o_auth_protocol_error.py
+arcenciel/generated/models/o_auth_scope.py
+arcenciel/generated/models/o_auth_token_response.py
 arcenciel/generated/models/publish_generator_job_request.py
 arcenciel/generated/models/register_model_version_download200_response.py
 arcenciel/generated/models/remix_generator_job202_response.py
@@ -671,6 +681,8 @@ docs/GetHistoricalCollabOverview200Response.md
 docs/GetImagesBulk200Response.md
 docs/GetImagesBulk200ResponseImagesInner.md
 docs/GetModelVersionTrainingMetadata200Response.md
+docs/GetOAuthAuthorizationServerMetadata200Response.md
+docs/GetPublicOAuthClient200Response.md
 docs/Image.md
 docs/ImageSpatialAttribution.md
 docs/ImageSpatialAttributionRequestAccess.md
@@ -685,6 +697,7 @@ docs/ListImageExternalResources200Response.md
 docs/ListImageStyleMatches200Response.md
 docs/ListModelClasses200Response.md
 docs/ListModelClasses200ResponseClassesInner.md
+docs/ListOAuthScopes200Response.md
 docs/ListTagUsage200ResponseInner.md
 docs/ListUsers200Response.md
 docs/ListWebhookDeliveries200Response.md
@@ -717,6 +730,13 @@ docs/ModelVersionResourceGraphResponseGroups.md
 docs/ModelVersionResourcePreviewImage.md
 docs/ModelsApi.md
 docs/NotificationsApi.md
+docs/OAuthApi.md
+docs/OAuthClientPublic.md
+docs/OAuthClientPublicOwner.md
+docs/OAuthIntrospection.md
+docs/OAuthProtocolError.md
+docs/OAuthScope.md
+docs/OAuthTokenResponse.md
 docs/ProfileApi.md
 docs/PublishGeneratorJobRequest.md
 docs/RegisterModelVersionDownload200Response.md

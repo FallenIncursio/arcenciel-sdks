@@ -10,6 +10,7 @@ import { GeneratorApi } from './apis/GeneratorApi.js'
 import { ImagesApi } from './apis/ImagesApi.js'
 import { ModelsApi } from './apis/ModelsApi.js'
 import { NotificationsApi } from './apis/NotificationsApi.js'
+import { OAuthApi } from './apis/OAuthApi.js'
 import { ProfileApi } from './apis/ProfileApi.js'
 import { SocialApi } from './apis/SocialApi.js'
 import { TagsApi } from './apis/TagsApi.js'
@@ -18,6 +19,7 @@ import { UsersApi } from './apis/UsersApi.js'
 import { VideosApi } from './apis/VideosApi.js'
 import { WebhooksApi } from './apis/WebhooksApi.js'
 import { ArcEnCielError, toArcEnCielError } from './errors.js'
+import { OAuthFlow } from './oauth.js'
 import { Configuration, type FetchAPI, ResponseError } from './runtime.js'
 
 export interface RetryOptions {
@@ -127,6 +129,8 @@ export class ArcEnCielClient {
   readonly generator: GeneratorApi
   readonly images: ImagesApi
   readonly notifications: NotificationsApi
+  readonly oauth: OAuthFlow
+  readonly oauthApi: OAuthApi
   readonly profile: ProfileApi
   readonly social: SocialApi
   readonly tags: TagsApi
@@ -166,6 +170,8 @@ export class ArcEnCielClient {
     this.images = new ImagesApi(configuration)
     this.models = new ModelsApi(configuration)
     this.notifications = new NotificationsApi(configuration)
+    this.oauthApi = new OAuthApi(configuration)
+    this.oauth = new OAuthFlow(this.baseUrl, this.fetchApi)
     this.profile = new ProfileApi(configuration)
     this.social = new SocialApi(configuration)
     this.tags = new TagsApi(configuration)
