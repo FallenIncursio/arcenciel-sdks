@@ -30,6 +30,7 @@ from arcenciel.generated.api.generator_api import GeneratorApi
 from arcenciel.generated.api.images_api import ImagesApi
 from arcenciel.generated.api.models_api import ModelsApi
 from arcenciel.generated.api.notifications_api import NotificationsApi
+from arcenciel.generated.api.o_auth_api import OAuthApi
 from arcenciel.generated.api.profile_api import ProfileApi
 from arcenciel.generated.api.social_api import SocialApi
 from arcenciel.generated.api.tags_api import TagsApi
@@ -39,6 +40,7 @@ from arcenciel.generated.api.videos_api import VideosApi
 from arcenciel.generated.api.webhooks_api import WebhooksApi
 from arcenciel.generated.api_client import ApiClient
 from arcenciel.generated.configuration import Configuration
+from arcenciel.oauth import OAuthFlow
 
 T = TypeVar("T")
 CursorT = TypeVar("CursorT")
@@ -183,6 +185,8 @@ class ArcEnCielClient:
         self.images = ImagesApi(self.api_client)
         self.models = ModelsApi(self.api_client)
         self.notifications = NotificationsApi(self.api_client)
+        self.oauth_api = OAuthApi(self.api_client)
+        self.oauth = OAuthFlow(self.base_url, timeout)
         self.profile = ProfileApi(self.api_client)
         self.social = SocialApi(self.api_client)
         self.tags = TagsApi(self.api_client)

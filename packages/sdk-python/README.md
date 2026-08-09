@@ -1,14 +1,37 @@
-# `arcenciel` 1.0.2
+# `arcenciel` 1.1.0
 
-Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.9.2` contract. The package provides synchronous and asynchronous
+Official Python 3.11+ client for the immutable Arc en Ciel Developer API `1.10.0` contract. The package provides synchronous and asynchronous
 generated APIs behind a small stable facade. PyPI publishes it from the signed public source tag through OIDC Trusted Publishing with a
 digital attestation.
 
 ## Install
 
 ```bash
-python3.11 -m pip install arcenciel==1.0.2
+python3.11 -m pip install arcenciel==1.1.0
 ```
+
+## OAuth Authorization Code with PKCE
+
+```python
+from arcenciel import ArcEnCielClient
+
+client = ArcEnCielClient()
+authorization = client.oauth.create_authorization(
+    client_id="aec_client_...",
+    redirect_uri="https://your-app.example/oauth/callback",
+    scopes=["models:read", "offline_access"],
+)
+print(authorization.url)
+
+# Restore `authorization` from server-side/session storage on the callback route.
+tokens = client.oauth.exchange_callback(
+    callback_url=incoming_callback_url,
+    authorization=authorization,
+)
+```
+
+The helper verifies both callback `state` and Arc en Ciel `iss` before the single-use exchange. Persist a returned rotated
+`refresh_token` atomically and never retry an ambiguous token request. Confidential clients pass `client_secret` only server-side.
 
 ## Search and inspect a model
 
@@ -62,7 +85,7 @@ Use `paginate_pages_async` and `paginate_cursor_async` with async generated meth
 
 ## Test safely in the sandbox
 
-All 258 stable methods can target deterministic, non-persistent fixtures without changing generated code:
+All 265 stable methods can target deterministic or stateful isolated fixtures without changing generated code:
 
 ```python
 sandbox = ArcEnCielClient(
@@ -218,12 +241,12 @@ The generated low-level APIs and Pydantic models remain available under `arcenci
 
 ## Contract and generation
 
-- Developer API: `1.9.2`, 258 operations
-- SDK: `1.0.2` stable
+- Developer API: `1.10.0`, 265 operations
+- SDK: `1.1.0`
 - Python: 3.11+
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.9.2.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.10.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

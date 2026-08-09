@@ -1,6 +1,6 @@
 {
   "name": "@arcenciel/sdk",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Official TypeScript SDK for the Arc en Ciel Developer API",
   "author": "Arc en Ciel",
   "license": "MIT",
@@ -32,7 +32,7 @@
     "build": "tsc && tsc -p tsconfig.esm.json && node scripts/write-esm-package.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.esm.json",
     "test": "vitest run",
-    "lint": "eslint src/client.ts src/errors.ts tests",
+    "lint": "eslint src/client.ts src/errors.ts src/oauth.ts tests",
     "pack:check": "npm pack --dry-run --ignore-scripts"
   },
   "devDependencies": {

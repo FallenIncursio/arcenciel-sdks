@@ -1,6 +1,6 @@
 [project]
 name = "arcenciel"
-version = "1.0.2"
+version = "1.1.0"
 description = "Official Python SDK for the Arc en Ciel Developer API"
 authors = [{name = "Arc en Ciel"}]
 readme = "README.md"
@@ -26,7 +26,7 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.0.2/packages/sdk-python"
+Repository = "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.1.0/packages/sdk-python"
 Documentation = "https://arcenciel.io/developers"
 
 [build-system]
@@ -37,7 +37,7 @@ build-backend = "setuptools.build_meta"
 include = ["arcenciel*"]
 
 [tool.mypy]
-files = ["arcenciel/client.py", "arcenciel/errors.py", "tests"]
+files = ["arcenciel/client.py", "arcenciel/errors.py", "arcenciel/oauth.py", "tests"]
 strict = true
 exclude = ["arcenciel/generated/"]
 
@@ -53,4 +53,4 @@ extend-exclude = ["arcenciel/generated", "test", "docs", "README.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=arcenciel.client --cov=arcenciel.errors --cov-report=term-missing --cov-fail-under=90"
+addopts = "--cov=arcenciel.client --cov=arcenciel.errors --cov=arcenciel.oauth --cov-report=term-missing --cov-fail-under=90"

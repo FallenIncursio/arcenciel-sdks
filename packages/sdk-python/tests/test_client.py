@@ -14,6 +14,7 @@ from arcenciel import (
     ArcEnCielClient,
     ArcEnCielError,
     CursorPaginationResult,
+    OAuthFlow,
     PagePaginationResult,
     __version__,
     paginate_cursor,
@@ -100,6 +101,8 @@ def test_configures_namespaces_and_api_key() -> None:
     assert client.base_url == "https://example.test"
     assert client.models.api_client.configuration.api_key["apiKeyAuth"] == "secret"
     assert client.downloads.api_client is client.models.api_client
+    assert client.oauth_api.api_client is client.models.api_client
+    assert isinstance(client.oauth, OAuthFlow)
     assert all(
         namespace.api_client is client.models.api_client
         for namespace in (

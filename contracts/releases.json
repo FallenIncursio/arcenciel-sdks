@@ -1,8 +1,41 @@
 {
   "schemaVersion": 1,
-  "currentVersion": "1.9.2",
-  "nextVersion": "1.10.0",
+  "currentVersion": "1.10.0",
+  "nextVersion": "1.11.0",
   "releases": [
+    {
+      "version": "1.10.0",
+      "releasedAt": "2026-08-09",
+      "sha256": "54e6c9c3390b1137a1a15a8197fee0862b48513e703ee13525aed4aaa055add7",
+      "operationCount": 265,
+      "openApiPath": "/developers/openapi/1.10.0.json",
+      "referencePath": "/developers/reference/?version=1.10.0",
+      "summary": "OAuth 2.0 Authorization Code with mandatory PKCE S256, discovery, token rotation, revocation, introspection, and official SDK helpers.",
+      "existingClients": "No action is required. API 1.10.0 adds seven OAuth protocol operations while preserving all existing requests, responses, operation IDs, and runtime URLs.",
+      "sdk": {
+        "typescript": {
+          "package": "@arcenciel/sdk",
+          "version": "1.1.0",
+          "status": "source-beta",
+          "registryUrl": "https://www.npmjs.com/package/@arcenciel/sdk",
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.1.0/packages/sdk-typescript"
+        },
+        "python": {
+          "package": "arcenciel",
+          "version": "1.1.0",
+          "status": "source-beta",
+          "registryUrl": "https://pypi.org/project/arcenciel/",
+          "sourceUrl": "https://github.com/FallenIncursio/arcenciel-sdks/tree/sdk-v1.1.0/packages/sdk-python"
+        }
+      },
+      "webhooks": {
+        "asyncApiVersion": "1.1.0",
+        "asyncApiPath": "/developers/asyncapi/1.1.0.json",
+        "referencePath": "/developers/webhooks/reference",
+        "sha256": "4f77c9127eef06ebf5ce39397e2402e67d2f5d7b64a5684885204cf5b5d85736",
+        "eventCount": 14
+      }
+    },
     {
       "version": "1.9.2",
       "releasedAt": "2026-08-08",
@@ -29,11 +62,11 @@
         }
       },
       "webhooks": {
-        "asyncApiVersion": "1.0.0",
-        "asyncApiPath": "/developers/asyncapi/1.0.0.json",
+        "asyncApiVersion": "1.1.0",
+        "asyncApiPath": "/developers/asyncapi/1.1.0.json",
         "referencePath": "/developers/webhooks/reference",
-        "sha256": "05689baf73d02398e9969ee7437980028d43fee9fef3080d9d452831787426b4",
-        "eventCount": 3
+        "sha256": "4f77c9127eef06ebf5ce39397e2402e67d2f5d7b64a5684885204cf5b5d85736",
+        "eventCount": 14
       }
     },
     {

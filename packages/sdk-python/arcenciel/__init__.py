@@ -11,11 +11,15 @@ from arcenciel.client import (
     verify_webhook_signature,
 )
 from arcenciel.errors import ArcEnCielError, to_arcenciel_error
+from arcenciel.oauth import OAuthAuthorization, OAuthFlow, OAuthTokenSet
 
 __all__ = [
     "ArcEnCielClient",
     "ArcEnCielError",
     "CursorPaginationResult",
+    "OAuthAuthorization",
+    "OAuthFlow",
+    "OAuthTokenSet",
     "PagePaginationResult",
     "paginate_cursor",
     "paginate_cursor_async",
@@ -24,4 +28,4 @@ __all__ = [
     "to_arcenciel_error",
     "verify_webhook_signature",
 ]
-__version__ = "1.0.2"
+__version__ = "1.1.0"

@@ -1,13 +1,33 @@
-# `@arcenciel/sdk` 1.0.2
+# `@arcenciel/sdk` 1.1.0
 
-Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.9.2` contract. The package is tested for Node.js
+Official TypeScript/JavaScript client for the immutable Arc en Ciel Developer API `1.10.0` contract. The package is tested for Node.js
 20.20+ and modern browsers. npm publishes it from the signed public source tag through OIDC Trusted Publishing with provenance.
 
 ## Install
 
 ```bash
-npm install @arcenciel/sdk@1.0.2
+npm install @arcenciel/sdk@1.1.0
 ```
+
+## OAuth Authorization Code with PKCE
+
+```ts
+const client = new ArcEnCielClient()
+const authorization = await client.oauth.createAuthorization({
+  clientId: 'aec_client_...',
+  redirectUri: 'https://your-app.example/oauth/callback',
+  scopes: ['models:read', 'offline_access'],
+})
+
+sessionStorage.setItem('arcenciel-oauth', JSON.stringify(authorization))
+window.location.assign(authorization.url)
+
+// On the callback route, restore `authorization` from server-side/session storage.
+const tokens = await client.oauth.exchangeCallback({ callbackUrl: window.location.href, authorization })
+```
+
+The helper verifies both callback `state` and Arc en Ciel `iss` before the single-use exchange. Persist a returned rotated
+`refreshToken` atomically and never retry an ambiguous token request. Confidential clients pass `clientSecret` only from a server.
 
 ## Search and inspect a model
 
@@ -64,7 +84,7 @@ forever.
 
 ## Test safely in the sandbox
 
-All 258 stable methods can target deterministic, non-persistent fixtures without changing generated code:
+All 265 stable methods can target deterministic or stateful isolated fixtures without changing generated code:
 
 ```ts
 const sandbox = new ArcEnCielClient({
@@ -203,11 +223,11 @@ The generated low-level APIs and models are also exported from the package root.
 
 ## Contract and generation
 
-- Developer API: `1.9.2`, 258 operations
-- SDK: `1.0.2` stable
+- Developer API: `1.10.0`, 265 operations
+- SDK: `1.1.0`
 - OpenAPI Generator CLI: `2.40.1`
 - OpenAPI Generator: `7.24.0`
-- Contract: <https://arcenciel.io/developers/openapi/1.9.2.json>
+- Contract: <https://arcenciel.io/developers/openapi/1.10.0.json>
 - Release manifest: <https://arcenciel.io/developers/openapi/releases.json>
 - Portal and support: <https://arcenciel.io/developers>
 

@@ -267,6 +267,8 @@ docs/GetHistoricalCollabOverview200Response.md
 docs/GetImagesBulk200Response.md
 docs/GetImagesBulk200ResponseImagesInner.md
 docs/GetModelVersionTrainingMetadata200Response.md
+docs/GetOAuthAuthorizationServerMetadata200Response.md
+docs/GetPublicOAuthClient200Response.md
 docs/Image.md
 docs/ImageSpatialAttribution.md
 docs/ImageSpatialAttributionRequestAccess.md
@@ -281,6 +283,7 @@ docs/ListImageExternalResources200Response.md
 docs/ListImageStyleMatches200Response.md
 docs/ListModelClasses200Response.md
 docs/ListModelClasses200ResponseClassesInner.md
+docs/ListOAuthScopes200Response.md
 docs/ListTagUsage200ResponseInner.md
 docs/ListUsers200Response.md
 docs/ListWebhookDeliveries200Response.md
@@ -313,6 +316,13 @@ docs/ModelVersionResourceGraphResponseGroups.md
 docs/ModelVersionResourcePreviewImage.md
 docs/ModelsApi.md
 docs/NotificationsApi.md
+docs/OAuthApi.md
+docs/OAuthClientPublic.md
+docs/OAuthClientPublicOwner.md
+docs/OAuthIntrospection.md
+docs/OAuthProtocolError.md
+docs/OAuthScope.md
+docs/OAuthTokenResponse.md
 docs/ProfileApi.md
 docs/PublishGeneratorJobRequest.md
 docs/RegisterModelVersionDownload200Response.md
@@ -404,6 +414,7 @@ src/apis/GeneratorApi.ts
 src/apis/ImagesApi.ts
 src/apis/ModelsApi.ts
 src/apis/NotificationsApi.ts
+src/apis/OAuthApi.ts
 src/apis/ProfileApi.ts
 src/apis/SocialApi.ts
 src/apis/TagsApi.ts
@@ -672,6 +683,8 @@ src/models/GetHistoricalCollabOverview200Response.ts
 src/models/GetImagesBulk200Response.ts
 src/models/GetImagesBulk200ResponseImagesInner.ts
 src/models/GetModelVersionTrainingMetadata200Response.ts
+src/models/GetOAuthAuthorizationServerMetadata200Response.ts
+src/models/GetPublicOAuthClient200Response.ts
 src/models/Image.ts
 src/models/ImageSpatialAttribution.ts
 src/models/ImageSpatialAttributionRequestAccess.ts
@@ -685,6 +698,7 @@ src/models/ListImageExternalResources200Response.ts
 src/models/ListImageStyleMatches200Response.ts
 src/models/ListModelClasses200Response.ts
 src/models/ListModelClasses200ResponseClassesInner.ts
+src/models/ListOAuthScopes200Response.ts
 src/models/ListTagUsage200ResponseInner.ts
 src/models/ListUsers200Response.ts
 src/models/ListWebhookDeliveries200Response.ts
@@ -715,6 +729,12 @@ src/models/ModelVersionResourceGraphResponse.ts
 src/models/ModelVersionResourceGraphResponseCounts.ts
 src/models/ModelVersionResourceGraphResponseGroups.ts
 src/models/ModelVersionResourcePreviewImage.ts
+src/models/OAuthClientPublic.ts
+src/models/OAuthClientPublicOwner.ts
+src/models/OAuthIntrospection.ts
+src/models/OAuthProtocolError.ts
+src/models/OAuthScope.ts
+src/models/OAuthTokenResponse.ts
 src/models/PublishGeneratorJobRequest.ts
 src/models/RegisterModelVersionDownload200Response.ts
 src/models/RemixGeneratorJob202Response.ts

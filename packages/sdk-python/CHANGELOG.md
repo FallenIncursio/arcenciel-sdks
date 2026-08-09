@@ -1,5 +1,12 @@
 # Python SDK Changelog
 
+## 1.1.0 — 2026-08-09
+
+- Added all seven generated Developer API v1.10.0 OAuth protocol methods.
+- Added synchronous and asynchronous `client.oauth` helpers for PKCE S256, state/issuer callback validation, code exchange, refresh
+  rotation, revocation, and confidential introspection; token writes are never automatically retried.
+- Preserved all 258 prior operation signatures and existing clients need no action.
+
 ## 1.0.2 — 2026-08-08
 
 - Regenerated from Developer API 1.9.2 with corrected article mutation examples and explicit retryable 429/502/503 documentation.
